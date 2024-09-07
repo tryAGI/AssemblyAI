@@ -1,0 +1,18 @@
+
+#nullable enable
+
+namespace AssemblyAI
+{
+    /// <summary>
+    /// Whether Automatic Punctuation is enabled, either true or false
+    /// </summary>
+    public sealed partial class TranscriptPunctuate
+    {
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+    }
+}
