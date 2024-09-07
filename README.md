@@ -1,6 +1,6 @@
 # AssemblyAI
 
-[![Nuget package](https://img.shields.io/nuget/vpre/AssemblyAI)](https://www.nuget.org/packages/AssemblyAI/)
+[![Nuget package](https://img.shields.io/nuget/vpre/tryAGI.AssemblyAI)](https://www.nuget.org/packages/tryAGI.AssemblyAI/)
 [![dotnet](https://github.com/tryAGI/AssemblyAI/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/tryAGI/AssemblyAI/actions/workflows/dotnet.yml)
 [![License: MIT](https://img.shields.io/github/license/tryAGI/AssemblyAI)](https://github.com/tryAGI/AssemblyAI/blob/main/LICENSE.txt)
 [![Discord](https://img.shields.io/discord/1115206893015662663?label=Discord&logo=discord&logoColor=white&color=d82679)](https://discord.gg/Ca2xhfBf3v)
@@ -22,6 +22,26 @@ extend it to all our generated SDKs for other platforms.
 using AssemblyAI;
 
 using var api = new AssemblyAIClient(apiKey);
+
+var fileUrl = "https://github.com/AssemblyAI-Community/audio-examples/raw/main/20230607_me_canadian_wildfires.mp3";
+
+//// You can also transcribe a local file by passing in a file path
+// var filePath = "./path/to/file.mp3";
+// var uploadedFile = await client.Transcript.UploadFileAsync();
+// fileUrl = uploadedFile.UploadUrl;
+
+Transcript transcript = await client.Transcript.CreateTranscriptAsync(TranscriptParams.FromUrl(
+    fileUrl,
+    new TranscriptOptionalParams
+    {
+        LanguageDetection = true,
+        SpeakerLabels = true, // Identify speakers in your audios
+        AutoHighlights = true, // Identifying highlights in your audio
+    }));
+
+transcript.EnsureStatusCompleted();
+
+Console.WriteLine(transcript);
 ```
 
 ## Support
