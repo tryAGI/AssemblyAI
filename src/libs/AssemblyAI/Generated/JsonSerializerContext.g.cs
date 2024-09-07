@@ -45,6 +45,8 @@ namespace AssemblyAI
             typeof(global::OpenApiGenerator.JsonConverters.EntityTypeNullableJsonConverter),
             typeof(global::OpenApiGenerator.JsonConverters.LemurModelJsonConverter),
             typeof(global::OpenApiGenerator.JsonConverters.LemurModelNullableJsonConverter),
+            typeof(global::OpenApiGenerator.JsonConverters.ErrorStatusJsonConverter),
+            typeof(global::OpenApiGenerator.JsonConverters.ErrorStatusNullableJsonConverter),
             typeof(global::OpenApiGenerator.JsonConverters.TranscriptWebhookNotificationJsonConverter),
             typeof(global::OpenApiGenerator.JsonConverters.RedactedAudioNotificationJsonConverter),
             typeof(global::OpenApiGenerator.JsonConverters.OneOfJsonConverterFactory2),

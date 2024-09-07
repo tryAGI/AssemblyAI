@@ -498,5 +498,9 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public global::AssemblyAI.Error? Type121 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.ErrorStatus? Type122 { get; set; }
     }
 }

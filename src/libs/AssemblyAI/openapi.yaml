@@ -4939,6 +4939,8 @@ components:
           description: Error message
           x-label: Error message
         status:
+          enum:
+            - error
           type: string
           x-label: Status
       additionalProperties: false
