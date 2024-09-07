@@ -34,14 +34,14 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prev_url")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string PrevUrl { get; set; }
+        public required string? PrevUrl { get; set; }
 
         /// <summary>
         /// The URL to the next page of transcripts. The next URL always points to a page with newer transcripts.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("next_url")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string NextUrl { get; set; }
+        public required string? NextUrl { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

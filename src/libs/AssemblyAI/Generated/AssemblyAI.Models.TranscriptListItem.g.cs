@@ -42,7 +42,7 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("completed")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::AssemblyAI.TranscriptListItemCompleted Completed { get; set; }
+        public required string? Completed { get; set; }
 
         /// <summary>
         /// 
@@ -56,7 +56,7 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::AssemblyAI.TranscriptListItemError Error { get; set; }
+        public required string? Error { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

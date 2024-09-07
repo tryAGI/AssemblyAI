@@ -45,7 +45,7 @@ namespace AssemblyAI
         /// Whether [Automatic language detection](https://www.assemblyai.com/docs/models/speech-recognition#automatic-language-detection) is enabled, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_detection")]
-        public global::AssemblyAI.TranscriptLanguageDetection? LanguageDetection { get; set; }
+        public bool? LanguageDetection { get; set; }
 
         /// <summary>
         /// The confidence threshold for the automatically detected language.<br/>
@@ -74,21 +74,21 @@ namespace AssemblyAI
         /// The textual transcript of your media file
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        public global::AssemblyAI.TranscriptText? Text { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// An array of temporally-sequential word objects, one for each word in the transcript.<br/>
         /// See [Speech recognition](https://www.assemblyai.com/docs/models/speech-recognition) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("words")]
-        public global::AssemblyAI.TranscriptWords? Words { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord>? Words { get; set; }
 
         /// <summary>
         /// When dual_channel or speaker_labels is enabled, a list of turn-by-turn utterance objects.<br/>
         /// See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("utterances")]
-        public global::AssemblyAI.TranscriptUtterances? Utterances { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptUtterance>? Utterances { get; set; }
 
         /// <summary>
         /// The confidence score for the transcript, between 0.0 (low confidence) and 1.0 (high confidence)
@@ -100,31 +100,31 @@ namespace AssemblyAI
         /// The duration of this transcript object's media file, in seconds
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_duration")]
-        public global::AssemblyAI.TranscriptAudioDuration? AudioDuration { get; set; }
+        public int? AudioDuration { get; set; }
 
         /// <summary>
         /// Whether Automatic Punctuation is enabled, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("punctuate")]
-        public global::AssemblyAI.TranscriptPunctuate? Punctuate { get; set; }
+        public bool? Punctuate { get; set; }
 
         /// <summary>
         /// Whether Text Formatting is enabled, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("format_text")]
-        public global::AssemblyAI.TranscriptFormatText? FormatText { get; set; }
+        public bool? FormatText { get; set; }
 
         /// <summary>
         /// Transcribe Filler Words, like "umm", in your media file; can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disfluencies")]
-        public global::AssemblyAI.TranscriptDisfluencies? Disfluencies { get; set; }
+        public bool? Disfluencies { get; set; }
 
         /// <summary>
         /// Whether [Dual channel transcription](https://www.assemblyai.com/docs/models/speech-recognition#dual-channel-transcription) was enabled in the transcription request, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dual_channel")]
-        public global::AssemblyAI.TranscriptDualChannel? DualChannel { get; set; }
+        public bool? DualChannel { get; set; }
 
         /// <summary>
         /// The URL to which we send webhook requests.<br/>
@@ -138,7 +138,7 @@ namespace AssemblyAI
         /// The status code we received from your server when delivering the transcript completed or failed webhook request, if a webhook URL was provided
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_status_code")]
-        public global::AssemblyAI.TranscriptWebhookStatusCode? WebhookStatusCode { get; set; }
+        public int? WebhookStatusCode { get; set; }
 
         /// <summary>
         /// Whether webhook authentication details were provided
@@ -151,14 +151,14 @@ namespace AssemblyAI
         /// The header name to be sent with the transcript completed or failed webhook requests
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_auth_header_name")]
-        public global::AssemblyAI.TranscriptWebhookAuthHeaderName? WebhookAuthHeaderName { get; set; }
+        public string? WebhookAuthHeaderName { get; set; }
 
         /// <summary>
         /// Whether speed boost is enabled
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speed_boost")]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public global::AssemblyAI.TranscriptSpeedBoost? SpeedBoost { get; set; }
+        public bool? SpeedBoost { get; set; }
 
         /// <summary>
         /// Whether Key Phrases is enabled, either true or false
@@ -179,13 +179,13 @@ namespace AssemblyAI
         /// The point in time, in milliseconds, in the file at which the transcription was started
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_start_from")]
-        public global::AssemblyAI.TranscriptAudioStartFrom? AudioStartFrom { get; set; }
+        public int? AudioStartFrom { get; set; }
 
         /// <summary>
         /// The point in time, in milliseconds, in the file at which the transcription was terminated
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_end_at")]
-        public global::AssemblyAI.TranscriptAudioEndAt? AudioEndAt { get; set; }
+        public int? AudioEndAt { get; set; }
 
         /// <summary>
         /// The list of custom vocabulary to boost transcription probability for
@@ -197,13 +197,13 @@ namespace AssemblyAI
         /// The word boost parameter value
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("boost_param")]
-        public global::AssemblyAI.TranscriptBoostParam2? BoostParam { get; set; }
+        public string? BoostParam { get; set; }
 
         /// <summary>
         /// Whether [Profanity Filtering](https://www.assemblyai.com/docs/models/speech-recognition#profanity-filtering) is enabled, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filter_profanity")]
-        public global::AssemblyAI.TranscriptFilterProfanity? FilterProfanity { get; set; }
+        public bool? FilterProfanity { get; set; }
 
         /// <summary>
         /// Whether [PII Redaction](https://www.assemblyai.com/docs/models/pii-redaction) is enabled, either true or false
@@ -217,7 +217,7 @@ namespace AssemblyAI
         /// either true or false. See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_audio")]
-        public global::AssemblyAI.TranscriptRedactPiiAudio? RedactPiiAudio { get; set; }
+        public bool? RedactPiiAudio { get; set; }
 
         /// <summary>
         /// The audio quality of the PII-redacted audio file, if redact_pii_audio is enabled.<br/>
@@ -232,7 +232,7 @@ namespace AssemblyAI
         /// See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_policies")]
-        public global::AssemblyAI.TranscriptRedactPiiPolicies? RedactPiiPolicies { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.PiiPolicy>? RedactPiiPolicies { get; set; }
 
         /// <summary>
         /// The replacement logic for detected PII, can be "entity_name" or "hash". See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more details.
@@ -245,19 +245,19 @@ namespace AssemblyAI
         /// Whether [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker_labels")]
-        public global::AssemblyAI.TranscriptSpeakerLabels? SpeakerLabels { get; set; }
+        public bool? SpeakerLabels { get; set; }
 
         /// <summary>
         /// Tell the speaker label model how many speakers it should attempt to identify, up to 10. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speakers_expected")]
-        public global::AssemblyAI.TranscriptSpeakersExpected? SpeakersExpected { get; set; }
+        public int? SpeakersExpected { get; set; }
 
         /// <summary>
         /// Whether [Content Moderation](https://www.assemblyai.com/docs/models/content-moderation) is enabled, can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content_safety")]
-        public global::AssemblyAI.TranscriptContentSafety? ContentSafety { get; set; }
+        public bool? ContentSafety { get; set; }
 
         /// <summary>
         /// An array of results for the Content Moderation model, if it is enabled.<br/>
@@ -271,7 +271,7 @@ namespace AssemblyAI
         /// Whether [Topic Detection](https://www.assemblyai.com/docs/models/topic-detection) is enabled, can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("iab_categories")]
-        public global::AssemblyAI.TranscriptIabCategories? IabCategories { get; set; }
+        public bool? IabCategories { get; set; }
 
         /// <summary>
         /// The result of the Topic Detection model, if it is enabled.<br/>
@@ -285,19 +285,19 @@ namespace AssemblyAI
         /// Customize how words are spelled and formatted using to and from values
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_spelling")]
-        public global::AssemblyAI.TranscriptCustomSpelling2? CustomSpelling { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptCustomSpelling>? CustomSpelling { get; set; }
 
         /// <summary>
         /// Whether [Auto Chapters](https://www.assemblyai.com/docs/models/auto-chapters) is enabled, can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auto_chapters")]
-        public global::AssemblyAI.TranscriptAutoChapters? AutoChapters { get; set; }
+        public bool? AutoChapters { get; set; }
 
         /// <summary>
         /// An array of temporally sequential chapters for the audio file
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chapters")]
-        public global::AssemblyAI.TranscriptChapters? Chapters { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.Chapter>? Chapters { get; set; }
 
         /// <summary>
         /// Whether [Summarization](https://www.assemblyai.com/docs/models/summarization) is enabled, either true or false
@@ -310,26 +310,26 @@ namespace AssemblyAI
         /// The type of summary generated, if [Summarization](https://www.assemblyai.com/docs/models/summarization) is enabled
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary_type")]
-        public global::AssemblyAI.TranscriptSummaryType? SummaryType { get; set; }
+        public string? SummaryType { get; set; }
 
         /// <summary>
         /// The Summarization model used to generate the summary,<br/>
         /// if [Summarization](https://www.assemblyai.com/docs/models/summarization) is enabled
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary_model")]
-        public global::AssemblyAI.TranscriptSummaryModel? SummaryModel { get; set; }
+        public string? SummaryModel { get; set; }
 
         /// <summary>
         /// The generated summary of the media file, if [Summarization](https://www.assemblyai.com/docs/models/summarization) is enabled
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
-        public global::AssemblyAI.TranscriptSummary? Summary { get; set; }
+        public string? Summary { get; set; }
 
         /// <summary>
         /// Whether custom topics is enabled, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_topics")]
-        public global::AssemblyAI.TranscriptCustomTopics? CustomTopics { get; set; }
+        public bool? CustomTopics { get; set; }
 
         /// <summary>
         /// The list of custom topics provided if custom topics is enabled
@@ -341,40 +341,40 @@ namespace AssemblyAI
         /// Whether [Sentiment Analysis](https://www.assemblyai.com/docs/models/sentiment-analysis) is enabled, can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sentiment_analysis")]
-        public global::AssemblyAI.TranscriptSentimentAnalysis? SentimentAnalysis { get; set; }
+        public bool? SentimentAnalysis { get; set; }
 
         /// <summary>
         /// An array of results for the Sentiment Analysis model, if it is enabled.<br/>
         /// See [Sentiment Analysis](https://www.assemblyai.com/docs/models/sentiment-analysis) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sentiment_analysis_results")]
-        public global::AssemblyAI.TranscriptSentimentAnalysisResults? SentimentAnalysisResults { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.SentimentAnalysisResult>? SentimentAnalysisResults { get; set; }
 
         /// <summary>
         /// Whether [Entity Detection](https://www.assemblyai.com/docs/models/entity-detection) is enabled, can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("entity_detection")]
-        public global::AssemblyAI.TranscriptEntityDetection? EntityDetection { get; set; }
+        public bool? EntityDetection { get; set; }
 
         /// <summary>
         /// An array of results for the Entity Detection model, if it is enabled.<br/>
         /// See [Entity detection](https://www.assemblyai.com/docs/models/entity-detection) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("entities")]
-        public global::AssemblyAI.TranscriptEntities? Entities { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.Entity>? Entities { get; set; }
 
         /// <summary>
         /// Defaults to null. Reject audio files that contain less than this fraction of speech.<br/>
         /// Valid values are in the range [0, 1] inclusive.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_threshold")]
-        public float SpeechThreshold { get; set; }
+        public float? SpeechThreshold { get; set; }
 
         /// <summary>
         /// True while a request is throttled and false when a request is no longer throttled
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("throttled")]
-        public global::AssemblyAI.TranscriptThrottled? Throttled { get; set; }
+        public bool? Throttled { get; set; }
 
         /// <summary>
         /// Error message of why the transcript failed

@@ -33,7 +33,7 @@ namespace AssemblyAI
         /// Default Value: 0F
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_confidence_threshold")]
-        public float? LanguageConfidenceThreshold { get; set; } = 0F;
+        public float LanguageConfidenceThreshold { get; set; } = 0F;
 
         /// <summary>
         /// The speech model to use for the transcription. When `null`, the "best" model is used.<br/>
@@ -83,13 +83,13 @@ namespace AssemblyAI
         /// The header name to be sent with the transcript completed or failed webhook requests
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_auth_header_name")]
-        public global::AssemblyAI.TranscriptOptionalParamsWebhookAuthHeaderName? WebhookAuthHeaderName { get; set; }
+        public string? WebhookAuthHeaderName { get; set; }
 
         /// <summary>
         /// The header value to send back with the transcript completed or failed webhook requests for added security
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_auth_header_value")]
-        public global::AssemblyAI.TranscriptOptionalParamsWebhookAuthHeaderValue? WebhookAuthHeaderValue { get; set; }
+        public string? WebhookAuthHeaderValue { get; set; }
 
         /// <summary>
         /// Enable Key Phrases, either true or false<br/>
@@ -177,7 +177,7 @@ namespace AssemblyAI
         /// Tells the speaker label model how many speakers it should attempt to identify, up to 10. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speakers_expected")]
-        public global::AssemblyAI.TranscriptOptionalParamsSpeakersExpected? SpeakersExpected { get; set; }
+        public int? SpeakersExpected { get; set; }
 
         /// <summary>
         /// Enable [Content Moderation](https://www.assemblyai.com/docs/models/content-moderation), can be true or false<br/>
@@ -230,10 +230,10 @@ namespace AssemblyAI
         /// <summary>
         /// Reject audio files that contain less than this fraction of speech.<br/>
         /// Valid values are in the range [0, 1] inclusive.<br/>
-        /// Default Value: 0
+        /// Default Value: 0F
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_threshold")]
-        public float SpeechThreshold { get; set; } = 0;
+        public float? SpeechThreshold { get; set; } = 0F;
 
         /// <summary>
         /// Enable [Summarization](https://www.assemblyai.com/docs/models/summarization), can be true or false<br/>

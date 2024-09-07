@@ -9,17 +9,27 @@ var text = await File.ReadAllTextAsync(path);
 
 text = text
         .Replace("openapi: 3.1.0", "openapi: 3.0.1")
+        .Replace("          type: [boolean, \"null\"]", @"          type: boolean
+          nullable: true")
+        .Replace("          type: [number, \"null\"]",  @"          type: number
+          nullable: true")
+        .Replace("          type: [string, \"null\"]",  @"          type: string
+          nullable: true")
+        .Replace("          type: [integer, \"null\"]",  @"          type: integer
+          nullable: true")
+        .Replace("          type: [array, \"null\"]",  @"          type: array
+          nullable: true")
     ;
 
 var openApiDocument = new OpenApiStringReader().Read(text, out var diagnostics);
 
-openApiDocument.Components.Schemas["TranscriptOptionalParams"]!.Properties["language_confidence_threshold"]!.Nullable = true;
-openApiDocument.Components.Schemas["Transcript"]!.Properties["language_confidence_threshold"]!.Nullable = true;
-openApiDocument.Components.Schemas["Transcript"]!.Properties["language_confidence"]!.Nullable = true;
-openApiDocument.Components.Schemas["Transcript"]!.Properties["confidence"]!.Nullable = true;
-
 text = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
 _ = new OpenApiStringReader().Read(text, out diagnostics);
+
+if (text.Contains(", \"null\""))
+{
+    throw new Exception("Failed to remove nullable from OpenAPI 3.1 spec.");
+}
 
 if (diagnostics.Errors.Count > 0)
 {
