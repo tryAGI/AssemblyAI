@@ -5,6 +5,7 @@
   </PropertyGroup>
   
   <PropertyGroup Label="Nuget">
+    <PackageId>tryAGI.AssemblyAI</PackageId>
     <Description>Generated C# SDK based on AssemblyAI OpenAPI specification.</Description>
     <PackageTags>api;client;sdk;dotnet;swagger;openapi;specification;generated;nswag</PackageTags>
   </PropertyGroup>
