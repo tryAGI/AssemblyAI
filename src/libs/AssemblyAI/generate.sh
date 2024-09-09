@@ -1,7 +1,7 @@
 dotnet tool install --global openapigenerator.cli --prerelease
 rm -rf Generated
 curl -o openapi.yaml https://raw.githubusercontent.com/AssemblyAI/assemblyai-api-spec/main/openapi.yml
-sudo npm install -g openapi-down-converter
+sudo npm i -g @apiture/openapi-down-convert
 openapi-down-convert --input openapi.yaml --output openapi.yaml
 dotnet run --project ../../helpers/FixOpenApiSpec openapi.yaml
 if [ $? -ne 0 ]; then
