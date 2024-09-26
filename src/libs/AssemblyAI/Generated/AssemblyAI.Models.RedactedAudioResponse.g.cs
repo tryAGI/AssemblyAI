@@ -12,7 +12,7 @@ namespace AssemblyAI
         /// The status of the redacted audio
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.RedactedAudioStatusJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.RedactedAudioStatusJsonConverter))]
         public global::AssemblyAI.RedactedAudioStatus Status { get; set; }
 
         /// <summary>

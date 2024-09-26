@@ -7,21 +7,21 @@ namespace AssemblyAI
     {
         partial void PrepareListTranscriptsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::AssemblyAI.ListTranscriptParams? limit,
+            ref long? limit,
             ref global::AssemblyAI.TranscriptStatus? status,
-            global::AssemblyAI.ListTranscriptParams? createdOn,
-            global::AssemblyAI.ListTranscriptParams? beforeId,
-            global::AssemblyAI.ListTranscriptParams? afterId,
-            global::AssemblyAI.ListTranscriptParams? throttledOnly);
+            ref global::System.DateTime? createdOn,
+            ref global::System.Guid? beforeId,
+            ref global::System.Guid? afterId,
+            ref bool? throttledOnly);
         partial void PrepareListTranscriptsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::AssemblyAI.ListTranscriptParams? limit,
+            long? limit,
             global::AssemblyAI.TranscriptStatus? status,
-            global::AssemblyAI.ListTranscriptParams? createdOn,
-            global::AssemblyAI.ListTranscriptParams? beforeId,
-            global::AssemblyAI.ListTranscriptParams? afterId,
-            global::AssemblyAI.ListTranscriptParams? throttledOnly);
+            global::System.DateTime? createdOn,
+            global::System.Guid? beforeId,
+            global::System.Guid? afterId,
+            bool? throttledOnly);
         partial void ProcessListTranscriptsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -47,28 +47,40 @@ namespace AssemblyAI
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::AssemblyAI.TranscriptList> ListTranscriptsAsync(
-            global::AssemblyAI.ListTranscriptParams? limit = default,
+            long? limit = default,
             global::AssemblyAI.TranscriptStatus? status = default,
-            global::AssemblyAI.ListTranscriptParams? createdOn = default,
-            global::AssemblyAI.ListTranscriptParams? beforeId = default,
-            global::AssemblyAI.ListTranscriptParams? afterId = default,
-            global::AssemblyAI.ListTranscriptParams? throttledOnly = default,
+            global::System.DateTime? createdOn = default,
+            global::System.Guid? beforeId = default,
+            global::System.Guid? afterId = default,
+            bool? throttledOnly = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: _httpClient);
             PrepareListTranscriptsArguments(
                 httpClient: _httpClient,
-                limit: limit,
+                limit: ref limit,
                 status: ref status,
-                createdOn: createdOn,
-                beforeId: beforeId,
-                afterId: afterId,
-                throttledOnly: throttledOnly);
+                createdOn: ref createdOn,
+                beforeId: ref beforeId,
+                afterId: ref afterId,
+                throttledOnly: ref throttledOnly);
 
+            var __pathBuilder = new PathBuilder(
+                path: "/v2/transcript",
+                baseUri: _httpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("limit", limit?.ToString()) 
+                .AddOptionalParameter("status", status?.ToValueString()) 
+                .AddOptionalParameter("created_on", createdOn?.ToString("yyyy-MM-dd")) 
+                .AddOptionalParameter("before_id", beforeId?.ToString()) 
+                .AddOptionalParameter("after_id", afterId?.ToString()) 
+                .AddOptionalParameter("throttled_only", throttledOnly?.ToString()) 
+                ; 
+            var __path = __pathBuilder.ToString();
             using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
-                requestUri: new global::System.Uri(_httpClient.BaseAddress?.AbsoluteUri.TrimEnd('/') + $"/v2/transcript?limit={limit}&status={limit}&created_on={limit}&before_id={limit}&after_id={limit}&throttled_only={limit}&status={(global::System.Uri.EscapeDataString(status?.ToValueString() ?? string.Empty))}&limit={createdOn}&status={createdOn}&created_on={createdOn}&before_id={createdOn}&after_id={createdOn}&throttled_only={createdOn}&limit={beforeId}&status={beforeId}&created_on={beforeId}&before_id={beforeId}&after_id={beforeId}&throttled_only={beforeId}&limit={afterId}&status={afterId}&created_on={afterId}&before_id={afterId}&after_id={afterId}&throttled_only={afterId}&limit={throttledOnly}&status={throttledOnly}&created_on={throttledOnly}&before_id={throttledOnly}&after_id={throttledOnly}&throttled_only={throttledOnly}", global::System.UriKind.RelativeOrAbsolute));
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 
             PrepareRequest(
                 client: _httpClient,
@@ -116,7 +128,7 @@ namespace AssemblyAI
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, global::AssemblyAI.SourceGenerationContext.Default.TranscriptList) ??
+                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::AssemblyAI.TranscriptList), JsonSerializerContext) as global::AssemblyAI.TranscriptList ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }

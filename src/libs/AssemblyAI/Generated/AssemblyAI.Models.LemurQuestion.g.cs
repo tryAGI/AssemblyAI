@@ -21,8 +21,8 @@ namespace AssemblyAI
         /// Any context about the transcripts you wish to provide. This can be a string or any object.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.OneOfJsonConverterFactory2))]
-        public global::System.OneOf<string, global::AssemblyAI.LemurQuestionContext>? Context { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
+        public global::AssemblyAI.OneOf<string, global::AssemblyAI.LemurQuestionContext>? Context { get; set; }
 
         /// <summary>
         /// How you want the answer to be returned. This can be any text. Can't be used with answer_options. Examples: "short sentence", "bullet points"

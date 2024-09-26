@@ -1,6 +1,6 @@
 #nullable enable
 
-namespace OpenApiGenerator.JsonConverters
+namespace AssemblyAI.JsonConverters
 {
     /// <inheritdoc />
     public sealed class LemurModelJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.LemurModel>

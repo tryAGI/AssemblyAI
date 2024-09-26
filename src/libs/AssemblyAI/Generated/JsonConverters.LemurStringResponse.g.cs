@@ -1,7 +1,7 @@
 #nullable enable
 #pragma warning disable CS0618 // Type or member is obsolete
 
-namespace OpenApiGenerator.JsonConverters
+namespace AssemblyAI.JsonConverters
 {
     /// <inheritdoc />
     public class LemurStringResponseJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.LemurStringResponse>

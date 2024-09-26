@@ -33,7 +33,7 @@ namespace AssemblyAI
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sentiment")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.SentimentJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.SentimentJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::AssemblyAI.Sentiment Sentiment { get; set; }
 

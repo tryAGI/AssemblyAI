@@ -8,7 +8,7 @@ namespace AssemblyAI
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
-    public sealed partial class AssemblyAIClient : global::System.IDisposable
+    public sealed partial class AssemblyAIClient : global::AssemblyAI.IAssemblyAIClient, global::System.IDisposable
     {
         /// <summary>
         /// AssemblyAI API
@@ -17,21 +17,35 @@ namespace AssemblyAI
 
         private readonly global::System.Net.Http.HttpClient _httpClient;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; } = global::AssemblyAI.SourceGenerationContext.Default;
+
 
         /// <summary>
         /// Transcript related operations
         /// </summary>
-        public TranscriptClient Transcript => new TranscriptClient(_httpClient);
+        public TranscriptClient Transcript => new TranscriptClient(_httpClient)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
 
         /// <summary>
         /// LeMUR related operations
         /// </summary>
-        public LeMURClient LeMUR => new LeMURClient(_httpClient);
+        public LeMURClient LeMUR => new LeMURClient(_httpClient)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
 
         /// <summary>
         /// Streaming Speech-to-Text
         /// </summary>
-        public StreamingClient Streaming => new StreamingClient(_httpClient);
+        public StreamingClient Streaming => new StreamingClient(_httpClient)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
 
         /// <summary>
         /// Creates a new instance of the AssemblyAIClient.
@@ -42,8 +56,7 @@ namespace AssemblyAI
         /// <param name="baseUri"></param> 
         public AssemblyAIClient(
             global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null 
-            )
+            global::System.Uri? baseUri = null)
         {
             _httpClient = httpClient ?? new global::System.Net.Http.HttpClient();
             _httpClient.BaseAddress ??= baseUri ?? new global::System.Uri(BaseUrl);

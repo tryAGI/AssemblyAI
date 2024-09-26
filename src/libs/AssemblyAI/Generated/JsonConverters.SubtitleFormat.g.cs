@@ -1,6 +1,6 @@
 #nullable enable
 
-namespace OpenApiGenerator.JsonConverters
+namespace AssemblyAI.JsonConverters
 {
     /// <inheritdoc />
     public sealed class SubtitleFormatJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.SubtitleFormat>

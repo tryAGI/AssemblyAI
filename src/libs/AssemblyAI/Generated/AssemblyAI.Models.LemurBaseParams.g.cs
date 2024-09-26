@@ -15,7 +15,7 @@ namespace AssemblyAI
         /// Use either transcript_ids or input_text as input into LeMUR.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcript_ids")]
-        public global::System.Collections.Generic.IList<string>? TranscriptIds { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Guid>? TranscriptIds { get; set; }
 
         /// <summary>
         /// Custom formatted transcript data. Maximum size is the context limit of the selected model, which defaults to 100000.<br/>
@@ -28,23 +28,23 @@ namespace AssemblyAI
         /// Context to provide the model. This can be a string or a free-form JSON value.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.OneOfJsonConverterFactory2))]
-        public global::System.OneOf<string, global::AssemblyAI.LemurBaseParamsContext>? Context { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
+        public global::AssemblyAI.OneOf<string, global::AssemblyAI.LemurBaseParamsContext>? Context { get; set; }
 
         /// <summary>
         /// The model that is used for the final prompt after compression is performed.<br/>
         /// Default Value: default
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("final_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::System.AnyOf<global::AssemblyAI.LemurModel?, string>? FinalModel { get; set; } = global::AssemblyAI.LemurModel.Default;
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverterFactory2))]
+        public global::AssemblyAI.AnyOf<global::AssemblyAI.LemurModel?, string>? FinalModel { get; set; } = global::AssemblyAI.LemurModel.Default;
 
         /// <summary>
         /// Max output size in tokens, up to 4000<br/>
         /// Default Value: 2000
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_output_size")]
-        public int MaxOutputSize { get; set; } = 2000;
+        public int? MaxOutputSize { get; set; } = 2000;
 
         /// <summary>
         /// The temperature to use for the model.<br/>
@@ -53,7 +53,7 @@ namespace AssemblyAI
         /// Default Value: 0F
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
-        public float Temperature { get; set; } = 0F;
+        public float? Temperature { get; set; } = 0F;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

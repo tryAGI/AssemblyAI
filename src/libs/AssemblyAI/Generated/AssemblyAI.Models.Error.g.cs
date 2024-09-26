@@ -19,7 +19,7 @@ namespace AssemblyAI
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.ErrorStatusJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.ErrorStatusJsonConverter))]
         public global::AssemblyAI.ErrorStatus? Status { get; set; }
 
         /// <summary>

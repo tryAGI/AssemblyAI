@@ -13,7 +13,7 @@ namespace AssemblyAI
         /// Either success, or unavailable in the rare case that the model failed
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.AudioIntelligenceModelStatusJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.AudioIntelligenceModelStatusJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::AssemblyAI.AudioIntelligenceModelStatus Status { get; set; }
 

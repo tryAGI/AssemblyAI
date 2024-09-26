@@ -10,11 +10,11 @@ namespace AssemblyAI
     public enum RedactPiiAudioQuality
     {
         /// <summary>
-        /// 
+        /// //www.assemblyai.com/docs/models/pii-redaction) for more details.
         /// </summary>
         Mp3,
         /// <summary>
-        /// 
+        /// //www.assemblyai.com/docs/models/pii-redaction) for more details.
         /// </summary>
         Wav,
     }

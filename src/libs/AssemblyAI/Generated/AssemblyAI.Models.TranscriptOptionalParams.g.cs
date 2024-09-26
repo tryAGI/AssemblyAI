@@ -16,15 +16,15 @@ namespace AssemblyAI
         /// Default Value: en_us
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_code")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.OneOfJsonConverterFactory2))]
-        public global::System.OneOf<global::System.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>? LanguageCode { get; set; } = "en_us";
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
+        public global::AssemblyAI.OneOf<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>? LanguageCode { get; set; } = "en_us";
 
         /// <summary>
         /// Enable [Automatic language detection](https://www.assemblyai.com/docs/models/speech-recognition#automatic-language-detection), either true or false.<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_detection")]
-        public bool LanguageDetection { get; set; } = false;
+        public bool? LanguageDetection { get; set; } = false;
 
         /// <summary>
         /// The confidence threshold for the automatically detected language.<br/>
@@ -33,43 +33,43 @@ namespace AssemblyAI
         /// Default Value: 0F
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_confidence_threshold")]
-        public float LanguageConfidenceThreshold { get; set; } = 0F;
+        public float? LanguageConfidenceThreshold { get; set; } = 0F;
 
         /// <summary>
         /// The speech model to use for the transcription. When `null`, the "best" model is used.<br/>
         /// Default Value: best
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.OneOfJsonConverterFactory2))]
-        public global::System.OneOf<global::AssemblyAI.SpeechModel2?, object>? SpeechModel { get; set; } = global::AssemblyAI.SpeechModel2.Best;
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
+        public global::AssemblyAI.OneOf<global::AssemblyAI.SpeechModel2?, object>? SpeechModel { get; set; } = global::AssemblyAI.SpeechModel2.Best;
 
         /// <summary>
         /// Enable Automatic Punctuation, can be true or false<br/>
         /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("punctuate")]
-        public bool Punctuate { get; set; } = true;
+        public bool? Punctuate { get; set; } = true;
 
         /// <summary>
         /// Enable Text Formatting, can be true or false<br/>
         /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("format_text")]
-        public bool FormatText { get; set; } = true;
+        public bool? FormatText { get; set; } = true;
 
         /// <summary>
         /// Transcribe Filler Words, like "umm", in your media file; can be true or false<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disfluencies")]
-        public bool Disfluencies { get; set; } = false;
+        public bool? Disfluencies { get; set; } = false;
 
         /// <summary>
         /// Enable [Dual Channel](https://www.assemblyai.com/docs/models/speech-recognition#dual-channel-transcription) transcription, can be true or false.<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dual_channel")]
-        public bool DualChannel { get; set; } = false;
+        public bool? DualChannel { get; set; } = false;
 
         /// <summary>
         /// The URL to which we send webhook requests.<br/>
@@ -96,19 +96,19 @@ namespace AssemblyAI
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auto_highlights")]
-        public bool AutoHighlights { get; set; } = false;
+        public bool? AutoHighlights { get; set; } = false;
 
         /// <summary>
         /// The point in time, in milliseconds, to begin transcribing in your media file
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_start_from")]
-        public int AudioStartFrom { get; set; }
+        public int? AudioStartFrom { get; set; }
 
         /// <summary>
         /// The point in time, in milliseconds, to stop transcribing in your media file
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_end_at")]
-        public int AudioEndAt { get; set; }
+        public int? AudioEndAt { get; set; }
 
         /// <summary>
         /// The list of custom vocabulary to boost transcription probability for
@@ -120,7 +120,7 @@ namespace AssemblyAI
         /// How much to boost specified words
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("boost_param")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.TranscriptBoostParamJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.TranscriptBoostParamJsonConverter))]
         public global::AssemblyAI.TranscriptBoostParam? BoostParam { get; set; }
 
         /// <summary>
@@ -128,28 +128,28 @@ namespace AssemblyAI
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filter_profanity")]
-        public bool FilterProfanity { get; set; } = false;
+        public bool? FilterProfanity { get; set; } = false;
 
         /// <summary>
         /// Redact PII from the transcribed text using the Redact PII model, can be true or false<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii")]
-        public bool RedactPii { get; set; } = false;
+        public bool? RedactPii { get; set; } = false;
 
         /// <summary>
         /// Generate a copy of the original media file with spoken PII "beeped" out, can be true or false. See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more details.<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_audio")]
-        public bool RedactPiiAudio { get; set; } = false;
+        public bool? RedactPiiAudio { get; set; } = false;
 
         /// <summary>
         /// Controls the filetype of the audio created by redact_pii_audio. Currently supports mp3 (default) and wav. See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more details.<br/>
         /// Example: mp3
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_audio_quality")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.RedactPiiAudioQualityJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.RedactPiiAudioQualityJsonConverter))]
         public global::AssemblyAI.RedactPiiAudioQuality? RedactPiiAudioQuality { get; set; }
 
         /// <summary>
@@ -163,15 +163,15 @@ namespace AssemblyAI
         /// Default Value: hash
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_sub")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.OneOfJsonConverterFactory2))]
-        public global::System.OneOf<global::AssemblyAI.SubstitutionPolicy?, object>? RedactPiiSub { get; set; } = global::AssemblyAI.SubstitutionPolicy.Hash;
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
+        public global::AssemblyAI.OneOf<global::AssemblyAI.SubstitutionPolicy?, object>? RedactPiiSub { get; set; } = global::AssemblyAI.SubstitutionPolicy.Hash;
 
         /// <summary>
         /// Enable [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization), can be true or false<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker_labels")]
-        public bool SpeakerLabels { get; set; } = false;
+        public bool? SpeakerLabels { get; set; } = false;
 
         /// <summary>
         /// Tells the speaker label model how many speakers it should attempt to identify, up to 10. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.
@@ -184,21 +184,21 @@ namespace AssemblyAI
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content_safety")]
-        public bool ContentSafety { get; set; } = false;
+        public bool? ContentSafety { get; set; } = false;
 
         /// <summary>
         /// The confidence threshold for the Content Moderation model. Values must be between 25 and 100.<br/>
         /// Default Value: 50
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content_safety_confidence")]
-        public int ContentSafetyConfidence { get; set; } = 50;
+        public int? ContentSafetyConfidence { get; set; } = 50;
 
         /// <summary>
         /// Enable [Topic Detection](https://www.assemblyai.com/docs/models/topic-detection), can be true or false<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("iab_categories")]
-        public bool IabCategories { get; set; } = false;
+        public bool? IabCategories { get; set; } = false;
 
         /// <summary>
         /// Customize how words are spelled and formatted using to and from values
@@ -211,21 +211,21 @@ namespace AssemblyAI
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sentiment_analysis")]
-        public bool SentimentAnalysis { get; set; } = false;
+        public bool? SentimentAnalysis { get; set; } = false;
 
         /// <summary>
         /// Enable [Auto Chapters](https://www.assemblyai.com/docs/models/auto-chapters), can be true or false<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auto_chapters")]
-        public bool AutoChapters { get; set; } = false;
+        public bool? AutoChapters { get; set; } = false;
 
         /// <summary>
         /// Enable [Entity Detection](https://www.assemblyai.com/docs/models/entity-detection), can be true or false<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("entity_detection")]
-        public bool EntityDetection { get; set; } = false;
+        public bool? EntityDetection { get; set; } = false;
 
         /// <summary>
         /// Reject audio files that contain less than this fraction of speech.<br/>
@@ -240,20 +240,20 @@ namespace AssemblyAI
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summarization")]
-        public bool Summarization { get; set; } = false;
+        public bool? Summarization { get; set; } = false;
 
         /// <summary>
         /// The model to summarize the transcript
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.SummaryModelJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.SummaryModelJsonConverter))]
         public global::AssemblyAI.SummaryModel? SummaryModel { get; set; }
 
         /// <summary>
         /// The type of summary
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::OpenApiGenerator.JsonConverters.SummaryTypeJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.SummaryTypeJsonConverter))]
         public global::AssemblyAI.SummaryType? SummaryType { get; set; }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace AssemblyAI
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_topics")]
-        public bool CustomTopics { get; set; } = false;
+        public bool? CustomTopics { get; set; } = false;
 
         /// <summary>
         /// The list of custom topics
