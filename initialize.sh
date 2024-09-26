@@ -1,6 +1,6 @@
-dotnet tool install --global openapigenerator.cli --prerelease
+dotnet tool install --global autosdk.cli --prerelease
 
-oag init \
+autosdk init \
   AssemblyAI \
   AssemblyAiApi \
   https://raw.githubusercontent.com/AssemblyAI/assemblyai-api-spec/main/openapi.yml \
