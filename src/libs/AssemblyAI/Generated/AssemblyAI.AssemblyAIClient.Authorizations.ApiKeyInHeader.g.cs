@@ -14,11 +14,14 @@ namespace AssemblyAI
         {
             apiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
 
-            _authorization = new global::AssemblyAI.EndPointAuthorization
+            _authorizations.Clear();
+            _authorizations.Add(new global::AssemblyAI.EndPointAuthorization
             {
+                Type = "ApiKey",
+                Location = "Header",
                 Name = "Authorization",
                 Value = apiKey,
-            };
+            });
         }
     }
 }

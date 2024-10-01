@@ -5,12 +5,12 @@ namespace AssemblyAI
 {
     public sealed partial class AssemblyAIClient
     {
-        /// <inheritdoc cref="AssemblyAIClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::AssemblyAI.EndPointAuthorization?)"/>
+        /// <inheritdoc cref="AssemblyAIClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::AssemblyAI.EndPointAuthorization}?)"/>
         public AssemblyAIClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,
-            global::AssemblyAI.EndPointAuthorization? authorization = null) : this(httpClient, baseUri, authorization)
+            global::System.Collections.Generic.List<global::AssemblyAI.EndPointAuthorization>? authorizations = null) : this(httpClient, baseUri, authorizations)
         {
             Authorizing(_httpClient, ref apiKey);
 
