@@ -16,6 +16,7 @@ namespace AssemblyAI
         public const string BaseUrl = "https://api.assemblyai.com";
 
         private readonly global::System.Net.Http.HttpClient _httpClient;
+        private global::AssemblyAI.EndPointAuthorization? _authorization;
 
         /// <summary>
         /// 
@@ -26,7 +27,7 @@ namespace AssemblyAI
         /// <summary>
         /// Transcript related operations
         /// </summary>
-        public TranscriptClient Transcript => new TranscriptClient(_httpClient)
+        public TranscriptClient Transcript => new TranscriptClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -34,7 +35,7 @@ namespace AssemblyAI
         /// <summary>
         /// LeMUR related operations
         /// </summary>
-        public LeMURClient LeMUR => new LeMURClient(_httpClient)
+        public LeMURClient LeMUR => new LeMURClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -42,7 +43,7 @@ namespace AssemblyAI
         /// <summary>
         /// Streaming Speech-to-Text
         /// </summary>
-        public StreamingClient Streaming => new StreamingClient(_httpClient)
+        public StreamingClient Streaming => new StreamingClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -53,13 +54,16 @@ namespace AssemblyAI
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
         /// </summary>
         /// <param name="httpClient"></param>
-        /// <param name="baseUri"></param> 
+        /// <param name="baseUri"></param>
+        /// <param name="authorization"></param>
         public AssemblyAIClient(
             global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null)
+            global::System.Uri? baseUri = null,
+            global::AssemblyAI.EndPointAuthorization? authorization = null)
         {
             _httpClient = httpClient ?? new global::System.Net.Http.HttpClient();
             _httpClient.BaseAddress ??= baseUri ?? new global::System.Uri(BaseUrl);
+            _authorization = authorization;
 
             Initialized(_httpClient);
         }
