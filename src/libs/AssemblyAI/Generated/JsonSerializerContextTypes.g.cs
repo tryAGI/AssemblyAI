@@ -13,6 +13,11 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public global::System.Collections.Generic.Dictionary<string, string>? StringStringDictionary { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public global::AssemblyAI.TranscriptWebhookNotification? Type0 { get; set; }
         /// <summary>
         /// 
