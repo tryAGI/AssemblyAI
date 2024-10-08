@@ -44,12 +44,6 @@ namespace AssemblyAI
         public required global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord> Words { get; set; }
 
         /// <summary>
-        /// The speaker of the sentence if [Speaker Diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, else null
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]
-        public string? Speaker { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
