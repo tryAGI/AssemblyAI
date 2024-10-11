@@ -22,7 +22,7 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
-        public global::AssemblyAI.OneOf<string, global::AssemblyAI.LemurQuestionContext>? Context { get; set; }
+        public global::AssemblyAI.OneOf<string, object>? Context { get; set; }
 
         /// <summary>
         /// How you want the answer to be returned. This can be any text. Can't be used with answer_options. Examples: "short sentence", "bullet points"

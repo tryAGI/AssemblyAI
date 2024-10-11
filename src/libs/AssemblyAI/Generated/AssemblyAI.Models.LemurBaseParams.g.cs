@@ -29,7 +29,7 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
-        public global::AssemblyAI.OneOf<string, global::AssemblyAI.LemurBaseParamsContext>? Context { get; set; }
+        public global::AssemblyAI.OneOf<string, object>? Context { get; set; }
 
         /// <summary>
         /// The model that is used for the final prompt after compression is performed.<br/>
