@@ -258,67 +258,67 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TopicDetectionModelResult, object>? Type60 { get; set; }
+        public global::AssemblyAI.SeverityScoreSummary? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TopicDetectionModelResult? Type61 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.TopicDetectionModelResult, object>? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.TopicDetectionResult>? Type62 { get; set; }
+        public global::AssemblyAI.TopicDetectionModelResult? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TopicDetectionResult? Type63 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TopicDetectionResult>? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.TopicDetectionResultLabel>? Type64 { get; set; }
+        public global::AssemblyAI.TopicDetectionResult? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TopicDetectionResultLabel? Type65 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TopicDetectionResultLabel>? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TopicDetectionModelResultSummary? Type66 { get; set; }
+        public global::AssemblyAI.TopicDetectionResultLabel? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.Chapter>? Type67 { get; set; }
+        public global::AssemblyAI.TopicDetectionModelResultSummary? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Chapter? Type68 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.Chapter>? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.SentimentAnalysisResult>? Type69 { get; set; }
+        public global::AssemblyAI.Chapter? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SentimentAnalysisResult? Type70 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.SentimentAnalysisResult>? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Sentiment? Type71 { get; set; }
+        public global::AssemblyAI.SentimentAnalysisResult? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.Entity>? Type72 { get; set; }
+        public global::AssemblyAI.Sentiment? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Entity? Type73 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.Entity>? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.EntityType? Type74 { get; set; }
+        public global::AssemblyAI.Entity? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SeverityScoreSummary? Type75 { get; set; }
+        public global::AssemblyAI.EntityType? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
