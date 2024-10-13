@@ -104,7 +104,7 @@ namespace AssemblyAI
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::AssemblyAI.PurgeLemurRequestDataResponse), JsonSerializerContext) as global::AssemblyAI.PurgeLemurRequestDataResponse ??
+                global::AssemblyAI.PurgeLemurRequestDataResponse.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }

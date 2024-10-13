@@ -97,7 +97,7 @@ namespace AssemblyAI
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::AssemblyAI.UploadedFile), JsonSerializerContext) as global::AssemblyAI.UploadedFile ??
+                global::AssemblyAI.UploadedFile.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }
