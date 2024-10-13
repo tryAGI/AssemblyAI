@@ -112,7 +112,7 @@ namespace AssemblyAI
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::AssemblyAI.WordSearchResponse), JsonSerializerContext) as global::AssemblyAI.WordSearchResponse ??
+                global::AssemblyAI.WordSearchResponse.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }
