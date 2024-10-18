@@ -7,7 +7,7 @@ info:
     name: API Support
     url: https://www.assemblyai.com/docs/
     email: support@assemblyai.com
-  version: '1.3.3'
+  version: '1.3.4'
 servers:
   - url: https://api.assemblyai.com
     description: AssemblyAI API
@@ -1150,10 +1150,16 @@ components:
           description: 'Transcribe Filler Words, like "umm", in your media file; can be true or false'
           default: false
           x-label: Disfluencies
+        multichannel:
+          type: boolean
+          description: 'Enable [Multichannel](https://www.assemblyai.com/docs/models/speech-recognition#multichannel-transcription) transcription, can be true or false.'
+          default: false
+          x-label: Multichannel
         dual_channel:
           type: boolean
           description: 'Enable [Dual Channel](https://www.assemblyai.com/docs/models/speech-recognition#dual-channel-transcription) transcription, can be true or false.'
           default: false
+          deprecated: true
           x-label: Dual channel
         webhook_url:
           type: string
@@ -1312,7 +1318,8 @@ components:
         language_confidence_threshold: 0.7
         punctuate: true
         format_text: true
-        dual_channel: true
+        multichannel: true
+        dual_channel: false
         webhook_url: https://your-webhook-url.tld/path
         webhook_auth_header_name: webhook-secret
         webhook_auth_header_value: webhook-secret-value
@@ -1373,7 +1380,8 @@ components:
         audio_url: https://assembly.ai/wildfires.mp3
         punctuate: true
         format_text: true
-        dual_channel: true
+        multichannel: true
+        dual_channel: false
         webhook_url: https://your-webhook-url/path
         webhook_auth_header_name: webhook-secret
         webhook_auth_header_value: webhook-secret-value
@@ -1525,6 +1533,11 @@ components:
             $ref: '#/components/schemas/TranscriptWord'
           description: The words in the utterance.
           x-label: Words
+        channel:
+          type: string
+          description: The channel of this utterance. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
+          nullable: true
+          x-label: Channel
         speaker:
           type: string
           description: 'The speaker of this utterance, where each speaker is assigned a sequential capital letter - e.g. "A" for Speaker A, "B" for Speaker B, etc.'
@@ -2369,10 +2382,20 @@ components:
           description: 'Transcribe Filler Words, like "umm", in your media file; can be true or false'
           nullable: true
           x-label: Disfluencies
+        multichannel:
+          type: boolean
+          description: 'Whether [Multichannel transcription](https://www.assemblyai.com/docs/models/speech-recognition#multichannel-transcription) was enabled in the transcription request, either true or false'
+          nullable: true
+          x-label: Multichannel
+        audio_channels:
+          type: integer
+          description: The number of audio channels in the audio file. This is only present when multichannel is enabled.
+          x-label: Audio channels
         dual_channel:
           type: boolean
           description: 'Whether [Dual channel transcription](https://www.assemblyai.com/docs/models/speech-recognition#dual-channel-transcription) was enabled in the transcription request, either true or false'
           nullable: true
+          deprecated: true
           x-label: Dual channel
         webhook_url:
           type: string
@@ -2770,6 +2793,7 @@ components:
         audio_duration: 281
         punctuate: true
         format_text: true
+        multichannel: false
         dual_channel: false
         webhook_url: https://your-webhook-url.tld/path
         webhook_status_code: 200
@@ -3144,6 +3168,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ContentSafetyLabelResult'
+          description: An array of results for the Content Moderation model
           x-label: Results
         summary:
           type: object
@@ -3494,6 +3519,7 @@ components:
         - end
         - sentiment
         - confidence
+        - speaker
       type: object
       properties:
         text:
@@ -3517,6 +3543,11 @@ components:
           description: 'The confidence score for the detected sentiment of the sentence, from 0 to 1'
           format: double
           x-label: Confidence
+        channel:
+          type: string
+          description: The channel of this utterance. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
+          nullable: true
+          x-label: Channel
         speaker:
           type: string
           description: 'The speaker of the sentence if [Speaker Diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, else null'
@@ -3577,6 +3608,7 @@ components:
                 x-label: Label
             additionalProperties: false
             x-label: Label
+          description: An array of detected topics in the text
           x-label: Labels
         timestamp:
           $ref: '#/components/schemas/Timestamp'
@@ -3887,26 +3919,36 @@ components:
         - start
         - end
         - text
+        - speaker
       type: object
       properties:
         confidence:
           maximum: 1
           minimum: 0
           type: number
+          description: The confidence score for the transcript of this word
           format: double
           x-label: Confidence
         start:
           type: integer
+          description: 'The starting time, in milliseconds, for the word'
           x-label: Start
         end:
           type: integer
+          description: 'The ending time, in milliseconds, for the word'
           x-label: End
         text:
           type: string
+          description: The text of the word
           x-label: Text
+        channel:
+          type: string
+          description: The channel of the word. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
+          nullable: true
+          x-label: Channel
         speaker:
           type: string
-          description: 'The speaker of the sentence if [Speaker Diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, else null'
+          description: 'The speaker of the word if [Speaker Diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, else null'
           nullable: true
           x-label: Speaker
       additionalProperties: false
@@ -3915,6 +3957,7 @@ components:
         start: 250
         end: 650
         confidence: 0.97465
+        channel: 
         speaker: 
       x-label: Word
       x-fern-sdk-group-name: transcripts
@@ -3925,28 +3968,39 @@ components:
         - end
         - confidence
         - words
+        - speaker
       type: object
       properties:
         text:
           type: string
+          description: The transcript of the sentence
           x-label: Text
         start:
           type: integer
+          description: 'The starting time, in milliseconds, for the sentence'
           x-label: Start
         end:
           type: integer
+          description: 'The ending time, in milliseconds, for the sentence'
           x-label: End
         confidence:
           maximum: 1
           minimum: 0
           type: number
+          description: The confidence score for the transcript of this sentence
           format: double
           x-label: Confidence
         words:
           type: array
           items:
             $ref: '#/components/schemas/TranscriptWord'
+          description: An array of words in the sentence
           x-label: Words
+        channel:
+          type: string
+          description: The channel of the sentence. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
+          nullable: true
+          x-label: Channel
         speaker:
           type: string
           description: 'The speaker of the sentence if [Speaker Diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, else null'
@@ -3992,21 +4046,25 @@ components:
       properties:
         id:
           type: string
+          description: The unique identifier for the transcript
           format: uuid
           x-label: Transcript ID
         confidence:
           maximum: 1
           minimum: 0
           type: number
+          description: The confidence score for the transcript
           format: double
           x-label: Confidence
         audio_duration:
           type: number
+          description: The duration of the audio file in seconds
           x-label: Audio duration
         sentences:
           type: array
           items:
             $ref: '#/components/schemas/TranscriptSentence'
+          description: An array of sentences in the transcript
           x-label: Sentences
       additionalProperties: false
       example:
@@ -4089,23 +4147,28 @@ components:
       properties:
         text:
           type: string
+          description: The transcript of the paragraph
           x-label: Text
         start:
           type: integer
+          description: 'The starting time, in milliseconds, of the paragraph'
           x-label: Start
         end:
           type: integer
+          description: 'The ending time, in milliseconds, of the paragraph'
           x-label: End
         confidence:
           maximum: 1
           minimum: 0
           type: number
+          description: The confidence score for the transcript of this paragraph
           format: double
           x-label: Confidence
         words:
           type: array
           items:
             $ref: '#/components/schemas/TranscriptWord'
+          description: An array of words in the paragraph
           x-label: Words
       additionalProperties: false
       example:
@@ -4146,21 +4209,25 @@ components:
       properties:
         id:
           type: string
+          description: The unique identifier of your transcript
           format: uuid
           x-label: Transcript ID
         confidence:
           maximum: 1
           minimum: 0
           type: number
+          description: The confidence score for the transcript
           format: double
           x-label: Confidence
         audio_duration:
           type: number
+          description: The duration of the audio file in seconds
           x-label: Audio duration
         paragraphs:
           type: array
           items:
             $ref: '#/components/schemas/TranscriptParagraph'
+          description: An array of paragraphs in the transcript
           x-label: Paragraphs
       additionalProperties: false
       example:
@@ -4267,7 +4334,6 @@ components:
           minimum: 1
           type: integer
           description: Maximum amount of transcripts to retrieve
-          format: int64
           default: 10
           x-label: Limit
         status:
@@ -4316,10 +4382,12 @@ components:
       properties:
         id:
           type: string
+          description: The unique identifier for the transcript
           format: uuid
           x-label: ID
         resource_url:
           type: string
+          description: The URL to retrieve the transcript
           format: url
           x-label: Resource URL
         status:
@@ -4327,18 +4395,21 @@ components:
         created:
           pattern: '^(?:(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2}(?:\.\d+)?))$'
           type: string
+          description: The date and time the transcript was created
           x-label: Created
           x-fern-type: datetime
           x-ts-type: Date
         completed:
           pattern: '^(?:(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2}(?:\.\d+)?))$'
           type: string
+          description: The date and time the transcript was completed
           nullable: true
           x-label: Completed
           x-fern-type: optional<datetime>
           x-ts-type: Date | null
         audio_url:
           type: string
+          description: The URL to the audio file
           format: url
           x-label: Audio URL
         error:
@@ -4369,6 +4440,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TranscriptListItem'
+          description: An array of transcripts
           x-label: Transcripts
       additionalProperties: false
       description: A list of transcripts. Transcripts are sorted from newest to oldest. The previous URL always points to a page with older transcripts.
@@ -4670,7 +4742,7 @@ components:
           - 85f9b381-e90c-46ed-beca-7d76245d375e
           - 7c3acd18-df4d-4432-88f5-1e89f8827eea
         context: This is an interview about wildfires.
-        final_model: default
+        final_model: anthropic/claude-3-5-sonnet
         temperature: 0
         max_output_size: 3000
       x-label: LeMUR base parameters
@@ -4693,7 +4765,7 @@ components:
           - 64nygnr62k-405c-4ae8-8a6b-d90b40ff3cce
         prompt: List all the locations affected by wildfires.
         context: This is an interview about wildfires.
-        final_model: default
+        final_model: anthropic/claude-3-5-sonnet
         temperature: 0
         max_output_size: 3000
       x-label: LeMUR task parameters
@@ -4713,7 +4785,7 @@ components:
         transcript_ids:
           - 47b95ba5-8889-44d8-bc80-5de38306e582
         context: This is an interview about wildfires.
-        final_model: default
+        final_model: anthropic/claude-3-5-sonnet
         temperature: 0
         max_output_size: 3000
       x-label: LeMUR summary parameters
@@ -4747,7 +4819,7 @@ components:
             answer_options:
               - yes
               - no
-        final_model: default
+        final_model: anthropic/claude-3-5-sonnet
         temperature: 0
         max_output_size: 3000
       x-label: LeMUR question & answer parameters
@@ -4801,7 +4873,7 @@ components:
           - 64nygnr62k-405c-4ae8-8a6b-d90b40ff3cce
         context: This is an interview about wildfires.
         answer_format: Bullet Points
-        final_model: default
+        final_model: anthropic/claude-3-5-sonnet
         temperature: 0
         max_output_size: 3000
       x-label: LeMUR action items parameters
@@ -4938,7 +5010,6 @@ components:
             - error
           type: string
           x-label: Status
-      additionalProperties: false
       example:
         error: format_text must be a Boolean
       x-label: Error
@@ -4949,6 +5020,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example:
+            error: This is a sample error message
       x-label: Bad request
     Unauthorized:
       description: Unauthorized
@@ -4956,6 +5029,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example:
+            error: 'Authentication error, API token missing/invalid'
       x-label: Unauthorized
     NotFound:
       description: Not found
@@ -4963,6 +5038,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example:
+            error: Not found
       x-label: Not found
     TooManyRequests:
       description: Too many requests
@@ -4975,6 +5052,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example:
+            error: Too Many Requests
       x-label: Too many requests
     InternalServerError:
       description: An error occurred while processing the request
@@ -4982,6 +5061,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example:
+            error: Internal Server Error
       x-label: Internal server error
     ServiceUnavailable:
       description: Service unavailable
@@ -5012,6 +5093,7 @@ components:
         audio_duration: '390'
         punctuate: 'null'
         format_text: 'null'
+        multichannel: 'false'
         dual_channel: 'null'
         webhook_url: http://deleted_by_user
         webhook_status_code: 'null'

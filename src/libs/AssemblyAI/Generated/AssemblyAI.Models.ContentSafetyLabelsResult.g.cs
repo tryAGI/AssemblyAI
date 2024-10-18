@@ -18,7 +18,7 @@ namespace AssemblyAI
         public required global::AssemblyAI.AudioIntelligenceModelStatus Status { get; set; }
 
         /// <summary>
-        /// 
+        /// An array of results for the Content Moderation model
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -20,7 +20,7 @@ namespace AssemblyAI
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::AssemblyAI.TranscriptList> ListTranscriptsAsync(
-            long? limit = default,
+            int? limit = default,
             global::AssemblyAI.TranscriptStatus? status = default,
             global::System.DateTime? createdOn = default,
             global::System.Guid? beforeId = default,

@@ -45,10 +45,17 @@ namespace AssemblyAI
         public required double Confidence { get; set; }
 
         /// <summary>
+        /// The channel of this utterance. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
+        public string? Channel { get; set; }
+
+        /// <summary>
         /// The speaker of the sentence if [Speaker Diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, else null
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]
-        public string? Speaker { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string? Speaker { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

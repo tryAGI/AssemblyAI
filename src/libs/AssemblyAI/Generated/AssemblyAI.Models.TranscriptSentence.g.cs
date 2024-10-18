@@ -9,45 +9,52 @@ namespace AssemblyAI
     public sealed partial class TranscriptSentence
     {
         /// <summary>
-        /// 
+        /// The transcript of the sentence
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Text { get; set; }
 
         /// <summary>
-        /// 
+        /// The starting time, in milliseconds, for the sentence
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int Start { get; set; }
 
         /// <summary>
-        /// 
+        /// The ending time, in milliseconds, for the sentence
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int End { get; set; }
 
         /// <summary>
-        /// 
+        /// The confidence score for the transcript of this sentence
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("confidence")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double Confidence { get; set; }
 
         /// <summary>
-        /// 
+        /// An array of words in the sentence
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("words")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord> Words { get; set; }
 
         /// <summary>
+        /// The channel of the sentence. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
+        public string? Channel { get; set; }
+
+        /// <summary>
         /// The speaker of the sentence if [Speaker Diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, else null
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]
-        public string? Speaker { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string? Speaker { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

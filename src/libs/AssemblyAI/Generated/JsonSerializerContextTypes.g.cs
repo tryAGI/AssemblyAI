@@ -350,154 +350,150 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public long? Type83 { get; set; }
+        public global::System.DateTime? Type83 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.DateTime? Type84 { get; set; }
+        public global::AssemblyAI.TranscriptListItem? Type84 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptListItem? Type85 { get; set; }
+        public global::AssemblyAI.TranscriptList? Type85 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptList? Type86 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptListItem>? Type86 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptListItem>? Type87 { get; set; }
+        public global::AssemblyAI.UploadedFile? Type87 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.UploadedFile? Type88 { get; set; }
+        public global::AssemblyAI.CreateRealtimeTemporaryTokenParams? Type88 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.CreateRealtimeTemporaryTokenParams? Type89 { get; set; }
+        public global::AssemblyAI.RealtimeTemporaryTokenResponse? Type89 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.RealtimeTemporaryTokenResponse? Type90 { get; set; }
+        public global::AssemblyAI.PurgeLemurRequestDataResponse? Type90 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.PurgeLemurRequestDataResponse? Type91 { get; set; }
+        public global::AssemblyAI.LemurBaseResponse? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurBaseResponse? Type92 { get; set; }
+        public global::AssemblyAI.LemurUsage? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurUsage? Type93 { get; set; }
+        public global::AssemblyAI.LemurStringResponse? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurStringResponse? Type94 { get; set; }
+        public global::AssemblyAI.LemurStringResponseVariant1? Type94 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurStringResponseVariant1? Type95 { get; set; }
+        public global::AssemblyAI.LemurTaskResponse? Type95 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurTaskResponse? Type96 { get; set; }
+        public global::AssemblyAI.LemurSummaryResponse? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurSummaryResponse? Type97 { get; set; }
+        public global::AssemblyAI.LemurActionItemsResponse? Type97 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurActionItemsResponse? Type98 { get; set; }
+        public global::AssemblyAI.LemurQuestionAnswerResponse? Type98 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurQuestionAnswerResponse? Type99 { get; set; }
+        public global::AssemblyAI.LemurQuestionAnswerResponseVariant2? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurQuestionAnswerResponseVariant2? Type100 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.LemurQuestionAnswer>? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.LemurQuestionAnswer>? Type101 { get; set; }
+        public global::AssemblyAI.LemurQuestionAnswer? Type101 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurQuestionAnswer? Type102 { get; set; }
+        public global::AssemblyAI.LemurResponse? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurResponse? Type103 { get; set; }
+        public global::AssemblyAI.LemurBaseParams? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurBaseParams? Type104 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Guid>? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Guid>? Type105 { get; set; }
+        public global::AssemblyAI.OneOf<string, object>? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<string, object>? Type106 { get; set; }
+        public global::AssemblyAI.AnyOf<global::AssemblyAI.LemurModel?, string>? Type106 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.AnyOf<global::AssemblyAI.LemurModel?, string>? Type107 { get; set; }
+        public global::AssemblyAI.LemurModel? Type107 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurModel? Type108 { get; set; }
+        public global::AssemblyAI.LemurTaskParams? Type108 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurTaskParams? Type109 { get; set; }
+        public global::AssemblyAI.LemurTaskParamsVariant1? Type109 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurTaskParamsVariant1? Type110 { get; set; }
+        public global::AssemblyAI.LemurSummaryParams? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurSummaryParams? Type111 { get; set; }
+        public global::AssemblyAI.LemurSummaryParamsVariant2? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurSummaryParamsVariant2? Type112 { get; set; }
+        public global::AssemblyAI.LemurQuestionAnswerParams? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurQuestionAnswerParams? Type113 { get; set; }
+        public global::AssemblyAI.LemurQuestionAnswerParamsVariant2? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurQuestionAnswerParamsVariant2? Type114 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.LemurQuestion>? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.LemurQuestion>? Type115 { get; set; }
+        public global::AssemblyAI.LemurQuestion? Type115 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurQuestion? Type116 { get; set; }
+        public global::AssemblyAI.LemurActionItemsParams? Type116 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurActionItemsParams? Type117 { get; set; }
+        public global::AssemblyAI.LemurActionItemsParamsVariant2? Type117 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LemurActionItemsParamsVariant2? Type118 { get; set; }
+        public global::AssemblyAI.Error? Type118 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Error? Type119 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::AssemblyAI.ErrorStatus? Type120 { get; set; }
+        public global::AssemblyAI.ErrorStatus? Type119 { get; set; }
     }
 }
