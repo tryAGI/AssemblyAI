@@ -16,7 +16,7 @@ namespace AssemblyAI
         public required global::AssemblyAI.PageDetails PageDetails { get; set; }
 
         /// <summary>
-        /// 
+        /// An array of transcripts
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcripts")]
         [global::System.Text.Json.Serialization.JsonRequired]

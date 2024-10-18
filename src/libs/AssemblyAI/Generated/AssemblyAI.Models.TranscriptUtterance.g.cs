@@ -44,6 +44,12 @@ namespace AssemblyAI
         public required global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord> Words { get; set; }
 
         /// <summary>
+        /// The channel of this utterance. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
+        public string? Channel { get; set; }
+
+        /// <summary>
         /// The speaker of this utterance, where each speaker is assigned a sequential capital letter - e.g. "A" for Speaker A, "B" for Speaker B, etc.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]

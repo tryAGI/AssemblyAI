@@ -10,10 +10,10 @@ namespace AssemblyAI
     {
         /// <summary>
         /// Maximum amount of transcripts to retrieve<br/>
-        /// Default Value: 10L
+        /// Default Value: 10
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
-        public long? Limit { get; set; } = 10L;
+        public int? Limit { get; set; } = 10;
 
         /// <summary>
         /// The status of your transcript. Possible values are queued, processing, completed, or error.

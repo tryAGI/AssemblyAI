@@ -9,14 +9,14 @@ namespace AssemblyAI
     public sealed partial class TranscriptListItem
     {
         /// <summary>
-        /// 
+        /// The unique identifier for the transcript
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Guid Id { get; set; }
 
         /// <summary>
-        /// 
+        /// The URL to retrieve the transcript
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("resource_url")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -31,21 +31,21 @@ namespace AssemblyAI
         public required global::AssemblyAI.TranscriptStatus Status { get; set; }
 
         /// <summary>
-        /// 
+        /// The date and time the transcript was created
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Created { get; set; }
 
         /// <summary>
-        /// 
+        /// The date and time the transcript was completed
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("completed")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string? Completed { get; set; }
 
         /// <summary>
-        /// 
+        /// The URL to the audio file
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_url")]
         [global::System.Text.Json.Serialization.JsonRequired]

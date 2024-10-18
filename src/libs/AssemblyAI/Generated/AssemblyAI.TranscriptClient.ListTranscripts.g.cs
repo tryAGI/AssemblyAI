@@ -7,7 +7,7 @@ namespace AssemblyAI
     {
         partial void PrepareListTranscriptsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref long? limit,
+            ref int? limit,
             ref global::AssemblyAI.TranscriptStatus? status,
             ref global::System.DateTime? createdOn,
             ref global::System.Guid? beforeId,
@@ -16,7 +16,7 @@ namespace AssemblyAI
         partial void PrepareListTranscriptsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            long? limit,
+            int? limit,
             global::AssemblyAI.TranscriptStatus? status,
             global::System.DateTime? createdOn,
             global::System.Guid? beforeId,
@@ -47,7 +47,7 @@ namespace AssemblyAI
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::AssemblyAI.TranscriptList> ListTranscriptsAsync(
-            long? limit = default,
+            int? limit = default,
             global::AssemblyAI.TranscriptStatus? status = default,
             global::System.DateTime? createdOn = default,
             global::System.Guid? beforeId = default,
