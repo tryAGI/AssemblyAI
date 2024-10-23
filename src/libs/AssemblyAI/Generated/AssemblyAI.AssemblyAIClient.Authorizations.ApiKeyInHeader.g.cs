@@ -14,8 +14,8 @@ namespace AssemblyAI
         {
             apiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
 
-            _authorizations.Clear();
-            _authorizations.Add(new global::AssemblyAI.EndPointAuthorization
+            Authorizations.Clear();
+            Authorizations.Add(new global::AssemblyAI.EndPointAuthorization
             {
                 Type = "ApiKey",
                 Location = "Header",
