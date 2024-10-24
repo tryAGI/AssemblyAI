@@ -13,7 +13,7 @@ namespace AssemblyAI
         /// Default Value: 10
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
-        public int? Limit { get; set; } = 10;
+        public int? Limit { get; set; }
 
         /// <summary>
         /// The status of your transcript. Possible values are queued, processing, completed, or error.
@@ -45,7 +45,7 @@ namespace AssemblyAI
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("throttled_only")]
-        public bool? ThrottledOnly { get; set; } = false;
+        public bool? ThrottledOnly { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
