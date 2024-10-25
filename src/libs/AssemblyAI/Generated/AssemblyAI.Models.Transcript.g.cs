@@ -121,18 +121,6 @@ namespace AssemblyAI
         public bool? Disfluencies { get; set; }
 
         /// <summary>
-        /// Whether [Multichannel transcription](https://www.assemblyai.com/docs/models/speech-recognition#multichannel-transcription) was enabled in the transcription request, either true or false
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("multichannel")]
-        public bool? Multichannel { get; set; }
-
-        /// <summary>
-        /// The number of audio channels in the audio file. This is only present when multichannel is enabled.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("audio_channels")]
-        public int? AudioChannels { get; set; }
-
-        /// <summary>
         /// Whether [Dual channel transcription](https://www.assemblyai.com/docs/models/speech-recognition#dual-channel-transcription) was enabled in the transcription request, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dual_channel")]
