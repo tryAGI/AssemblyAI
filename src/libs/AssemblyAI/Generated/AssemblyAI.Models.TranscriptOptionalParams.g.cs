@@ -65,6 +65,13 @@ namespace AssemblyAI
         public bool? Disfluencies { get; set; }
 
         /// <summary>
+        /// Enable [Multichannel](https://www.assemblyai.com/docs/models/speech-recognition#multichannel-transcription) transcription, can be true or false.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("multichannel")]
+        public bool? Multichannel { get; set; }
+
+        /// <summary>
         /// Enable [Dual Channel](https://www.assemblyai.com/docs/models/speech-recognition#dual-channel-transcription) transcription, can be true or false.<br/>
         /// Default Value: false
         /// </summary>
