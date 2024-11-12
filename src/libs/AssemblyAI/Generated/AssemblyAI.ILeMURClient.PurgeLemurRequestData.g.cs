@@ -11,7 +11,7 @@ namespace AssemblyAI
         /// </summary>
         /// <param name="requestId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::AssemblyAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::AssemblyAI.PurgeLemurRequestDataResponse> PurgeLemurRequestDataAsync(
             string requestId,
             global::System.Threading.CancellationToken cancellationToken = default);
