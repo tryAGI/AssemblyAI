@@ -26,6 +26,11 @@ namespace AssemblyAI
         /// <inheritdoc/>
         public global::System.Collections.Generic.List<global::AssemblyAI.EndPointAuthorization> Authorizations { get; }
 
+        /// <inheritdoc/>
+        public bool ReadResponseAsString { get; set; }
+#if DEBUG
+            = true;
+#endif
         /// <summary>
         /// 
         /// </summary>
@@ -37,6 +42,7 @@ namespace AssemblyAI
         /// </summary>
         public TranscriptClient Transcript => new TranscriptClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
@@ -45,6 +51,7 @@ namespace AssemblyAI
         /// </summary>
         public LeMURClient LeMUR => new LeMURClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
@@ -53,6 +60,7 @@ namespace AssemblyAI
         /// </summary>
         public StreamingClient Streaming => new StreamingClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 

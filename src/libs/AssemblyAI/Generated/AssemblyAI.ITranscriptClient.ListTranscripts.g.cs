@@ -18,7 +18,7 @@ namespace AssemblyAI
         /// <param name="afterId"></param>
         /// <param name="throttledOnly"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::AssemblyAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::AssemblyAI.TranscriptList> ListTranscriptsAsync(
             int? limit = default,
             global::AssemblyAI.TranscriptStatus? status = default,
