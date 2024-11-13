@@ -28,7 +28,7 @@ namespace AssemblyAI
         /// Context to provide the model. This can be a string or a free-form JSON value.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<string, object>))]
         public global::AssemblyAI.OneOf<string, object>? Context { get; set; }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace AssemblyAI
         /// Default Value: default
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("final_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverter<global::AssemblyAI.LemurModel?, string>))]
         public global::AssemblyAI.AnyOf<global::AssemblyAI.LemurModel?, string>? FinalModel { get; set; }
 
         /// <summary>
