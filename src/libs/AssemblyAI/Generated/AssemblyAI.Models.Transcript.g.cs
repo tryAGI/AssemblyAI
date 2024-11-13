@@ -38,7 +38,7 @@ namespace AssemblyAI
         /// The default value is 'en_us'.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_code")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverter<global::AssemblyAI.TranscriptLanguageCode?, string>))]
         public global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>? LanguageCode { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace AssemblyAI
         /// The speech model used for the transcription. When `null`, the default model is used.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.SpeechModel2?, object>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::AssemblyAI.OneOf<global::AssemblyAI.SpeechModel2?, object> SpeechModel { get; set; }
 
@@ -185,7 +185,7 @@ namespace AssemblyAI
         /// See [Key Phrases](https://www.assemblyai.com/docs/models/key-phrases) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auto_highlights_result")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.AutoHighlightsResult2, object>))]
         public global::AssemblyAI.OneOf<global::AssemblyAI.AutoHighlightsResult2, object>? AutoHighlightsResult { get; set; }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace AssemblyAI
         /// See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_audio_quality")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.RedactPiiAudioQuality?, object>))]
         public global::AssemblyAI.OneOf<global::AssemblyAI.RedactPiiAudioQuality?, object>? RedactPiiAudioQuality { get; set; }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace AssemblyAI
         /// See [Content moderation](https://www.assemblyai.com/docs/models/content-moderation) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content_safety_labels")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.ContentSafetyLabelsResult, object>))]
         public global::AssemblyAI.OneOf<global::AssemblyAI.ContentSafetyLabelsResult, object>? ContentSafetyLabels { get; set; }
 
         /// <summary>
@@ -291,7 +291,7 @@ namespace AssemblyAI
         /// See [Topic Detection](https://www.assemblyai.com/docs/models/topic-detection) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("iab_categories_result")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TopicDetectionModelResult, object>))]
         public global::AssemblyAI.OneOf<global::AssemblyAI.TopicDetectionModelResult, object>? IabCategoriesResult { get; set; }
 
         /// <summary>

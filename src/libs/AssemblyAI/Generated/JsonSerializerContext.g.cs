@@ -49,8 +49,6 @@ namespace AssemblyAI
             typeof(global::AssemblyAI.JsonConverters.ErrorStatusNullableJsonConverter),
             typeof(global::AssemblyAI.JsonConverters.TranscriptWebhookNotificationJsonConverter),
             typeof(global::AssemblyAI.JsonConverters.RedactedAudioNotificationJsonConverter),
-            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverterFactory2),
-            typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverterFactory2),
             typeof(global::AssemblyAI.JsonConverters.TranscriptParamsJsonConverter),
             typeof(global::AssemblyAI.JsonConverters.LemurStringResponseJsonConverter),
             typeof(global::AssemblyAI.JsonConverters.LemurTaskResponseJsonConverter),
@@ -62,6 +60,19 @@ namespace AssemblyAI
             typeof(global::AssemblyAI.JsonConverters.LemurSummaryParamsJsonConverter),
             typeof(global::AssemblyAI.JsonConverters.LemurQuestionAnswerParamsJsonConverter),
             typeof(global::AssemblyAI.JsonConverters.LemurActionItemsParamsJsonConverter),
+            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>),
+            typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverter<global::AssemblyAI.TranscriptLanguageCode?, string>),
+            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.SpeechModel2?, object>),
+            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.SubstitutionPolicy?, object>),
+            typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverter<global::AssemblyAI.TranscriptLanguageCode?, string>),
+            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.SpeechModel2?, object>),
+            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.AutoHighlightsResult2, object>),
+            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.RedactPiiAudioQuality?, object>),
+            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.ContentSafetyLabelsResult, object>),
+            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TopicDetectionModelResult, object>),
+            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<string, object>),
+            typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverter<global::AssemblyAI.LemurModel?, string>),
+            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<string, object>),
         })]
 
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.JsonSerializerContextTypes))]
