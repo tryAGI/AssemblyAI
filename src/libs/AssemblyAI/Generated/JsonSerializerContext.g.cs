@@ -73,6 +73,7 @@ namespace AssemblyAI
             typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<string, object>),
             typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverter<global::AssemblyAI.LemurModel?, string>),
             typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<string, object>),
+            typeof(global::AssemblyAI.JsonConverters.UnixTimestampJsonConverter),
         })]
 
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.JsonSerializerContextTypes))]
