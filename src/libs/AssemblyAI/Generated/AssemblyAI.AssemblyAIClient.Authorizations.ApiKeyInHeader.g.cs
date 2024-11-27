@@ -5,10 +5,7 @@ namespace AssemblyAI
 {
     public sealed partial class AssemblyAIClient
     {
-        /// <summary>
-        /// Authorize using ApiKey authentication.
-        /// </summary>
-        /// <param name="apiKey"></param>
+        /// <inheritdoc/>
         public void AuthorizeUsingApiKeyInHeader(
             string apiKey)
         {
