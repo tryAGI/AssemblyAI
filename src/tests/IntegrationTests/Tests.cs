@@ -3,8 +3,7 @@ namespace AssemblyAI.IntegrationTests;
 [TestClass]
 public partial class Tests
 {
-    [TestMethod]
-    public AssemblyAIClient GetAuthenticatedApi()
+    private static AssemblyAIClient GetAuthenticatedApi()
     {
         var apiKey =
             Environment.GetEnvironmentVariable("ASSEMBLYAI_API_KEY") ??

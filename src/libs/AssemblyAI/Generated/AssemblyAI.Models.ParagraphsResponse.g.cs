@@ -9,11 +9,11 @@ namespace AssemblyAI
     public sealed partial class ParagraphsResponse
     {
         /// <summary>
-        /// The unique identifier of your transcript
+        /// The duration of the audio file in seconds
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("audio_duration")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid Id { get; set; }
+        public required double AudioDuration { get; set; }
 
         /// <summary>
         /// The confidence score for the transcript
@@ -23,11 +23,11 @@ namespace AssemblyAI
         public required double Confidence { get; set; }
 
         /// <summary>
-        /// The duration of the audio file in seconds
+        /// The unique identifier of your transcript
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("audio_duration")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required double AudioDuration { get; set; }
+        public required global::System.Guid Id { get; set; }
 
         /// <summary>
         /// An array of paragraphs in the transcript
@@ -45,28 +45,28 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ParagraphsResponse" /> class.
         /// </summary>
-        /// <param name="id">
-        /// The unique identifier of your transcript
+        /// <param name="audioDuration">
+        /// The duration of the audio file in seconds
         /// </param>
         /// <param name="confidence">
         /// The confidence score for the transcript
         /// </param>
-        /// <param name="audioDuration">
-        /// The duration of the audio file in seconds
+        /// <param name="id">
+        /// The unique identifier of your transcript
         /// </param>
         /// <param name="paragraphs">
         /// An array of paragraphs in the transcript
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public ParagraphsResponse(
-            global::System.Guid id,
-            double confidence,
             double audioDuration,
+            double confidence,
+            global::System.Guid id,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptParagraph> paragraphs)
         {
-            this.Id = id;
-            this.Confidence = confidence;
             this.AudioDuration = audioDuration;
+            this.Confidence = confidence;
+            this.Id = id;
             this.Paragraphs = paragraphs ?? throw new global::System.ArgumentNullException(nameof(paragraphs));
         }
 

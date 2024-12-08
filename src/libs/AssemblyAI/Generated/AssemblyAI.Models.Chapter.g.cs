@@ -9,6 +9,13 @@ namespace AssemblyAI
     public sealed partial class Chapter
     {
         /// <summary>
+        /// The starting time, in milliseconds, for the chapter
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("end")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int End { get; set; }
+
+        /// <summary>
         /// An ultra-short summary (just a few words) of the content spoken in the chapter
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("gist")]
@@ -23,13 +30,6 @@ namespace AssemblyAI
         public required string Headline { get; set; }
 
         /// <summary>
-        /// A one paragraph summary of the content spoken during the chapter
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Summary { get; set; }
-
-        /// <summary>
         /// The starting time, in milliseconds, for the chapter
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start")]
@@ -37,11 +37,11 @@ namespace AssemblyAI
         public required int Start { get; set; }
 
         /// <summary>
-        /// The starting time, in milliseconds, for the chapter
+        /// A one paragraph summary of the content spoken during the chapter
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("end")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int End { get; set; }
+        public required string Summary { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,34 +52,34 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="Chapter" /> class.
         /// </summary>
+        /// <param name="end">
+        /// The starting time, in milliseconds, for the chapter
+        /// </param>
         /// <param name="gist">
         /// An ultra-short summary (just a few words) of the content spoken in the chapter
         /// </param>
         /// <param name="headline">
         /// A single sentence summary of the content spoken during the chapter
         /// </param>
-        /// <param name="summary">
-        /// A one paragraph summary of the content spoken during the chapter
-        /// </param>
         /// <param name="start">
         /// The starting time, in milliseconds, for the chapter
         /// </param>
-        /// <param name="end">
-        /// The starting time, in milliseconds, for the chapter
+        /// <param name="summary">
+        /// A one paragraph summary of the content spoken during the chapter
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Chapter(
+            int end,
             string gist,
             string headline,
-            string summary,
             int start,
-            int end)
+            string summary)
         {
+            this.End = end;
             this.Gist = gist ?? throw new global::System.ArgumentNullException(nameof(gist));
             this.Headline = headline ?? throw new global::System.ArgumentNullException(nameof(headline));
-            this.Summary = summary ?? throw new global::System.ArgumentNullException(nameof(summary));
             this.Start = start;
-            this.End = end;
+            this.Summary = summary ?? throw new global::System.ArgumentNullException(nameof(summary));
         }
 
         /// <summary>

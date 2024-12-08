@@ -9,18 +9,11 @@ namespace AssemblyAI
     public sealed partial class TranscriptParagraph
     {
         /// <summary>
-        /// The transcript of the paragraph
+        /// The confidence score for the transcript of this paragraph
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("confidence")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Text { get; set; }
-
-        /// <summary>
-        /// The starting time, in milliseconds, of the paragraph
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("start")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Start { get; set; }
+        public required double Confidence { get; set; }
 
         /// <summary>
         /// The ending time, in milliseconds, of the paragraph
@@ -30,11 +23,18 @@ namespace AssemblyAI
         public required int End { get; set; }
 
         /// <summary>
-        /// The confidence score for the transcript of this paragraph
+        /// The starting time, in milliseconds, of the paragraph
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("confidence")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("start")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required double Confidence { get; set; }
+        public required int Start { get; set; }
+
+        /// <summary>
+        /// The transcript of the paragraph
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Text { get; set; }
 
         /// <summary>
         /// An array of words in the paragraph
@@ -52,33 +52,33 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="TranscriptParagraph" /> class.
         /// </summary>
-        /// <param name="text">
-        /// The transcript of the paragraph
-        /// </param>
-        /// <param name="start">
-        /// The starting time, in milliseconds, of the paragraph
+        /// <param name="confidence">
+        /// The confidence score for the transcript of this paragraph
         /// </param>
         /// <param name="end">
         /// The ending time, in milliseconds, of the paragraph
         /// </param>
-        /// <param name="confidence">
-        /// The confidence score for the transcript of this paragraph
+        /// <param name="start">
+        /// The starting time, in milliseconds, of the paragraph
+        /// </param>
+        /// <param name="text">
+        /// The transcript of the paragraph
         /// </param>
         /// <param name="words">
         /// An array of words in the paragraph
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public TranscriptParagraph(
-            string text,
-            int start,
-            int end,
             double confidence,
+            int end,
+            int start,
+            string text,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord> words)
         {
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
-            this.Start = start;
-            this.End = end;
             this.Confidence = confidence;
+            this.End = end;
+            this.Start = start;
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Words = words ?? throw new global::System.ArgumentNullException(nameof(words));
         }
 

@@ -9,18 +9,18 @@ namespace AssemblyAI
     public sealed partial class RedactedAudioResponse
     {
         /// <summary>
-        /// The status of the redacted audio
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.RedactedAudioStatusJsonConverter))]
-        public global::AssemblyAI.RedactedAudioStatus Status { get; set; }
-
-        /// <summary>
         /// The URL of the redacted audio file
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redacted_audio_url")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string RedactedAudioUrl { get; set; }
+
+        /// <summary>
+        /// The status of the redacted audio
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.RedactedAudioStatusJsonConverter))]
+        public global::AssemblyAI.RedactedAudioStatus Status { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -31,11 +31,11 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="RedactedAudioResponse" /> class.
         /// </summary>
-        /// <param name="status">
-        /// The status of the redacted audio
-        /// </param>
         /// <param name="redactedAudioUrl">
         /// The URL of the redacted audio file
+        /// </param>
+        /// <param name="status">
+        /// The status of the redacted audio
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public RedactedAudioResponse(

@@ -9,6 +9,12 @@ namespace AssemblyAI
     public sealed partial class TranscriptUtterance
     {
         /// <summary>
+        /// The channel of this utterance. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
+        public string? Channel { get; set; }
+
+        /// <summary>
         /// The confidence score for the transcript of this utterance
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("confidence")]
@@ -16,18 +22,25 @@ namespace AssemblyAI
         public required double Confidence { get; set; }
 
         /// <summary>
-        /// The starting time, in milliseconds, of the utterance in the audio file
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("start")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Start { get; set; }
-
-        /// <summary>
         /// The ending time, in milliseconds, of the utterance in the audio file
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int End { get; set; }
+
+        /// <summary>
+        /// The speaker of this utterance, where each speaker is assigned a sequential capital letter - e.g. "A" for Speaker A, "B" for Speaker B, etc.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Speaker { get; set; }
+
+        /// <summary>
+        /// The starting time, in milliseconds, of the utterance in the audio file
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("start")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int Start { get; set; }
 
         /// <summary>
         /// The text for this utterance
@@ -44,19 +57,6 @@ namespace AssemblyAI
         public required global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord> Words { get; set; }
 
         /// <summary>
-        /// The channel of this utterance. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
-        public string? Channel { get; set; }
-
-        /// <summary>
-        /// The speaker of this utterance, where each speaker is assigned a sequential capital letter - e.g. "A" for Speaker A, "B" for Speaker B, etc.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Speaker { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -65,14 +65,20 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="TranscriptUtterance" /> class.
         /// </summary>
+        /// <param name="channel">
+        /// The channel of this utterance. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
+        /// </param>
         /// <param name="confidence">
         /// The confidence score for the transcript of this utterance
         /// </param>
-        /// <param name="start">
-        /// The starting time, in milliseconds, of the utterance in the audio file
-        /// </param>
         /// <param name="end">
         /// The ending time, in milliseconds, of the utterance in the audio file
+        /// </param>
+        /// <param name="speaker">
+        /// The speaker of this utterance, where each speaker is assigned a sequential capital letter - e.g. "A" for Speaker A, "B" for Speaker B, etc.
+        /// </param>
+        /// <param name="start">
+        /// The starting time, in milliseconds, of the utterance in the audio file
         /// </param>
         /// <param name="text">
         /// The text for this utterance
@@ -80,28 +86,22 @@ namespace AssemblyAI
         /// <param name="words">
         /// The words in the utterance.
         /// </param>
-        /// <param name="channel">
-        /// The channel of this utterance. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
-        /// </param>
-        /// <param name="speaker">
-        /// The speaker of this utterance, where each speaker is assigned a sequential capital letter - e.g. "A" for Speaker A, "B" for Speaker B, etc.
-        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public TranscriptUtterance(
             double confidence,
-            int start,
             int end,
+            string speaker,
+            int start,
             string text,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord> words,
-            string speaker,
             string? channel)
         {
             this.Confidence = confidence;
-            this.Start = start;
             this.End = end;
+            this.Speaker = speaker ?? throw new global::System.ArgumentNullException(nameof(speaker));
+            this.Start = start;
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Words = words ?? throw new global::System.ArgumentNullException(nameof(words));
-            this.Speaker = speaker ?? throw new global::System.ArgumentNullException(nameof(speaker));
             this.Channel = channel;
         }
 

@@ -1,14 +1,20 @@
+using AutoSDK.Helpers;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Readers;
 
 var path = args[0];
-var text = await File.ReadAllTextAsync(path);
+var yamlOrJson = await File.ReadAllTextAsync(path);
 
-var openApiDocument = new OpenApiStringReader().Read(text, out var diagnostics);
+if (OpenApi31Support.IsOpenApi31(yamlOrJson))
+{
+    yamlOrJson = OpenApi31Support.ConvertToOpenApi30(yamlOrJson);
+}
 
-text = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
-_ = new OpenApiStringReader().Read(text, out diagnostics);
+var openApiDocument = new OpenApiStringReader().Read(yamlOrJson, out var diagnostics);
+
+yamlOrJson = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
+_ = new OpenApiStringReader().Read(yamlOrJson, out diagnostics);
 
 if (diagnostics.Errors.Count > 0)
 {
@@ -20,5 +26,4 @@ if (diagnostics.Errors.Count > 0)
     Environment.Exit(1);
 }
 
-await File.WriteAllTextAsync(path, text);
-return;
+await File.WriteAllTextAsync(path, yamlOrJson);

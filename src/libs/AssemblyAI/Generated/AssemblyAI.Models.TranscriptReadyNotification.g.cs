@@ -9,19 +9,19 @@ namespace AssemblyAI
     public sealed partial class TranscriptReadyNotification
     {
         /// <summary>
-        /// The ID of the transcript
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("transcript_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid TranscriptId { get; set; }
-
-        /// <summary>
         /// The status of the transcript. Either completed or error.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.TranscriptReadyStatusJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::AssemblyAI.TranscriptReadyStatus Status { get; set; }
+
+        /// <summary>
+        /// The ID of the transcript
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("transcript_id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Guid TranscriptId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,19 +32,19 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="TranscriptReadyNotification" /> class.
         /// </summary>
-        /// <param name="transcriptId">
-        /// The ID of the transcript
-        /// </param>
         /// <param name="status">
         /// The status of the transcript. Either completed or error.
         /// </param>
+        /// <param name="transcriptId">
+        /// The ID of the transcript
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public TranscriptReadyNotification(
-            global::System.Guid transcriptId,
-            global::AssemblyAI.TranscriptReadyStatus status)
+            global::AssemblyAI.TranscriptReadyStatus status,
+            global::System.Guid transcriptId)
         {
-            this.TranscriptId = transcriptId;
             this.Status = status;
+            this.TranscriptId = transcriptId;
         }
 
         /// <summary>

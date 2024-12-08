@@ -3,10 +3,10 @@
 namespace AssemblyAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class SpeechModel2NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.SpeechModel2?>
+    public sealed class SpeechModelJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.SpeechModel>
     {
         /// <inheritdoc />
-        public override global::AssemblyAI.SpeechModel2? Read(
+        public override global::AssemblyAI.SpeechModel Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace AssemblyAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::AssemblyAI.SpeechModel2Extensions.ToEnum(stringValue);
+                        return global::AssemblyAI.SpeechModelExtensions.ToEnum(stringValue) ?? default;
                     }
                     
                     break;
@@ -26,7 +26,7 @@ namespace AssemblyAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::AssemblyAI.SpeechModel2)numValue;
+                    return (global::AssemblyAI.SpeechModel)numValue;
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -38,19 +38,12 @@ namespace AssemblyAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::AssemblyAI.SpeechModel2? value,
+            global::AssemblyAI.SpeechModel value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::AssemblyAI.SpeechModel2Extensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::AssemblyAI.SpeechModelExtensions.ToValueString(value));
         }
     }
 }

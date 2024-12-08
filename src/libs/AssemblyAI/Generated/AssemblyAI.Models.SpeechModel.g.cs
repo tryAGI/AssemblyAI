@@ -6,7 +6,7 @@ namespace AssemblyAI
     /// <summary>
     /// The speech model to use for the transcription.
     /// </summary>
-    public enum SpeechModel2
+    public enum SpeechModel
     {
         /// <summary>
         /// 
@@ -21,29 +21,29 @@ namespace AssemblyAI
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class SpeechModel2Extensions
+    public static class SpeechModelExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this SpeechModel2 value)
+        public static string ToValueString(this SpeechModel value)
         {
             return value switch
             {
-                SpeechModel2.Best => "best",
-                SpeechModel2.Nano => "nano",
+                SpeechModel.Best => "best",
+                SpeechModel.Nano => "nano",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static SpeechModel2? ToEnum(string value)
+        public static SpeechModel? ToEnum(string value)
         {
             return value switch
             {
-                "best" => SpeechModel2.Best,
-                "nano" => SpeechModel2.Nano,
+                "best" => SpeechModel.Best,
+                "nano" => SpeechModel.Nano,
                 _ => null,
             };
         }

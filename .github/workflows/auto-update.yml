@@ -28,6 +28,11 @@ jobs:
         run: |
           git checkout -b ${{ steps.branch.outputs.branch_name }} origin/main
           git rebase main
+          
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
 
       - name: Generate code
         run: |

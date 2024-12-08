@@ -9,6 +9,13 @@ namespace AssemblyAI
     public sealed partial class PurgeLemurRequestDataResponse
     {
         /// <summary>
+        /// Whether the request data was deleted
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("deleted")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool Deleted { get; set; }
+
+        /// <summary>
         /// The ID of the deletion request of the LeMUR request
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("request_id")]
@@ -23,13 +30,6 @@ namespace AssemblyAI
         public required global::System.Guid RequestIdToPurge { get; set; }
 
         /// <summary>
-        /// Whether the request data was deleted
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("deleted")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool Deleted { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -38,24 +38,24 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="PurgeLemurRequestDataResponse" /> class.
         /// </summary>
+        /// <param name="deleted">
+        /// Whether the request data was deleted
+        /// </param>
         /// <param name="requestId">
         /// The ID of the deletion request of the LeMUR request
         /// </param>
         /// <param name="requestIdToPurge">
         /// The ID of the LeMUR request to purge the data for
         /// </param>
-        /// <param name="deleted">
-        /// Whether the request data was deleted
-        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public PurgeLemurRequestDataResponse(
+            bool deleted,
             global::System.Guid requestId,
-            global::System.Guid requestIdToPurge,
-            bool deleted)
+            global::System.Guid requestIdToPurge)
         {
+            this.Deleted = deleted;
             this.RequestId = requestId;
             this.RequestIdToPurge = requestIdToPurge;
-            this.Deleted = deleted;
         }
 
         /// <summary>
