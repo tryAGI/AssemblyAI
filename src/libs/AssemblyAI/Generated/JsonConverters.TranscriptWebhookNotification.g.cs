@@ -78,7 +78,7 @@ namespace AssemblyAI.JsonConverters
             }
             else if (value.IsRedactedAudio)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.RedactedAudioNotification), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.RedactedAudioNotification?> ??
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.RedactedAudioNotification), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.RedactedAudioNotification> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.RedactedAudioNotification).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.RedactedAudio, typeInfo);
             }
