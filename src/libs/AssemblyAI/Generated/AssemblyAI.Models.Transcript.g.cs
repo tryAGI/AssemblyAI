@@ -358,8 +358,8 @@ namespace AssemblyAI
         public global::System.Collections.Generic.IList<string>? Topics { get; set; }
 
         /// <summary>
-        /// When dual_channel or speaker_labels is enabled, a list of turn-by-turn utterance objects.<br/>
-        /// See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more information.
+        /// When multichannel or speaker_labels is enabled, a list of turn-by-turn utterance objects.<br/>
+        /// See [Speaker diarization](https://www.assemblyai.com/docs/speech-to-text/speaker-diarization) and [Multichannel transcription](https://www.assemblyai.com/docs/speech-to-text/speech-recognition#multichannel-transcription) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("utterances")]
         public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptUtterance>? Utterances { get; set; }
@@ -580,8 +580,8 @@ namespace AssemblyAI
         /// The list of custom topics provided if custom topics is enabled
         /// </param>
         /// <param name="utterances">
-        /// When dual_channel or speaker_labels is enabled, a list of turn-by-turn utterance objects.<br/>
-        /// See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more information.
+        /// When multichannel or speaker_labels is enabled, a list of turn-by-turn utterance objects.<br/>
+        /// See [Speaker diarization](https://www.assemblyai.com/docs/speech-to-text/speaker-diarization) and [Multichannel transcription](https://www.assemblyai.com/docs/speech-to-text/speech-recognition#multichannel-transcription) for more information.
         /// </param>
         /// <param name="webhookAuth">
         /// Whether webhook authentication details were provided
