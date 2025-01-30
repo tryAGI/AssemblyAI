@@ -39,14 +39,6 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        AnthropicClaudeInstant12,
-        /// <summary>
-        /// 
-        /// </summary>
-        Basic,
-        /// <summary>
-        /// 
-        /// </summary>
         AssemblyaiMistral7b,
     }
 
@@ -69,8 +61,6 @@ namespace AssemblyAI
                 LemurModel.AnthropicClaude21 => "anthropic/claude-2-1",
                 LemurModel.AnthropicClaude2 => "anthropic/claude-2",
                 LemurModel.Default => "default",
-                LemurModel.AnthropicClaudeInstant12 => "anthropic/claude-instant-1-2",
-                LemurModel.Basic => "basic",
                 LemurModel.AssemblyaiMistral7b => "assemblyai/mistral-7b",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -89,8 +79,6 @@ namespace AssemblyAI
                 "anthropic/claude-2-1" => LemurModel.AnthropicClaude21,
                 "anthropic/claude-2" => LemurModel.AnthropicClaude2,
                 "default" => LemurModel.Default,
-                "anthropic/claude-instant-1-2" => LemurModel.AnthropicClaudeInstant12,
-                "basic" => LemurModel.Basic,
                 "assemblyai/mistral-7b" => LemurModel.AssemblyaiMistral7b,
                 _ => null,
             };
