@@ -58,7 +58,9 @@ namespace AssemblyAI
         /// <param name="text">
         /// The text for the detected entity
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Entity(
             int end,
             global::AssemblyAI.EntityType entityType,

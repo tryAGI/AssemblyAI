@@ -604,7 +604,9 @@ namespace AssemblyAI
         /// An array of temporally-sequential word objects, one for each word in the transcript.<br/>
         /// See [Speech recognition](https://www.assemblyai.com/docs/models/speech-recognition) for more information.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Transcript(
             string acousticModel,
             string audioUrl,

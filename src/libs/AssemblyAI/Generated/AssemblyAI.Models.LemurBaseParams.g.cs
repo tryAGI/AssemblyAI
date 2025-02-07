@@ -91,7 +91,9 @@ namespace AssemblyAI
         /// A list of completed transcripts with text. Up to a maximum of 100 files or 100 hours, whichever is lower.<br/>
         /// Use either transcript_ids or input_text as input into LeMUR.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public LemurBaseParams(
             global::AssemblyAI.AnyOf<global::AssemblyAI.LemurModel?, string> finalModel,
             global::AssemblyAI.OneOf<string, object>? context,

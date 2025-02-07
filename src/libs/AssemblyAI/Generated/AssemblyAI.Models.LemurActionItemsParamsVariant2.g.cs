@@ -30,7 +30,9 @@ namespace AssemblyAI
         /// Defaults to "Bullet Points".<br/>
         /// Default Value: Bullet Points
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public LemurActionItemsParamsVariant2(
             string? answerFormat)
         {

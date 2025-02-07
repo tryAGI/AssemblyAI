@@ -37,7 +37,9 @@ namespace AssemblyAI
         /// <param name="transcripts">
         /// An array of transcripts
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TranscriptList(
             global::AssemblyAI.PageDetails pageDetails,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptListItem> transcripts)

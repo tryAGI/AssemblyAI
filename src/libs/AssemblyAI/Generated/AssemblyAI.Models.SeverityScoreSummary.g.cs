@@ -41,7 +41,9 @@ namespace AssemblyAI
         /// <param name="high"></param>
         /// <param name="low"></param>
         /// <param name="medium"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SeverityScoreSummary(
             double high,
             double low,

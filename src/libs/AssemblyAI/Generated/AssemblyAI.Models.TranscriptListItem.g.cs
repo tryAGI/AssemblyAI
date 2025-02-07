@@ -88,7 +88,9 @@ namespace AssemblyAI
         /// <param name="status">
         /// The status of your transcript. Possible values are queued, processing, completed, or error.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TranscriptListItem(
             string audioUrl,
             string? completed,

@@ -37,7 +37,9 @@ namespace AssemblyAI
         /// <param name="relevance">
         /// How relevant the detected topic is of a detected topic
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TopicDetectionResultLabel(
             string label,
             double relevance)

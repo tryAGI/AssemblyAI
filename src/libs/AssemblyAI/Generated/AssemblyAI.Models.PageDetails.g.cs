@@ -67,7 +67,9 @@ namespace AssemblyAI
         /// <param name="resultCount">
         /// The actual number of results in the page
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public PageDetails(
             string currentUrl,
             int limit,

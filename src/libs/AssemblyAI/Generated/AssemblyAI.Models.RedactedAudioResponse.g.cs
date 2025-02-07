@@ -37,7 +37,9 @@ namespace AssemblyAI
         /// <param name="status">
         /// The status of the redacted audio
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public RedactedAudioResponse(
             string redactedAudioUrl,
             global::AssemblyAI.RedactedAudioStatus status)

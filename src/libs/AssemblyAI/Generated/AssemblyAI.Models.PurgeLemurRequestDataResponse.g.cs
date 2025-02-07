@@ -47,7 +47,9 @@ namespace AssemblyAI
         /// <param name="requestIdToPurge">
         /// The ID of the LeMUR request to purge the data for
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public PurgeLemurRequestDataResponse(
             bool deleted,
             global::System.Guid requestId,

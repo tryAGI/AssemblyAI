@@ -57,7 +57,9 @@ namespace AssemblyAI
         /// <param name="question">
         /// The question you wish to ask. For more complex questions use default model.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public LemurQuestion(
             string question,
             string? answerFormat,

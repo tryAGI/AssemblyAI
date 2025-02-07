@@ -86,7 +86,9 @@ namespace AssemblyAI
         /// <param name="words">
         /// The words in the utterance.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TranscriptUtterance(
             double confidence,
             int end,

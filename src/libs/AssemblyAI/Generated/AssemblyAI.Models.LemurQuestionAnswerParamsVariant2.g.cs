@@ -27,7 +27,9 @@ namespace AssemblyAI
         /// <param name="questions">
         /// A list of questions to ask
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public LemurQuestionAnswerParamsVariant2(
             global::System.Collections.Generic.IList<global::AssemblyAI.LemurQuestion> questions)
         {

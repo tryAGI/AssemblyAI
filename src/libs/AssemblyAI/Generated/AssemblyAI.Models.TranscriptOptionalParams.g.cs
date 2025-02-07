@@ -423,7 +423,9 @@ namespace AssemblyAI
         /// <param name="wordBoost">
         /// The list of custom vocabulary to boost transcription probability for
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TranscriptOptionalParams(
             int? audioEndAt,
             int? audioStartFrom,

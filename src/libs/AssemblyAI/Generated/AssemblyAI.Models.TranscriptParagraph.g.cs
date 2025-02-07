@@ -67,7 +67,9 @@ namespace AssemblyAI
         /// <param name="words">
         /// An array of words in the paragraph
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TranscriptParagraph(
             double confidence,
             int end,

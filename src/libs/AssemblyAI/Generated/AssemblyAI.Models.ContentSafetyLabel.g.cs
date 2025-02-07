@@ -47,7 +47,9 @@ namespace AssemblyAI
         /// <param name="severity">
         /// How severely the topic is discussed in the section, from 0 to 1
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ContentSafetyLabel(
             double confidence,
             string label,

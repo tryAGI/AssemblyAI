@@ -26,7 +26,9 @@ namespace AssemblyAI
         /// <param name="answerFormat">
         /// How you want the summary to be returned. This can be any text. Examples: "TLDR", "bullet points"
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public LemurSummaryParamsVariant2(
             string? answerFormat)
         {

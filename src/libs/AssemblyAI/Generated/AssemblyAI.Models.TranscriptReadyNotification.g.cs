@@ -38,7 +38,9 @@ namespace AssemblyAI
         /// <param name="transcriptId">
         /// The ID of the transcript
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TranscriptReadyNotification(
             global::AssemblyAI.TranscriptReadyStatus status,
             global::System.Guid transcriptId)

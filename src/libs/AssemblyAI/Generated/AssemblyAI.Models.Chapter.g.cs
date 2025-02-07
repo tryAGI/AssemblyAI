@@ -67,7 +67,9 @@ namespace AssemblyAI
         /// <param name="summary">
         /// A one paragraph summary of the content spoken during the chapter
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Chapter(
             int end,
             string gist,

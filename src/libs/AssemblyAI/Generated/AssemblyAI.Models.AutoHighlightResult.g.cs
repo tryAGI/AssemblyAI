@@ -57,7 +57,9 @@ namespace AssemblyAI
         /// <param name="timestamps">
         /// The timestamp of the of the key phrase
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public AutoHighlightResult(
             int count,
             float rank,

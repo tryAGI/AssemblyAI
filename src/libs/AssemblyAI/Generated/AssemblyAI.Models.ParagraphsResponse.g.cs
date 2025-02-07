@@ -57,7 +57,9 @@ namespace AssemblyAI
         /// <param name="paragraphs">
         /// An array of paragraphs in the transcript
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ParagraphsResponse(
             double audioDuration,
             double confidence,

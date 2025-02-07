@@ -47,7 +47,9 @@ namespace AssemblyAI
         /// <param name="totalCount">
         /// The total count of all matched instances. For e.g., word 1 matched 2 times, and word 2 matched 3 times, `total_count` will equal 5.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public WordSearchResponse(
             global::System.Guid id,
             global::System.Collections.Generic.IList<global::AssemblyAI.WordSearchMatch> matches,
