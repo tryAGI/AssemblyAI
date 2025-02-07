@@ -21,9 +21,11 @@ namespace AssemblyAI
         /// The model that is used for the final prompt after compression is performed.<br/>
         /// Default Value: default
         /// </summary>
+        /// <default>"default"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("final_model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverter<global::AssemblyAI.LemurModel?, string>))]
-        public global::AssemblyAI.AnyOf<global::AssemblyAI.LemurModel?, string>? FinalModel { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::AssemblyAI.AnyOf<global::AssemblyAI.LemurModel?, string> FinalModel { get; set; } = "default";
 
         /// <summary>
         /// Custom formatted transcript data. Maximum size is the context limit of the selected model, which defaults to 100000.<br/>
@@ -91,15 +93,15 @@ namespace AssemblyAI
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public LemurBaseParams(
+            global::AssemblyAI.AnyOf<global::AssemblyAI.LemurModel?, string> finalModel,
             global::AssemblyAI.OneOf<string, object>? context,
-            global::AssemblyAI.AnyOf<global::AssemblyAI.LemurModel?, string>? finalModel,
             string? inputText,
             int? maxOutputSize,
             float? temperature,
             global::System.Collections.Generic.IList<global::System.Guid>? transcriptIds)
         {
-            this.Context = context;
             this.FinalModel = finalModel;
+            this.Context = context;
             this.InputText = inputText;
             this.MaxOutputSize = maxOutputSize;
             this.Temperature = temperature;
