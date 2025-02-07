@@ -57,7 +57,9 @@ namespace AssemblyAI
         /// <param name="sentences">
         /// An array of sentences in the transcript
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SentencesResponse(
             double audioDuration,
             double confidence,

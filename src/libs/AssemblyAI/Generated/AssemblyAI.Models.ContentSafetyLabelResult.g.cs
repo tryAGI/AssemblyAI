@@ -67,7 +67,9 @@ namespace AssemblyAI
         /// <param name="timestamp">
         /// Timestamp containing a start and end property in milliseconds
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ContentSafetyLabelResult(
             global::System.Collections.Generic.IList<global::AssemblyAI.ContentSafetyLabel> labels,
             int sentencesIdxEnd,

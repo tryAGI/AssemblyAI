@@ -49,7 +49,9 @@ namespace AssemblyAI
         /// <param name="summary">
         /// The overall relevance of topic to the entire audio file
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TopicDetectionModelResult(
             global::System.Collections.Generic.IList<global::AssemblyAI.TopicDetectionResult> results,
             global::AssemblyAI.AudioIntelligenceModelStatus status,

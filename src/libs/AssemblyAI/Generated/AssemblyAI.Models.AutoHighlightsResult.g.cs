@@ -39,7 +39,9 @@ namespace AssemblyAI
         /// <param name="status">
         /// Either success, or unavailable in the rare case that the model failed
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public AutoHighlightsResult(
             global::System.Collections.Generic.IList<global::AssemblyAI.AutoHighlightResult> results,
             global::AssemblyAI.AudioIntelligenceModelStatus status)

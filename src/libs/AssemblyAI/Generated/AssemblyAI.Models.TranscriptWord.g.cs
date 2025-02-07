@@ -76,7 +76,9 @@ namespace AssemblyAI
         /// <param name="text">
         /// The text of the word
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TranscriptWord(
             double confidence,
             int end,

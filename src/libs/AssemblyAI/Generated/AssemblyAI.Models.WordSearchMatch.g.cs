@@ -57,7 +57,9 @@ namespace AssemblyAI
         /// <param name="timestamps">
         /// An array of timestamps
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public WordSearchMatch(
             int count,
             global::System.Collections.Generic.IList<int> indexes,

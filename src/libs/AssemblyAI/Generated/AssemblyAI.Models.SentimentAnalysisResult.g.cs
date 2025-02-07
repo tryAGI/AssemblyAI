@@ -85,7 +85,9 @@ namespace AssemblyAI
         /// <param name="text">
         /// The transcript of the sentence
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SentimentAnalysisResult(
             double confidence,
             int end,

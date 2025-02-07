@@ -86,7 +86,9 @@ namespace AssemblyAI
         /// <param name="words">
         /// An array of words in the sentence
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TranscriptSentence(
             double confidence,
             int end,

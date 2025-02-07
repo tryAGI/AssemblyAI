@@ -37,7 +37,9 @@ namespace AssemblyAI
         /// <param name="question">
         /// The question for LeMUR to answer
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public LemurQuestionAnswer(
             string answer,
             string question)

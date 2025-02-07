@@ -27,7 +27,9 @@ namespace AssemblyAI
         /// <param name="uploadUrl">
         /// A URL that points to your audio file, accessible only by AssemblyAI's servers
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UploadedFile(
             string uploadUrl)
         {

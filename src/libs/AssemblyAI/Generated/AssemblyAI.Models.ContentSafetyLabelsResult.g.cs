@@ -59,7 +59,9 @@ namespace AssemblyAI
         /// <param name="summary">
         /// A summary of the Content Moderation confidence results for the entire audio file
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ContentSafetyLabelsResult(
             global::System.Collections.Generic.IList<global::AssemblyAI.ContentSafetyLabelResult> results,
             global::System.Collections.Generic.Dictionary<string, global::AssemblyAI.SeverityScoreSummary> severityScoreSummary,
