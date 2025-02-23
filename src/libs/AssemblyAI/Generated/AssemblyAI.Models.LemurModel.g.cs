@@ -24,10 +24,6 @@ namespace AssemblyAI
         /// 
         /// </summary>
         AnthropicClaude3Sonnet,
-        /// <summary>
-        /// 
-        /// </summary>
-        AssemblyaiMistral7b,
     }
 
     /// <summary>
@@ -46,7 +42,6 @@ namespace AssemblyAI
                 LemurModel.AnthropicClaude3Opus => "anthropic/claude-3-opus",
                 LemurModel.AnthropicClaude3Haiku => "anthropic/claude-3-haiku",
                 LemurModel.AnthropicClaude3Sonnet => "anthropic/claude-3-sonnet",
-                LemurModel.AssemblyaiMistral7b => "assemblyai/mistral-7b",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -61,7 +56,6 @@ namespace AssemblyAI
                 "anthropic/claude-3-opus" => LemurModel.AnthropicClaude3Opus,
                 "anthropic/claude-3-haiku" => LemurModel.AnthropicClaude3Haiku,
                 "anthropic/claude-3-sonnet" => LemurModel.AnthropicClaude3Sonnet,
-                "assemblyai/mistral-7b" => LemurModel.AssemblyaiMistral7b,
                 _ => null,
             };
         }
