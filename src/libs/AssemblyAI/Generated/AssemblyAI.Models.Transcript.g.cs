@@ -109,6 +109,7 @@ namespace AssemblyAI
         /// Whether custom topics is enabled, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_topics")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public bool? CustomTopics { get; set; }
 
         /// <summary>
@@ -460,9 +461,6 @@ namespace AssemblyAI
         /// <param name="customSpelling">
         /// Customize how words are spelled and formatted using to and from values
         /// </param>
-        /// <param name="customTopics">
-        /// Whether custom topics is enabled, either true or false
-        /// </param>
         /// <param name="disfluencies">
         /// Transcribe Filler Words, like "umm", in your media file; can be true or false
         /// </param>
@@ -632,7 +630,6 @@ namespace AssemblyAI
             bool? contentSafety,
             object? contentSafetyLabels,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptCustomSpelling>? customSpelling,
-            bool? customTopics,
             bool? disfluencies,
             global::System.Collections.Generic.IList<global::AssemblyAI.Entity>? entities,
             bool? entityDetection,
@@ -691,7 +688,6 @@ namespace AssemblyAI
             this.ContentSafety = contentSafety;
             this.ContentSafetyLabels = contentSafetyLabels;
             this.CustomSpelling = customSpelling;
-            this.CustomTopics = customTopics;
             this.Disfluencies = disfluencies;
             this.Entities = entities;
             this.EntityDetection = entityDetection;
