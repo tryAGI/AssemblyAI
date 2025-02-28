@@ -119,7 +119,7 @@ namespace AssemblyAI
                 }
 
                 throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
-                    message: __response.ReasonPhrase ?? string.Empty,
+                    message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_400,
@@ -147,7 +147,7 @@ namespace AssemblyAI
                 }
 
                 throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
-                    message: __response.ReasonPhrase ?? string.Empty,
+                    message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_401,
@@ -175,7 +175,7 @@ namespace AssemblyAI
                 }
 
                 throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
-                    message: __response.ReasonPhrase ?? string.Empty,
+                    message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_404,
@@ -203,7 +203,7 @@ namespace AssemblyAI
                 }
 
                 throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
-                    message: __response.ReasonPhrase ?? string.Empty,
+                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_429,
@@ -231,7 +231,7 @@ namespace AssemblyAI
                 }
 
                 throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
-                    message: __response.ReasonPhrase ?? string.Empty,
+                    message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_500,
@@ -256,7 +256,7 @@ namespace AssemblyAI
                 }
 
                 throw new global::AssemblyAI.ApiException(
-                    message: __response.ReasonPhrase ?? string.Empty,
+                    message: __content_503 ?? __response.ReasonPhrase ?? string.Empty,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_503,
@@ -280,7 +280,7 @@ namespace AssemblyAI
                 }
 
                 throw new global::AssemblyAI.ApiException(
-                    message: __response.ReasonPhrase ?? string.Empty,
+                    message: __content_504 ?? __response.ReasonPhrase ?? string.Empty,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_504,
