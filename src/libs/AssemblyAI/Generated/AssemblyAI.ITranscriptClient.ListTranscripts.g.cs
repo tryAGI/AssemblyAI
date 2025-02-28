@@ -6,8 +6,9 @@ namespace AssemblyAI
     {
         /// <summary>
         /// List transcripts<br/>
-        /// Retrieve a list of transcripts you created.<br/>
-        /// Transcripts are sorted from newest to oldest. The previous URL always points to a page with older transcripts.
+        /// Retrieve a list of transcripts you created. <br/>
+        /// Transcripts are sorted from newest to oldest and can be retrieved for the last 90 days of usage. The previous URL always points to a page with older transcripts.<br/>
+        /// If you need to retrieve transcripts from more than 90 days ago please reach out to our Support team at support@assemblyai.com.
         /// </summary>
         /// <param name="limit"></param>
         /// <param name="status">
