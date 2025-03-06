@@ -6,6 +6,7 @@ namespace AssemblyAI
     {
         /// <summary>
         /// Retrieve LeMUR response<br/>
+        /// &lt;Warning&gt;LeMUR is currently not available on the EU endpoint.&lt;/Warning&gt;<br/>
         /// Retrieve a LeMUR response that was previously generated.
         /// </summary>
         /// <param name="requestId"></param>

@@ -23,6 +23,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Run a task using LeMUR<br/>
+        /// &lt;Warning&gt;LeMUR is currently not available on the EU endpoint.&lt;/Warning&gt;<br/>
         /// Use the LeMUR task endpoint to input your own LLM prompt.
         /// </summary>
         /// <param name="request"></param>
@@ -354,6 +355,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Run a task using LeMUR<br/>
+        /// &lt;Warning&gt;LeMUR is currently not available on the EU endpoint.&lt;/Warning&gt;<br/>
         /// Use the LeMUR task endpoint to input your own LLM prompt.
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

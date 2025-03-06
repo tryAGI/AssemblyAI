@@ -23,6 +23,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Purge LeMUR request data<br/>
+        /// &lt;Warning&gt;LeMUR is currently not available on the EU endpoint.&lt;/Warning&gt;<br/>
         /// Delete the data for a previously submitted LeMUR request.<br/>
         /// The LLM response data, as well as any context provided in the original request will be removed.
         /// </summary>
