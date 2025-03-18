@@ -23,6 +23,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Get transcript<br/>
+        /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Get the transcript resource. The transcript is ready when the "status" is "completed".
         /// </summary>
         /// <param name="transcriptId"></param>

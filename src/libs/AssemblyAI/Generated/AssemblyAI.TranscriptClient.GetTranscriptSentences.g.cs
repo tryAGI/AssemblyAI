@@ -23,6 +23,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Get sentences in transcript<br/>
+        /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Get the transcript split by sentences. The API will attempt to semantically segment the transcript into sentences to create more reader-friendly transcripts.
         /// </summary>
         /// <param name="transcriptId"></param>
