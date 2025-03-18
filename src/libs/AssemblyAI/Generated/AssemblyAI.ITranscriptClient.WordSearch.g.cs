@@ -6,6 +6,7 @@ namespace AssemblyAI
     {
         /// <summary>
         /// Search words in transcript<br/>
+        /// &lt;Note&gt;To search through a transcription created on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Search through the transcript for keywords. You can search for individual words, numbers, or phrases containing up to five words or numbers.
         /// </summary>
         /// <param name="transcriptId"></param>

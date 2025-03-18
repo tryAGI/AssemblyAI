@@ -6,7 +6,7 @@ namespace AssemblyAI
     {
         /// <summary>
         /// Transcribe audio<br/>
-        /// &lt;Note&gt;To use our EU server for transcription, replace api.assemblyai.com with api.eu.assemblyai.com.&lt;/Note&gt;<br/>
+        /// &lt;Note&gt;To use our EU server for transcription, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Create a transcript from a media file that is accessible via a URL.
         /// </summary>
         /// <param name="request"></param>
@@ -18,7 +18,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Transcribe audio<br/>
-        /// &lt;Note&gt;To use our EU server for transcription, replace api.assemblyai.com with api.eu.assemblyai.com.&lt;/Note&gt;<br/>
+        /// &lt;Note&gt;To use our EU server for transcription, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Create a transcript from a media file that is accessible via a URL.
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

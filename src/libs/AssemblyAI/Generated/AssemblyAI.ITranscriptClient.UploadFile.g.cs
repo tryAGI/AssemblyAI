@@ -6,6 +6,7 @@ namespace AssemblyAI
     {
         /// <summary>
         /// Upload a media file<br/>
+        /// &lt;Note&gt;To upload a media file to our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Upload a media file to AssemblyAI's servers.
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
