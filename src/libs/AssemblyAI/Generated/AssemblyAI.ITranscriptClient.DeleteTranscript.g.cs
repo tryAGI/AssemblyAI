@@ -6,6 +6,7 @@ namespace AssemblyAI
     {
         /// <summary>
         /// Delete transcript<br/>
+        /// &lt;Note&gt;To delete your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Remove the data from the transcript and mark it as deleted.
         /// </summary>
         /// <param name="transcriptId"></param>

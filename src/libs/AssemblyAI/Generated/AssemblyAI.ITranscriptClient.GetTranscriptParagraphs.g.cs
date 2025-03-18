@@ -6,6 +6,7 @@ namespace AssemblyAI
     {
         /// <summary>
         /// Get paragraphs in transcript<br/>
+        /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Get the transcript split by paragraphs. The API will attempt to semantically segment your transcript into paragraphs to create more reader-friendly transcripts.
         /// </summary>
         /// <param name="transcriptId"></param>

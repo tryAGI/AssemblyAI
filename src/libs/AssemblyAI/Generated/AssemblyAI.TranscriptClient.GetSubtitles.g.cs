@@ -27,6 +27,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Get subtitles for transcript<br/>
+        /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Export your transcript in SRT or VTT format to use with a video player for subtitles and closed captions.
         /// </summary>
         /// <param name="transcriptId"></param>
