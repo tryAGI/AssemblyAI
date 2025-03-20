@@ -24,6 +24,7 @@ namespace AssemblyAI
         /// <summary>
         /// Create temporary authentication token for Streaming STT<br/>
         /// &lt;Warning&gt;Streaming Speech-to-Text is currently not available on the EU endpoint.&lt;/Warning&gt;<br/>
+        /// &lt;Note&gt;Any usage associated with a temporary token will be attributed to the API key that generated it.&lt;/Note&gt;<br/>
         /// Create a temporary authentication token for Streaming Speech-to-Text
         /// </summary>
         /// <param name="request"></param>
@@ -358,6 +359,7 @@ namespace AssemblyAI
         /// <summary>
         /// Create temporary authentication token for Streaming STT<br/>
         /// &lt;Warning&gt;Streaming Speech-to-Text is currently not available on the EU endpoint.&lt;/Warning&gt;<br/>
+        /// &lt;Note&gt;Any usage associated with a temporary token will be attributed to the API key that generated it.&lt;/Note&gt;<br/>
         /// Create a temporary authentication token for Streaming Speech-to-Text
         /// </summary>
         /// <param name="expiresIn">
