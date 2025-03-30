@@ -54,6 +54,13 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public override string? ToString() =>
+            Response?.ToString() 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public bool Validate()
         {
             return IsResponse;
