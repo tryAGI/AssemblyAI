@@ -102,6 +102,14 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public override string? ToString() =>
+            Ready?.ToString() ??
+            RedactedAudio?.ToString() 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public bool Validate()
         {
             return IsReady && !IsRedactedAudio || !IsReady && IsRedactedAudio;
