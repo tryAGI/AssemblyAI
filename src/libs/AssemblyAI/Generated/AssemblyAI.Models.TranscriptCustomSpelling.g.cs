@@ -16,7 +16,7 @@ namespace AssemblyAI
         public required global::System.Collections.Generic.IList<string> From { get; set; }
 
         /// <summary>
-        /// Word or phrase to replace with
+        /// Word to replace with
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("to")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -35,7 +35,7 @@ namespace AssemblyAI
         /// Words or phrases to replace
         /// </param>
         /// <param name="to">
-        /// Word or phrase to replace with
+        /// Word to replace with
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
