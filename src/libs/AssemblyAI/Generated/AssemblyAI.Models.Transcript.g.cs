@@ -177,6 +177,12 @@ namespace AssemblyAI
         public required global::System.Guid Id { get; set; }
 
         /// <summary>
+        /// Improve accuracy with up to 1000 domain-specific words or phrases (maximum 6 words per phrase).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("keyterms_prompt")]
+        public global::System.Collections.Generic.IList<string>? KeytermsPrompt { get; set; }
+
+        /// <summary>
         /// The language of your audio file.<br/>
         /// Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/concepts/supported-languages).<br/>
         /// The default value is 'en_us'.
@@ -218,6 +224,13 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("multichannel")]
         public bool? Multichannel { get; set; }
+
+        /// <summary>
+        /// This parameter does not currently have any functionality attached to it.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public string? Prompt { get; set; }
 
         /// <summary>
         /// Whether Automatic Punctuation is enabled, either true or false
@@ -396,6 +409,7 @@ namespace AssemblyAI
         /// The list of custom vocabulary to boost transcription probability for
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("word_boost")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Collections.Generic.IList<string>? WordBoost { get; set; }
 
         /// <summary>
@@ -489,6 +503,9 @@ namespace AssemblyAI
         /// </param>
         /// <param name="id">
         /// The unique identifier of your transcript
+        /// </param>
+        /// <param name="keytermsPrompt">
+        /// Improve accuracy with up to 1000 domain-specific words or phrases (maximum 6 words per phrase).
         /// </param>
         /// <param name="languageCode">
         /// The language of your audio file.<br/>
@@ -595,9 +612,6 @@ namespace AssemblyAI
         /// We sends two different types of webhook requests.<br/>
         /// One request when a transcript is completed or failed, and one request when the redacted audio is ready if redact_pii_audio is enabled.
         /// </param>
-        /// <param name="wordBoost">
-        /// The list of custom vocabulary to boost transcription probability for
-        /// </param>
         /// <param name="words">
         /// An array of temporally-sequential word objects, one for each word in the transcript.<br/>
         /// See [Speech recognition](https://www.assemblyai.com/docs/models/speech-recognition) for more information.
@@ -638,6 +652,7 @@ namespace AssemblyAI
             bool? formatText,
             bool? iabCategories,
             object? iabCategoriesResult,
+            global::System.Collections.Generic.IList<string>? keytermsPrompt,
             global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>? languageCode,
             bool? languageDetection,
             bool? multichannel,
@@ -661,7 +676,6 @@ namespace AssemblyAI
             string? webhookAuthHeaderName,
             int? webhookStatusCode,
             string? webhookUrl,
-            global::System.Collections.Generic.IList<string>? wordBoost,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord>? words)
         {
             this.AcousticModel = acousticModel ?? throw new global::System.ArgumentNullException(nameof(acousticModel));
@@ -696,6 +710,7 @@ namespace AssemblyAI
             this.FormatText = formatText;
             this.IabCategories = iabCategories;
             this.IabCategoriesResult = iabCategoriesResult;
+            this.KeytermsPrompt = keytermsPrompt;
             this.LanguageCode = languageCode;
             this.LanguageDetection = languageDetection;
             this.Multichannel = multichannel;
@@ -719,7 +734,6 @@ namespace AssemblyAI
             this.WebhookAuthHeaderName = webhookAuthHeaderName;
             this.WebhookStatusCode = webhookStatusCode;
             this.WebhookUrl = webhookUrl;
-            this.WordBoost = wordBoost;
             this.Words = words;
         }
 
