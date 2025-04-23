@@ -113,6 +113,13 @@ namespace AssemblyAI
         public bool? IabCategories { get; set; }
 
         /// <summary>
+        /// &lt;Warning&gt;`keyterms_prompt` is only supported when the `speech_model` is specified as `slam-1`&lt;/Warning&gt;<br/>
+        /// Improve accuracy with up to 1000 domain-specific words or phrases (maximum 6 words per phrase).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("keyterms_prompt")]
+        public global::System.Collections.Generic.IList<string>? KeytermsPrompt { get; set; }
+
+        /// <summary>
         /// The language of your audio file. Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/concepts/supported-languages).<br/>
         /// The default value is 'en_us'.<br/>
         /// Default Value: en_us
@@ -142,6 +149,13 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("multichannel")]
         public bool? Multichannel { get; set; }
+
+        /// <summary>
+        /// This parameter does not currently have any functionality attached to it.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public string? Prompt { get; set; }
 
         /// <summary>
         /// Enable Automatic Punctuation, can be true or false<br/>
@@ -272,6 +286,7 @@ namespace AssemblyAI
         /// The list of custom vocabulary to boost transcription probability for
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("word_boost")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Collections.Generic.IList<string>? WordBoost { get; set; }
 
         /// <summary>
@@ -330,6 +345,10 @@ namespace AssemblyAI
         /// <param name="iabCategories">
         /// Enable [Topic Detection](https://www.assemblyai.com/docs/models/topic-detection), can be true or false<br/>
         /// Default Value: false
+        /// </param>
+        /// <param name="keytermsPrompt">
+        /// &lt;Warning&gt;`keyterms_prompt` is only supported when the `speech_model` is specified as `slam-1`&lt;/Warning&gt;<br/>
+        /// Improve accuracy with up to 1000 domain-specific words or phrases (maximum 6 words per phrase).
         /// </param>
         /// <param name="languageCode">
         /// The language of your audio file. Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/concepts/supported-languages).<br/>
@@ -417,9 +436,6 @@ namespace AssemblyAI
         /// We sends two different types of webhook requests.<br/>
         /// One request when a transcript is completed or failed, and one request when the redacted audio is ready if redact_pii_audio is enabled.
         /// </param>
-        /// <param name="wordBoost">
-        /// The list of custom vocabulary to boost transcription probability for
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -437,6 +453,7 @@ namespace AssemblyAI
             bool? filterProfanity,
             bool? formatText,
             bool? iabCategories,
+            global::System.Collections.Generic.IList<string>? keytermsPrompt,
             object? languageCode,
             float? languageConfidenceThreshold,
             bool? languageDetection,
@@ -458,8 +475,7 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<string>? topics,
             string? webhookAuthHeaderName,
             string? webhookAuthHeaderValue,
-            string? webhookUrl,
-            global::System.Collections.Generic.IList<string>? wordBoost)
+            string? webhookUrl)
         {
             this.AudioEndAt = audioEndAt;
             this.AudioStartFrom = audioStartFrom;
@@ -474,6 +490,7 @@ namespace AssemblyAI
             this.FilterProfanity = filterProfanity;
             this.FormatText = formatText;
             this.IabCategories = iabCategories;
+            this.KeytermsPrompt = keytermsPrompt;
             this.LanguageCode = languageCode;
             this.LanguageConfidenceThreshold = languageConfidenceThreshold;
             this.LanguageDetection = languageDetection;
@@ -496,7 +513,6 @@ namespace AssemblyAI
             this.WebhookAuthHeaderName = webhookAuthHeaderName;
             this.WebhookAuthHeaderValue = webhookAuthHeaderValue;
             this.WebhookUrl = webhookUrl;
-            this.WordBoost = wordBoost;
         }
 
         /// <summary>
