@@ -475,5 +475,9 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public global::System.Collections.Generic.IList<global::AssemblyAI.WordSearchMatch>? Type112 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[]? Type113 { get; set; }
     }
 }
