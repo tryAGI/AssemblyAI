@@ -29,7 +29,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator RedactedAudioNotification(global::AssemblyAI.RedactedAudioResponse value) => new RedactedAudioNotification(value);
+        public static implicit operator RedactedAudioNotification(global::AssemblyAI.RedactedAudioResponse value) => new RedactedAudioNotification((global::AssemblyAI.RedactedAudioResponse?)value);
 
         /// <summary>
         /// 

@@ -29,7 +29,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator TranscriptParams(global::AssemblyAI.TranscriptParamsVariant1 value) => new TranscriptParams(value);
+        public static implicit operator TranscriptParams(global::AssemblyAI.TranscriptParamsVariant1 value) => new TranscriptParams((global::AssemblyAI.TranscriptParamsVariant1?)value);
 
         /// <summary>
         /// 
@@ -64,7 +64,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator TranscriptParams(global::AssemblyAI.TranscriptOptionalParams value) => new TranscriptParams(value);
+        public static implicit operator TranscriptParams(global::AssemblyAI.TranscriptOptionalParams value) => new TranscriptParams((global::AssemblyAI.TranscriptOptionalParams?)value);
 
         /// <summary>
         /// 

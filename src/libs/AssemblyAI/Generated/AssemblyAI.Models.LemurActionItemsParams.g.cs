@@ -29,7 +29,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator LemurActionItemsParams(global::AssemblyAI.LemurBaseParams value) => new LemurActionItemsParams(value);
+        public static implicit operator LemurActionItemsParams(global::AssemblyAI.LemurBaseParams value) => new LemurActionItemsParams((global::AssemblyAI.LemurBaseParams?)value);
 
         /// <summary>
         /// 
@@ -64,7 +64,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator LemurActionItemsParams(global::AssemblyAI.LemurActionItemsParamsVariant2 value) => new LemurActionItemsParams(value);
+        public static implicit operator LemurActionItemsParams(global::AssemblyAI.LemurActionItemsParamsVariant2 value) => new LemurActionItemsParams((global::AssemblyAI.LemurActionItemsParamsVariant2?)value);
 
         /// <summary>
         /// 
