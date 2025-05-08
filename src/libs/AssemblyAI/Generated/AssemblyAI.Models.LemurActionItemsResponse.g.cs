@@ -29,7 +29,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator LemurActionItemsResponse(global::AssemblyAI.LemurStringResponse value) => new LemurActionItemsResponse(value);
+        public static implicit operator LemurActionItemsResponse(global::AssemblyAI.LemurStringResponse value) => new LemurActionItemsResponse((global::AssemblyAI.LemurStringResponse?)value);
 
         /// <summary>
         /// 

@@ -29,7 +29,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator LemurQuestionAnswerResponse(global::AssemblyAI.LemurBaseResponse value) => new LemurQuestionAnswerResponse(value);
+        public static implicit operator LemurQuestionAnswerResponse(global::AssemblyAI.LemurBaseResponse value) => new LemurQuestionAnswerResponse((global::AssemblyAI.LemurBaseResponse?)value);
 
         /// <summary>
         /// 
@@ -64,7 +64,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator LemurQuestionAnswerResponse(global::AssemblyAI.LemurQuestionAnswerResponseVariant2 value) => new LemurQuestionAnswerResponse(value);
+        public static implicit operator LemurQuestionAnswerResponse(global::AssemblyAI.LemurQuestionAnswerResponseVariant2 value) => new LemurQuestionAnswerResponse((global::AssemblyAI.LemurQuestionAnswerResponseVariant2?)value);
 
         /// <summary>
         /// 

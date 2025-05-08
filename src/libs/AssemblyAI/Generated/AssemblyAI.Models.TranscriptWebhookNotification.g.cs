@@ -29,7 +29,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator TranscriptWebhookNotification(global::AssemblyAI.TranscriptReadyNotification value) => new TranscriptWebhookNotification(value);
+        public static implicit operator TranscriptWebhookNotification(global::AssemblyAI.TranscriptReadyNotification value) => new TranscriptWebhookNotification((global::AssemblyAI.TranscriptReadyNotification?)value);
 
         /// <summary>
         /// 
@@ -64,7 +64,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator TranscriptWebhookNotification(global::AssemblyAI.RedactedAudioNotification value) => new TranscriptWebhookNotification(value);
+        public static implicit operator TranscriptWebhookNotification(global::AssemblyAI.RedactedAudioNotification value) => new TranscriptWebhookNotification((global::AssemblyAI.RedactedAudioNotification?)value);
 
         /// <summary>
         /// 
