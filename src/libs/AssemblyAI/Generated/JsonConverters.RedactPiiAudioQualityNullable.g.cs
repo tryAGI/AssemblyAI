@@ -28,6 +28,10 @@ namespace AssemblyAI.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::AssemblyAI.RedactPiiAudioQuality)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::AssemblyAI.RedactPiiAudioQuality?);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }

@@ -28,6 +28,10 @@ namespace AssemblyAI.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::AssemblyAI.Sentiment)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::AssemblyAI.Sentiment?);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }
