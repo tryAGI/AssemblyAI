@@ -28,6 +28,10 @@ namespace AssemblyAI.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::AssemblyAI.TranscriptLanguageCode)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::AssemblyAI.TranscriptLanguageCode?);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }
