@@ -51,7 +51,7 @@ namespace AssemblyAI
                 subtitleFormat: ref subtitleFormat,
                 charsPerCaption: ref charsPerCaption);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::AssemblyAI.PathBuilder(
                 path: $"/v2/transcript/{transcriptId}/{subtitleFormat}",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

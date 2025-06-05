@@ -299,7 +299,7 @@ namespace AssemblyAI
         public int? SpeakersExpected { get; set; }
 
         /// <summary>
-        /// The speech model used for the transcription. When `null`, the default model is used.
+        /// The speech model used for the transcription. When `null`, the `universal` model is used.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_model")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -563,7 +563,7 @@ namespace AssemblyAI
         /// Tell the speaker label model how many speakers it should attempt to identify, up to 10. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.
         /// </param>
         /// <param name="speechModel">
-        /// The speech model used for the transcription. When `null`, the default model is used.
+        /// The speech model used for the transcription. When `null`, the `universal` model is used.
         /// </param>
         /// <param name="speechThreshold">
         /// Defaults to null. Reject audio files that contain less than this fraction of speech.<br/>
