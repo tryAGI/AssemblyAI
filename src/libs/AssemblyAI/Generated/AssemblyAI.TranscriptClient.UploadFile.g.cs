@@ -41,7 +41,7 @@ namespace AssemblyAI
                 httpClient: HttpClient,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::AssemblyAI.PathBuilder(
                 path: "/v2/upload",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

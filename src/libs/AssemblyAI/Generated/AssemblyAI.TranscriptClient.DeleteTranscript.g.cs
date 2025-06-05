@@ -39,7 +39,7 @@ namespace AssemblyAI
                 httpClient: HttpClient,
                 transcriptId: ref transcriptId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::AssemblyAI.PathBuilder(
                 path: $"/v2/transcript/{transcriptId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
