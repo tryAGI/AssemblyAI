@@ -179,6 +179,12 @@ namespace AssemblyAI
         public bool? RedactPiiAudio { get; set; }
 
         /// <summary>
+        /// Specify options for PII redacted audio files.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_audio_options")]
+        public global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptions? RedactPiiAudioOptions { get; set; }
+
+        /// <summary>
         /// Controls the filetype of the audio created by redact_pii_audio. Currently supports mp3 (default) and wav. See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more details.<br/>
         /// Example: mp3
         /// </summary>
@@ -381,6 +387,9 @@ namespace AssemblyAI
         /// Generate a copy of the original media file with spoken PII "beeped" out, can be true or false. See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more details.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="redactPiiAudioOptions">
+        /// Specify options for PII redacted audio files.
+        /// </param>
         /// <param name="redactPiiAudioQuality">
         /// Controls the filetype of the audio created by redact_pii_audio. Currently supports mp3 (default) and wav. See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more details.<br/>
         /// Example: mp3
@@ -461,6 +470,7 @@ namespace AssemblyAI
             bool? punctuate,
             bool? redactPii,
             bool? redactPiiAudio,
+            global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptions? redactPiiAudioOptions,
             global::AssemblyAI.RedactPiiAudioQuality? redactPiiAudioQuality,
             global::System.Collections.Generic.IList<global::AssemblyAI.PiiPolicy>? redactPiiPolicies,
             object? redactPiiSub,
@@ -498,6 +508,7 @@ namespace AssemblyAI
             this.Punctuate = punctuate;
             this.RedactPii = redactPii;
             this.RedactPiiAudio = redactPiiAudio;
+            this.RedactPiiAudioOptions = redactPiiAudioOptions;
             this.RedactPiiAudioQuality = redactPiiAudioQuality;
             this.RedactPiiPolicies = redactPiiPolicies;
             this.RedactPiiSub = redactPiiSub;
