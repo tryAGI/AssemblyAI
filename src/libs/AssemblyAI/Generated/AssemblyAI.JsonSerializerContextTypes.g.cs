@@ -434,50 +434,54 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptParams? Type102 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptions? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptParamsVariant1? Type103 { get; set; }
+        public global::AssemblyAI.TranscriptParams? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptReadyNotification? Type104 { get; set; }
+        public global::AssemblyAI.TranscriptParamsVariant1? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptReadyStatus? Type105 { get; set; }
+        public global::AssemblyAI.TranscriptReadyNotification? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptWebhookNotification? Type106 { get; set; }
+        public global::AssemblyAI.TranscriptReadyStatus? Type106 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.UploadedFile? Type107 { get; set; }
+        public global::AssemblyAI.TranscriptWebhookNotification? Type107 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.WordSearchMatch? Type108 { get; set; }
+        public global::AssemblyAI.UploadedFile? Type108 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<int>? Type109 { get; set; }
+        public global::AssemblyAI.WordSearchMatch? Type109 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<int>>? Type110 { get; set; }
+        public global::System.Collections.Generic.IList<int>? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.WordSearchResponse? Type111 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<int>>? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.WordSearchMatch>? Type112 { get; set; }
+        public global::AssemblyAI.WordSearchResponse? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type113 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.WordSearchMatch>? Type113 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[]? Type114 { get; set; }
     }
 }
