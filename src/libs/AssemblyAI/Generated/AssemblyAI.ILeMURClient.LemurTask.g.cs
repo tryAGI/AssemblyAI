@@ -6,6 +6,7 @@ namespace AssemblyAI
     {
         /// <summary>
         /// Run a task using LeMUR<br/>
+        /// &lt;Note&gt;To use our EU server with LeMUR, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Use the LeMUR task endpoint to input your own LLM prompt.
         /// </summary>
         /// <param name="request"></param>
@@ -17,6 +18,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Run a task using LeMUR<br/>
+        /// &lt;Note&gt;To use our EU server with LeMUR, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Use the LeMUR task endpoint to input your own LLM prompt.
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

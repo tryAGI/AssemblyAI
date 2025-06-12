@@ -23,6 +23,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Retrieve LeMUR response<br/>
+        /// &lt;Note&gt;To use our EU server with LeMUR, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Retrieve a LeMUR response that was previously generated.
         /// </summary>
         /// <param name="requestId"></param>

@@ -6,6 +6,7 @@ namespace AssemblyAI
     {
         /// <summary>
         /// Summarize a transcript using LeMUR<br/>
+        /// &lt;Note&gt;To use our EU server with LeMUR, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Custom Summary allows you to distill a piece of audio into a few impactful sentences.<br/>
         /// You can give the model context to obtain more targeted results while outputting the results in a variety of formats described in human language.
         /// </summary>
@@ -18,6 +19,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Summarize a transcript using LeMUR<br/>
+        /// &lt;Note&gt;To use our EU server with LeMUR, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Custom Summary allows you to distill a piece of audio into a few impactful sentences.<br/>
         /// You can give the model context to obtain more targeted results while outputting the results in a variety of formats described in human language.
         /// </summary>

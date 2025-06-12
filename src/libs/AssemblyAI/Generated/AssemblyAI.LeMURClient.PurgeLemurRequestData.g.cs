@@ -23,6 +23,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Purge LeMUR request data<br/>
+        /// &lt;Note&gt;To use our EU server with LeMUR, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Delete the data for a previously submitted LeMUR request.<br/>
         /// The LLM response data, as well as any context provided in the original request will be removed.
         /// </summary>
