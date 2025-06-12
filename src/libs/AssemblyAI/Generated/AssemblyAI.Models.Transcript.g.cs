@@ -267,7 +267,7 @@ namespace AssemblyAI
         public global::System.Collections.Generic.IList<global::AssemblyAI.PiiPolicy>? RedactPiiPolicies { get; set; }
 
         /// <summary>
-        /// The replacement logic for detected PII, can be "entity_name" or "hash". See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more details.
+        /// The replacement logic for detected PII, can be `entity_name` or `hash`. See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_sub")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.SubstitutionPolicyJsonConverter))]
@@ -547,7 +547,7 @@ namespace AssemblyAI
         /// See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more information.
         /// </param>
         /// <param name="redactPiiSub">
-        /// The replacement logic for detected PII, can be "entity_name" or "hash". See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more details.
+        /// The replacement logic for detected PII, can be `entity_name` or `hash`. See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more details.
         /// </param>
         /// <param name="sentimentAnalysis">
         /// Whether [Sentiment Analysis](https://www.assemblyai.com/docs/models/sentiment-analysis) is enabled, can be true or false
