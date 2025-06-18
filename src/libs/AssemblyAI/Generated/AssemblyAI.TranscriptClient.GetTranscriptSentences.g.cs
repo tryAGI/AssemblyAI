@@ -90,20 +90,29 @@ namespace AssemblyAI
             if ((int)__response.StatusCode == 400)
             {
                 string? __content_400 = null;
+                global::System.Exception? __exception_400 = null;
                 global::AssemblyAI.Error? __value_400 = null;
-                if (ReadResponseAsString)
+                try
                 {
-                    __content_400 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                    __value_400 = global::AssemblyAI.Error.FromJson(__content_400, JsonSerializerContext);
+                    if (ReadResponseAsString)
+                    {
+                        __content_400 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_400 = global::AssemblyAI.Error.FromJson(__content_400, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_400 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_400 = await global::AssemblyAI.Error.FromJsonStreamAsync(__contentStream_400, JsonSerializerContext).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_400 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                    __value_400 = await global::AssemblyAI.Error.FromJsonStreamAsync(__contentStream_400, JsonSerializerContext).ConfigureAwait(false);
+                    __exception_400 = __ex;
                 }
 
                 throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_400,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_400,
@@ -118,20 +127,29 @@ namespace AssemblyAI
             if ((int)__response.StatusCode == 401)
             {
                 string? __content_401 = null;
+                global::System.Exception? __exception_401 = null;
                 global::AssemblyAI.Error? __value_401 = null;
-                if (ReadResponseAsString)
+                try
                 {
-                    __content_401 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                    __value_401 = global::AssemblyAI.Error.FromJson(__content_401, JsonSerializerContext);
+                    if (ReadResponseAsString)
+                    {
+                        __content_401 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_401 = global::AssemblyAI.Error.FromJson(__content_401, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_401 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_401 = await global::AssemblyAI.Error.FromJsonStreamAsync(__contentStream_401, JsonSerializerContext).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_401 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                    __value_401 = await global::AssemblyAI.Error.FromJsonStreamAsync(__contentStream_401, JsonSerializerContext).ConfigureAwait(false);
+                    __exception_401 = __ex;
                 }
 
                 throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_401,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_401,
@@ -146,20 +164,29 @@ namespace AssemblyAI
             if ((int)__response.StatusCode == 404)
             {
                 string? __content_404 = null;
+                global::System.Exception? __exception_404 = null;
                 global::AssemblyAI.Error? __value_404 = null;
-                if (ReadResponseAsString)
+                try
                 {
-                    __content_404 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                    __value_404 = global::AssemblyAI.Error.FromJson(__content_404, JsonSerializerContext);
+                    if (ReadResponseAsString)
+                    {
+                        __content_404 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_404 = global::AssemblyAI.Error.FromJson(__content_404, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_404 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_404 = await global::AssemblyAI.Error.FromJsonStreamAsync(__contentStream_404, JsonSerializerContext).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_404 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                    __value_404 = await global::AssemblyAI.Error.FromJsonStreamAsync(__contentStream_404, JsonSerializerContext).ConfigureAwait(false);
+                    __exception_404 = __ex;
                 }
 
                 throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_404,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_404,
@@ -174,20 +201,29 @@ namespace AssemblyAI
             if ((int)__response.StatusCode == 429)
             {
                 string? __content_429 = null;
+                global::System.Exception? __exception_429 = null;
                 global::AssemblyAI.Error? __value_429 = null;
-                if (ReadResponseAsString)
+                try
                 {
-                    __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                    __value_429 = global::AssemblyAI.Error.FromJson(__content_429, JsonSerializerContext);
+                    if (ReadResponseAsString)
+                    {
+                        __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_429 = global::AssemblyAI.Error.FromJson(__content_429, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_429 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_429 = await global::AssemblyAI.Error.FromJsonStreamAsync(__contentStream_429, JsonSerializerContext).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_429 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                    __value_429 = await global::AssemblyAI.Error.FromJsonStreamAsync(__contentStream_429, JsonSerializerContext).ConfigureAwait(false);
+                    __exception_429 = __ex;
                 }
 
                 throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_429,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_429,
@@ -202,20 +238,29 @@ namespace AssemblyAI
             if ((int)__response.StatusCode == 500)
             {
                 string? __content_500 = null;
+                global::System.Exception? __exception_500 = null;
                 global::AssemblyAI.Error? __value_500 = null;
-                if (ReadResponseAsString)
+                try
                 {
-                    __content_500 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                    __value_500 = global::AssemblyAI.Error.FromJson(__content_500, JsonSerializerContext);
+                    if (ReadResponseAsString)
+                    {
+                        __content_500 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_500 = global::AssemblyAI.Error.FromJson(__content_500, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_500 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_500 = await global::AssemblyAI.Error.FromJsonStreamAsync(__contentStream_500, JsonSerializerContext).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_500 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                    __value_500 = await global::AssemblyAI.Error.FromJsonStreamAsync(__contentStream_500, JsonSerializerContext).ConfigureAwait(false);
+                    __exception_500 = __ex;
                 }
 
                 throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_500,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_500,
@@ -230,17 +275,26 @@ namespace AssemblyAI
             if ((int)__response.StatusCode == 503)
             {
                 string? __content_503 = null;
-                if (ReadResponseAsString)
+                global::System.Exception? __exception_503 = null;
+                try
                 {
-                    __content_503 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    if (ReadResponseAsString)
+                    {
+                        __content_503 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        var __contentStream_503 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_503 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    __exception_503 = __ex;
                 }
 
                 throw new global::AssemblyAI.ApiException(
                     message: __content_503 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_503,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_503,
@@ -254,17 +308,26 @@ namespace AssemblyAI
             if ((int)__response.StatusCode == 504)
             {
                 string? __content_504 = null;
-                if (ReadResponseAsString)
+                global::System.Exception? __exception_504 = null;
+                try
                 {
-                    __content_504 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    if (ReadResponseAsString)
+                    {
+                        __content_504 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        var __contentStream_504 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_504 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    __exception_504 = __ex;
                 }
 
                 throw new global::AssemblyAI.ApiException(
                     message: __content_504 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_504,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_504,
@@ -295,8 +358,12 @@ namespace AssemblyAI
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    return
+                        global::AssemblyAI.SentencesResponse.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::AssemblyAI.ApiException(
                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
@@ -310,18 +377,24 @@ namespace AssemblyAI
                             h => h.Value),
                     };
                 }
-
-                return
-                    global::AssemblyAI.SentencesResponse.FromJson(__content, JsonSerializerContext) ??
-                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    using var __content = await __response.Content.ReadAsStreamAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return
+                        await global::AssemblyAI.SentencesResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::AssemblyAI.ApiException(
                         message: __response.ReasonPhrase ?? string.Empty,
@@ -334,16 +407,6 @@ namespace AssemblyAI
                             h => h.Value),
                     };
                 }
-
-                using var __content = await __response.Content.ReadAsStreamAsync(
-#if NET5_0_OR_GREATER
-                    cancellationToken
-#endif
-                ).ConfigureAwait(false);
-
-                return
-                    await global::AssemblyAI.SentencesResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
     }
