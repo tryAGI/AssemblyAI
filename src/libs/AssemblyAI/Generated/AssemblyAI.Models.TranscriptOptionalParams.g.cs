@@ -221,6 +221,12 @@ namespace AssemblyAI
         public bool? SpeakerLabels { get; set; }
 
         /// <summary>
+        /// Specify options for speaker diarization.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speaker_options")]
+        public global::AssemblyAI.TranscriptOptionalParamsSpeakerOptions? SpeakerOptions { get; set; }
+
+        /// <summary>
         /// Tells the speaker label model how many speakers it should attempt to identify, up to 10. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speakers_expected")]
@@ -409,6 +415,9 @@ namespace AssemblyAI
         /// Enable [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization), can be true or false<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="speakerOptions">
+        /// Specify options for speaker diarization.
+        /// </param>
         /// <param name="speakersExpected">
         /// Tells the speaker label model how many speakers it should attempt to identify, up to 10. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.
         /// </param>
@@ -476,6 +485,7 @@ namespace AssemblyAI
             object? redactPiiSub,
             bool? sentimentAnalysis,
             bool? speakerLabels,
+            global::AssemblyAI.TranscriptOptionalParamsSpeakerOptions? speakerOptions,
             int? speakersExpected,
             object? speechModel,
             float? speechThreshold,
@@ -514,6 +524,7 @@ namespace AssemblyAI
             this.RedactPiiSub = redactPiiSub;
             this.SentimentAnalysis = sentimentAnalysis;
             this.SpeakerLabels = speakerLabels;
+            this.SpeakerOptions = speakerOptions;
             this.SpeakersExpected = speakersExpected;
             this.SpeechModel = speechModel;
             this.SpeechThreshold = speechThreshold;
