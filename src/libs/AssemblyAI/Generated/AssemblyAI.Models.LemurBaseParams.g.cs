@@ -28,7 +28,7 @@ namespace AssemblyAI
         public required global::AssemblyAI.AnyOf<global::AssemblyAI.LemurModel?, string> FinalModel { get; set; } = "default";
 
         /// <summary>
-        /// Custom formatted transcript data. Maximum size is the context limit of the selected model, which defaults to 100000.<br/>
+        /// Custom formatted transcript data. Maximum size is the context limit of the selected model.<br/>
         /// Use either transcript_ids or input_text as input into LeMUR.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_text")]
@@ -51,7 +51,7 @@ namespace AssemblyAI
         public float? Temperature { get; set; }
 
         /// <summary>
-        /// A list of completed transcripts with text. Up to a maximum of 100 files or 100 hours, whichever is lower.<br/>
+        /// A list of completed transcripts with text. Up to a maximum of 100 hours.<br/>
         /// Use either transcript_ids or input_text as input into LeMUR.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcript_ids")]
@@ -74,7 +74,7 @@ namespace AssemblyAI
         /// Default Value: default
         /// </param>
         /// <param name="inputText">
-        /// Custom formatted transcript data. Maximum size is the context limit of the selected model, which defaults to 100000.<br/>
+        /// Custom formatted transcript data. Maximum size is the context limit of the selected model.<br/>
         /// Use either transcript_ids or input_text as input into LeMUR.
         /// </param>
         /// <param name="maxOutputSize">
@@ -88,7 +88,7 @@ namespace AssemblyAI
         /// Default Value: 0F
         /// </param>
         /// <param name="transcriptIds">
-        /// A list of completed transcripts with text. Up to a maximum of 100 files or 100 hours, whichever is lower.<br/>
+        /// A list of completed transcripts with text. Up to a maximum of 100 hours.<br/>
         /// Use either transcript_ids or input_text as input into LeMUR.
         /// </param>
 #if NET7_0_OR_GREATER
