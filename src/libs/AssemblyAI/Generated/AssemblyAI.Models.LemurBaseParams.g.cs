@@ -51,7 +51,7 @@ namespace AssemblyAI
         public float? Temperature { get; set; }
 
         /// <summary>
-        /// A list of completed transcripts with text. Up to a maximum of 100 hours.<br/>
+        /// A list of completed transcripts with text. Up to a maximum of 100 hours of audio.<br/>
         /// Use either transcript_ids or input_text as input into LeMUR.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcript_ids")]
@@ -88,7 +88,7 @@ namespace AssemblyAI
         /// Default Value: 0F
         /// </param>
         /// <param name="transcriptIds">
-        /// A list of completed transcripts with text. Up to a maximum of 100 hours.<br/>
+        /// A list of completed transcripts with text. Up to a maximum of 100 hours of audio.<br/>
         /// Use either transcript_ids or input_text as input into LeMUR.
         /// </param>
 #if NET7_0_OR_GREATER
