@@ -15,10 +15,6 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        Nano,
-        /// <summary>
-        /// 
-        /// </summary>
         Slam1,
         /// <summary>
         /// 
@@ -39,7 +35,6 @@ namespace AssemblyAI
             return value switch
             {
                 SpeechModel.Best => "best",
-                SpeechModel.Nano => "nano",
                 SpeechModel.Slam1 => "slam-1",
                 SpeechModel.Universal => "universal",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -53,7 +48,6 @@ namespace AssemblyAI
             return value switch
             {
                 "best" => SpeechModel.Best,
-                "nano" => SpeechModel.Nano,
                 "slam-1" => SpeechModel.Slam1,
                 "universal" => SpeechModel.Universal,
                 _ => null,
