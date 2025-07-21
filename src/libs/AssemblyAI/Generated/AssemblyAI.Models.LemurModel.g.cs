@@ -19,6 +19,10 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        AnthropicClaude37Sonnet20250219,
+        /// <summary>
+        /// 
+        /// </summary>
         AnthropicClaude35Sonnet,
         /// <summary>
         /// 
@@ -52,6 +56,7 @@ namespace AssemblyAI
             {
                 LemurModel.AnthropicClaudeSonnet420250514 => "anthropic/claude-sonnet-4-20250514",
                 LemurModel.AnthropicClaudeOpus420250514 => "anthropic/claude-opus-4-20250514",
+                LemurModel.AnthropicClaude37Sonnet20250219 => "anthropic/claude-3-7-sonnet-20250219",
                 LemurModel.AnthropicClaude35Sonnet => "anthropic/claude-3-5-sonnet",
                 LemurModel.AnthropicClaude35Haiku20241022 => "anthropic/claude-3-5-haiku-20241022",
                 LemurModel.AnthropicClaude3Opus => "anthropic/claude-3-opus",
@@ -69,6 +74,7 @@ namespace AssemblyAI
             {
                 "anthropic/claude-sonnet-4-20250514" => LemurModel.AnthropicClaudeSonnet420250514,
                 "anthropic/claude-opus-4-20250514" => LemurModel.AnthropicClaudeOpus420250514,
+                "anthropic/claude-3-7-sonnet-20250219" => LemurModel.AnthropicClaude37Sonnet20250219,
                 "anthropic/claude-3-5-sonnet" => LemurModel.AnthropicClaude35Sonnet,
                 "anthropic/claude-3-5-haiku-20241022" => LemurModel.AnthropicClaude35Haiku20241022,
                 "anthropic/claude-3-opus" => LemurModel.AnthropicClaude3Opus,
