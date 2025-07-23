@@ -36,10 +36,6 @@ namespace AssemblyAI
         /// 
         /// </summary>
         AnthropicClaude3Haiku,
-        /// <summary>
-        /// 
-        /// </summary>
-        AnthropicClaude3Sonnet,
     }
 
     /// <summary>
@@ -61,7 +57,6 @@ namespace AssemblyAI
                 LemurModel.AnthropicClaude35Haiku20241022 => "anthropic/claude-3-5-haiku-20241022",
                 LemurModel.AnthropicClaude3Opus => "anthropic/claude-3-opus",
                 LemurModel.AnthropicClaude3Haiku => "anthropic/claude-3-haiku",
-                LemurModel.AnthropicClaude3Sonnet => "anthropic/claude-3-sonnet",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -79,7 +74,6 @@ namespace AssemblyAI
                 "anthropic/claude-3-5-haiku-20241022" => LemurModel.AnthropicClaude35Haiku20241022,
                 "anthropic/claude-3-opus" => LemurModel.AnthropicClaude3Opus,
                 "anthropic/claude-3-haiku" => LemurModel.AnthropicClaude3Haiku,
-                "anthropic/claude-3-sonnet" => LemurModel.AnthropicClaude3Sonnet,
                 _ => null,
             };
         }
