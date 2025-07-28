@@ -293,7 +293,7 @@ namespace AssemblyAI
         public bool? SpeakerLabels { get; set; }
 
         /// <summary>
-        /// Tell the speaker label model how many speakers it should attempt to identify, up to 10. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.
+        /// Tell the speaker label model how many speakers it should attempt to identify. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speakers_expected")]
         public int? SpeakersExpected { get; set; }
@@ -560,7 +560,7 @@ namespace AssemblyAI
         /// Whether [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, can be true or false
         /// </param>
         /// <param name="speakersExpected">
-        /// Tell the speaker label model how many speakers it should attempt to identify, up to 10. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.
+        /// Tell the speaker label model how many speakers it should attempt to identify. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.
         /// </param>
         /// <param name="speechModel">
         /// The speech model used for the transcription. When `null`, the `universal` model is used.
