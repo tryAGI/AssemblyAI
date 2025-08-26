@@ -434,58 +434,62 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptions? Type102 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsLanguageDetectionOptions? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptOptionalParamsSpeakerOptions? Type103 { get; set; }
+        public byte[]? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptParams? Type104 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptions? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptParamsVariant1? Type105 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsSpeakerOptions? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptReadyNotification? Type106 { get; set; }
+        public global::AssemblyAI.TranscriptParams? Type106 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptReadyStatus? Type107 { get; set; }
+        public global::AssemblyAI.TranscriptParamsVariant1? Type107 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptWebhookNotification? Type108 { get; set; }
+        public global::AssemblyAI.TranscriptReadyNotification? Type108 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.UploadedFile? Type109 { get; set; }
+        public global::AssemblyAI.TranscriptReadyStatus? Type109 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.WordSearchMatch? Type110 { get; set; }
+        public global::AssemblyAI.TranscriptWebhookNotification? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<int>? Type111 { get; set; }
+        public global::AssemblyAI.UploadedFile? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<int>>? Type112 { get; set; }
+        public global::AssemblyAI.WordSearchMatch? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.WordSearchResponse? Type113 { get; set; }
+        public global::System.Collections.Generic.IList<int>? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.WordSearchMatch>? Type114 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<int>>? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type115 { get; set; }
+        public global::AssemblyAI.WordSearchResponse? Type115 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::AssemblyAI.WordSearchMatch>? Type116 { get; set; }
     }
 }
