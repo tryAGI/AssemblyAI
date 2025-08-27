@@ -144,6 +144,12 @@ namespace AssemblyAI
         public bool? LanguageDetection { get; set; }
 
         /// <summary>
+        /// Specify options for Automatic Language Detection.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language_detection_options")]
+        public global::AssemblyAI.TranscriptOptionalParamsLanguageDetectionOptions? LanguageDetectionOptions { get; set; }
+
+        /// <summary>
         /// Enable [Multichannel](https://www.assemblyai.com/docs/models/speech-recognition#multichannel-transcription) transcription, can be true or false.<br/>
         /// Default Value: false
         /// </summary>
@@ -377,6 +383,9 @@ namespace AssemblyAI
         /// Enable [Automatic language detection](https://www.assemblyai.com/docs/models/speech-recognition#automatic-language-detection), either true or false.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="languageDetectionOptions">
+        /// Specify options for Automatic Language Detection.
+        /// </param>
         /// <param name="multichannel">
         /// Enable [Multichannel](https://www.assemblyai.com/docs/models/speech-recognition#multichannel-transcription) transcription, can be true or false.<br/>
         /// Default Value: false
@@ -475,6 +484,7 @@ namespace AssemblyAI
             object? languageCode,
             float? languageConfidenceThreshold,
             bool? languageDetection,
+            global::AssemblyAI.TranscriptOptionalParamsLanguageDetectionOptions? languageDetectionOptions,
             bool? multichannel,
             bool? punctuate,
             bool? redactPii,
@@ -514,6 +524,7 @@ namespace AssemblyAI
             this.LanguageCode = languageCode;
             this.LanguageConfidenceThreshold = languageConfidenceThreshold;
             this.LanguageDetection = languageDetection;
+            this.LanguageDetectionOptions = languageDetectionOptions;
             this.Multichannel = multichannel;
             this.Punctuate = punctuate;
             this.RedactPii = redactPii;
