@@ -6,7 +6,7 @@ namespace AssemblyAI
     /// <summary>
     /// Specify options for Automatic Language Detection.
     /// </summary>
-    public sealed partial class TranscriptOptionalParamsLanguageDetectionOptions
+    public sealed partial class TranscriptLanguageDetectionOptions
     {
         /// <summary>
         /// List of languages expected in the audio file. Defaults to `["all"]` when unspecified.
@@ -28,7 +28,7 @@ namespace AssemblyAI
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TranscriptOptionalParamsLanguageDetectionOptions" /> class.
+        /// Initializes a new instance of the <see cref="TranscriptLanguageDetectionOptions" /> class.
         /// </summary>
         /// <param name="expectedLanguages">
         /// List of languages expected in the audio file. Defaults to `["all"]` when unspecified.
@@ -40,7 +40,7 @@ namespace AssemblyAI
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public TranscriptOptionalParamsLanguageDetectionOptions(
+        public TranscriptLanguageDetectionOptions(
             byte[]? expectedLanguages,
             string? fallbackLanguage)
         {
@@ -49,9 +49,9 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TranscriptOptionalParamsLanguageDetectionOptions" /> class.
+        /// Initializes a new instance of the <see cref="TranscriptLanguageDetectionOptions" /> class.
         /// </summary>
-        public TranscriptOptionalParamsLanguageDetectionOptions()
+        public TranscriptLanguageDetectionOptions()
         {
         }
     }

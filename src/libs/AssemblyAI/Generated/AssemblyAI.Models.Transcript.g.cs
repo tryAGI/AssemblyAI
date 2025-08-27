@@ -213,6 +213,12 @@ namespace AssemblyAI
         public bool? LanguageDetection { get; set; }
 
         /// <summary>
+        /// Specify options for Automatic Language Detection.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language_detection_options")]
+        public global::AssemblyAI.TranscriptLanguageDetectionOptions? LanguageDetectionOptions { get; set; }
+
+        /// <summary>
         /// The language model that was used for the transcript
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_model")]
@@ -522,6 +528,9 @@ namespace AssemblyAI
         /// <param name="languageDetection">
         /// Whether [Automatic language detection](https://www.assemblyai.com/docs/models/speech-recognition#automatic-language-detection) is enabled, either true or false
         /// </param>
+        /// <param name="languageDetectionOptions">
+        /// Specify options for Automatic Language Detection.
+        /// </param>
         /// <param name="languageModel">
         /// The language model that was used for the transcript
         /// </param>
@@ -655,6 +664,7 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<string>? keytermsPrompt,
             global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>? languageCode,
             bool? languageDetection,
+            global::AssemblyAI.TranscriptLanguageDetectionOptions? languageDetectionOptions,
             bool? multichannel,
             bool? punctuate,
             bool? redactPiiAudio,
@@ -713,6 +723,7 @@ namespace AssemblyAI
             this.KeytermsPrompt = keytermsPrompt;
             this.LanguageCode = languageCode;
             this.LanguageDetection = languageDetection;
+            this.LanguageDetectionOptions = languageDetectionOptions;
             this.Multichannel = multichannel;
             this.Punctuate = punctuate;
             this.RedactPiiAudio = redactPiiAudio;
