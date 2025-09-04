@@ -35,13 +35,6 @@ namespace AssemblyAI
         public bool? AutoHighlights { get; set; }
 
         /// <summary>
-        /// How much to boost specified words
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("boost_param")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.TranscriptBoostParamJsonConverter))]
-        public global::AssemblyAI.TranscriptBoostParam? BoostParam { get; set; }
-
-        /// <summary>
         /// Enable [Content Moderation](https://www.assemblyai.com/docs/models/content-moderation), can be true or false<br/>
         /// Default Value: false
         /// </summary>
@@ -301,13 +294,6 @@ namespace AssemblyAI
         public string? WebhookUrl { get; set; }
 
         /// <summary>
-        /// The list of custom vocabulary to boost transcription probability for
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("word_boost")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::System.Collections.Generic.IList<string>? WordBoost { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -329,9 +315,6 @@ namespace AssemblyAI
         /// <param name="autoHighlights">
         /// Enable Key Phrases, either true or false<br/>
         /// Default Value: false
-        /// </param>
-        /// <param name="boostParam">
-        /// How much to boost specified words
         /// </param>
         /// <param name="contentSafety">
         /// Enable [Content Moderation](https://www.assemblyai.com/docs/models/content-moderation), can be true or false<br/>
@@ -471,7 +454,6 @@ namespace AssemblyAI
             int? audioStartFrom,
             bool? autoChapters,
             bool? autoHighlights,
-            global::AssemblyAI.TranscriptBoostParam? boostParam,
             bool? contentSafety,
             int? contentSafetyConfidence,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptCustomSpelling>? customSpelling,
@@ -511,7 +493,6 @@ namespace AssemblyAI
             this.AudioStartFrom = audioStartFrom;
             this.AutoChapters = autoChapters;
             this.AutoHighlights = autoHighlights;
-            this.BoostParam = boostParam;
             this.ContentSafety = contentSafety;
             this.ContentSafetyConfidence = contentSafetyConfidence;
             this.CustomSpelling = customSpelling;
