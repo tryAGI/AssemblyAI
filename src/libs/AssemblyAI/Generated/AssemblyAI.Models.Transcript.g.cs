@@ -69,12 +69,6 @@ namespace AssemblyAI
         public object? AutoHighlightsResult { get; set; }
 
         /// <summary>
-        /// The word boost parameter value
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("boost_param")]
-        public string? BoostParam { get; set; }
-
-        /// <summary>
         /// An array of temporally sequential chapters for the audio file
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chapters")]
@@ -412,13 +406,6 @@ namespace AssemblyAI
         public string? WebhookUrl { get; set; }
 
         /// <summary>
-        /// The list of custom vocabulary to boost transcription probability for
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("word_boost")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::System.Collections.Generic.IList<string>? WordBoost { get; set; }
-
-        /// <summary>
         /// An array of temporally-sequential word objects, one for each word in the transcript.<br/>
         /// See [Speech recognition](https://www.assemblyai.com/docs/models/speech-recognition) for more information.
         /// </summary>
@@ -461,9 +448,6 @@ namespace AssemblyAI
         /// <param name="autoHighlightsResult">
         /// An array of results for the Key Phrases model, if it is enabled.<br/>
         /// See [Key Phrases](https://www.assemblyai.com/docs/models/key-phrases) for more information.
-        /// </param>
-        /// <param name="boostParam">
-        /// The word boost parameter value
         /// </param>
         /// <param name="chapters">
         /// An array of temporally sequential chapters for the audio file
@@ -647,7 +631,6 @@ namespace AssemblyAI
             int? audioStartFrom,
             bool? autoChapters,
             object? autoHighlightsResult,
-            string? boostParam,
             global::System.Collections.Generic.IList<global::AssemblyAI.Chapter>? chapters,
             double? confidence,
             bool? contentSafety,
@@ -706,7 +689,6 @@ namespace AssemblyAI
             this.AudioStartFrom = audioStartFrom;
             this.AutoChapters = autoChapters;
             this.AutoHighlightsResult = autoHighlightsResult;
-            this.BoostParam = boostParam;
             this.Chapters = chapters;
             this.Confidence = confidence;
             this.ContentSafety = contentSafety;
