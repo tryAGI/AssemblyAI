@@ -25,7 +25,7 @@ namespace AssemblyAI
         public string? InputText { get; set; }
 
         /// <summary>
-        /// Max output size in tokens, up to 4000<br/>
+        /// Maximum output size in tokens, up to the `final_model`'s max [(see chart)](/docs/lemur/customize-parameters#change-the-maximum-output-size).<br/>
         /// Default Value: 2000
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_output_size")]
@@ -72,7 +72,7 @@ namespace AssemblyAI
         /// Use either transcript_ids or input_text as input into LeMUR.
         /// </param>
         /// <param name="maxOutputSize">
-        /// Max output size in tokens, up to 4000<br/>
+        /// Maximum output size in tokens, up to the `final_model`'s max [(see chart)](/docs/lemur/customize-parameters#change-the-maximum-output-size).<br/>
         /// Default Value: 2000
         /// </param>
         /// <param name="prompt">
