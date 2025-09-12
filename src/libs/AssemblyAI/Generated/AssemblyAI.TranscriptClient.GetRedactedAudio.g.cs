@@ -23,7 +23,6 @@ namespace AssemblyAI
 
         /// <summary>
         /// Get redacted audio<br/>
-        /// &lt;Warning&gt; Redacted audio creation is not supported on the EU endpoint. &lt;/Warning&gt;<br/>
         /// Retrieve the redacted audio object containing the status and URL to the redacted audio.
         /// </summary>
         /// <param name="transcriptId"></param>
