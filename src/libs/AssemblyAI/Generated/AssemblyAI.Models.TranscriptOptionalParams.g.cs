@@ -106,8 +106,7 @@ namespace AssemblyAI
         public bool? IabCategories { get; set; }
 
         /// <summary>
-        /// &lt;Warning&gt;`keyterms_prompt` is only supported when the `speech_model` is specified as `slam-1`&lt;/Warning&gt;<br/>
-        /// Improve accuracy with up to 1000 domain-specific words or phrases (maximum 6 words per phrase).
+        /// Improve accuracy with up to 200 (for Universal) or 1000 (for Slam-1) domain-specific words or phrases (maximum 6 words per phrase).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("keyterms_prompt")]
         public global::System.Collections.Generic.IList<string>? KeytermsPrompt { get; set; }
@@ -348,8 +347,7 @@ namespace AssemblyAI
         /// Default Value: false
         /// </param>
         /// <param name="keytermsPrompt">
-        /// &lt;Warning&gt;`keyterms_prompt` is only supported when the `speech_model` is specified as `slam-1`&lt;/Warning&gt;<br/>
-        /// Improve accuracy with up to 1000 domain-specific words or phrases (maximum 6 words per phrase).
+        /// Improve accuracy with up to 200 (for Universal) or 1000 (for Slam-1) domain-specific words or phrases (maximum 6 words per phrase).
         /// </param>
         /// <param name="languageCode">
         /// The language of your audio file. Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/concepts/supported-languages).<br/>
