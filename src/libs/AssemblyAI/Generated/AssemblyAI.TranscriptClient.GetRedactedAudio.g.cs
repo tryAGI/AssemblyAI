@@ -23,6 +23,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Get redacted audio<br/>
+        /// &lt;Note&gt;To retrieve the redacted audio on the EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com` in the `GET` request above.&lt;/Note&gt;<br/>
         /// Retrieve the redacted audio object containing the status and URL to the redacted audio.
         /// </summary>
         /// <param name="transcriptId"></param>

@@ -171,7 +171,7 @@ namespace AssemblyAI
         public required global::System.Guid Id { get; set; }
 
         /// <summary>
-        /// Improve accuracy with up to 1000 domain-specific words or phrases (maximum 6 words per phrase).
+        /// Improve accuracy with up to 200 (for Universal) or 1000 (for Slam-1) domain-specific words or phrases (maximum 6 words per phrase).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("keyterms_prompt")]
         public global::System.Collections.Generic.IList<string>? KeytermsPrompt { get; set; }
@@ -495,7 +495,7 @@ namespace AssemblyAI
         /// The unique identifier of your transcript
         /// </param>
         /// <param name="keytermsPrompt">
-        /// Improve accuracy with up to 1000 domain-specific words or phrases (maximum 6 words per phrase).
+        /// Improve accuracy with up to 200 (for Universal) or 1000 (for Slam-1) domain-specific words or phrases (maximum 6 words per phrase).
         /// </param>
         /// <param name="languageCode">
         /// The language of your audio file.<br/>
