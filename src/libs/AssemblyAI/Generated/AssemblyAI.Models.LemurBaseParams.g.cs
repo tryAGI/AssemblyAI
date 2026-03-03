@@ -6,10 +6,24 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Example: {"transcript_ids":["85f9b381-e90c-46ed-beca-7d76245d375e","7c3acd18-df4d-4432-88f5-1e89f8827eea"],"context":"This is an interview about wildfires.","final_model":"anthropic/claude-sonnet-4-20250514","temperature":0,"max_output_size":3000}
     /// </summary>
     public sealed partial class LemurBaseParams
     {
+        /// <summary>
+        /// A list of completed transcripts with text. Up to a maximum of 100 hours of audio.<br/>
+        /// Use either transcript_ids or input_text as input into LeMUR.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("transcript_ids")]
+        public global::System.Collections.Generic.IList<global::System.Guid>? TranscriptIds { get; set; }
+
+        /// <summary>
+        /// Custom formatted transcript data. Maximum size is the context limit of the selected model.<br/>
+        /// Use either transcript_ids or input_text as input into LeMUR.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("input_text")]
+        public string? InputText { get; set; }
+
         /// <summary>
         /// Context to provide the model. This can be a string or a free-form JSON value.
         /// </summary>
@@ -28,13 +42,6 @@ namespace AssemblyAI
         public required global::AssemblyAI.AnyOf<global::AssemblyAI.LemurModel?, string> FinalModel { get; set; } = "default";
 
         /// <summary>
-        /// Custom formatted transcript data. Maximum size is the context limit of the selected model.<br/>
-        /// Use either transcript_ids or input_text as input into LeMUR.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("input_text")]
-        public string? InputText { get; set; }
-
-        /// <summary>
         /// Maximum output size in tokens, up to the `final_model`'s max [(see chart)](/docs/lemur/customize-parameters#change-the-maximum-output-size).<br/>
         /// Default Value: 2000
         /// </summary>
@@ -45,17 +52,10 @@ namespace AssemblyAI
         /// The temperature to use for the model.<br/>
         /// Higher values result in answers that are more creative, lower values are more conservative.<br/>
         /// Can be any value between 0.0 and 1.0 inclusive.<br/>
-        /// Default Value: 0F
+        /// Default Value: 0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
         public float? Temperature { get; set; }
-
-        /// <summary>
-        /// A list of completed transcripts with text. Up to a maximum of 100 hours of audio.<br/>
-        /// Use either transcript_ids or input_text as input into LeMUR.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("transcript_ids")]
-        public global::System.Collections.Generic.IList<global::System.Guid>? TranscriptIds { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -66,16 +66,20 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="LemurBaseParams" /> class.
         /// </summary>
+        /// <param name="transcriptIds">
+        /// A list of completed transcripts with text. Up to a maximum of 100 hours of audio.<br/>
+        /// Use either transcript_ids or input_text as input into LeMUR.
+        /// </param>
+        /// <param name="inputText">
+        /// Custom formatted transcript data. Maximum size is the context limit of the selected model.<br/>
+        /// Use either transcript_ids or input_text as input into LeMUR.
+        /// </param>
         /// <param name="context">
         /// Context to provide the model. This can be a string or a free-form JSON value.
         /// </param>
         /// <param name="finalModel">
         /// The model that is used for the final prompt after compression is performed.<br/>
         /// Default Value: default
-        /// </param>
-        /// <param name="inputText">
-        /// Custom formatted transcript data. Maximum size is the context limit of the selected model.<br/>
-        /// Use either transcript_ids or input_text as input into LeMUR.
         /// </param>
         /// <param name="maxOutputSize">
         /// Maximum output size in tokens, up to the `final_model`'s max [(see chart)](/docs/lemur/customize-parameters#change-the-maximum-output-size).<br/>
@@ -85,29 +89,25 @@ namespace AssemblyAI
         /// The temperature to use for the model.<br/>
         /// Higher values result in answers that are more creative, lower values are more conservative.<br/>
         /// Can be any value between 0.0 and 1.0 inclusive.<br/>
-        /// Default Value: 0F
-        /// </param>
-        /// <param name="transcriptIds">
-        /// A list of completed transcripts with text. Up to a maximum of 100 hours of audio.<br/>
-        /// Use either transcript_ids or input_text as input into LeMUR.
+        /// Default Value: 0
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public LemurBaseParams(
             global::AssemblyAI.AnyOf<global::AssemblyAI.LemurModel?, string> finalModel,
-            global::AssemblyAI.OneOf<string, object>? context,
+            global::System.Collections.Generic.IList<global::System.Guid>? transcriptIds,
             string? inputText,
+            global::AssemblyAI.OneOf<string, object>? context,
             int? maxOutputSize,
-            float? temperature,
-            global::System.Collections.Generic.IList<global::System.Guid>? transcriptIds)
+            float? temperature)
         {
             this.FinalModel = finalModel;
-            this.Context = context;
+            this.TranscriptIds = transcriptIds;
             this.InputText = inputText;
+            this.Context = context;
             this.MaxOutputSize = maxOutputSize;
             this.Temperature = temperature;
-            this.TranscriptIds = transcriptIds;
         }
 
         /// <summary>

@@ -4,13 +4,16 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// A list of transcripts. Transcripts are sorted from newest to oldest. The previous URL always points to a page with older transcripts.
+    /// A list of transcripts. Transcripts are sorted from newest to oldest. The previous URL always points to a page with older transcripts.<br/>
+    /// Example: {"page_details":{"limit":3,"result_count":3,"current_url":"https://api.assemblyai.com/v2/transcript?limit=3","prev_url":"https://api.assemblyai.com/v2/transcript?limit=3\u0026before_id=28a73d01-98db-41dd-9e98-2533ba0af117","next_url":"https://api.assemblyai.com/v2/transcript?limit=3\u0026after_id=b33f4691-85b7-4f31-be12-a87cef1c1229"},"transcripts":[{"id":"b33f4691-85b7-4f31-be12-a87cef1c1229","resource_url":"https://api.assemblyai.com/v2/transcript/b33f4691-85b7-4f31-be12-a87cef1c1229","status":"completed","created":"2024-03-11T21:29:59.936851","completed":"2024-03-11T21:30:07.314223","audio_url":"http://deleted_by_user","error":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464"},{"id":"ce522f10-d204-42e8-a838-6b95098145cc","resource_url":"https://api.assemblyai.com/v2/transcript/ce522f10-d204-42e8-a838-6b95098145cc","status":"error","created":"2024-03-11T21:23:59.979420","completed":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","audio_url":"https://storage.googleapis.com/client-docs-samples/nbc.oopsie","error":"Download error, unable to download https://storage.googleapis.com/client-docs-samples/nbc.oopsie. Please make sure the file exists and is accessible from the internet."},{"id":"28a73d01-98db-41dd-9e98-2533ba0af117","resource_url":"https://api.assemblyai.com/v2/transcript/28a73d01-98db-41dd-9e98-2533ba0af117","status":"completed","created":"2024-03-11T21:12:57.372215","completed":"2024-03-11T21:13:03.267020","audio_url":"https://assembly.ai/nbc.mp3","error":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464"}]}
     /// </summary>
     public sealed partial class TranscriptList
     {
         /// <summary>
-        /// Details of the transcript page. Transcripts are sorted from newest to oldest. The previous URL always points to a page with older transcripts.
+        /// Details of the transcript page<br/>
+        /// Example: {"limit":10,"result_count":10,"current_url":"https://api.assemblyai.com/v2/transcript?limit=10","prev_url":"https://api.assemblyai.com/v2/transcript?limit=10\u0026before_id=62npeahu2b-a8ea-4112-854c-69542c20d90c","next_url":"https://api.assemblyai.com/v2/transcript?limit=10\u0026after_id=62nfw3mlar-01ad-4631-92f6-629929496eed"}
         /// </summary>
+        /// <example>{"limit":10,"result_count":10,"current_url":"https://api.assemblyai.com/v2/transcript?limit=10","prev_url":"https://api.assemblyai.com/v2/transcript?limit=10\u0026before_id=62npeahu2b-a8ea-4112-854c-69542c20d90c","next_url":"https://api.assemblyai.com/v2/transcript?limit=10\u0026after_id=62nfw3mlar-01ad-4631-92f6-629929496eed"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("page_details")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::AssemblyAI.PageDetails PageDetails { get; set; }
@@ -32,7 +35,8 @@ namespace AssemblyAI
         /// Initializes a new instance of the <see cref="TranscriptList" /> class.
         /// </summary>
         /// <param name="pageDetails">
-        /// Details of the transcript page. Transcripts are sorted from newest to oldest. The previous URL always points to a page with older transcripts.
+        /// Details of the transcript page<br/>
+        /// Example: {"limit":10,"result_count":10,"current_url":"https://api.assemblyai.com/v2/transcript?limit=10","prev_url":"https://api.assemblyai.com/v2/transcript?limit=10\u0026before_id=62npeahu2b-a8ea-4112-854c-69542c20d90c","next_url":"https://api.assemblyai.com/v2/transcript?limit=10\u0026after_id=62nfw3mlar-01ad-4631-92f6-629929496eed"}
         /// </param>
         /// <param name="transcripts">
         /// An array of transcripts

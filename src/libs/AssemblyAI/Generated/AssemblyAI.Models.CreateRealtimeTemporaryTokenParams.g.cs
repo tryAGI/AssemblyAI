@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Example: {"expires_in":480}
     /// </summary>
     public sealed partial class CreateRealtimeTemporaryTokenParams
     {

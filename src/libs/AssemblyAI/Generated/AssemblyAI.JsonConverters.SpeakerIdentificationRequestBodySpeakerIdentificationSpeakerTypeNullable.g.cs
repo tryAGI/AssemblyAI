@@ -3,10 +3,10 @@
 namespace AssemblyAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class ErrorStatusNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.ErrorStatus?>
+    public sealed class SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerTypeNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType?>
     {
         /// <inheritdoc />
-        public override global::AssemblyAI.ErrorStatus? Read(
+        public override global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace AssemblyAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::AssemblyAI.ErrorStatusExtensions.ToEnum(stringValue);
+                        return global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerTypeExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace AssemblyAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::AssemblyAI.ErrorStatus)numValue;
+                    return (global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::AssemblyAI.ErrorStatus?);
+                    return default(global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace AssemblyAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::AssemblyAI.ErrorStatus? value,
+            global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace AssemblyAI.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::AssemblyAI.ErrorStatusExtensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerTypeExtensions.ToValueString(value.Value));
             }
         }
     }

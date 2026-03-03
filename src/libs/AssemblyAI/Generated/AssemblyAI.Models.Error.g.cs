@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Example: {"error":"format_text must be a Boolean"}
     /// </summary>
     public sealed partial class Error
     {
@@ -19,8 +19,7 @@ namespace AssemblyAI
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.ErrorStatusJsonConverter))]
-        public global::AssemblyAI.ErrorStatus? Status { get; set; }
+        public string? Status { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -40,7 +39,7 @@ namespace AssemblyAI
 #endif
         public Error(
             string error1,
-            global::AssemblyAI.ErrorStatus? status)
+            string? status)
         {
             this.Error1 = error1 ?? throw new global::System.ArgumentNullException(nameof(error1));
             this.Status = status;

@@ -47,15 +47,6 @@ namespace AssemblyAI
         };
 
         /// <summary>
-        /// LeMUR related operations
-        /// </summary>
-        public LeMURClient LeMUR => new LeMURClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
         /// Streaming Speech-to-Text
         /// </summary>
         public StreamingClient Streaming => new StreamingClient(HttpClient, authorizations: Authorizations)

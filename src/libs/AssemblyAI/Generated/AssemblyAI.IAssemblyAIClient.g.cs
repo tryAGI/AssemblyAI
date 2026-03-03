@@ -43,11 +43,6 @@ namespace AssemblyAI
         public TranscriptClient Transcript { get; }
 
         /// <summary>
-        /// LeMUR related operations
-        /// </summary>
-        public LeMURClient LeMUR { get; }
-
-        /// <summary>
         /// Streaming Speech-to-Text
         /// </summary>
         public StreamingClient Streaming { get; }

@@ -4,23 +4,24 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Timestamp containing a start and end property in milliseconds
+    /// Timestamp containing a start and end property in milliseconds<br/>
+    /// Example: {"start":3978,"end":5114}
     /// </summary>
     public sealed partial class Timestamp
     {
-        /// <summary>
-        /// The end time in milliseconds
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("end")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int End { get; set; }
-
         /// <summary>
         /// The start time in milliseconds
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int Start { get; set; }
+
+        /// <summary>
+        /// The end time in milliseconds
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("end")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int End { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -31,21 +32,21 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="Timestamp" /> class.
         /// </summary>
-        /// <param name="end">
-        /// The end time in milliseconds
-        /// </param>
         /// <param name="start">
         /// The start time in milliseconds
+        /// </param>
+        /// <param name="end">
+        /// The end time in milliseconds
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Timestamp(
-            int end,
-            int start)
+            int start,
+            int end)
         {
-            this.End = end;
             this.Start = start;
+            this.End = end;
         }
 
         /// <summary>

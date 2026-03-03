@@ -4,28 +4,10 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Example: {"after_id":"a7c5cafd-2c2e-4bdd-b0b2-69dade2f7a1b","before_id":"9ea68fd3-f953-42c1-9742-976c447fb463","created_on":"2023-11-03","limit":2,"status":"completed","throttled_only":false}
     /// </summary>
     public sealed partial class ListTranscriptParams
     {
-        /// <summary>
-        /// Get transcripts that were created after this transcript ID
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("after_id")]
-        public global::System.Guid? AfterId { get; set; }
-
-        /// <summary>
-        /// Get transcripts that were created before this transcript ID
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("before_id")]
-        public global::System.Guid? BeforeId { get; set; }
-
-        /// <summary>
-        /// Only get transcripts created on this date
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("created_on")]
-        public global::System.DateTime? CreatedOn { get; set; }
-
         /// <summary>
         /// Maximum amount of transcripts to retrieve<br/>
         /// Default Value: 10
@@ -34,11 +16,29 @@ namespace AssemblyAI
         public int? Limit { get; set; }
 
         /// <summary>
-        /// The status of your transcript. Possible values are queued, processing, completed, or error.
+        /// Filter by transcript status
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.TranscriptStatusJsonConverter))]
         public global::AssemblyAI.TranscriptStatus? Status { get; set; }
+
+        /// <summary>
+        /// Only get transcripts created on this date
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_on")]
+        public global::System.DateTime? CreatedOn { get; set; }
+
+        /// <summary>
+        /// Get transcripts that were created before this transcript ID
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("before_id")]
+        public global::System.Guid? BeforeId { get; set; }
+
+        /// <summary>
+        /// Get transcripts that were created after this transcript ID
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("after_id")]
+        public global::System.Guid? AfterId { get; set; }
 
         /// <summary>
         /// Only get throttled transcripts, overrides the status filter<br/>
@@ -56,21 +56,21 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ListTranscriptParams" /> class.
         /// </summary>
-        /// <param name="afterId">
-        /// Get transcripts that were created after this transcript ID
-        /// </param>
-        /// <param name="beforeId">
-        /// Get transcripts that were created before this transcript ID
-        /// </param>
-        /// <param name="createdOn">
-        /// Only get transcripts created on this date
-        /// </param>
         /// <param name="limit">
         /// Maximum amount of transcripts to retrieve<br/>
         /// Default Value: 10
         /// </param>
         /// <param name="status">
-        /// The status of your transcript. Possible values are queued, processing, completed, or error.
+        /// Filter by transcript status
+        /// </param>
+        /// <param name="createdOn">
+        /// Only get transcripts created on this date
+        /// </param>
+        /// <param name="beforeId">
+        /// Get transcripts that were created before this transcript ID
+        /// </param>
+        /// <param name="afterId">
+        /// Get transcripts that were created after this transcript ID
         /// </param>
         /// <param name="throttledOnly">
         /// Only get throttled transcripts, overrides the status filter<br/>
@@ -80,18 +80,18 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListTranscriptParams(
-            global::System.Guid? afterId,
-            global::System.Guid? beforeId,
-            global::System.DateTime? createdOn,
             int? limit,
             global::AssemblyAI.TranscriptStatus? status,
+            global::System.DateTime? createdOn,
+            global::System.Guid? beforeId,
+            global::System.Guid? afterId,
             bool? throttledOnly)
         {
-            this.AfterId = afterId;
-            this.BeforeId = beforeId;
-            this.CreatedOn = createdOn;
             this.Limit = limit;
             this.Status = status;
+            this.CreatedOn = createdOn;
+            this.BeforeId = beforeId;
+            this.AfterId = afterId;
             this.ThrottledOnly = throttledOnly;
         }
 

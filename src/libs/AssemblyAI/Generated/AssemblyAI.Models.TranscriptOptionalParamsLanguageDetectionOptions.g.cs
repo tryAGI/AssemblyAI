@@ -12,7 +12,7 @@ namespace AssemblyAI
         /// List of languages expected in the audio file. Defaults to `["all"]` when unspecified.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("expected_languages")]
-        public byte[]? ExpectedLanguages { get; set; }
+        public global::System.Collections.Generic.IList<string>? ExpectedLanguages { get; set; }
 
         /// <summary>
         /// If the detected language of the audio file is not in the list of expected languages, the `fallback_language` is used. Specify `["auto"]` to let our model choose the fallback language from `expected_languages` with the highest confidence score.<br/>
@@ -20,6 +20,20 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fallback_language")]
         public string? FallbackLanguage { get; set; }
+
+        /// <summary>
+        /// Whether code switching should be detected.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code_switching")]
+        public bool? CodeSwitching { get; set; }
+
+        /// <summary>
+        /// The confidence threshold for code switching detection. If the code switching confidence is below this threshold, the transcript will be processed in the language with the highest `language_detection_confidence` score.<br/>
+        /// Default Value: 0.3
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code_switching_confidence_threshold")]
+        public double? CodeSwitchingConfidenceThreshold { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -37,15 +51,27 @@ namespace AssemblyAI
         /// If the detected language of the audio file is not in the list of expected languages, the `fallback_language` is used. Specify `["auto"]` to let our model choose the fallback language from `expected_languages` with the highest confidence score.<br/>
         /// Default Value: auto
         /// </param>
+        /// <param name="codeSwitching">
+        /// Whether code switching should be detected.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="codeSwitchingConfidenceThreshold">
+        /// The confidence threshold for code switching detection. If the code switching confidence is below this threshold, the transcript will be processed in the language with the highest `language_detection_confidence` score.<br/>
+        /// Default Value: 0.3
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TranscriptOptionalParamsLanguageDetectionOptions(
-            byte[]? expectedLanguages,
-            string? fallbackLanguage)
+            global::System.Collections.Generic.IList<string>? expectedLanguages,
+            string? fallbackLanguage,
+            bool? codeSwitching,
+            double? codeSwitchingConfidenceThreshold)
         {
             this.ExpectedLanguages = expectedLanguages;
             this.FallbackLanguage = fallbackLanguage;
+            this.CodeSwitching = codeSwitching;
+            this.CodeSwitchingConfidenceThreshold = codeSwitchingConfidenceThreshold;
         }
 
         /// <summary>

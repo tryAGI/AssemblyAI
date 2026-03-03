@@ -4,17 +4,11 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Details of the transcript page. Transcripts are sorted from newest to oldest. The previous URL always points to a page with older transcripts.
+    /// Details of the transcript page. Transcripts are sorted from newest to oldest. The previous URL always points to a page with older transcripts.<br/>
+    /// Example: {"limit":10,"result_count":10,"current_url":"https://api.assemblyai.com/v2/transcript?limit=10","prev_url":"https://api.assemblyai.com/v2/transcript?limit=10\u0026before_id=62npeahu2b-a8ea-4112-854c-69542c20d90c","next_url":"https://api.assemblyai.com/v2/transcript?limit=10\u0026after_id=62nfw3mlar-01ad-4631-92f6-629929496eed"}
     /// </summary>
     public sealed partial class PageDetails
     {
-        /// <summary>
-        /// The URL used to retrieve the current page of transcripts
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("current_url")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string CurrentUrl { get; set; }
-
         /// <summary>
         /// The number of results this page is limited to
         /// </summary>
@@ -23,11 +17,18 @@ namespace AssemblyAI
         public required int Limit { get; set; }
 
         /// <summary>
-        /// The URL to the next page of transcripts. The next URL always points to a page with newer transcripts.
+        /// The actual number of results in the page
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("next_url")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("result_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string? NextUrl { get; set; }
+        public required int ResultCount { get; set; }
+
+        /// <summary>
+        /// The URL used to retrieve the current page of transcripts
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("current_url")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string CurrentUrl { get; set; }
 
         /// <summary>
         /// The URL to the next page of transcripts. The previous URL always points to a page with older transcripts.
@@ -37,11 +38,11 @@ namespace AssemblyAI
         public required string? PrevUrl { get; set; }
 
         /// <summary>
-        /// The actual number of results in the page
+        /// The URL to the next page of transcripts. The next URL always points to a page with newer transcripts.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("result_count")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_url")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int ResultCount { get; set; }
+        public required string? NextUrl { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,36 +53,36 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="PageDetails" /> class.
         /// </summary>
-        /// <param name="currentUrl">
-        /// The URL used to retrieve the current page of transcripts
-        /// </param>
         /// <param name="limit">
         /// The number of results this page is limited to
         /// </param>
-        /// <param name="nextUrl">
-        /// The URL to the next page of transcripts. The next URL always points to a page with newer transcripts.
+        /// <param name="resultCount">
+        /// The actual number of results in the page
+        /// </param>
+        /// <param name="currentUrl">
+        /// The URL used to retrieve the current page of transcripts
         /// </param>
         /// <param name="prevUrl">
         /// The URL to the next page of transcripts. The previous URL always points to a page with older transcripts.
         /// </param>
-        /// <param name="resultCount">
-        /// The actual number of results in the page
+        /// <param name="nextUrl">
+        /// The URL to the next page of transcripts. The next URL always points to a page with newer transcripts.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PageDetails(
-            string currentUrl,
             int limit,
-            string? nextUrl,
+            int resultCount,
+            string currentUrl,
             string? prevUrl,
-            int resultCount)
+            string? nextUrl)
         {
-            this.CurrentUrl = currentUrl ?? throw new global::System.ArgumentNullException(nameof(currentUrl));
             this.Limit = limit;
-            this.NextUrl = nextUrl ?? throw new global::System.ArgumentNullException(nameof(nextUrl));
-            this.PrevUrl = prevUrl ?? throw new global::System.ArgumentNullException(nameof(prevUrl));
             this.ResultCount = resultCount;
+            this.CurrentUrl = currentUrl ?? throw new global::System.ArgumentNullException(nameof(currentUrl));
+            this.PrevUrl = prevUrl ?? throw new global::System.ArgumentNullException(nameof(prevUrl));
+            this.NextUrl = nextUrl ?? throw new global::System.ArgumentNullException(nameof(nextUrl));
         }
 
         /// <summary>

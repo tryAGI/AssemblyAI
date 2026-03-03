@@ -4,10 +4,18 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// The notification when the transcript status is completed or error.
+    /// The notification when the transcript status is completed or error.<br/>
+    /// Example: {"transcript_id":"9ea68fd3-f953-42c1-9742-976c447fb463","status":"completed"}
     /// </summary>
     public sealed partial class TranscriptReadyNotification
     {
+        /// <summary>
+        /// The ID of the transcript
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("transcript_id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Guid TranscriptId { get; set; }
+
         /// <summary>
         /// The status of the transcript. Either completed or error.
         /// </summary>
@@ -15,13 +23,6 @@ namespace AssemblyAI
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.TranscriptReadyStatusJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::AssemblyAI.TranscriptReadyStatus Status { get; set; }
-
-        /// <summary>
-        /// The ID of the transcript
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("transcript_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid TranscriptId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,21 +33,21 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="TranscriptReadyNotification" /> class.
         /// </summary>
-        /// <param name="status">
-        /// The status of the transcript. Either completed or error.
-        /// </param>
         /// <param name="transcriptId">
         /// The ID of the transcript
+        /// </param>
+        /// <param name="status">
+        /// The status of the transcript. Either completed or error.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TranscriptReadyNotification(
-            global::AssemblyAI.TranscriptReadyStatus status,
-            global::System.Guid transcriptId)
+            global::System.Guid transcriptId,
+            global::AssemblyAI.TranscriptReadyStatus status)
         {
-            this.Status = status;
             this.TranscriptId = transcriptId;
+            this.Status = status;
         }
 
         /// <summary>

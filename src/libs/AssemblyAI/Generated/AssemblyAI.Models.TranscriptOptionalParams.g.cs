@@ -1,10 +1,13 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace AssemblyAI
 {
     /// <summary>
-    /// The parameters for creating a transcript
+    /// The parameters for creating a transcript<br/>
+    /// Example: {"speech_model":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","language_code":"en_us","language_detection":true,"language_confidence_threshold":0.7,"punctuate":true,"format_text":true,"multichannel":true,"webhook_url":"https://your-webhook-url.tld/path","webhook_auth_header_name":"webhook-secret","webhook_auth_header_value":"webhook-secret-value","auto_highlights":true,"audio_start_from":10,"audio_end_at":280,"filter_profanity":true,"redact_pii":true,"redact_pii_audio":true,"redact_pii_audio_quality":"mp3","redact_pii_policies":["us_social_security_number","credit_card_number"],"redact_pii_sub":"hash","speaker_labels":true,"speakers_expected":2,"content_safety":true,"iab_categories":true,"custom_spelling":[],"disfluencies":false,"sentiment_analysis":true,"auto_chapters":true,"entity_detection":true,"speech_threshold":0.5,"summarization":true,"summary_model":"informative","summary_type":"bullets","custom_topics":true,"topics":[],"speech_understanding":{"request":{"translation":{"target_languages":["es","de"],"formal":true,"match_original_utterance":true}}}}
     /// </summary>
     public sealed partial class TranscriptOptionalParams
     {
@@ -55,27 +58,11 @@ namespace AssemblyAI
         public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptCustomSpelling>? CustomSpelling { get; set; }
 
         /// <summary>
-        /// Enable custom topics, either true or false<br/>
-        /// Default Value: false
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("custom_topics")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public bool? CustomTopics { get; set; }
-
-        /// <summary>
         /// Transcribe Filler Words, like "umm", in your media file; can be true or false<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disfluencies")]
         public bool? Disfluencies { get; set; }
-
-        /// <summary>
-        /// Enable [Dual Channel](https://www.assemblyai.com/docs/models/speech-recognition#dual-channel-transcription) transcription, can be true or false.<br/>
-        /// Default Value: false
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("dual_channel")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public bool? DualChannel { get; set; }
 
         /// <summary>
         /// Enable [Entity Detection](https://www.assemblyai.com/docs/models/entity-detection), can be true or false<br/>
@@ -106,7 +93,7 @@ namespace AssemblyAI
         public bool? IabCategories { get; set; }
 
         /// <summary>
-        /// Improve accuracy with up to 200 (for Universal) or 1000 (for Slam-1) domain-specific words or phrases (maximum 6 words per phrase).
+        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3-Pro) domain-specific words or phrases (maximum 6 words per phrase).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("keyterms_prompt")]
         public global::System.Collections.Generic.IList<string>? KeytermsPrompt { get; set; }
@@ -117,13 +104,21 @@ namespace AssemblyAI
         /// Default Value: en_us
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_code")]
-        public object? LanguageCode { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>))]
+        public global::AssemblyAI.OneOf<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>? LanguageCode { get; set; }
+
+        /// <summary>
+        /// The language codes of your audio file. Used for [Code switching](/docs/speech-to-text/pre-recorded-audio/code-switching)<br/>
+        /// One of the values specified must be `en`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language_codes")]
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptLanguageCode>? LanguageCodes { get; set; }
 
         /// <summary>
         /// The confidence threshold for the automatically detected language.<br/>
         /// An error will be returned if the language confidence is below this threshold.<br/>
         /// Defaults to 0.<br/>
-        /// Default Value: 0F
+        /// Default Value: 0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_confidence_threshold")]
         public float? LanguageConfidenceThreshold { get; set; }
@@ -149,10 +144,10 @@ namespace AssemblyAI
         public bool? Multichannel { get; set; }
 
         /// <summary>
-        /// This parameter does not currently have any functionality attached to it.
+        /// Provide natural language prompting of up to 1,500 words of contextual information to the model.<br/>
+        /// Note: This parameter is only supported for the Universal-3-Pro model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
-        [global::System.Obsolete("This property marked as deprecated.")]
         public string? Prompt { get; set; }
 
         /// <summary>
@@ -184,6 +179,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Controls the filetype of the audio created by redact_pii_audio. Currently supports mp3 (default) and wav. See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more details.<br/>
+        /// Default Value: mp3<br/>
         /// Example: mp3
         /// </summary>
         /// <example>mp3</example>
@@ -202,7 +198,8 @@ namespace AssemblyAI
         /// Default Value: hash
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_sub")]
-        public object? RedactPiiSub { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.SubstitutionPolicy?, object>))]
+        public global::AssemblyAI.OneOf<global::AssemblyAI.SubstitutionPolicy?, object>? RedactPiiSub { get; set; }
 
         /// <summary>
         /// Enable [Sentiment Analysis](https://www.assemblyai.com/docs/models/sentiment-analysis), can be true or false<br/>
@@ -225,25 +222,32 @@ namespace AssemblyAI
         public global::AssemblyAI.TranscriptOptionalParamsSpeakerOptions? SpeakerOptions { get; set; }
 
         /// <summary>
-        /// Tells the speaker label model how many speakers it should attempt to identify. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.
+        /// Tells the speaker label model how many speakers it should attempt to identify. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speakers_expected")]
         public int? SpeakersExpected { get; set; }
 
         /// <summary>
-        /// The speech model to use for the transcription. When `null`, the `universal` model is used.<br/>
-        /// Default Value: universal
+        /// List multiple speech models in priority order, allowing our system to automatically route your audio to the best available option.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("speech_model")]
-        public object? SpeechModel { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("speech_models")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<string> SpeechModels { get; set; }
 
         /// <summary>
         /// Reject audio files that contain less than this fraction of speech.<br/>
         /// Valid values are in the range [0, 1] inclusive.<br/>
-        /// Default Value: 0F
+        /// Default Value: 0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_threshold")]
         public float? SpeechThreshold { get; set; }
+
+        /// <summary>
+        /// Enable speech understanding tasks like translation, speaker identification, and custom formatting
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speech_understanding")]
+        public global::AssemblyAI.TranscriptOptionalParamsSpeechUnderstanding? SpeechUnderstanding { get; set; }
 
         /// <summary>
         /// Enable [Summarization](https://www.assemblyai.com/docs/models/summarization), can be true or false<br/>
@@ -253,33 +257,39 @@ namespace AssemblyAI
         public bool? Summarization { get; set; }
 
         /// <summary>
-        /// The model to summarize the transcript
+        /// The model to summarize the transcript<br/>
+        /// Default Value: informative
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary_model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.SummaryModelJsonConverter))]
         public global::AssemblyAI.SummaryModel? SummaryModel { get; set; }
 
         /// <summary>
-        /// The type of summary
+        /// The type of summary<br/>
+        /// Default Value: bullets
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary_type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.SummaryTypeJsonConverter))]
         public global::AssemblyAI.SummaryType? SummaryType { get; set; }
 
         /// <summary>
-        /// The list of custom topics
+        /// Control the amount of randomness injected into the model's response.<br/>
+        /// Note: This parameter can only be used with the Universal-3-Pro model.<br/>
+        /// Default Value: 0.0
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("topics")]
-        public global::System.Collections.Generic.IList<string>? Topics { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
+        public double? Temperature { get; set; }
 
         /// <summary>
-        /// The header name to be sent with the transcript completed or failed webhook requests
+        /// The header name to be sent with the transcript completed or failed webhook requests<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_auth_header_name")]
         public string? WebhookAuthHeaderName { get; set; }
 
         /// <summary>
-        /// The header value to send back with the transcript completed or failed webhook requests for added security
+        /// The header value to send back with the transcript completed or failed webhook requests for added security<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_auth_header_value")]
         public string? WebhookAuthHeaderValue { get; set; }
@@ -291,6 +301,28 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_url")]
         public string? WebhookUrl { get; set; }
+
+        /// <summary>
+        /// This parameter does not currently have any functionality attached to it.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom_topics")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public bool? CustomTopics { get; set; }
+
+        /// <summary>
+        /// This parameter has been replaced with the `speech_models` parameter, learn more about the `speech_models` parameter [here](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speech_model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<string, object>))]
+        public global::AssemblyAI.OneOf<string, object>? SpeechModel { get; set; }
+
+        /// <summary>
+        /// This parameter does not currently have any functionality attached to it.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("topics")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::System.Collections.Generic.IList<string>? Topics { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -347,18 +379,22 @@ namespace AssemblyAI
         /// Default Value: false
         /// </param>
         /// <param name="keytermsPrompt">
-        /// Improve accuracy with up to 200 (for Universal) or 1000 (for Slam-1) domain-specific words or phrases (maximum 6 words per phrase).
+        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3-Pro) domain-specific words or phrases (maximum 6 words per phrase).
         /// </param>
         /// <param name="languageCode">
         /// The language of your audio file. Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/concepts/supported-languages).<br/>
         /// The default value is 'en_us'.<br/>
         /// Default Value: en_us
         /// </param>
+        /// <param name="languageCodes">
+        /// The language codes of your audio file. Used for [Code switching](/docs/speech-to-text/pre-recorded-audio/code-switching)<br/>
+        /// One of the values specified must be `en`.
+        /// </param>
         /// <param name="languageConfidenceThreshold">
         /// The confidence threshold for the automatically detected language.<br/>
         /// An error will be returned if the language confidence is below this threshold.<br/>
         /// Defaults to 0.<br/>
-        /// Default Value: 0F
+        /// Default Value: 0
         /// </param>
         /// <param name="languageDetection">
         /// Enable [Automatic language detection](https://www.assemblyai.com/docs/models/speech-recognition#automatic-language-detection), either true or false.<br/>
@@ -370,6 +406,10 @@ namespace AssemblyAI
         /// <param name="multichannel">
         /// Enable [Multichannel](https://www.assemblyai.com/docs/models/speech-recognition#multichannel-transcription) transcription, can be true or false.<br/>
         /// Default Value: false
+        /// </param>
+        /// <param name="prompt">
+        /// Provide natural language prompting of up to 1,500 words of contextual information to the model.<br/>
+        /// Note: This parameter is only supported for the Universal-3-Pro model.
         /// </param>
         /// <param name="punctuate">
         /// Enable Automatic Punctuation, can be true or false<br/>
@@ -388,6 +428,7 @@ namespace AssemblyAI
         /// </param>
         /// <param name="redactPiiAudioQuality">
         /// Controls the filetype of the audio created by redact_pii_audio. Currently supports mp3 (default) and wav. See [PII redaction](https://www.assemblyai.com/docs/models/pii-redaction) for more details.<br/>
+        /// Default Value: mp3<br/>
         /// Example: mp3
         /// </param>
         /// <param name="redactPiiPolicies">
@@ -409,35 +450,44 @@ namespace AssemblyAI
         /// Specify options for speaker diarization.
         /// </param>
         /// <param name="speakersExpected">
-        /// Tells the speaker label model how many speakers it should attempt to identify. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.
+        /// Tells the speaker label model how many speakers it should attempt to identify. See [Speaker diarization](https://www.assemblyai.com/docs/models/speaker-diarization) for more details.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="speechModel">
-        /// The speech model to use for the transcription. When `null`, the `universal` model is used.<br/>
-        /// Default Value: universal
+        /// <param name="speechModels">
+        /// List multiple speech models in priority order, allowing our system to automatically route your audio to the best available option.
         /// </param>
         /// <param name="speechThreshold">
         /// Reject audio files that contain less than this fraction of speech.<br/>
         /// Valid values are in the range [0, 1] inclusive.<br/>
-        /// Default Value: 0F
+        /// Default Value: 0
+        /// </param>
+        /// <param name="speechUnderstanding">
+        /// Enable speech understanding tasks like translation, speaker identification, and custom formatting
         /// </param>
         /// <param name="summarization">
         /// Enable [Summarization](https://www.assemblyai.com/docs/models/summarization), can be true or false<br/>
         /// Default Value: false
         /// </param>
         /// <param name="summaryModel">
-        /// The model to summarize the transcript
+        /// The model to summarize the transcript<br/>
+        /// Default Value: informative
         /// </param>
         /// <param name="summaryType">
-        /// The type of summary
+        /// The type of summary<br/>
+        /// Default Value: bullets
         /// </param>
-        /// <param name="topics">
-        /// The list of custom topics
+        /// <param name="temperature">
+        /// Control the amount of randomness injected into the model's response.<br/>
+        /// Note: This parameter can only be used with the Universal-3-Pro model.<br/>
+        /// Default Value: 0.0
         /// </param>
         /// <param name="webhookAuthHeaderName">
-        /// The header name to be sent with the transcript completed or failed webhook requests
+        /// The header name to be sent with the transcript completed or failed webhook requests<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="webhookAuthHeaderValue">
-        /// The header value to send back with the transcript completed or failed webhook requests for added security
+        /// The header value to send back with the transcript completed or failed webhook requests for added security<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="webhookUrl">
         /// The URL to which we send webhook requests.<br/>
@@ -448,6 +498,7 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TranscriptOptionalParams(
+            global::System.Collections.Generic.IList<string> speechModels,
             int? audioEndAt,
             int? audioStartFrom,
             bool? autoChapters,
@@ -461,32 +512,35 @@ namespace AssemblyAI
             bool? formatText,
             bool? iabCategories,
             global::System.Collections.Generic.IList<string>? keytermsPrompt,
-            object? languageCode,
+            global::AssemblyAI.OneOf<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>? languageCode,
+            global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptLanguageCode>? languageCodes,
             float? languageConfidenceThreshold,
             bool? languageDetection,
             global::AssemblyAI.TranscriptOptionalParamsLanguageDetectionOptions? languageDetectionOptions,
             bool? multichannel,
+            string? prompt,
             bool? punctuate,
             bool? redactPii,
             bool? redactPiiAudio,
             global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptions? redactPiiAudioOptions,
             global::AssemblyAI.RedactPiiAudioQuality? redactPiiAudioQuality,
             global::System.Collections.Generic.IList<global::AssemblyAI.PiiPolicy>? redactPiiPolicies,
-            object? redactPiiSub,
+            global::AssemblyAI.OneOf<global::AssemblyAI.SubstitutionPolicy?, object>? redactPiiSub,
             bool? sentimentAnalysis,
             bool? speakerLabels,
             global::AssemblyAI.TranscriptOptionalParamsSpeakerOptions? speakerOptions,
             int? speakersExpected,
-            object? speechModel,
             float? speechThreshold,
+            global::AssemblyAI.TranscriptOptionalParamsSpeechUnderstanding? speechUnderstanding,
             bool? summarization,
             global::AssemblyAI.SummaryModel? summaryModel,
             global::AssemblyAI.SummaryType? summaryType,
-            global::System.Collections.Generic.IList<string>? topics,
+            double? temperature,
             string? webhookAuthHeaderName,
             string? webhookAuthHeaderValue,
             string? webhookUrl)
         {
+            this.SpeechModels = speechModels ?? throw new global::System.ArgumentNullException(nameof(speechModels));
             this.AudioEndAt = audioEndAt;
             this.AudioStartFrom = audioStartFrom;
             this.AutoChapters = autoChapters;
@@ -501,10 +555,12 @@ namespace AssemblyAI
             this.IabCategories = iabCategories;
             this.KeytermsPrompt = keytermsPrompt;
             this.LanguageCode = languageCode;
+            this.LanguageCodes = languageCodes;
             this.LanguageConfidenceThreshold = languageConfidenceThreshold;
             this.LanguageDetection = languageDetection;
             this.LanguageDetectionOptions = languageDetectionOptions;
             this.Multichannel = multichannel;
+            this.Prompt = prompt;
             this.Punctuate = punctuate;
             this.RedactPii = redactPii;
             this.RedactPiiAudio = redactPiiAudio;
@@ -516,12 +572,12 @@ namespace AssemblyAI
             this.SpeakerLabels = speakerLabels;
             this.SpeakerOptions = speakerOptions;
             this.SpeakersExpected = speakersExpected;
-            this.SpeechModel = speechModel;
             this.SpeechThreshold = speechThreshold;
+            this.SpeechUnderstanding = speechUnderstanding;
             this.Summarization = summarization;
             this.SummaryModel = summaryModel;
             this.SummaryType = summaryType;
-            this.Topics = topics;
+            this.Temperature = temperature;
             this.WebhookAuthHeaderName = webhookAuthHeaderName;
             this.WebhookAuthHeaderValue = webhookAuthHeaderValue;
             this.WebhookUrl = webhookUrl;
