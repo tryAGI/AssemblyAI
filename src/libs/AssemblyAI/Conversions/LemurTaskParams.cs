@@ -27,10 +27,6 @@ public partial struct LemurTaskParams
         LemurBaseParams? @params = null)
     {
         return new LemurTaskParams(
-            value1: LemurTaskParamsVariant1.FromPrompt(prompt),
-            value2: @params ?? new LemurBaseParams
-            {
-                FinalModel = "default",
-            });
+            LemurTaskParamsVariant1.FromPrompt(prompt));
     }
 }

@@ -26,6 +26,7 @@ public partial class LemurTaskParamsVariant1
         return new LemurTaskParamsVariant1
             {
                 Prompt = prompt,
+                FinalModel = LemurModel.AnthropicClaude35Sonnet,
             };
     }
 }

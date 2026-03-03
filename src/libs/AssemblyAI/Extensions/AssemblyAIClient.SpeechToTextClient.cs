@@ -19,7 +19,7 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
     async Task<SpeechToTextResponse> ISpeechToTextClient.GetTextAsync(Stream audioSpeechStream, SpeechToTextOptions? options, CancellationToken cancellationToken)
     {
         TranscriptParams? transcriptParams = options?.RawRepresentationFactory?.Invoke(this) is TranscriptParams tmp ? (TranscriptParams?)tmp : null;
-        TranscriptOptionalParams optionalParams = transcriptParams?.Value2 ?? new();
+        TranscriptOptionalParams optionalParams = transcriptParams?.Value2 ?? new() { SpeechModels = [] };
         optionalParams.LanguageCode ??= options?.SpeechLanguage;
         optionalParams.SpeechModel ??= options?.ModelId;
 

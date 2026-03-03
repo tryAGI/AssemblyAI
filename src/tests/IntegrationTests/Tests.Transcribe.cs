@@ -18,6 +18,7 @@ public partial class Tests
             fileUrl,
             new TranscriptOptionalParams
             {
+                SpeechModels = [],
                 LanguageDetection = true,
                 SpeakerLabels = true, // Identify speakers in your audios
                 AutoHighlights = true, // Identifying highlights in your audio

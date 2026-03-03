@@ -39,7 +39,7 @@ public partial struct TranscriptParams
     {
         return new TranscriptParams(
             value1: TranscriptParamsVariant1.FromUrl(url),
-            value2: @params ?? new TranscriptOptionalParams());
+            value2: @params ?? new TranscriptOptionalParams { SpeechModels = [] });
     }
 
     /// <summary>
