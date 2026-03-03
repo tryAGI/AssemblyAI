@@ -47,7 +47,7 @@ namespace AssemblyAI
             var __pathBuilder = new global::AssemblyAI.PathBuilder(
                 path: $"/v2/transcript/{transcriptId}/word-search",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
+            __pathBuilder
                 .AddRequiredParameter("words", words, delimiter: ",", explode: false) 
                 ; 
             var __path = __pathBuilder.ToString();

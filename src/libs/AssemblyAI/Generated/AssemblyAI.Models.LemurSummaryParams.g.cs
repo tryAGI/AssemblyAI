@@ -5,12 +5,12 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Example: {"transcript_ids":["47b95ba5-8889-44d8-bc80-5de38306e582"],"context":"This is an interview about wildfires.","final_model":"anthropic/claude-sonnet-4-20250514","temperature":0,"max_output_size":3000}
     /// </summary>
     public readonly partial struct LemurSummaryParams : global::System.IEquatable<LemurSummaryParams>
     {
         /// <summary>
-        /// 
+        /// Example: {"transcript_ids":["85f9b381-e90c-46ed-beca-7d76245d375e","7c3acd18-df4d-4432-88f5-1e89f8827eea"],"context":"This is an interview about wildfires.","final_model":"anthropic/claude-sonnet-4-20250514","temperature":0,"max_output_size":3000}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.LemurBaseParams? Value1 { get; init; }
@@ -29,6 +29,22 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+#if NET6_0_OR_GREATER
+        public global::AssemblyAI.LemurSummaryParamsVariant2? Value2 { get; init; }
+#else
+        public global::AssemblyAI.LemurSummaryParamsVariant2? Value2 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+#endif
+        public bool IsValue2 => Value2 != null;
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator LemurSummaryParams(global::AssemblyAI.LemurBaseParams value) => new LemurSummaryParams((global::AssemblyAI.LemurBaseParams?)value);
 
         /// <summary>
@@ -43,23 +59,6 @@ namespace AssemblyAI
         {
             Value1 = value;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::AssemblyAI.LemurSummaryParamsVariant2? Value2 { get; init; }
-#else
-        public global::AssemblyAI.LemurSummaryParamsVariant2? Value2 { get; }
-#endif
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
-#endif
-        public bool IsValue2 => Value2 != null;
 
         /// <summary>
         /// 

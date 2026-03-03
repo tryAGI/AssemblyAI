@@ -5,7 +5,8 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// The parameters for creating a transcript
+    /// The parameters for creating a transcript<br/>
+    /// Example: {"speech_model":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","language_code":"en_us","language_detection":true,"language_confidence_threshold":0.7,"audio_url":"https://assembly.ai/wildfires.mp3","punctuate":true,"format_text":true,"multichannel":true,"webhook_url":"https://your-webhook-url/path","webhook_auth_header_name":"webhook-secret","webhook_auth_header_value":"webhook-secret-value","auto_highlights":true,"audio_start_from":10,"audio_end_at":280,"filter_profanity":true,"redact_pii":true,"redact_pii_audio":true,"redact_pii_audio_quality":"mp3","redact_pii_policies":["us_social_security_number","credit_card_number"],"redact_pii_sub":"hash","speaker_labels":true,"speakers_expected":2,"content_safety":true,"iab_categories":true,"custom_spelling":[],"disfluencies":false,"sentiment_analysis":true,"auto_chapters":true,"entity_detection":true,"speech_threshold":0.5,"summarization":true,"summary_model":"informative","summary_type":"bullets","custom_topics":true,"topics":[],"speech_understanding":{"request":{"translation":{"target_languages":["es","de"],"formal":true,"match_original_utterance":true}}}}
     /// </summary>
     public readonly partial struct TranscriptParams : global::System.IEquatable<TranscriptParams>
     {
@@ -27,6 +28,23 @@ namespace AssemblyAI
         public bool IsValue1 => Value1 != null;
 
         /// <summary>
+        /// The parameters for creating a transcript<br/>
+        /// Example: {"speech_model":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","language_code":"en_us","language_detection":true,"language_confidence_threshold":0.7,"punctuate":true,"format_text":true,"multichannel":true,"webhook_url":"https://your-webhook-url.tld/path","webhook_auth_header_name":"webhook-secret","webhook_auth_header_value":"webhook-secret-value","auto_highlights":true,"audio_start_from":10,"audio_end_at":280,"filter_profanity":true,"redact_pii":true,"redact_pii_audio":true,"redact_pii_audio_quality":"mp3","redact_pii_policies":["us_social_security_number","credit_card_number"],"redact_pii_sub":"hash","speaker_labels":true,"speakers_expected":2,"content_safety":true,"iab_categories":true,"custom_spelling":[],"disfluencies":false,"sentiment_analysis":true,"auto_chapters":true,"entity_detection":true,"speech_threshold":0.5,"summarization":true,"summary_model":"informative","summary_type":"bullets","custom_topics":true,"topics":[],"speech_understanding":{"request":{"translation":{"target_languages":["es","de"],"formal":true,"match_original_utterance":true}}}}
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::AssemblyAI.TranscriptOptionalParams? Value2 { get; init; }
+#else
+        public global::AssemblyAI.TranscriptOptionalParams? Value2 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+#endif
+        public bool IsValue2 => Value2 != null;
+        /// <summary>
         /// 
         /// </summary>
         public static implicit operator TranscriptParams(global::AssemblyAI.TranscriptParamsVariant1 value) => new TranscriptParams((global::AssemblyAI.TranscriptParamsVariant1?)value);
@@ -43,23 +61,6 @@ namespace AssemblyAI
         {
             Value1 = value;
         }
-
-        /// <summary>
-        /// The parameters for creating a transcript
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::AssemblyAI.TranscriptOptionalParams? Value2 { get; init; }
-#else
-        public global::AssemblyAI.TranscriptOptionalParams? Value2 { get; }
-#endif
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
-#endif
-        public bool IsValue2 => Value2 != null;
 
         /// <summary>
         /// 

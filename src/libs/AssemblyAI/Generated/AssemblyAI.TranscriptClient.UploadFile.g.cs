@@ -23,8 +23,9 @@ namespace AssemblyAI
 
         /// <summary>
         /// Upload a media file<br/>
+        /// Upload a media file to AssemblyAI's servers.<br/>
         /// &lt;Note&gt;To upload a media file to our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
-        /// Upload a media file to AssemblyAI's servers.
+        /// &lt;Warning&gt;Requests to transcribe uploaded files must use an API key from the same project as the key that was used to upload the file. If you use an API key from a different project you will get a `403` error and "Cannot access uploaded file" message.&lt;/Warning&gt;
         /// </summary>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -68,11 +69,9 @@ namespace AssemblyAI
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
-            var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
-            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                content: __httpRequestContentBody,
-                encoding: global::System.Text.Encoding.UTF8,
-                mediaType: "application/octet-stream");
+
+            var __httpRequestContent = new global::System.Net.Http.ByteArrayContent(request);
+            __httpRequestContent.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
             __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
@@ -162,6 +161,43 @@ namespace AssemblyAI
                 {
                     ResponseBody = __content_401,
                     ResponseObject = __value_401,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
+            // Cannot access uploaded file
+            if ((int)__response.StatusCode == 403)
+            {
+                string? __content_403 = null;
+                global::System.Exception? __exception_403 = null;
+                global::AssemblyAI.Error? __value_403 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_403 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_403 = global::AssemblyAI.Error.FromJson(__content_403, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_403 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_403 = await global::AssemblyAI.Error.FromJsonStreamAsync(__contentStream_403, JsonSerializerContext).ConfigureAwait(false);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_403 = __ex;
+                }
+
+                throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
+                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_403,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_403,
+                    ResponseObject = __value_403,
                     ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                         __response.Headers,
                         h => h.Key,
@@ -416,25 +452,6 @@ namespace AssemblyAI
                     };
                 }
             }
-        }
-
-        /// <summary>
-        /// Upload a media file<br/>
-        /// &lt;Note&gt;To upload a media file to our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
-        /// Upload a media file to AssemblyAI's servers.
-        /// </summary>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::AssemblyAI.UploadedFile> UploadFileAsync(
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new byte[]
-            {
-            };
-
-            return await UploadFileAsync(
-                request: __request,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

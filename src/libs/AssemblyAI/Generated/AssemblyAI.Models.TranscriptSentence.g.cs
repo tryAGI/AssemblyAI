@@ -4,36 +4,16 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Example: {"text":"Smoke from hundreds of wildfires in Canada is triggering air quality alerts throughout the US.","start":250,"end":6350,"confidence":0.72412,"words":[{"text":"Smoke","start":250,"end":650,"confidence":0.72412,"speaker":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464"},{"text":"from","start":730,"end":1022,"confidence":0.99996,"speaker":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464"},{"text":"hundreds","start":1076,"end":1466,"confidence":0.99992,"speaker":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464"},{"text":"of","start":1498,"end":1646,"confidence":1,"speaker":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464"}],"speaker":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464"}
     /// </summary>
     public sealed partial class TranscriptSentence
     {
         /// <summary>
-        /// The channel of the sentence. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
+        /// The transcript of the sentence
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
-        public string? Channel { get; set; }
-
-        /// <summary>
-        /// The confidence score for the transcript of this sentence
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("confidence")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required double Confidence { get; set; }
-
-        /// <summary>
-        /// The ending time, in milliseconds, for the sentence
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("end")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int End { get; set; }
-
-        /// <summary>
-        /// The speaker of the sentence if [Speaker Diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, else null
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string? Speaker { get; set; }
+        public required string Text { get; set; }
 
         /// <summary>
         /// The starting time, in milliseconds, for the sentence
@@ -43,11 +23,18 @@ namespace AssemblyAI
         public required int Start { get; set; }
 
         /// <summary>
-        /// The transcript of the sentence
+        /// The ending time, in milliseconds, for the sentence
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("end")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Text { get; set; }
+        public required int End { get; set; }
+
+        /// <summary>
+        /// The confidence score for the transcript of this sentence
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("confidence")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required double Confidence { get; set; }
 
         /// <summary>
         /// An array of words in the sentence
@@ -55,6 +42,19 @@ namespace AssemblyAI
         [global::System.Text.Json.Serialization.JsonPropertyName("words")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord> Words { get; set; }
+
+        /// <summary>
+        /// The channel of the sentence. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("channel")]
+        public string? Channel { get; set; }
+
+        /// <summary>
+        /// The speaker of the sentence if [Speaker Diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, else null
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string? Speaker { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -65,45 +65,45 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="TranscriptSentence" /> class.
         /// </summary>
-        /// <param name="channel">
-        /// The channel of the sentence. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
-        /// </param>
-        /// <param name="confidence">
-        /// The confidence score for the transcript of this sentence
-        /// </param>
-        /// <param name="end">
-        /// The ending time, in milliseconds, for the sentence
-        /// </param>
-        /// <param name="speaker">
-        /// The speaker of the sentence if [Speaker Diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, else null
+        /// <param name="text">
+        /// The transcript of the sentence
         /// </param>
         /// <param name="start">
         /// The starting time, in milliseconds, for the sentence
         /// </param>
-        /// <param name="text">
-        /// The transcript of the sentence
+        /// <param name="end">
+        /// The ending time, in milliseconds, for the sentence
+        /// </param>
+        /// <param name="confidence">
+        /// The confidence score for the transcript of this sentence
         /// </param>
         /// <param name="words">
         /// An array of words in the sentence
+        /// </param>
+        /// <param name="channel">
+        /// The channel of the sentence. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
+        /// </param>
+        /// <param name="speaker">
+        /// The speaker of the sentence if [Speaker Diarization](https://www.assemblyai.com/docs/models/speaker-diarization) is enabled, else null
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TranscriptSentence(
-            double confidence,
-            int end,
-            string? speaker,
-            int start,
             string text,
+            int start,
+            int end,
+            double confidence,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord> words,
+            string? speaker,
             string? channel)
         {
-            this.Confidence = confidence;
-            this.End = end;
-            this.Speaker = speaker ?? throw new global::System.ArgumentNullException(nameof(speaker));
-            this.Start = start;
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
+            this.Start = start;
+            this.End = end;
+            this.Confidence = confidence;
             this.Words = words ?? throw new global::System.ArgumentNullException(nameof(words));
+            this.Speaker = speaker ?? throw new global::System.ArgumentNullException(nameof(speaker));
             this.Channel = channel;
         }
 

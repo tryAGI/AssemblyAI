@@ -4,17 +4,11 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Chapter of the audio file
+    /// Chapter of the audio file<br/>
+    /// Example: {"summary":"Smoke from hundreds of wildfires in Canada is triggering air quality alerts throughout the US. Skylines from Maine to Maryland to Minnesota are gray and smoggy. In some places, the air quality warnings include the warning to stay inside.","gist":"Smoggy air quality alerts across US","headline":"Smoke from hundreds of wildfires in Canada is triggering air quality alerts across US","start":250,"end":28840}
     /// </summary>
     public sealed partial class Chapter
     {
-        /// <summary>
-        /// The starting time, in milliseconds, for the chapter
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("end")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int End { get; set; }
-
         /// <summary>
         /// An ultra-short summary (just a few words) of the content spoken in the chapter
         /// </summary>
@@ -30,6 +24,13 @@ namespace AssemblyAI
         public required string Headline { get; set; }
 
         /// <summary>
+        /// A one paragraph summary of the content spoken during the chapter
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Summary { get; set; }
+
+        /// <summary>
         /// The starting time, in milliseconds, for the chapter
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start")]
@@ -37,11 +38,11 @@ namespace AssemblyAI
         public required int Start { get; set; }
 
         /// <summary>
-        /// A one paragraph summary of the content spoken during the chapter
+        /// The starting time, in milliseconds, for the chapter
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("end")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Summary { get; set; }
+        public required int End { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,36 +53,36 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="Chapter" /> class.
         /// </summary>
-        /// <param name="end">
-        /// The starting time, in milliseconds, for the chapter
-        /// </param>
         /// <param name="gist">
         /// An ultra-short summary (just a few words) of the content spoken in the chapter
         /// </param>
         /// <param name="headline">
         /// A single sentence summary of the content spoken during the chapter
         /// </param>
+        /// <param name="summary">
+        /// A one paragraph summary of the content spoken during the chapter
+        /// </param>
         /// <param name="start">
         /// The starting time, in milliseconds, for the chapter
         /// </param>
-        /// <param name="summary">
-        /// A one paragraph summary of the content spoken during the chapter
+        /// <param name="end">
+        /// The starting time, in milliseconds, for the chapter
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Chapter(
-            int end,
             string gist,
             string headline,
+            string summary,
             int start,
-            string summary)
+            int end)
         {
-            this.End = end;
             this.Gist = gist ?? throw new global::System.ArgumentNullException(nameof(gist));
             this.Headline = headline ?? throw new global::System.ArgumentNullException(nameof(headline));
-            this.Start = start;
             this.Summary = summary ?? throw new global::System.ArgumentNullException(nameof(summary));
+            this.Start = start;
+            this.End = end;
         }
 
         /// <summary>

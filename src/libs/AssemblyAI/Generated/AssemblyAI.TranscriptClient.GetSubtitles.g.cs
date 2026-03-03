@@ -54,7 +54,7 @@ namespace AssemblyAI
             var __pathBuilder = new global::AssemblyAI.PathBuilder(
                 path: $"/v2/transcript/{transcriptId}/{subtitleFormat}",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
+            __pathBuilder
                 .AddOptionalParameter("chars_per_caption", charsPerCaption?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();
