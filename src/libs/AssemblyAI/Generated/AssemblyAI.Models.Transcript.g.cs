@@ -387,9 +387,7 @@ namespace AssemblyAI
         public int? WebhookStatusCode { get; set; }
 
         /// <summary>
-        /// The URL to which we send webhook requests.<br/>
-        /// We sends two different types of webhook requests.<br/>
-        /// One request when a transcript is completed or failed, and one request when the redacted audio is ready if redact_pii_audio is enabled.
+        /// The URL to which we send webhook requests.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_url")]
         public string? WebhookUrl { get; set; }
@@ -648,9 +646,7 @@ namespace AssemblyAI
         /// The status code we received from your server when delivering the transcript completed or failed webhook request, if a webhook URL was provided
         /// </param>
         /// <param name="webhookUrl">
-        /// The URL to which we send webhook requests.<br/>
-        /// We sends two different types of webhook requests.<br/>
-        /// One request when a transcript is completed or failed, and one request when the redacted audio is ready if redact_pii_audio is enabled.
+        /// The URL to which we send webhook requests.
         /// </param>
         /// <param name="words">
         /// An array of temporally-sequential word objects, one for each word in the transcript.<br/>

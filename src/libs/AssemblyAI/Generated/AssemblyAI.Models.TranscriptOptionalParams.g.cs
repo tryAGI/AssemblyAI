@@ -295,9 +295,7 @@ namespace AssemblyAI
         public string? WebhookAuthHeaderValue { get; set; }
 
         /// <summary>
-        /// The URL to which we send webhook requests.<br/>
-        /// We sends two different types of webhook requests.<br/>
-        /// One request when a transcript is completed or failed, and one request when the redacted audio is ready if redact_pii_audio is enabled.
+        /// The URL to which we send webhook requests.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_url")]
         public string? WebhookUrl { get; set; }
@@ -490,9 +488,7 @@ namespace AssemblyAI
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="webhookUrl">
-        /// The URL to which we send webhook requests.<br/>
-        /// We sends two different types of webhook requests.<br/>
-        /// One request when a transcript is completed or failed, and one request when the redacted audio is ready if redact_pii_audio is enabled.
+        /// The URL to which we send webhook requests.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
