@@ -7,11 +7,21 @@ namespace AssemblyAI
     {
         partial void PrepareListTranscriptsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref global::AssemblyAI.TranscriptStatus? status);
+            ref int? limit,
+            ref global::AssemblyAI.TranscriptStatus? status,
+            ref global::System.DateTime? createdOn,
+            ref global::System.Guid? beforeId,
+            ref global::System.Guid? afterId,
+            ref bool? throttledOnly);
         partial void PrepareListTranscriptsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::AssemblyAI.TranscriptStatus? status);
+            int? limit,
+            global::AssemblyAI.TranscriptStatus? status,
+            global::System.DateTime? createdOn,
+            global::System.Guid? beforeId,
+            global::System.Guid? afterId,
+            bool? throttledOnly);
         partial void ProcessListTranscriptsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,26 +38,50 @@ namespace AssemblyAI
         /// Transcripts are sorted from newest to oldest and can be retrieved for the last 90 days of usage. The previous URL always points to a page with older transcripts.<br/>
         /// If you need to retrieve transcripts from more than 90 days ago please reach out to our Support team at support@assemblyai.com.
         /// </summary>
+        /// <param name="limit">
+        /// Default Value: 10
+        /// </param>
         /// <param name="status">
         /// The status of your transcript. Possible values are queued, processing, completed, or error.
+        /// </param>
+        /// <param name="createdOn"></param>
+        /// <param name="beforeId"></param>
+        /// <param name="afterId"></param>
+        /// <param name="throttledOnly">
+        /// Default Value: false
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::AssemblyAI.TranscriptList> ListTranscriptsAsync(
+            int? limit = default,
             global::AssemblyAI.TranscriptStatus? status = default,
+            global::System.DateTime? createdOn = default,
+            global::System.Guid? beforeId = default,
+            global::System.Guid? afterId = default,
+            bool? throttledOnly = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareListTranscriptsArguments(
                 httpClient: HttpClient,
-                status: ref status);
+                limit: ref limit,
+                status: ref status,
+                createdOn: ref createdOn,
+                beforeId: ref beforeId,
+                afterId: ref afterId,
+                throttledOnly: ref throttledOnly);
 
             var __pathBuilder = new global::AssemblyAI.PathBuilder(
                 path: "/v2/transcript",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
-                .AddOptionalParameter("status", status?.ToValueString()) 
+                .AddOptionalParameter("limit", limit?.ToString())
+                .AddOptionalParameter("status", status?.ToValueString())
+                .AddOptionalParameter("created_on", createdOn?.ToString("yyyy-MM-dd"))
+                .AddOptionalParameter("before_id", beforeId?.ToString())
+                .AddOptionalParameter("after_id", afterId?.ToString())
+                .AddOptionalParameter("throttled_only", throttledOnly?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -80,7 +114,12 @@ namespace AssemblyAI
             PrepareListTranscriptsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                status: status);
+                limit: limit,
+                status: status,
+                createdOn: createdOn,
+                beforeId: beforeId,
+                afterId: afterId,
+                throttledOnly: throttledOnly);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
