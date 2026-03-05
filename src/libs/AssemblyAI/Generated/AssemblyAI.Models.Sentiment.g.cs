@@ -11,15 +11,15 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        POSITIVE,
+        Positive,
         /// <summary>
         /// 
         /// </summary>
-        NEUTRAL,
+        Neutral,
         /// <summary>
         /// 
         /// </summary>
-        NEGATIVE,
+        Negative,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace AssemblyAI
         {
             return value switch
             {
-                Sentiment.POSITIVE => "POSITIVE",
-                Sentiment.NEUTRAL => "NEUTRAL",
-                Sentiment.NEGATIVE => "NEGATIVE",
+                Sentiment.Positive => "POSITIVE",
+                Sentiment.Neutral => "NEUTRAL",
+                Sentiment.Negative => "NEGATIVE",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace AssemblyAI
         {
             return value switch
             {
-                "POSITIVE" => Sentiment.POSITIVE,
-                "NEUTRAL" => Sentiment.NEUTRAL,
-                "NEGATIVE" => Sentiment.NEGATIVE,
+                "POSITIVE" => Sentiment.Positive,
+                "NEUTRAL" => Sentiment.Neutral,
+                "NEGATIVE" => Sentiment.Negative,
                 _ => null,
             };
         }

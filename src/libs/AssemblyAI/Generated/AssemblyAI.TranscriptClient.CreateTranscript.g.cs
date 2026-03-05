@@ -30,6 +30,7 @@ namespace AssemblyAI
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> CreateTranscriptAsync(
+
             global::AssemblyAI.TranscriptParams request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
