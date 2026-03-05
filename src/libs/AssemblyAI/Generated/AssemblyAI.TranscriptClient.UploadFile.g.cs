@@ -31,6 +31,7 @@ namespace AssemblyAI
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::AssemblyAI.UploadedFile> UploadFileAsync(
+
             byte[] request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
