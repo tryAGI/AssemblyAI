@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Specify options for PII redacted audio files.
+    /// Specify options for [PII redacted audio](https://www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) files.
     /// </summary>
     public sealed partial class TranscriptOptionalParamsRedactPiiAudioOptions
     {

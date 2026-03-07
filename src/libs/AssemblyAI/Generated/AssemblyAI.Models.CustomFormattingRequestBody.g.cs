@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Request body for [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting).
     /// </summary>
     public sealed partial class CustomFormattingRequestBody
     {

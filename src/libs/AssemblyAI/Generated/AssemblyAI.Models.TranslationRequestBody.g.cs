@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Request body for [Translation](https://www.assemblyai.com/docs/speech-understanding/translation).
     /// </summary>
     public sealed partial class TranslationRequestBody
     {

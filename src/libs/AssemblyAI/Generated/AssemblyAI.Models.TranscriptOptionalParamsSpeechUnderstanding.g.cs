@@ -6,7 +6,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Enable speech understanding tasks like translation, speaker identification, and custom formatting
+    /// Enable speech understanding tasks like [Translation](https://www.assemblyai.com/docs/speech-understanding/translation), [Speaker Identification](https://www.assemblyai.com/docs/speech-understanding/speaker-identification), and [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting). See the task-specific docs for available options and configuration.
     /// </summary>
     public sealed partial class TranscriptOptionalParamsSpeechUnderstanding
     {
