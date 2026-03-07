@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Translated text keyed by language code
+    /// Translated text keyed by language code. See [Translation](https://www.assemblyai.com/docs/speech-understanding/translation) for more details.
     /// </summary>
     public sealed partial class TranscriptTranslatedTexts
     {

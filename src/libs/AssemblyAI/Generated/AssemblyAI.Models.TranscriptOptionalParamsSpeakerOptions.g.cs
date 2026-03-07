@@ -4,12 +4,12 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Specify options for speaker diarization.
+    /// Specify options for [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization#set-a-range-of-possible-speakers). Use this to set a range of possible speakers.
     /// </summary>
     public sealed partial class TranscriptOptionalParamsSpeakerOptions
     {
         /// <summary>
-        /// The minimum number of speakers expected in the audio file.<br/>
+        /// The minimum number of speakers expected in the audio file. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization#set-a-range-of-possible-speakers) for more details.<br/>
         /// Default Value: 1
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("min_speakers_expected")]
@@ -17,7 +17,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// &lt;Warning&gt;Setting this parameter too high may hurt model accuracy&lt;/Warning&gt;<br/>
-        /// The maximum number of speakers expected in the audio file.<br/>
+        /// The maximum number of speakers expected in the audio file. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization#set-a-range-of-possible-speakers) for more details.<br/>
         /// Default Value: 10
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_speakers_expected")]
@@ -33,12 +33,12 @@ namespace AssemblyAI
         /// Initializes a new instance of the <see cref="TranscriptOptionalParamsSpeakerOptions" /> class.
         /// </summary>
         /// <param name="minSpeakersExpected">
-        /// The minimum number of speakers expected in the audio file.<br/>
+        /// The minimum number of speakers expected in the audio file. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization#set-a-range-of-possible-speakers) for more details.<br/>
         /// Default Value: 1
         /// </param>
         /// <param name="maxSpeakersExpected">
         /// &lt;Warning&gt;Setting this parameter too high may hurt model accuracy&lt;/Warning&gt;<br/>
-        /// The maximum number of speakers expected in the audio file.<br/>
+        /// The maximum number of speakers expected in the audio file. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization#set-a-range-of-possible-speakers) for more details.<br/>
         /// Default Value: 10
         /// </param>
 #if NET7_0_OR_GREATER

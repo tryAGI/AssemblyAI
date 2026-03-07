@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Type of speaker identification
+    /// Type of speaker identification. See [Speaker Identification](https://www.assemblyai.com/docs/speech-understanding/speaker-identification) for details on each type.
     /// </summary>
     public enum SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType
     {

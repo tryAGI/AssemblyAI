@@ -9,14 +9,14 @@ namespace AssemblyAI
     public sealed partial class TranslationRequestBodyTranslation
     {
         /// <summary>
-        /// List of target language codes (e.g., `["es", "de"]`)
+        /// List of target language codes (e.g., `["es", "de"]`). See [Translation](https://www.assemblyai.com/docs/speech-understanding/translation) for supported languages.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target_languages")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<string> TargetLanguages { get; set; }
 
         /// <summary>
-        /// Use formal language style<br/>
+        /// Use formal language style. See [Translation](https://www.assemblyai.com/docs/speech-understanding/translation) for more details.<br/>
         /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("formal")]
@@ -39,10 +39,10 @@ namespace AssemblyAI
         /// Initializes a new instance of the <see cref="TranslationRequestBodyTranslation" /> class.
         /// </summary>
         /// <param name="targetLanguages">
-        /// List of target language codes (e.g., `["es", "de"]`)
+        /// List of target language codes (e.g., `["es", "de"]`). See [Translation](https://www.assemblyai.com/docs/speech-understanding/translation) for supported languages.
         /// </param>
         /// <param name="formal">
-        /// Use formal language style<br/>
+        /// Use formal language style. See [Translation](https://www.assemblyai.com/docs/speech-understanding/translation) for more details.<br/>
         /// Default Value: true
         /// </param>
         /// <param name="matchOriginalUtterance">

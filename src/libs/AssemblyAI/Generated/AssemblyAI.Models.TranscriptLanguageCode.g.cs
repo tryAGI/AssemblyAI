@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// The language of your audio file. Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/concepts/supported-languages).<br/>
+    /// The language of your audio file. Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).<br/>
     /// The default value is 'en_us'.
     /// </summary>
     public enum TranscriptLanguageCode
@@ -26,7 +26,7 @@ namespace AssemblyAI
         /// </summary>
         EnUs,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Es,
         /// <summary>
@@ -34,7 +34,7 @@ namespace AssemblyAI
         /// </summary>
         Fr,
         /// <summary>
-        /// 
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         De,
         /// <summary>
@@ -42,7 +42,7 @@ namespace AssemblyAI
         /// </summary>
         It,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// 
         /// </summary>
         Pt,
         /// <summary>
@@ -62,7 +62,7 @@ namespace AssemblyAI
         /// </summary>
         Am,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Ar,
         /// <summary>
@@ -70,7 +70,7 @@ namespace AssemblyAI
         /// </summary>
         Hy,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         As,
         /// <summary>
@@ -122,7 +122,7 @@ namespace AssemblyAI
         /// </summary>
         Hr,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Cs,
         /// <summary>
@@ -134,11 +134,11 @@ namespace AssemblyAI
         /// </summary>
         Et,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Fo,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Fi,
         /// <summary>
@@ -154,11 +154,11 @@ namespace AssemblyAI
         /// </summary>
         El,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Gu,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Ht,
         /// <summary>
@@ -170,7 +170,7 @@ namespace AssemblyAI
         /// </summary>
         Haw,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         He,
         /// <summary>
@@ -218,7 +218,7 @@ namespace AssemblyAI
         /// </summary>
         Lo,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         La,
         /// <summary>
@@ -282,7 +282,7 @@ namespace AssemblyAI
         /// </summary>
         Nn,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Oc,
         /// <summary>
@@ -290,7 +290,7 @@ namespace AssemblyAI
         /// </summary>
         Pa,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Ps,
         /// <summary>
@@ -326,7 +326,7 @@ namespace AssemblyAI
         /// </summary>
         Sd,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Si,
         /// <summary>
@@ -342,7 +342,7 @@ namespace AssemblyAI
         /// </summary>
         So,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Su,
         /// <summary>
@@ -366,11 +366,11 @@ namespace AssemblyAI
         /// </summary>
         Ta,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Tt,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Te,
         /// <summary>
@@ -394,7 +394,7 @@ namespace AssemblyAI
         /// </summary>
         Uk,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Ur,
         /// <summary>
@@ -414,7 +414,7 @@ namespace AssemblyAI
         /// </summary>
         Yi,
         /// <summary>
-        /// //www.assemblyai.com/docs/concepts/supported-languages).
+        /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         Yo,
     }

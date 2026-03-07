@@ -9,19 +9,19 @@ namespace AssemblyAI
     public sealed partial class CustomFormattingRequestBodyCustomFormatting
     {
         /// <summary>
-        /// Date format pattern (e.g., `"mm/dd/yyyy"`)
+        /// Date format pattern (e.g., `"mm/dd/yyyy"`). See [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("date")]
         public string? Date { get; set; }
 
         /// <summary>
-        /// Phone number format pattern (e.g., `"(xxx)xxx-xxxx"`)
+        /// Phone number format pattern (e.g., `"(xxx)xxx-xxxx"`). See [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("phone_number")]
         public string? PhoneNumber { get; set; }
 
         /// <summary>
-        /// Email format pattern (e.g., `"username@domain.com"`)
+        /// Email format pattern (e.g., `"username@domain.com"`). See [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("email")]
         public string? Email { get; set; }
@@ -36,13 +36,13 @@ namespace AssemblyAI
         /// Initializes a new instance of the <see cref="CustomFormattingRequestBodyCustomFormatting" /> class.
         /// </summary>
         /// <param name="date">
-        /// Date format pattern (e.g., `"mm/dd/yyyy"`)
+        /// Date format pattern (e.g., `"mm/dd/yyyy"`). See [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting) for more details.
         /// </param>
         /// <param name="phoneNumber">
-        /// Phone number format pattern (e.g., `"(xxx)xxx-xxxx"`)
+        /// Phone number format pattern (e.g., `"(xxx)xxx-xxxx"`). See [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting) for more details.
         /// </param>
         /// <param name="email">
-        /// Email format pattern (e.g., `"username@domain.com"`)
+        /// Email format pattern (e.g., `"username@domain.com"`). See [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting) for more details.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

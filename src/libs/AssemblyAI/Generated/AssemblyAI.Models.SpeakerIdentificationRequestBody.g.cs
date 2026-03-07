@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Request body for [Speaker Identification](https://www.assemblyai.com/docs/speech-understanding/speaker-identification).
     /// </summary>
     public sealed partial class SpeakerIdentificationRequestBody
     {
