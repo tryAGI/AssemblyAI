@@ -28,7 +28,7 @@ namespace AssemblyAI.JsonConverters
             {
             }
 
-            var result = new global::AssemblyAI.LemurActionItemsResponse(
+            var __value = new global::AssemblyAI.LemurActionItemsResponse(
                 @string
                 );
 
@@ -39,7 +39,7 @@ namespace AssemblyAI.JsonConverters
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
-            return result;
+            return __value;
         }
 
         /// <inheritdoc />
