@@ -53,8 +53,7 @@ namespace AssemblyAI
         /// The speaker of the sentence if [Speaker Diarization](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization) is enabled, else null
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string? Speaker { get; set; }
+        public string? Speaker { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -95,16 +94,16 @@ namespace AssemblyAI
             int end,
             double confidence,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord> words,
-            string? speaker,
-            string? channel)
+            string? channel,
+            string? speaker)
         {
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Start = start;
             this.End = end;
             this.Confidence = confidence;
             this.Words = words ?? throw new global::System.ArgumentNullException(nameof(words));
-            this.Speaker = speaker ?? throw new global::System.ArgumentNullException(nameof(speaker));
             this.Channel = channel;
+            this.Speaker = speaker;
         }
 
         /// <summary>
