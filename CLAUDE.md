@@ -10,10 +10,10 @@ C# SDK for the [AssemblyAI](https://www.assemblyai.com/) speech-to-text and audi
 
 ```bash
 # Build the solution
-dotnet build AssemblyAI.sln
+dotnet build AssemblyAI.slnx
 
 # Build for release (also produces NuGet package)
-dotnet build AssemblyAI.sln -c Release
+dotnet build AssemblyAI.slnx -c Release
 
 # Run integration tests (requires ASSEMBLYAI_API_KEY env var)
 dotnet test src/tests/IntegrationTests/AssemblyAI.IntegrationTests.csproj
