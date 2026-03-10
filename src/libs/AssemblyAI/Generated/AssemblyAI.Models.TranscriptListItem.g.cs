@@ -41,8 +41,7 @@ namespace AssemblyAI
         /// The date and time the transcript was completed
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("completed")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string? Completed { get; set; }
+        public string? Completed { get; set; }
 
         /// <summary>
         /// The URL to the audio file
@@ -55,8 +54,7 @@ namespace AssemblyAI
         /// Error message of why the transcript failed
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string? Error { get; set; }
+        public string? Error { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -96,17 +94,17 @@ namespace AssemblyAI
             string resourceUrl,
             global::AssemblyAI.TranscriptStatus status,
             string created,
-            string? completed,
             string audioUrl,
+            string? completed,
             string? error)
         {
             this.Id = id;
             this.ResourceUrl = resourceUrl ?? throw new global::System.ArgumentNullException(nameof(resourceUrl));
             this.Status = status;
             this.Created = created ?? throw new global::System.ArgumentNullException(nameof(created));
-            this.Completed = completed ?? throw new global::System.ArgumentNullException(nameof(completed));
             this.AudioUrl = audioUrl ?? throw new global::System.ArgumentNullException(nameof(audioUrl));
-            this.Error = error ?? throw new global::System.ArgumentNullException(nameof(error));
+            this.Completed = completed;
+            this.Error = error;
         }
 
         /// <summary>

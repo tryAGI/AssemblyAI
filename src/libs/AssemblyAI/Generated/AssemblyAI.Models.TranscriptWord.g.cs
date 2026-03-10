@@ -46,8 +46,7 @@ namespace AssemblyAI
         /// The speaker of the word if [Speaker Diarization](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization) is enabled, else null
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string? Speaker { get; set; }
+        public string? Speaker { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -84,15 +83,15 @@ namespace AssemblyAI
             int start,
             int end,
             string text,
-            string? speaker,
-            string? channel)
+            string? channel,
+            string? speaker)
         {
             this.Confidence = confidence;
             this.Start = start;
             this.End = end;
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
-            this.Speaker = speaker ?? throw new global::System.ArgumentNullException(nameof(speaker));
             this.Channel = channel;
+            this.Speaker = speaker;
         }
 
         /// <summary>

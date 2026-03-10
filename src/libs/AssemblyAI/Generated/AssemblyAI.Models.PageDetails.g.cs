@@ -34,15 +34,13 @@ namespace AssemblyAI
         /// The URL to the next page of transcripts. The previous URL always points to a page with older transcripts.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prev_url")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string? PrevUrl { get; set; }
+        public string? PrevUrl { get; set; }
 
         /// <summary>
         /// The URL to the next page of transcripts. The next URL always points to a page with newer transcripts.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("next_url")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string? NextUrl { get; set; }
+        public string? NextUrl { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -81,8 +79,8 @@ namespace AssemblyAI
             this.Limit = limit;
             this.ResultCount = resultCount;
             this.CurrentUrl = currentUrl ?? throw new global::System.ArgumentNullException(nameof(currentUrl));
-            this.PrevUrl = prevUrl ?? throw new global::System.ArgumentNullException(nameof(prevUrl));
-            this.NextUrl = nextUrl ?? throw new global::System.ArgumentNullException(nameof(nextUrl));
+            this.PrevUrl = prevUrl;
+            this.NextUrl = nextUrl;
         }
 
         /// <summary>

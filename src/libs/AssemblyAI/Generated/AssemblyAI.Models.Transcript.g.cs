@@ -179,8 +179,7 @@ namespace AssemblyAI
         /// The confidence score for the detected language, between 0.0 (low confidence) and 1.0 (high confidence). See [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_confidence")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double? LanguageConfidence { get; set; }
+        public double? LanguageConfidence { get; set; }
 
         /// <summary>
         /// The confidence threshold for the automatically detected language.<br/>
@@ -188,8 +187,7 @@ namespace AssemblyAI
         /// See [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_confidence_threshold")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required float? LanguageConfidenceThreshold { get; set; }
+        public float? LanguageConfidenceThreshold { get; set; }
 
         /// <summary>
         /// Whether [Automatic language detection](/docs/pre-recorded-audio/automatic-language-detection) is enabled, either true or false
@@ -671,8 +669,6 @@ namespace AssemblyAI
             string audioUrl,
             bool autoHighlights,
             global::System.Guid id,
-            double? languageConfidence,
-            float? languageConfidenceThreshold,
             bool redactPii,
             global::AssemblyAI.TranscriptStatus status,
             bool summarization,
@@ -702,6 +698,8 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<string>? keytermsPrompt,
             global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>? languageCode,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptLanguageCode>? languageCodes,
+            double? languageConfidence,
+            float? languageConfidenceThreshold,
             bool? languageDetection,
             global::AssemblyAI.TranscriptLanguageDetectionOptions? languageDetectionOptions,
             bool? multichannel,
@@ -735,8 +733,6 @@ namespace AssemblyAI
             this.AudioUrl = audioUrl ?? throw new global::System.ArgumentNullException(nameof(audioUrl));
             this.AutoHighlights = autoHighlights;
             this.Id = id;
-            this.LanguageConfidence = languageConfidence;
-            this.LanguageConfidenceThreshold = languageConfidenceThreshold;
             this.RedactPii = redactPii;
             this.Status = status;
             this.Summarization = summarization;
@@ -766,6 +762,8 @@ namespace AssemblyAI
             this.KeytermsPrompt = keytermsPrompt;
             this.LanguageCode = languageCode;
             this.LanguageCodes = languageCodes;
+            this.LanguageConfidence = languageConfidence;
+            this.LanguageConfidenceThreshold = languageConfidenceThreshold;
             this.LanguageDetection = languageDetection;
             this.LanguageDetectionOptions = languageDetectionOptions;
             this.Multichannel = multichannel;
