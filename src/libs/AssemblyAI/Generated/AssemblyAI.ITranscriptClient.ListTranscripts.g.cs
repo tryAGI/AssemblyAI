@@ -9,7 +9,14 @@ namespace AssemblyAI
         /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Retrieve a list of transcripts you created.<br/>
         /// Transcripts are sorted from newest to oldest and can be retrieved for the last 90 days of usage. The previous URL always points to a page with older transcripts.<br/>
-        /// If you need to retrieve transcripts from more than 90 days ago please reach out to our Support team at support@assemblyai.com.
+        /// If you need to retrieve transcripts from more than 90 days ago please reach out to our Support team at support@assemblyai.com.<br/>
+        /// **Pagination**<br/>
+        /// This endpoint returns paginated results. The response includes a `page_details` object with the following properties:<br/>
+        /// - `page_details.limit` - Maximum number of transcripts per page.<br/>
+        /// - `page_details.result_count` - Total number of transcripts returned on the current page.<br/>
+        /// - `page_details.current_url` - URL to the current page.<br/>
+        /// - `page_details.prev_url` - URL to the previous page of older transcripts.<br/>
+        /// - `page_details.next_url` - URL to the next page of newer transcripts.
         /// </summary>
         /// <param name="limit">
         /// Default Value: 10
