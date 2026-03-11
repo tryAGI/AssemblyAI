@@ -23,6 +23,12 @@ namespace AssemblyAI
         public global::System.Collections.Generic.IList<string>? KnownValues { get; set; }
 
         /// <summary>
+        /// An array of speaker objects with metadata to improve identification accuracy. Each object should include a `role` or `name` (depending on `speaker_type`) and an optional `description` to help the model identify the speaker. You can also include any additional custom properties (e.g., `company`, `title`) to provide more context. Use this as an alternative to `known_values` when you want to provide additional context about each speaker.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speakers")]
+        public global::System.Collections.Generic.IList<global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeaker>? Speakers { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,15 +43,20 @@ namespace AssemblyAI
         /// <param name="knownValues">
         /// Required if speaker_type is "role". Each value must be 35 characters or less.
         /// </param>
+        /// <param name="speakers">
+        /// An array of speaker objects with metadata to improve identification accuracy. Each object should include a `role` or `name` (depending on `speaker_type`) and an optional `description` to help the model identify the speaker. You can also include any additional custom properties (e.g., `company`, `title`) to provide more context. Use this as an alternative to `known_values` when you want to provide additional context about each speaker.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SpeakerIdentificationRequestBodySpeakerIdentification(
             global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType speakerType,
-            global::System.Collections.Generic.IList<string>? knownValues)
+            global::System.Collections.Generic.IList<string>? knownValues,
+            global::System.Collections.Generic.IList<global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeaker>? speakers)
         {
             this.SpeakerType = speakerType;
             this.KnownValues = knownValues;
+            this.Speakers = speakers;
         }
 
         /// <summary>
