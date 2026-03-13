@@ -7,7 +7,7 @@ namespace AssemblyAI
 {
     /// <summary>
     /// The parameters for creating a transcript<br/>
-    /// Example: {"speech_model":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","language_code":"en_us","language_detection":true,"language_confidence_threshold":0.7,"punctuate":true,"format_text":true,"multichannel":true,"webhook_url":"https://your-webhook-url.tld/path","webhook_auth_header_name":"webhook-secret","webhook_auth_header_value":"webhook-secret-value","auto_highlights":true,"audio_start_from":10,"audio_end_at":280,"filter_profanity":true,"redact_pii":true,"redact_pii_audio":true,"redact_pii_audio_quality":"mp3","redact_pii_policies":["us_social_security_number","credit_card_number"],"redact_pii_sub":"hash","speaker_labels":true,"speakers_expected":2,"content_safety":true,"iab_categories":true,"custom_spelling":[],"disfluencies":false,"sentiment_analysis":true,"auto_chapters":true,"entity_detection":true,"speech_threshold":0.5,"summarization":true,"summary_model":"informative","summary_type":"bullets","custom_topics":true,"topics":[],"speech_understanding":{"request":{"translation":{"target_languages":["es","de"],"formal":true,"match_original_utterance":true}}}}
+    /// Example: {"speech_model":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","language_code":"en_us","language_detection":true,"language_confidence_threshold":0.7,"punctuate":true,"format_text":true,"multichannel":true,"webhook_url":"https://your-webhook-url.tld/path","webhook_auth_header_name":"webhook-secret","webhook_auth_header_value":"webhook-secret-value","auto_highlights":true,"audio_start_from":10,"audio_end_at":280,"filter_profanity":true,"redact_pii":true,"redact_pii_audio":true,"redact_pii_audio_quality":"mp3","redact_pii_policies":["us_social_security_number","credit_card_number"],"redact_pii_sub":"hash","speaker_labels":true,"speakers_expected":2,"content_safety":true,"iab_categories":true,"custom_spelling":[],"disfluencies":false,"sentiment_analysis":true,"auto_chapters":true,"entity_detection":true,"speech_threshold":0.5,"summarization":true,"summary_model":"informative","summary_type":"bullets","custom_topics":true,"topics":[],"remove_audio_tags":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","speech_understanding":{"request":{"translation":{"target_languages":["es","de"],"formal":true,"match_original_utterance":true}}}}
     /// </summary>
     public sealed partial class TranscriptOptionalParams
     {
@@ -273,6 +273,15 @@ namespace AssemblyAI
         public global::AssemblyAI.SummaryType? SummaryType { get; set; }
 
         /// <summary>
+        /// Remove [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) from the transcript text. Set to `"all"` to remove all audio tags.<br/>
+        /// Note: This parameter is only supported for the Universal-3-Pro model.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("remove_audio_tags")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>))]
+        public global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>? RemoveAudioTags { get; set; }
+
+        /// <summary>
         /// Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
         /// Note: This parameter can only be used with the Universal-3-Pro model.<br/>
         /// Default Value: 0.0
@@ -474,6 +483,11 @@ namespace AssemblyAI
         /// The type of summary. See [Summary types](https://www.assemblyai.com/docs/speech-understanding/summarization#summary-types) for descriptions of the available summary types.<br/>
         /// Default Value: bullets
         /// </param>
+        /// <param name="removeAudioTags">
+        /// Remove [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) from the transcript text. Set to `"all"` to remove all audio tags.<br/>
+        /// Note: This parameter is only supported for the Universal-3-Pro model.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="temperature">
         /// Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
         /// Note: This parameter can only be used with the Universal-3-Pro model.<br/>
@@ -531,6 +545,7 @@ namespace AssemblyAI
             bool? summarization,
             global::AssemblyAI.SummaryModel? summaryModel,
             global::AssemblyAI.SummaryType? summaryType,
+            global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>? removeAudioTags,
             double? temperature,
             string? webhookAuthHeaderName,
             string? webhookAuthHeaderValue,
@@ -573,6 +588,7 @@ namespace AssemblyAI
             this.Summarization = summarization;
             this.SummaryModel = summaryModel;
             this.SummaryType = summaryType;
+            this.RemoveAudioTags = removeAudioTags;
             this.Temperature = temperature;
             this.WebhookAuthHeaderName = webhookAuthHeaderName;
             this.WebhookAuthHeaderValue = webhookAuthHeaderValue;
