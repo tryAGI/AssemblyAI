@@ -7,7 +7,7 @@ namespace AssemblyAI
 {
     /// <summary>
     /// The parameters for creating a transcript<br/>
-    /// Example: {"speech_model":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","language_code":"en_us","language_detection":true,"language_confidence_threshold":0.7,"punctuate":true,"format_text":true,"multichannel":true,"webhook_url":"https://your-webhook-url.tld/path","webhook_auth_header_name":"webhook-secret","webhook_auth_header_value":"webhook-secret-value","auto_highlights":true,"audio_start_from":10,"audio_end_at":280,"filter_profanity":true,"redact_pii":true,"redact_pii_audio":true,"redact_pii_audio_quality":"mp3","redact_pii_policies":["us_social_security_number","credit_card_number"],"redact_pii_sub":"hash","speaker_labels":true,"speakers_expected":2,"content_safety":true,"iab_categories":true,"custom_spelling":[],"disfluencies":false,"sentiment_analysis":true,"auto_chapters":true,"entity_detection":true,"speech_threshold":0.5,"summarization":true,"summary_model":"informative","summary_type":"bullets","custom_topics":true,"topics":[],"remove_audio_tags":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","speech_understanding":{"request":{"translation":{"target_languages":["es","de"],"formal":true,"match_original_utterance":true}}}}
+    /// Example: {"speech_model":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","language_code":"en_us","language_detection":true,"language_confidence_threshold":0.7,"punctuate":true,"format_text":true,"multichannel":true,"webhook_url":"https://your-webhook-url.tld/path","webhook_auth_header_name":"webhook-secret","webhook_auth_header_value":"webhook-secret-value","auto_highlights":true,"audio_start_from":10,"audio_end_at":280,"filter_profanity":true,"redact_pii":true,"redact_pii_audio":true,"redact_pii_audio_quality":"mp3","redact_pii_policies":["us_social_security_number","credit_card_number"],"redact_pii_sub":"hash","speaker_labels":true,"speakers_expected":2,"content_safety":true,"iab_categories":true,"custom_spelling":[],"disfluencies":false,"sentiment_analysis":true,"auto_chapters":false,"entity_detection":true,"speech_threshold":0.5,"summarization":false,"summary_model":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","summary_type":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","custom_topics":true,"topics":[],"remove_audio_tags":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","speech_understanding":{"request":{"translation":{"target_languages":["es","de"],"formal":true,"match_original_utterance":true}}}}
     /// </summary>
     public sealed partial class TranscriptOptionalParams
     {
@@ -24,10 +24,11 @@ namespace AssemblyAI
         public int? AudioStartFrom { get; set; }
 
         /// <summary>
-        /// Enable [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/auto-chapters), can be true or false<br/>
+        /// Enable [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/auto-chapters), can be true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible chapter summaries. See the [updated Auto Chapters page](https://www.assemblyai.com/docs/speech-understanding/auto-chapters) for details.<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auto_chapters")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public bool? AutoChapters { get; set; }
 
         /// <summary>
@@ -250,14 +251,15 @@ namespace AssemblyAI
         public global::AssemblyAI.TranscriptOptionalParamsSpeechUnderstanding? SpeechUnderstanding { get; set; }
 
         /// <summary>
-        /// Enable [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization), can be true or false<br/>
+        /// Enable [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization), can be true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summarization")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public bool? Summarization { get; set; }
 
         /// <summary>
-        /// The model to summarize the transcript. See [Summary models](https://www.assemblyai.com/docs/speech-understanding/summarization#summary-models) for available models and when to use each.<br/>
+        /// The model to summarize the transcript. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.<br/>
         /// Default Value: informative
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary_model")]
@@ -265,7 +267,7 @@ namespace AssemblyAI
         public global::AssemblyAI.SummaryModel? SummaryModel { get; set; }
 
         /// <summary>
-        /// The type of summary. See [Summary types](https://www.assemblyai.com/docs/speech-understanding/summarization#summary-types) for descriptions of the available summary types.<br/>
+        /// The type of summary. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.<br/>
         /// Default Value: bullets
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary_type")]
@@ -345,10 +347,6 @@ namespace AssemblyAI
         /// </param>
         /// <param name="audioStartFrom">
         /// The point in time, in milliseconds, to begin transcribing in your media file. See [Set the start and end of the transcript](https://www.assemblyai.com/docs/pre-recorded-audio/set-the-start-and-end-of-the-transcript) for more details.
-        /// </param>
-        /// <param name="autoChapters">
-        /// Enable [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/auto-chapters), can be true or false<br/>
-        /// Default Value: false
         /// </param>
         /// <param name="autoHighlights">
         /// Enable [Key Phrases](https://www.assemblyai.com/docs/speech-understanding/key-phrases), either true or false<br/>
@@ -471,18 +469,6 @@ namespace AssemblyAI
         /// <param name="speechUnderstanding">
         /// Enable speech understanding tasks like [Translation](https://www.assemblyai.com/docs/speech-understanding/translation), [Speaker Identification](https://www.assemblyai.com/docs/speech-understanding/speaker-identification), and [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting). See the task-specific docs for available options and configuration.
         /// </param>
-        /// <param name="summarization">
-        /// Enable [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization), can be true or false<br/>
-        /// Default Value: false
-        /// </param>
-        /// <param name="summaryModel">
-        /// The model to summarize the transcript. See [Summary models](https://www.assemblyai.com/docs/speech-understanding/summarization#summary-models) for available models and when to use each.<br/>
-        /// Default Value: informative
-        /// </param>
-        /// <param name="summaryType">
-        /// The type of summary. See [Summary types](https://www.assemblyai.com/docs/speech-understanding/summarization#summary-types) for descriptions of the available summary types.<br/>
-        /// Default Value: bullets
-        /// </param>
         /// <param name="removeAudioTags">
         /// Remove [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) from the transcript text. Set to `"all"` to remove all audio tags.<br/>
         /// Note: This parameter is only supported for the Universal-3-Pro model.<br/>
@@ -511,7 +497,6 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<string> speechModels,
             int? audioEndAt,
             int? audioStartFrom,
-            bool? autoChapters,
             bool? autoHighlights,
             bool? contentSafety,
             int? contentSafetyConfidence,
@@ -542,9 +527,6 @@ namespace AssemblyAI
             int? speakersExpected,
             float? speechThreshold,
             global::AssemblyAI.TranscriptOptionalParamsSpeechUnderstanding? speechUnderstanding,
-            bool? summarization,
-            global::AssemblyAI.SummaryModel? summaryModel,
-            global::AssemblyAI.SummaryType? summaryType,
             global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>? removeAudioTags,
             double? temperature,
             string? webhookAuthHeaderName,
@@ -554,7 +536,6 @@ namespace AssemblyAI
             this.SpeechModels = speechModels ?? throw new global::System.ArgumentNullException(nameof(speechModels));
             this.AudioEndAt = audioEndAt;
             this.AudioStartFrom = audioStartFrom;
-            this.AutoChapters = autoChapters;
             this.AutoHighlights = autoHighlights;
             this.ContentSafety = contentSafety;
             this.ContentSafetyConfidence = contentSafetyConfidence;
@@ -585,9 +566,6 @@ namespace AssemblyAI
             this.SpeakersExpected = speakersExpected;
             this.SpeechThreshold = speechThreshold;
             this.SpeechUnderstanding = speechUnderstanding;
-            this.Summarization = summarization;
-            this.SummaryModel = summaryModel;
-            this.SummaryType = summaryType;
             this.RemoveAudioTags = removeAudioTags;
             this.Temperature = temperature;
             this.WebhookAuthHeaderName = webhookAuthHeaderName;
