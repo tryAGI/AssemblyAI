@@ -30,8 +30,7 @@ The SDK code in `src/libs/AssemblyAI/Generated/` is **entirely auto-generated** 
 
 1. `src/libs/AssemblyAI/openapi.yaml` -- the AssemblyAI OpenAPI spec (fetched from the official `assemblyai-api-spec` repo)
 2. `src/libs/AssemblyAI/generate.sh` -- orchestrates: download spec, run AutoSDK CLI with `--ignore-openapi-errors`, output to `Generated/`
-3. Note: the FixOpenApiSpec step is commented out in generate.sh for this SDK
-4. CI auto-updates the spec and creates PRs if changes are detected
+3. CI auto-updates the spec and creates PRs if changes are detected
 
 ### Project Layout
 
@@ -39,7 +38,6 @@ The SDK code in `src/libs/AssemblyAI/Generated/` is **entirely auto-generated** 
 |---------|---------|
 | `src/libs/AssemblyAI/` | Main SDK library (`AssemblyAIClient`) |
 | `src/tests/IntegrationTests/` | Integration tests against real AssemblyAI API |
-| `src/helpers/FixOpenApiSpec/` | OpenAPI spec fixer tool (currently unused) |
 | `src/helpers/GenerateDocs/` | Documentation generator from integration tests |
 | `src/helpers/TrimmingHelper/` | NativeAOT/trimming compatibility validator |
 
