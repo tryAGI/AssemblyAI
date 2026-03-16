@@ -94,7 +94,7 @@ namespace AssemblyAI
         public bool? IabCategories { get; set; }
 
         /// <summary>
-        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3-Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/keyterms-prompting) for more details.
+        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/keyterms-prompting) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("keyterms_prompt")]
         public global::System.Collections.Generic.IList<string>? KeytermsPrompt { get; set; }
@@ -146,7 +146,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Provide natural language prompting of up to 1,500 words of contextual information to the model. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for best practices.<br/>
-        /// Note: This parameter is only supported for the Universal-3-Pro model.
+        /// Note: This parameter is only supported for the Universal-3 Pro model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         public string? Prompt { get; set; }
@@ -276,7 +276,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Remove [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) from the transcript text. Set to `"all"` to remove all audio tags.<br/>
-        /// Note: This parameter is only supported for the Universal-3-Pro model.<br/>
+        /// Note: This parameter is only supported for the Universal-3 Pro model.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("remove_audio_tags")]
@@ -285,7 +285,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
-        /// Note: This parameter can only be used with the Universal-3-Pro model.<br/>
+        /// Note: This parameter can only be used with the Universal-3 Pro model.<br/>
         /// Default Value: 0.0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
@@ -384,7 +384,7 @@ namespace AssemblyAI
         /// Default Value: false
         /// </param>
         /// <param name="keytermsPrompt">
-        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3-Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/keyterms-prompting) for more details.
+        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/keyterms-prompting) for more details.
         /// </param>
         /// <param name="languageCode">
         /// The language of your audio file. Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).<br/>
@@ -414,7 +414,7 @@ namespace AssemblyAI
         /// </param>
         /// <param name="prompt">
         /// Provide natural language prompting of up to 1,500 words of contextual information to the model. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for best practices.<br/>
-        /// Note: This parameter is only supported for the Universal-3-Pro model.
+        /// Note: This parameter is only supported for the Universal-3 Pro model.
         /// </param>
         /// <param name="punctuate">
         /// Enable [Automatic Punctuation](https://www.assemblyai.com/docs/pre-recorded-audio), can be true or false<br/>
@@ -471,12 +471,12 @@ namespace AssemblyAI
         /// </param>
         /// <param name="removeAudioTags">
         /// Remove [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) from the transcript text. Set to `"all"` to remove all audio tags.<br/>
-        /// Note: This parameter is only supported for the Universal-3-Pro model.<br/>
+        /// Note: This parameter is only supported for the Universal-3 Pro model.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="temperature">
         /// Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
-        /// Note: This parameter can only be used with the Universal-3-Pro model.<br/>
+        /// Note: This parameter can only be used with the Universal-3 Pro model.<br/>
         /// Default Value: 0.0
         /// </param>
         /// <param name="webhookAuthHeaderName">
