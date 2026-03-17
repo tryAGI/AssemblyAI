@@ -1,6 +1,7 @@
+set -e
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
-curl -o openapi.yaml https://raw.githubusercontent.com/AssemblyAI/assemblyai-api-spec/main/openapi.yml
+curl --fail --silent --show-error -o openapi.yaml https://raw.githubusercontent.com/AssemblyAI/assemblyai-api-spec/main/openapi.yml
 autosdk generate openapi.yaml \
   --namespace AssemblyAI \
   --clientClassName AssemblyAIClient \
