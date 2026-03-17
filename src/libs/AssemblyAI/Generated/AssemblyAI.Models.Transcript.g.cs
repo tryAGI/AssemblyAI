@@ -236,6 +236,13 @@ namespace AssemblyAI
         public bool? RedactPiiAudio { get; set; }
 
         /// <summary>
+        /// The options for PII-redacted audio, if redact_pii_audio is enabled.<br/>
+        /// See [PII redaction](https://www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) for more information.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_audio_options")]
+        public global::AssemblyAI.TranscriptRedactPiiAudioOptions? RedactPiiAudioOptions { get; set; }
+
+        /// <summary>
         /// The audio quality of the PII-redacted audio file, if redact_pii_audio is enabled.<br/>
         /// See [PII redaction](https://www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) for more information.
         /// </summary>
@@ -577,6 +584,10 @@ namespace AssemblyAI
         /// Whether a redacted version of the audio file was generated,<br/>
         /// either true or false. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) for more information.
         /// </param>
+        /// <param name="redactPiiAudioOptions">
+        /// The options for PII-redacted audio, if redact_pii_audio is enabled.<br/>
+        /// See [PII redaction](https://www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) for more information.
+        /// </param>
         /// <param name="redactPiiAudioQuality">
         /// The audio quality of the PII-redacted audio file, if redact_pii_audio is enabled.<br/>
         /// See [PII redaction](https://www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) for more information.
@@ -708,6 +719,7 @@ namespace AssemblyAI
             string? prompt,
             bool? punctuate,
             bool? redactPiiAudio,
+            global::AssemblyAI.TranscriptRedactPiiAudioOptions? redactPiiAudioOptions,
             global::AssemblyAI.OneOf<global::AssemblyAI.RedactPiiAudioQuality?, object>? redactPiiAudioQuality,
             global::System.Collections.Generic.IList<global::AssemblyAI.PiiPolicy>? redactPiiPolicies,
             global::AssemblyAI.SubstitutionPolicy? redactPiiSub,
@@ -769,6 +781,7 @@ namespace AssemblyAI
             this.Prompt = prompt;
             this.Punctuate = punctuate;
             this.RedactPiiAudio = redactPiiAudio;
+            this.RedactPiiAudioOptions = redactPiiAudioOptions;
             this.RedactPiiAudioQuality = redactPiiAudioQuality;
             this.RedactPiiPolicies = redactPiiPolicies;
             this.RedactPiiSub = redactPiiSub;
