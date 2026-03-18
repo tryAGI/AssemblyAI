@@ -44,6 +44,21 @@ transcript.EnsureStatusCompleted();
 Console.WriteLine(transcript);
 ```
 
+### Microsoft.Extensions.AI
+
+The SDK implements [`ISpeechToTextClient`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai.ispeechtotextclient):
+```csharp
+using AssemblyAI;
+using Microsoft.Extensions.AI;
+
+ISpeechToTextClient speechClient = new AssemblyAIClient(apiKey);
+
+await using var audioStream = File.OpenRead("recording.wav");
+var response = await speechClient.GetTextAsync(audioStream);
+
+Console.WriteLine(response.Text);
+```
+
 ## Support
 
 Priority place for bugs: https://github.com/tryAGI/AssemblyAI/issues  
