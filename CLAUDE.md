@@ -39,7 +39,6 @@ The SDK code in `src/libs/AssemblyAI/Generated/` is **entirely auto-generated** 
 | `src/libs/AssemblyAI/` | Main SDK library (`AssemblyAIClient`) |
 | `src/tests/IntegrationTests/` | Integration tests against real AssemblyAI API |
 | `src/helpers/GenerateDocs/` | Documentation generator from integration tests |
-| `src/helpers/TrimmingHelper/` | NativeAOT/trimming compatibility validator |
 
 ### Hand-Written Extensions
 
