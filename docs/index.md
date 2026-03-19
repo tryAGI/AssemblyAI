@@ -16,6 +16,7 @@ extend it to all our generated SDKs for other platforms.
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
 - Support .Net Framework/.Net Standard 2.0
+- Microsoft.Extensions.AI `ISpeechToTextClient` support
 
 ### Usage
 ```csharp
@@ -42,6 +43,21 @@ Transcript transcript = await client.Transcript.CreateTranscriptAsync(Transcript
 transcript.EnsureStatusCompleted();
 
 Console.WriteLine(transcript);
+```
+
+### Microsoft.Extensions.AI
+
+The SDK implements [`ISpeechToTextClient`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai.ispeechtotextclient):
+```csharp
+using AssemblyAI;
+using Microsoft.Extensions.AI;
+
+ISpeechToTextClient speechClient = new AssemblyAIClient(apiKey);
+
+await using var audioStream = File.OpenRead("recording.wav");
+var response = await speechClient.GetTextAsync(audioStream);
+
+Console.WriteLine(response.Text);
 ```
 
 ## Support

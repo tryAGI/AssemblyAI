@@ -1,3 +1,9 @@
+# Transcribe
+
+
+
+This example assumes `using AssemblyAI;` is in scope and `apiKey` contains your AssemblyAI API key.
+
 ```csharp
 using var client = GetAuthenticatedApi();
 

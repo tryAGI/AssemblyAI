@@ -5,8 +5,8 @@ nav:
   - Microsoft.Extensions.AI: guides/meai.md
 # EXAMPLES:START
 - Examples:
-  - Transcribe: samples/Transcribe.md
-  - TranscribeLive: samples/TranscribeLive.md
+  - Transcribe: examples/transcribe.md
+  - Transcribe Live: examples/transcribe-live.md
 # EXAMPLES:END
         
 theme:
