@@ -60,6 +60,9 @@ var response = await speechClient.GetTextAsync(audioStream);
 Console.WriteLine(response.Text);
 ```
 
+<!-- EXAMPLES:START -->
+<!-- EXAMPLES:END -->
+
 ## Support
 
 Priority place for bugs: https://github.com/tryAGI/AssemblyAI/issues  
