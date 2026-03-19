@@ -39,6 +39,13 @@ The SDK code in `src/libs/AssemblyAI/Generated/` is **entirely auto-generated** 
 | `src/libs/AssemblyAI/` | Main SDK library (`AssemblyAIClient`) |
 | `src/tests/IntegrationTests/` | Integration tests against real AssemblyAI API |
 
+### Documentation Generation
+
+Tests in `src/tests/IntegrationTests/Examples` are the single source of truth for both test coverage and documentation:
+- Each file has a JSDoc header (`order`, `title`, `slug`) consumed by `autosdk docs sync .`
+- Comments prefixed with `////` become prose paragraphs in generated docs
+- CI workflow (`.github/workflows/mkdocs.yml`) auto-generates `docs/examples/` and populates `EXAMPLES:START/END` markers in README.md, docs/index.md, and mkdocs.yml
+- Config: `autosdk.docs.json` points to `src/tests/IntegrationTests/Examples`
 ### Hand-Written Extensions
 
 This SDK includes hand-written code for convenience wrappers and AI abstractions:
