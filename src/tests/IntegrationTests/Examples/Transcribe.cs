@@ -1,3 +1,9 @@
+/*
+order: 10
+title: Transcribe
+slug: transcribe
+*/
+
 namespace AssemblyAI.IntegrationTests;
 
 public partial class Tests

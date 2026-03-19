@@ -1,3 +1,9 @@
+/*
+order: 20
+title: Transcribe Live
+slug: transcribe-live
+*/
+
 using System.Diagnostics;
 
 namespace AssemblyAI.IntegrationTests;
