@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-C# SDK for the [AssemblyAI](https://www.assemblyai.com/) speech-to-text and audio intelligence API, auto-generated from the official AssemblyAI OpenAPI specification using [AutoSDK](https://github.com/HavenDV/AutoSDK). Published as NuGet package `tryAGI.AssemblyAI`. Note: AssemblyAI has an [official .NET SDK](https://github.com/AssemblyAI/assemblyai-csharp-sdk); this community SDK aims to match or exceed its capabilities.
+C# SDK for the [AssemblyAI](https://www.assemblyai.com/) speech-to-text and audio intelligence API, auto-generated from the official AssemblyAI OpenAPI + AsyncAPI specifications using [AutoSDK](https://github.com/HavenDV/AutoSDK). Published as NuGet package `tryAGI.AssemblyAI`. Note: AssemblyAI has an [official .NET SDK](https://github.com/AssemblyAI/assemblyai-csharp-sdk); this community SDK aims to match or exceed its capabilities.
 
 ## Build Commands
 
@@ -29,14 +29,15 @@ cd src/libs/AssemblyAI && ./generate.sh
 The SDK code in `src/libs/AssemblyAI/Generated/` is **entirely auto-generated** -- do not manually edit files there.
 
 1. `src/libs/AssemblyAI/openapi.yaml` -- the AssemblyAI OpenAPI spec (fetched from the official `assemblyai-api-spec` repo)
-2. `src/libs/AssemblyAI/generate.sh` -- orchestrates: download spec, run AutoSDK CLI with `--ignore-openapi-errors`, output to `Generated/`
-3. CI auto-updates the spec and creates PRs if changes are detected
+2. `src/libs/AssemblyAI/asyncapi.json` -- AsyncAPI 3.0.0 spec for v3 real-time streaming WebSocket API
+3. `src/libs/AssemblyAI/generate.sh` -- orchestrates: download spec, run AutoSDK CLI for OpenAPI + AsyncAPI, output to `Generated/`
+4. CI auto-updates the spec and creates PRs if changes are detected
 
 ### Project Layout
 
 | Project | Purpose |
 |---------|---------|
-| `src/libs/AssemblyAI/` | Main SDK library (`AssemblyAIClient`) |
+| `src/libs/AssemblyAI/` | Main SDK library (`AssemblyAIClient` + `AssemblyAIRealtimeClient`) |
 | `src/tests/IntegrationTests/` | Integration tests against real AssemblyAI API |
 
 ### Documentation Generation
@@ -69,10 +70,18 @@ This SDK includes hand-written code for convenience wrappers and AI abstractions
 - **Testing:** MSTest + AwesomeAssertions
 - **Dependencies:** Microsoft.Extensions.AI.Abstractions
 
+### Real-Time Streaming WebSocket API
+
+The `AssemblyAIRealtimeClient` (in namespace `AssemblyAI.Realtime`) is auto-generated from `asyncapi.json` and provides:
+- Typed send methods: `SendUpdateConfigurationAsync()`, `SendForceEndpointAsync()`, `SendSessionTerminationAsync()`
+- `ReceiveUpdateAsync()` returning a discriminated `ServerEvent` union (`IsSessionBegins`, `IsTurn`, `IsTermination`)
+- Binary audio sent via base `SendAsync(bytes)` method
+- Connects to `streaming.assemblyai.com/v3/ws`
+
 ### Key Conventions
 
-- The client class is named `AssemblyAIClient`
-- The namespace is `AssemblyAI`
+- The client class is named `AssemblyAIClient` (REST) / `AssemblyAIRealtimeClient` (WebSocket)
+- The namespace is `AssemblyAI` (REST) / `AssemblyAI.Realtime` (WebSocket)
 - Use `TranscriptParams.FromUrl()` for creating transcript requests
 - Transcript results expose `EnsureStatusCompleted()` for polling validation
 

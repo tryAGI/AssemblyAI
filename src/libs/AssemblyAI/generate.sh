@@ -9,3 +9,10 @@ autosdk generate openapi.yaml \
   --output Generated \
   --exclude-deprecated-operations \
   --ignore-openapi-errors
+
+autosdk generate asyncapi.json \
+  --namespace AssemblyAI.Realtime \
+  --websocket-class-name AssemblyAIRealtimeClient \
+  --json-serializer-context RealtimeSourceGenerationContext \
+  --targetFramework net8.0 \
+  --output Generated

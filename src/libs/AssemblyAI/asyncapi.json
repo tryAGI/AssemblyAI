@@ -1,0 +1,350 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "AssemblyAI Streaming Speech-to-Text",
+    "version": "1.0.0",
+    "description": "AssemblyAI v3 real-time speech-to-text streaming WebSocket API."
+  },
+  "servers": {
+    "production": {
+      "host": "streaming.assemblyai.com",
+      "pathname": "/v3/ws",
+      "protocol": "wss",
+      "description": "AssemblyAI production streaming endpoint"
+    }
+  },
+  "channels": {
+    "streaming": {
+      "address": "/v3/ws",
+      "messages": {
+        "updateConfiguration": {
+          "$ref": "#/components/messages/UpdateConfiguration"
+        },
+        "forceEndpoint": {
+          "$ref": "#/components/messages/ForceEndpoint"
+        },
+        "sessionTermination": {
+          "$ref": "#/components/messages/SessionTermination"
+        },
+        "sessionBegins": {
+          "$ref": "#/components/messages/SessionBegins"
+        },
+        "turn": {
+          "$ref": "#/components/messages/Turn"
+        },
+        "termination": {
+          "$ref": "#/components/messages/Termination"
+        }
+      }
+    }
+  },
+  "operations": {
+    "sendUpdateConfiguration": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/streaming"
+      },
+      "summary": "Update streaming configuration parameters during an active session.",
+      "messages": [
+        {
+          "$ref": "#/channels/streaming/messages/updateConfiguration"
+        }
+      ]
+    },
+    "sendForceEndpoint": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/streaming"
+      },
+      "summary": "Manually force an endpoint in the transcription.",
+      "messages": [
+        {
+          "$ref": "#/channels/streaming/messages/forceEndpoint"
+        }
+      ]
+    },
+    "sendSessionTermination": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/streaming"
+      },
+      "summary": "Gracefully terminate the streaming session.",
+      "messages": [
+        {
+          "$ref": "#/channels/streaming/messages/sessionTermination"
+        }
+      ]
+    },
+    "receiveSessionBegins": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/streaming"
+      },
+      "summary": "Receive confirmation that the streaming session has started.",
+      "messages": [
+        {
+          "$ref": "#/channels/streaming/messages/sessionBegins"
+        }
+      ]
+    },
+    "receiveTurn": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/streaming"
+      },
+      "summary": "Receive a turn-based transcription result.",
+      "messages": [
+        {
+          "$ref": "#/channels/streaming/messages/turn"
+        }
+      ]
+    },
+    "receiveTermination": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/streaming"
+      },
+      "summary": "Receive confirmation that the session has been terminated.",
+      "messages": [
+        {
+          "$ref": "#/channels/streaming/messages/termination"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "UpdateConfigurationPayload": {
+        "type": "object",
+        "description": "Update streaming configuration parameters during an active session.",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Message type identifier.",
+            "enum": ["UpdateConfiguration"]
+          },
+          "end_of_turn_confidence_threshold": {
+            "type": "number",
+            "description": "Confidence threshold (0-1) for detecting end of turn.",
+            "nullable": true
+          },
+          "min_turn_silence": {
+            "type": "integer",
+            "description": "Minimum silence duration in ms when confident about end of turn.",
+            "nullable": true
+          },
+          "max_turn_silence": {
+            "type": "integer",
+            "description": "Maximum silence in ms before end of turn is triggered.",
+            "nullable": true
+          }
+        }
+      },
+      "ForceEndpointPayload": {
+        "type": "object",
+        "description": "Manually force an endpoint in the transcription.",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Message type identifier.",
+            "enum": ["ForceEndpoint"]
+          }
+        }
+      },
+      "SessionTerminationPayload": {
+        "type": "object",
+        "description": "Gracefully terminate the streaming session.",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Message type identifier.",
+            "enum": ["Terminate"]
+          }
+        }
+      },
+      "SessionBeginsPayload": {
+        "type": "object",
+        "description": "Server event indicating the streaming session has started.",
+        "required": ["type", "id", "expires_at"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Message type identifier.",
+            "enum": ["Begin"]
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique session identifier."
+          },
+          "expires_at": {
+            "type": "integer",
+            "description": "Unix timestamp indicating when the session will expire."
+          }
+        }
+      },
+      "Word": {
+        "type": "object",
+        "description": "Word-level transcription detail.",
+        "required": ["text", "start", "end", "confidence", "word_is_final"],
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "The transcribed word."
+          },
+          "start": {
+            "type": "integer",
+            "description": "Start time in milliseconds."
+          },
+          "end": {
+            "type": "integer",
+            "description": "End time in milliseconds."
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0.0 to 1.0)."
+          },
+          "word_is_final": {
+            "type": "boolean",
+            "description": "Whether the word is finalized."
+          }
+        }
+      },
+      "TurnPayload": {
+        "type": "object",
+        "description": "Turn-based transcription result.",
+        "required": ["type", "turn_order", "turn_is_formatted", "end_of_turn", "transcript", "end_of_turn_confidence", "words"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Message type identifier.",
+            "enum": ["Turn"]
+          },
+          "turn_order": {
+            "type": "integer",
+            "description": "Order of this turn in the conversation."
+          },
+          "turn_is_formatted": {
+            "type": "boolean",
+            "description": "Whether this turn has been formatted."
+          },
+          "end_of_turn": {
+            "type": "boolean",
+            "description": "Whether this marks the end of a turn."
+          },
+          "transcript": {
+            "type": "string",
+            "description": "Transcript of all finalized words in the turn."
+          },
+          "utterance": {
+            "type": "string",
+            "description": "Finalized text at the moment a pause in speech is detected."
+          },
+          "language_code": {
+            "type": "string",
+            "description": "Detected language code (when language detection is enabled)."
+          },
+          "language_confidence": {
+            "type": "number",
+            "description": "Language detection confidence (0-1)."
+          },
+          "speaker_label": {
+            "type": "string",
+            "description": "Speaker label (when speaker_labels is enabled)."
+          },
+          "end_of_turn_confidence": {
+            "type": "number",
+            "description": "Confidence this is end of turn (0-1)."
+          },
+          "words": {
+            "type": "array",
+            "description": "Word-level details.",
+            "items": {
+              "$ref": "#/components/schemas/Word"
+            }
+          }
+        }
+      },
+      "TerminationPayload": {
+        "type": "object",
+        "description": "Server event confirming session termination with statistics.",
+        "required": ["type", "audio_duration_seconds", "session_duration_seconds"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Message type identifier.",
+            "enum": ["Termination"]
+          },
+          "audio_duration_seconds": {
+            "type": "integer",
+            "description": "Duration of audio in seconds."
+          },
+          "session_duration_seconds": {
+            "type": "integer",
+            "description": "Duration of session in seconds."
+          }
+        }
+      }
+    },
+    "messages": {
+      "UpdateConfiguration": {
+        "name": "UpdateConfiguration",
+        "summary": "Update streaming configuration.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/UpdateConfigurationPayload"
+        }
+      },
+      "ForceEndpoint": {
+        "name": "ForceEndpoint",
+        "summary": "Force an endpoint in transcription.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/ForceEndpointPayload"
+        }
+      },
+      "SessionTermination": {
+        "name": "SessionTermination",
+        "summary": "Terminate the session.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/SessionTerminationPayload"
+        }
+      },
+      "SessionBegins": {
+        "name": "SessionBegins",
+        "summary": "Session started confirmation.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/SessionBeginsPayload"
+        }
+      },
+      "Turn": {
+        "name": "Turn",
+        "summary": "Turn-based transcription result.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/TurnPayload"
+        }
+      },
+      "Termination": {
+        "name": "Termination",
+        "summary": "Session terminated confirmation.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/TerminationPayload"
+        }
+      }
+    },
+    "securitySchemes": {
+      "apiKey": {
+        "type": "httpApiKey",
+        "name": "Authorization",
+        "in": "header",
+        "description": "AssemblyAI API key"
+      }
+    }
+  }
+}
