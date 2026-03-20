@@ -4,6 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
+    /// Error<br/>
     /// Example: {"error":"format_text must be a Boolean"}
     /// </summary>
     public sealed partial class Error
@@ -16,7 +17,7 @@ namespace AssemblyAI
         public required string Error1 { get; set; }
 
         /// <summary>
-        /// 
+        /// Status
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         public string? Status { get; set; }
@@ -33,7 +34,9 @@ namespace AssemblyAI
         /// <param name="error1">
         /// Error message
         /// </param>
-        /// <param name="status"></param>
+        /// <param name="status">
+        /// Status
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

@@ -4,6 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
+    /// Content Moderation label<br/>
     /// Example: {"label":"disasters","confidence":0.8142836093902588,"severity":0.4093044400215149}
     /// </summary>
     public sealed partial class ContentSafetyLabel

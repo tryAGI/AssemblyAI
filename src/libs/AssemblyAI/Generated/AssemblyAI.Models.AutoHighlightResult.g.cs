@@ -4,6 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
+    /// Auto highlight result<br/>
     /// Example: {"count":1,"rank":0.08,"text":"air quality alerts","timestamps":[{"start":3978,"end":5114}]}
     /// </summary>
     public sealed partial class AutoHighlightResult

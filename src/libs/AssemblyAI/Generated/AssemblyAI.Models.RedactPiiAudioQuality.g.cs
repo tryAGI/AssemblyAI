@@ -10,11 +10,11 @@ namespace AssemblyAI
     public enum RedactPiiAudioQuality
     {
         /// <summary>
-        /// //www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) for more details.
+        /// MP3 audio format is lower quality and lower size than WAV.
         /// </summary>
         Mp3,
         /// <summary>
-        /// //www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) for more details.
+        /// WAV audio format is the highest quality (no compression) and larger size than MP3.
         /// </summary>
         Wav,
     }

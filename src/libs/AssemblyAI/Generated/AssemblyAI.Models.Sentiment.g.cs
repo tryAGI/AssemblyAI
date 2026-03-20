@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Sentiment
     /// </summary>
     public enum Sentiment
     {
