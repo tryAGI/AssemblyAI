@@ -16,7 +16,6 @@ namespace AssemblyAI
 
             global::AssemblyAI.TranscriptParams request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Transcribe audio<br/>
         /// &lt;Note&gt;To use our EU server for transcription, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>

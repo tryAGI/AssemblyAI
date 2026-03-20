@@ -4,6 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
+    /// Word<br/>
     /// Example: {"text":"Smoke","start":250,"end":650,"confidence":0.97465,"channel":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","speaker":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464"}
     /// </summary>
     public sealed partial class TranscriptWord

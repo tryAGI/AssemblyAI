@@ -21,21 +21,21 @@ namespace AssemblyAI
         /// </summary>
         AnthropicClaude37Sonnet20250219,
         /// <summary>
-        /// 
+        /// Claude 3.5 Sonnet is Anthropic's most intelligent model to date, outperforming Claude 3 Opus on a wide range of evaluations, with the speed and cost of Claude 3 Sonnet.
         /// </summary>
-        AnthropicClaude35Sonnet,
+        AnthropicClaude3_5_Sonnet,
         /// <summary>
         /// 
         /// </summary>
         AnthropicClaude35Haiku20241022,
         /// <summary>
-        /// 
+        /// Claude 3 Opus is good at handling complex analysis, longer tasks with many steps, and higher-order math and coding tasks.
         /// </summary>
-        AnthropicClaude3Opus,
+        AnthropicClaude3_Opus,
         /// <summary>
-        /// 
+        /// Claude 3 Haiku is the fastest model that can execute lightweight actions.
         /// </summary>
-        AnthropicClaude3Haiku,
+        AnthropicClaude3_Haiku,
     }
 
     /// <summary>
@@ -53,10 +53,10 @@ namespace AssemblyAI
                 LemurModel.AnthropicClaudeSonnet420250514 => "anthropic/claude-sonnet-4-20250514",
                 LemurModel.AnthropicClaudeOpus420250514 => "anthropic/claude-opus-4-20250514",
                 LemurModel.AnthropicClaude37Sonnet20250219 => "anthropic/claude-3-7-sonnet-20250219",
-                LemurModel.AnthropicClaude35Sonnet => "anthropic/claude-3-5-sonnet",
+                LemurModel.AnthropicClaude3_5_Sonnet => "anthropic/claude-3-5-sonnet",
                 LemurModel.AnthropicClaude35Haiku20241022 => "anthropic/claude-3-5-haiku-20241022",
-                LemurModel.AnthropicClaude3Opus => "anthropic/claude-3-opus",
-                LemurModel.AnthropicClaude3Haiku => "anthropic/claude-3-haiku",
+                LemurModel.AnthropicClaude3_Opus => "anthropic/claude-3-opus",
+                LemurModel.AnthropicClaude3_Haiku => "anthropic/claude-3-haiku",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -70,10 +70,10 @@ namespace AssemblyAI
                 "anthropic/claude-sonnet-4-20250514" => LemurModel.AnthropicClaudeSonnet420250514,
                 "anthropic/claude-opus-4-20250514" => LemurModel.AnthropicClaudeOpus420250514,
                 "anthropic/claude-3-7-sonnet-20250219" => LemurModel.AnthropicClaude37Sonnet20250219,
-                "anthropic/claude-3-5-sonnet" => LemurModel.AnthropicClaude35Sonnet,
+                "anthropic/claude-3-5-sonnet" => LemurModel.AnthropicClaude3_5_Sonnet,
                 "anthropic/claude-3-5-haiku-20241022" => LemurModel.AnthropicClaude35Haiku20241022,
-                "anthropic/claude-3-opus" => LemurModel.AnthropicClaude3Opus,
-                "anthropic/claude-3-haiku" => LemurModel.AnthropicClaude3Haiku,
+                "anthropic/claude-3-opus" => LemurModel.AnthropicClaude3_Opus,
+                "anthropic/claude-3-haiku" => LemurModel.AnthropicClaude3_Haiku,
                 _ => null,
             };
         }

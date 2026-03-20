@@ -435,7 +435,6 @@ namespace AssemblyAI
                 }
             }
         }
-
         /// <summary>
         /// Transcribe audio<br/>
         /// &lt;Note&gt;To use our EU server for transcription, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>

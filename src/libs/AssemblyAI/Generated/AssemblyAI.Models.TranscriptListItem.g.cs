@@ -4,6 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
+    /// Transcript list item<br/>
     /// Example: {"id":"9ea68fd3-f953-42c1-9742-976c447fb463","resource_url":"https://api.assemblyai.com/v2/transcript/9ea68fd3-f953-42c1-9742-976c447fb463","status":"completed","created":"2023-11-02T21:49:25.586965","completed":"2023-11-02T21:49:25.586965","audio_url":"https://assembly.ai/wildfires.mp3","error":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464"}
     /// </summary>
     public sealed partial class TranscriptListItem

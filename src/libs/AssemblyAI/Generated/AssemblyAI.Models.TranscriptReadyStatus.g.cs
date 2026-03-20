@@ -9,11 +9,11 @@ namespace AssemblyAI
     public enum TranscriptReadyStatus
     {
         /// <summary>
-        /// 
+        /// The transcript job has been completed successfully.
         /// </summary>
         Completed,
         /// <summary>
-        /// 
+        /// An error occurred while processing the audio file.
         /// </summary>
         Error,
     }

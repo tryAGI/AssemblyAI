@@ -5,6 +5,7 @@
 namespace AssemblyAI
 {
     /// <summary>
+    /// LeMUR task parameters<br/>
     /// Example: {"transcript_ids":["64nygnr62k-405c-4ae8-8a6b-d90b40ff3cce"],"prompt":"List all the locations affected by wildfires.","final_model":"anthropic/claude-sonnet-4-20250514","temperature":0,"max_output_size":3000}
     /// </summary>
     public readonly partial struct LemurTaskParams : global::System.IEquatable<LemurTaskParams>

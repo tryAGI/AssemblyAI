@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Label
     /// </summary>
     public sealed partial class TopicDetectionResultLabel
     {
