@@ -74,7 +74,7 @@ This SDK includes hand-written code for convenience wrappers and AI abstractions
 
 The `AssemblyAIRealtimeClient` (in namespace `AssemblyAI.Realtime`) is auto-generated from `asyncapi.json` and provides:
 - Typed send methods: `SendUpdateConfigurationAsync()`, `SendForceEndpointAsync()`, `SendSessionTerminationAsync()`
-- `ReceiveUpdateAsync()` returning a discriminated `ServerEvent` union (`IsSessionBegins`, `IsTurn`, `IsTermination`)
+- `ReceiveUpdatesAsync()` returning a discriminated `ServerEvent` union (`IsBegin`, `IsTurn`, `IsTermination`)
 - Binary audio sent via base `SendAsync(bytes)` method
 - Connects to `streaming.assemblyai.com/v3/ws`
 
