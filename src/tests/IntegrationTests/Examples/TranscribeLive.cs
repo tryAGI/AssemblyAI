@@ -33,7 +33,6 @@ public partial class Tests
         //// Receive the session started event.
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
         var receivedSessionBegins = false;
-        var receivedTurn = false;
 
         await foreach (var serverEvent in client.ReceiveUpdatesAsync(cts.Token))
         {
@@ -66,7 +65,7 @@ public partial class Tests
 
                 if (turn.EndOfTurn == true)
                 {
-                    receivedTurn = true;
+                    break;
                 }
             }
             else if (serverEvent.IsTermination)

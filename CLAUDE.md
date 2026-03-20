@@ -55,8 +55,6 @@ This SDK includes hand-written code for convenience wrappers and AI abstractions
 |----------------|---------|
 | `Conversions/TranscriptParams.cs` | Helper for creating transcript parameters from URLs |
 | `Conversions/TranscriptParamsVariant1.cs` | Variant transcript parameter helpers |
-| `Conversions/LemurTaskParams.cs` | Lemur task parameter helpers |
-| `Conversions/LemurTaskParamsVariant1.cs` | Variant Lemur task parameter helpers |
 | `Extensions/Transcript.cs` | Transcript convenience methods (e.g., `EnsureStatusCompleted()`) |
 | `Extensions/AssemblyAIClient.SpeechToTextClient.cs` | Microsoft.Extensions.AI speech-to-text integration |
 

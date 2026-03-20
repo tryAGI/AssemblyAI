@@ -20,8 +20,8 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
     {
         TranscriptParams? transcriptParams = options?.RawRepresentationFactory?.Invoke(this) is TranscriptParams tmp ? (TranscriptParams?)tmp : null;
         TranscriptOptionalParams optionalParams = transcriptParams?.Value2 ?? new() { SpeechModels = [] };
-        optionalParams.LanguageCode ??= options?.SpeechLanguage;
-        optionalParams.SpeechModel ??= options?.ModelId;
+        optionalParams.LanguageCode ??= options?.SpeechLanguage!;
+        optionalParams.SpeechModel ??= options?.ModelId!;
 
         string? audioUrl = transcriptParams?.Value1?.AudioUrl;
         if (audioUrl is null)
@@ -30,11 +30,11 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
             await audioSpeechStream.CopyToAsync(ms, 81920, cancellationToken).ConfigureAwait(false);
             byte[] bytes = ms.ToArray();
 
-            UploadedFile upload = await Transcript.UploadFileAsync(bytes, cancellationToken).ConfigureAwait(false);
+            UploadedFile upload = await Files.UploadAsync(bytes, cancellationToken).ConfigureAwait(false);
             audioUrl = upload.UploadUrl;
         }
 
-        Transcript transcript = await Transcript.CreateTranscriptAsync(
+        Transcript transcript = await Transcripts.SubmitAsync(
             TranscriptParams.FromUrl(audioUrl, optionalParams),
             cancellationToken).ConfigureAwait(false);
 
@@ -42,7 +42,7 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
         while (transcript.Status is TranscriptStatus.Queued or TranscriptStatus.Processing)
         {
             await Task.Delay(500, cancellationToken).ConfigureAwait(false);
-            transcript = await Transcript.GetTranscriptAsync(id, cancellationToken).ConfigureAwait(false);
+            transcript = await Transcripts.GetAsync(id, cancellationToken).ConfigureAwait(false);
         }
 
         if (transcript.Status is TranscriptStatus.Error)

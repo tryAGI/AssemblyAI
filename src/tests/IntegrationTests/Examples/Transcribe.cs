@@ -17,10 +17,10 @@ public partial class Tests
         
         //// You can also transcribe a local file by passing in a file path
         // var filePath = "./path/to/file.mp3";
-        // var uploadedFile = await client.Transcript.UploadFileAsync();
+        // var uploadedFile = await client.Files.UploadAsync();
         // fileUrl = uploadedFile.UploadUrl;
-        
-        Transcript transcript = await client.Transcript.CreateTranscriptAsync(TranscriptParams.FromUrl(
+
+        Transcript transcript = await client.Transcripts.SubmitAsync(TranscriptParams.FromUrl(
             fileUrl,
             new TranscriptOptionalParams
             {
@@ -33,18 +33,5 @@ public partial class Tests
         transcript.EnsureStatusCompleted();
         
         Console.WriteLine(transcript);
-        
-        // If you want to summarize the transcript, you can use the Lemur API
-        // LemurTaskResponse response = await client.LeMUR.LemurTaskAsync(LemurTaskParams.FromPrompt(
-        //     prompt: "Provide a brief summary of the transcript.",
-        //     @params: new LemurBaseParams
-        //     {
-        //         TranscriptIds = [transcript.Id],
-        //         FinalModel = LemurModel.AnthropicClaude35Sonnet
-        //     }));
-        //
-        // Console.WriteLine(response.String?.Value1?.Response ?? "No response found.");
-        // Console.WriteLine($"Input tokens: {response.String?.Value2?.Usage.InputTokens}");
-        // Console.WriteLine($"Input tokens: {response.String?.Value2?.Usage.OutputTokens}");
     }
 }
