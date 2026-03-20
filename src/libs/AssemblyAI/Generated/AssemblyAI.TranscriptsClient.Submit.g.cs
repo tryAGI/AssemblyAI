@@ -3,49 +3,49 @@
 
 namespace AssemblyAI
 {
-    public partial class TranscriptClient
+    public partial class TranscriptsClient
     {
-        partial void PrepareDeleteTranscriptArguments(
+        partial void PrepareSubmitArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string transcriptId);
-        partial void PrepareDeleteTranscriptRequest(
+            global::AssemblyAI.TranscriptParams request);
+        partial void PrepareSubmitRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string transcriptId);
-        partial void ProcessDeleteTranscriptResponse(
+            global::AssemblyAI.TranscriptParams request);
+        partial void ProcessSubmitResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessDeleteTranscriptResponseContent(
+        partial void ProcessSubmitResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Delete transcript<br/>
-        /// &lt;Note&gt;To delete your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
-        /// Remove the data from the transcript and mark it as deleted.<br/>
-        /// &lt;Warning&gt;Files uploaded via the `/upload` endpoint are immediately deleted alongside the transcript when you make a DELETE request, ensuring your data is removed from our systems right away.&lt;/Warning&gt;
+        /// Transcribe audio<br/>
+        /// &lt;Note&gt;To use our EU server for transcription, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
+        /// Create a transcript from a media file that is accessible via a URL.
         /// </summary>
-        /// <param name="transcriptId"></param>
+        /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> DeleteTranscriptAsync(
-            string transcriptId,
+        public async global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> SubmitAsync(
+
+            global::AssemblyAI.TranscriptParams request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareDeleteTranscriptArguments(
+            PrepareSubmitArguments(
                 httpClient: HttpClient,
-                transcriptId: ref transcriptId);
+                request: request);
 
             var __pathBuilder = new global::AssemblyAI.PathBuilder(
-                path: $"/v2/transcript/{transcriptId}",
+                path: "/v2/transcript",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Delete,
+                method: global::System.Net.Http.HttpMethod.Post,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -67,14 +67,20 @@ namespace AssemblyAI
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                content: __httpRequestContentBody,
+                encoding: global::System.Text.Encoding.UTF8,
+                mediaType: "application/json");
+            __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareDeleteTranscriptRequest(
+            PrepareSubmitRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                transcriptId: transcriptId);
+                request: request);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -84,7 +90,7 @@ namespace AssemblyAI
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessDeleteTranscriptResponse(
+            ProcessSubmitResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Bad request
@@ -356,7 +362,7 @@ namespace AssemblyAI
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessDeleteTranscriptResponseContent(
+                ProcessSubmitResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -428,6 +434,24 @@ namespace AssemblyAI
                     };
                 }
             }
+        }
+        /// <summary>
+        /// Transcribe audio<br/>
+        /// &lt;Note&gt;To use our EU server for transcription, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
+        /// Create a transcript from a media file that is accessible via a URL.
+        /// </summary>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> SubmitAsync(
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::AssemblyAI.TranscriptParams
+            {
+            };
+
+            return await SubmitAsync(
+                request: __request,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

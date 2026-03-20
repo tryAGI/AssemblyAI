@@ -3,44 +3,44 @@
 
 namespace AssemblyAI
 {
-    public partial class TranscriptClient
+    public partial class TranscriptsClient
     {
-        partial void PrepareGetTranscriptParagraphsArguments(
+        partial void PrepareGetSentencesArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string transcriptId);
-        partial void PrepareGetTranscriptParagraphsRequest(
+        partial void PrepareGetSentencesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string transcriptId);
-        partial void ProcessGetTranscriptParagraphsResponse(
+        partial void ProcessGetSentencesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetTranscriptParagraphsResponseContent(
+        partial void ProcessGetSentencesResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get paragraphs in transcript<br/>
+        /// Get sentences in transcript<br/>
         /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
-        /// Get the transcript split by paragraphs. The API will attempt to semantically segment your transcript into paragraphs to create more reader-friendly transcripts.
+        /// Get the transcript split by sentences. The API will attempt to semantically segment the transcript into sentences to create more reader-friendly transcripts.
         /// </summary>
         /// <param name="transcriptId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::AssemblyAI.ParagraphsResponse> GetTranscriptParagraphsAsync(
+        public async global::System.Threading.Tasks.Task<global::AssemblyAI.SentencesResponse> GetSentencesAsync(
             string transcriptId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetTranscriptParagraphsArguments(
+            PrepareGetSentencesArguments(
                 httpClient: HttpClient,
                 transcriptId: ref transcriptId);
 
             var __pathBuilder = new global::AssemblyAI.PathBuilder(
-                path: $"/v2/transcript/{transcriptId}/paragraphs",
+                path: $"/v2/transcript/{transcriptId}/sentences",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -70,7 +70,7 @@ namespace AssemblyAI
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareGetTranscriptParagraphsRequest(
+            PrepareGetSentencesRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 transcriptId: transcriptId);
@@ -83,7 +83,7 @@ namespace AssemblyAI
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessGetTranscriptParagraphsResponse(
+            ProcessGetSentencesResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Bad request
@@ -355,7 +355,7 @@ namespace AssemblyAI
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessGetTranscriptParagraphsResponseContent(
+                ProcessGetSentencesResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -365,7 +365,7 @@ namespace AssemblyAI
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::AssemblyAI.ParagraphsResponse.FromJson(__content, JsonSerializerContext) ??
+                        global::AssemblyAI.SentencesResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -396,7 +396,7 @@ namespace AssemblyAI
                     ).ConfigureAwait(false);
 
                     return
-                        await global::AssemblyAI.ParagraphsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::AssemblyAI.SentencesResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)

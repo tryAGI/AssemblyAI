@@ -3,60 +3,45 @@
 
 namespace AssemblyAI
 {
-    public partial class TranscriptClient
+    public partial class TranscriptsClient
     {
-        partial void PrepareGetSubtitlesArguments(
+        partial void PrepareGetParagraphsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string transcriptId,
-            ref global::AssemblyAI.SubtitleFormat subtitleFormat,
-            ref int? charsPerCaption);
-        partial void PrepareGetSubtitlesRequest(
+            ref string transcriptId);
+        partial void PrepareGetParagraphsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string transcriptId,
-            global::AssemblyAI.SubtitleFormat subtitleFormat,
-            int? charsPerCaption);
-        partial void ProcessGetSubtitlesResponse(
+            string transcriptId);
+        partial void ProcessGetParagraphsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetSubtitlesResponseContent(
+        partial void ProcessGetParagraphsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get subtitles for transcript<br/>
+        /// Get paragraphs in transcript<br/>
         /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
-        /// Export your transcript in SRT or VTT format to use with a video player for subtitles and closed captions.
+        /// Get the transcript split by paragraphs. The API will attempt to semantically segment your transcript into paragraphs to create more reader-friendly transcripts.
         /// </summary>
         /// <param name="transcriptId"></param>
-        /// <param name="subtitleFormat">
-        /// Format of the subtitles
-        /// </param>
-        /// <param name="charsPerCaption"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<string> GetSubtitlesAsync(
+        public async global::System.Threading.Tasks.Task<global::AssemblyAI.ParagraphsResponse> GetParagraphsAsync(
             string transcriptId,
-            global::AssemblyAI.SubtitleFormat subtitleFormat,
-            int? charsPerCaption = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetSubtitlesArguments(
+            PrepareGetParagraphsArguments(
                 httpClient: HttpClient,
-                transcriptId: ref transcriptId,
-                subtitleFormat: ref subtitleFormat,
-                charsPerCaption: ref charsPerCaption);
+                transcriptId: ref transcriptId);
 
             var __pathBuilder = new global::AssemblyAI.PathBuilder(
-                path: $"/v2/transcript/{transcriptId}/{subtitleFormat}",
+                path: $"/v2/transcript/{transcriptId}/paragraphs",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder
-                .AddOptionalParameter("chars_per_caption", charsPerCaption?.ToString()) 
-                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -85,12 +70,10 @@ namespace AssemblyAI
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareGetSubtitlesRequest(
+            PrepareGetParagraphsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                transcriptId: transcriptId,
-                subtitleFormat: subtitleFormat,
-                charsPerCaption: charsPerCaption);
+                transcriptId: transcriptId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -100,7 +83,7 @@ namespace AssemblyAI
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessGetSubtitlesResponse(
+            ProcessGetParagraphsResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Bad request
@@ -372,7 +355,7 @@ namespace AssemblyAI
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessGetSubtitlesResponseContent(
+                ProcessGetParagraphsResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -381,7 +364,9 @@ namespace AssemblyAI
                 {
                     __response.EnsureSuccessStatusCode();
 
-                    return __content;
+                    return
+                        global::AssemblyAI.ParagraphsResponse.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -404,13 +389,15 @@ namespace AssemblyAI
                 {
                     __response.EnsureSuccessStatusCode();
 
-                    var __content = await __response.Content.ReadAsStringAsync(
+                    using var __content = await __response.Content.ReadAsStreamAsync(
 #if NET5_0_OR_GREATER
                         cancellationToken
 #endif
                     ).ConfigureAwait(false);
 
-                    return __content;
+                    return
+                        await global::AssemblyAI.ParagraphsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
                 {

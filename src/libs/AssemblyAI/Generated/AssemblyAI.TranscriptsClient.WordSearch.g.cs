@@ -3,7 +3,7 @@
 
 namespace AssemblyAI
 {
-    public partial class TranscriptClient
+    public partial class TranscriptsClient
     {
         partial void PrepareWordSearchArguments(
             global::System.Net.Http.HttpClient httpClient,

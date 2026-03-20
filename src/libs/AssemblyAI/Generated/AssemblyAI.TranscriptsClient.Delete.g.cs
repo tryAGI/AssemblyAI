@@ -3,49 +3,49 @@
 
 namespace AssemblyAI
 {
-    public partial class TranscriptClient
+    public partial class TranscriptsClient
     {
-        partial void PrepareGetRedactedAudioArguments(
+        partial void PrepareDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string transcriptId);
-        partial void PrepareGetRedactedAudioRequest(
+        partial void PrepareDeleteRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string transcriptId);
-        partial void ProcessGetRedactedAudioResponse(
+        partial void ProcessDeleteResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetRedactedAudioResponseContent(
+        partial void ProcessDeleteResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get redacted audio<br/>
-        /// &lt;Note&gt;To retrieve the redacted audio on the EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com` in the `GET` request above.&lt;/Note&gt;<br/>
-        /// &lt;Note&gt;Redacted audio files are only available for 24 hours. Make sure to download the file within this time frame.&lt;/Note&gt;<br/>
-        /// Retrieve the redacted audio object containing the status and URL to the redacted audio.
+        /// Delete transcript<br/>
+        /// &lt;Note&gt;To delete your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
+        /// Remove the data from the transcript and mark it as deleted.<br/>
+        /// &lt;Warning&gt;Files uploaded via the `/upload` endpoint are immediately deleted alongside the transcript when you make a DELETE request, ensuring your data is removed from our systems right away.&lt;/Warning&gt;
         /// </summary>
         /// <param name="transcriptId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::AssemblyAI.RedactedAudioResponse> GetRedactedAudioAsync(
+        public async global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> DeleteAsync(
             string transcriptId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetRedactedAudioArguments(
+            PrepareDeleteArguments(
                 httpClient: HttpClient,
                 transcriptId: ref transcriptId);
 
             var __pathBuilder = new global::AssemblyAI.PathBuilder(
-                path: $"/v2/transcript/{transcriptId}/redacted-audio",
+                path: $"/v2/transcript/{transcriptId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Get,
+                method: global::System.Net.Http.HttpMethod.Delete,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -71,7 +71,7 @@ namespace AssemblyAI
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareGetRedactedAudioRequest(
+            PrepareDeleteRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 transcriptId: transcriptId);
@@ -84,7 +84,7 @@ namespace AssemblyAI
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessGetRedactedAudioResponse(
+            ProcessDeleteResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Bad request
@@ -356,7 +356,7 @@ namespace AssemblyAI
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessGetRedactedAudioResponseContent(
+                ProcessDeleteResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -366,7 +366,7 @@ namespace AssemblyAI
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::AssemblyAI.RedactedAudioResponse.FromJson(__content, JsonSerializerContext) ??
+                        global::AssemblyAI.Transcript.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -397,7 +397,7 @@ namespace AssemblyAI
                     ).ConfigureAwait(false);
 
                     return
-                        await global::AssemblyAI.RedactedAudioResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::AssemblyAI.Transcript.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)

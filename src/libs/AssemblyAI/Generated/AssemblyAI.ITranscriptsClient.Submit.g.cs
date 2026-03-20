@@ -2,7 +2,7 @@
 
 namespace AssemblyAI
 {
-    public partial interface ITranscriptClient
+    public partial interface ITranscriptsClient
     {
         /// <summary>
         /// Transcribe audio<br/>
@@ -12,7 +12,7 @@ namespace AssemblyAI
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> CreateTranscriptAsync(
+        global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> SubmitAsync(
 
             global::AssemblyAI.TranscriptParams request,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -23,7 +23,7 @@ namespace AssemblyAI
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> CreateTranscriptAsync(
+        global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> SubmitAsync(
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

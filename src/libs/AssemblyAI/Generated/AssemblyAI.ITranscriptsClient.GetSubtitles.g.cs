@@ -2,18 +2,24 @@
 
 namespace AssemblyAI
 {
-    public partial interface ITranscriptClient
+    public partial interface ITranscriptsClient
     {
         /// <summary>
-        /// Get paragraphs in transcript<br/>
+        /// Get subtitles for transcript<br/>
         /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
-        /// Get the transcript split by paragraphs. The API will attempt to semantically segment your transcript into paragraphs to create more reader-friendly transcripts.
+        /// Export your transcript in SRT or VTT format to use with a video player for subtitles and closed captions.
         /// </summary>
         /// <param name="transcriptId"></param>
+        /// <param name="subtitleFormat">
+        /// Format of the subtitles
+        /// </param>
+        /// <param name="charsPerCaption"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::AssemblyAI.ParagraphsResponse> GetTranscriptParagraphsAsync(
+        global::System.Threading.Tasks.Task<string> GetSubtitlesAsync(
             string transcriptId,
+            global::AssemblyAI.SubtitleFormat subtitleFormat,
+            int? charsPerCaption = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
