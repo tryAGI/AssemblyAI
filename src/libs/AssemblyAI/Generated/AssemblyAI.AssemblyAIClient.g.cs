@@ -38,18 +38,18 @@ namespace AssemblyAI
 
 
         /// <summary>
-        /// Transcript related operations
+        /// 
         /// </summary>
-        public TranscriptClient Transcript => new TranscriptClient(HttpClient, authorizations: Authorizations)
+        public FilesClient Files => new FilesClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
         /// <summary>
-        /// Streaming Speech-to-Text
+        /// 
         /// </summary>
-        public StreamingClient Streaming => new StreamingClient(HttpClient, authorizations: Authorizations)
+        public TranscriptsClient Transcripts => new TranscriptsClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,

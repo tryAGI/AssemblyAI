@@ -2,7 +2,7 @@
 
 namespace AssemblyAI
 {
-    public partial interface ITranscriptClient
+    public partial interface ITranscriptsClient
     {
         /// <summary>
         /// Search words in transcript<br/>

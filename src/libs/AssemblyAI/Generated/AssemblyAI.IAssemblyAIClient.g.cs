@@ -41,14 +41,14 @@ namespace AssemblyAI
 
 
         /// <summary>
-        /// Transcript related operations
+        /// 
         /// </summary>
-        public TranscriptClient Transcript { get; }
+        public FilesClient Files { get; }
 
         /// <summary>
-        /// Streaming Speech-to-Text
+        /// 
         /// </summary>
-        public StreamingClient Streaming { get; }
+        public TranscriptsClient Transcripts { get; }
 
     }
 }

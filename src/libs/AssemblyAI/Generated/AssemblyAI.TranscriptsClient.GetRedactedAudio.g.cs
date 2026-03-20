@@ -3,52 +3,49 @@
 
 namespace AssemblyAI
 {
-    public partial class TranscriptClient
+    public partial class TranscriptsClient
     {
-        partial void PrepareUploadFileArguments(
+        partial void PrepareGetRedactedAudioArguments(
             global::System.Net.Http.HttpClient httpClient,
-            byte[] request);
-        partial void PrepareUploadFileRequest(
+            ref string transcriptId);
+        partial void PrepareGetRedactedAudioRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            byte[] request);
-        partial void ProcessUploadFileResponse(
+            string transcriptId);
+        partial void ProcessGetRedactedAudioResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessUploadFileResponseContent(
+        partial void ProcessGetRedactedAudioResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Upload a media file<br/>
-        /// Upload a media file to AssemblyAI's servers.<br/>
-        /// &lt;Note&gt;To upload a media file to our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
-        /// &lt;Warning&gt;Requests to transcribe uploaded files must use an API key from the same project as the key that was used to upload the file. If you use an API key from a different project you will get a `403` error and "Cannot access uploaded file" message.&lt;/Warning&gt;
+        /// Get redacted audio<br/>
+        /// &lt;Note&gt;To retrieve the redacted audio on the EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com` in the `GET` request above.&lt;/Note&gt;<br/>
+        /// &lt;Note&gt;Redacted audio files are only available for 24 hours. Make sure to download the file within this time frame.&lt;/Note&gt;<br/>
+        /// Retrieve the redacted audio object containing the status and URL to the redacted audio.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="transcriptId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::AssemblyAI.UploadedFile> UploadFileAsync(
-
-            byte[] request,
+        public async global::System.Threading.Tasks.Task<global::AssemblyAI.RedactedAudioResponse> GetRedactedAudioAsync(
+            string transcriptId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareUploadFileArguments(
+            PrepareGetRedactedAudioArguments(
                 httpClient: HttpClient,
-                request: request);
+                transcriptId: ref transcriptId);
 
             var __pathBuilder = new global::AssemblyAI.PathBuilder(
-                path: "/v2/upload",
+                path: $"/v2/transcript/{transcriptId}/redacted-audio",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Post,
+                method: global::System.Net.Http.HttpMethod.Get,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -71,17 +68,13 @@ namespace AssemblyAI
                 }
             }
 
-            var __httpRequestContent = new global::System.Net.Http.ByteArrayContent(request);
-            __httpRequestContent.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
-            __httpRequest.Content = __httpRequestContent;
-
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareUploadFileRequest(
+            PrepareGetRedactedAudioRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                request: request);
+                transcriptId: transcriptId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -91,7 +84,7 @@ namespace AssemblyAI
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessUploadFileResponse(
+            ProcessGetRedactedAudioResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Bad request
@@ -164,44 +157,6 @@ namespace AssemblyAI
                 {
                     ResponseBody = __content_401,
                     ResponseObject = __value_401,
-                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                        __response.Headers,
-                        h => h.Key,
-                        h => h.Value),
-                };
-            }
-            // Cannot access uploaded file
-            if ((int)__response.StatusCode == 403)
-            {
-                string? __content_403 = null;
-                global::System.Exception? __exception_403 = null;
-                global::AssemblyAI.Error? __value_403 = null;
-                try
-                {
-                    if (ReadResponseAsString)
-                    {
-                        __content_403 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_403 = global::AssemblyAI.Error.FromJson(__content_403, JsonSerializerContext);
-                    }
-                    else
-                    {
-                        __content_403 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
-                        __value_403 = global::AssemblyAI.Error.FromJson(__content_403, JsonSerializerContext);
-                    }
-                }
-                catch (global::System.Exception __ex)
-                {
-                    __exception_403 = __ex;
-                }
-
-                throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
-                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
-                    innerException: __exception_403,
-                    statusCode: __response.StatusCode)
-                {
-                    ResponseBody = __content_403,
-                    ResponseObject = __value_403,
                     ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                         __response.Headers,
                         h => h.Key,
@@ -401,7 +356,7 @@ namespace AssemblyAI
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessUploadFileResponseContent(
+                ProcessGetRedactedAudioResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -411,7 +366,7 @@ namespace AssemblyAI
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::AssemblyAI.UploadedFile.FromJson(__content, JsonSerializerContext) ??
+                        global::AssemblyAI.RedactedAudioResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -442,7 +397,7 @@ namespace AssemblyAI
                     ).ConfigureAwait(false);
 
                     return
-                        await global::AssemblyAI.UploadedFile.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::AssemblyAI.RedactedAudioResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)

@@ -2,7 +2,7 @@
 
 namespace AssemblyAI
 {
-    public partial interface ITranscriptClient
+    public partial interface ITranscriptsClient
     {
         /// <summary>
         /// Get redacted audio<br/>
