@@ -2,82 +2,84 @@
 order: 20
 title: Transcribe Live
 slug: transcribe-live
+
+Connect to the AssemblyAI v3 real-time streaming API for live speech-to-text transcription.
 */
 
-using System.Diagnostics;
+using AssemblyAI.Realtime;
 
 namespace AssemblyAI.IntegrationTests;
 
 public partial class Tests
 {
+    //// Stream audio to AssemblyAI for real-time transcription using the v3 WebSocket API.
+
     [TestMethod]
+    [TestCategory("Explicit")]
     public async Task TranscribeLive()
     {
-        using var client = GetAuthenticatedApi();
-        
-        // - You need to have `sox` installed on your system. If not, run:
-        //   macOS: brew install sox (macOS)
-        //   Linux: sudo apt-get install sox libsox-fmt-all
-        //   Windows: manually download and install sox, and add sox to your PATH environment variable.
-        //            https://sourceforge.net/projects/sox/
+        var apiKey =
+            Environment.GetEnvironmentVariable("ASSEMBLYAI_API_KEY") is { Length: > 0 } apiKeyValue
+                ? apiKeyValue
+                : throw new AssertInconclusiveException("ASSEMBLYAI_API_KEY environment variable is not found.");
 
-        // Set up the cancellation token, so we can stop the program with Ctrl+C
-        var cts = new CancellationTokenSource();
-        var ct = cts.Token;
-        Console.CancelKeyPress += (sender, e) => cts.Cancel();
+        //// Create the realtime client and connect.
+        using var client = new AssemblyAIRealtimeClient();
+        await client.ConnectAsync(
+            new Uri($"wss://streaming.assemblyai.com/v3/ws?api_key={apiKey}"));
 
-        // Set up the realtime transcriber
-        // await using var transcriber = new RealtimeTranscriber(new RealtimeTranscriberOptions
-        // {
-        //     SampleRate = 16_000
-        // });
-        //
-        // transcriber.PartialTranscriptReceived.Subscribe(transcript =>
-        // {
-        //     if (transcript.Text == "") return;
-        //     Console.WriteLine($"Partial transcript: {transcript.Text}");
-        // });
-        // transcriber.FinalTranscriptReceived.Subscribe(transcript =>
-        // {
-        //     Console.WriteLine($"Final transcript: {transcript.Text}");
-        // });
+        client.IsConnected.Should().BeTrue();
 
-        //await transcriber.ConnectAsync();
+        //// Receive the session started event.
+        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+        var receivedSessionBegins = false;
+        var receivedTurn = false;
 
-        var soxArguments = string.Join(' ', [
-            // --default-device doesn't work on Windows
-            OperatingSystem.IsWindows() ? "-t waveaudio default" : "--default-device",
-            "--no-show-progress",
-            "--rate 16000",
-            "--channels 1",
-            "--encoding signed-integer",
-            "--bits 16",
-            "--type wav",
-            "-" // pipe
-        ]);
-        Console.WriteLine($"sox {soxArguments}");
-        using var soxProcess = new Process();
-        soxProcess.StartInfo = new ProcessStartInfo
+        await foreach (var serverEvent in client.ReceiveUpdatesAsync(cts.Token))
         {
-            FileName = "sox",
-            Arguments = soxArguments,
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-            UseShellExecute = false,
-            CreateNoWindow = true
-        };
+            if (serverEvent.IsBegin)
+            {
+                receivedSessionBegins = true;
+                Console.WriteLine($"Session started: {serverEvent.Begin?.Id}");
+                Console.WriteLine($"Expires at: {serverEvent.Begin?.ExpiresAt}");
 
-        soxProcess.Start();
-        soxProcess.BeginErrorReadLine();
-        var soxOutputStream = soxProcess.StandardOutput.BaseStream;
-        var buffer = new Memory<byte>(new byte[4096]);
-        while (await soxOutputStream.ReadAsync(buffer, ct) > 0)
-        {
-            if (ct.IsCancellationRequested) break;
-            //await transcriber.SendAudioAsync(buffer);
+                //// After session starts, send audio data.
+                //// In a real application, you would stream microphone PCM16 audio:
+                //// await client.SendAsync(audioBytes, WebSocketMessageType.Binary, true, cts.Token);
+
+                //// Update configuration for turn detection sensitivity.
+                await client.SendUpdateConfigurationAsync(new UpdateConfigurationPayload
+                {
+                    EndOfTurnConfidenceThreshold = 0.5,
+                    MaxTurnSilence = 2000,
+                });
+
+                //// For this example, manually force an endpoint to get results.
+                await client.SendForceEndpointAsync(new ForceEndpointPayload());
+            }
+            else if (serverEvent.IsTurn)
+            {
+                var turn = serverEvent.Turn!;
+                Console.WriteLine($"Turn {turn.TurnOrder}: {turn.Transcript}");
+                Console.WriteLine($"  End of turn: {turn.EndOfTurn}");
+                Console.WriteLine($"  Confidence: {turn.EndOfTurnConfidence}");
+
+                if (turn.EndOfTurn == true)
+                {
+                    receivedTurn = true;
+                }
+            }
+            else if (serverEvent.IsTermination)
+            {
+                var termination = serverEvent.Termination!;
+                Console.WriteLine($"Session terminated. Audio: {termination.AudioDurationSeconds}s, Session: {termination.SessionDurationSeconds}s");
+                break;
+            }
         }
 
-        soxProcess.Kill();
-        //await transcriber.CloseAsync();
+        //// Gracefully terminate the session.
+        await client.SendSessionTerminationAsync(new SessionTerminationPayload());
+
+        receivedSessionBegins.Should().BeTrue();
     }
 }
