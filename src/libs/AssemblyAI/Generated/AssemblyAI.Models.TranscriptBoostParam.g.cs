@@ -11,15 +11,15 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        Low,
-        /// <summary>
-        /// 
-        /// </summary>
         Default,
         /// <summary>
         /// 
         /// </summary>
         High,
+        /// <summary>
+        /// 
+        /// </summary>
+        Low,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace AssemblyAI
         {
             return value switch
             {
-                TranscriptBoostParam.Low => "low",
                 TranscriptBoostParam.Default => "default",
                 TranscriptBoostParam.High => "high",
+                TranscriptBoostParam.Low => "low",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace AssemblyAI
         {
             return value switch
             {
-                "low" => TranscriptBoostParam.Low,
                 "default" => TranscriptBoostParam.Default,
                 "high" => TranscriptBoostParam.High,
+                "low" => TranscriptBoostParam.Low,
                 _ => null,
             };
         }

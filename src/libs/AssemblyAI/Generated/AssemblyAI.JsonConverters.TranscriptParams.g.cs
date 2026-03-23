@@ -36,6 +36,7 @@ namespace AssemblyAI.JsonConverters
             if (__jsonProps.Contains("content_safety")) __score1++;
             if (__jsonProps.Contains("content_safety_confidence")) __score1++;
             if (__jsonProps.Contains("custom_spelling")) __score1++;
+            if (__jsonProps.Contains("custom_topics")) __score1++;
             if (__jsonProps.Contains("disfluencies")) __score1++;
             if (__jsonProps.Contains("entity_detection")) __score1++;
             if (__jsonProps.Contains("filter_profanity")) __score1++;
@@ -56,24 +57,23 @@ namespace AssemblyAI.JsonConverters
             if (__jsonProps.Contains("redact_pii_audio_quality")) __score1++;
             if (__jsonProps.Contains("redact_pii_policies")) __score1++;
             if (__jsonProps.Contains("redact_pii_sub")) __score1++;
+            if (__jsonProps.Contains("remove_audio_tags")) __score1++;
             if (__jsonProps.Contains("sentiment_analysis")) __score1++;
             if (__jsonProps.Contains("speaker_labels")) __score1++;
             if (__jsonProps.Contains("speaker_options")) __score1++;
             if (__jsonProps.Contains("speakers_expected")) __score1++;
+            if (__jsonProps.Contains("speech_model")) __score1++;
             if (__jsonProps.Contains("speech_models")) __score1++;
             if (__jsonProps.Contains("speech_threshold")) __score1++;
             if (__jsonProps.Contains("speech_understanding")) __score1++;
             if (__jsonProps.Contains("summarization")) __score1++;
             if (__jsonProps.Contains("summary_model")) __score1++;
             if (__jsonProps.Contains("summary_type")) __score1++;
-            if (__jsonProps.Contains("remove_audio_tags")) __score1++;
             if (__jsonProps.Contains("temperature")) __score1++;
+            if (__jsonProps.Contains("topics")) __score1++;
             if (__jsonProps.Contains("webhook_auth_header_name")) __score1++;
             if (__jsonProps.Contains("webhook_auth_header_value")) __score1++;
             if (__jsonProps.Contains("webhook_url")) __score1++;
-            if (__jsonProps.Contains("custom_topics")) __score1++;
-            if (__jsonProps.Contains("speech_model")) __score1++;
-            if (__jsonProps.Contains("topics")) __score1++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }

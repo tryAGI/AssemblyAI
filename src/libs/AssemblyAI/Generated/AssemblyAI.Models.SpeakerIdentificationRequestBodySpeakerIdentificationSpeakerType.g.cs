@@ -11,11 +11,11 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        Role,
+        Name,
         /// <summary>
         /// 
         /// </summary>
-        Name,
+        Role,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace AssemblyAI
         {
             return value switch
             {
-                SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType.Role => "role",
                 SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType.Name => "name",
+                SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType.Role => "role",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace AssemblyAI
         {
             return value switch
             {
-                "role" => SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType.Role,
                 "name" => SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType.Name,
+                "role" => SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType.Role,
                 _ => null,
             };
         }
