@@ -27,12 +27,12 @@ namespace AssemblyAI.JsonConverters
             }
 
             var __score0 = 0;
-            if (__jsonProps.Contains("transcript_ids")) __score0++;
-            if (__jsonProps.Contains("input_text")) __score0++;
             if (__jsonProps.Contains("context")) __score0++;
             if (__jsonProps.Contains("final_model")) __score0++;
+            if (__jsonProps.Contains("input_text")) __score0++;
             if (__jsonProps.Contains("max_output_size")) __score0++;
             if (__jsonProps.Contains("temperature")) __score0++;
+            if (__jsonProps.Contains("transcript_ids")) __score0++;
             var __score1 = 0;
             if (__jsonProps.Contains("answer_format")) __score1++;
             var __bestScore = 0;

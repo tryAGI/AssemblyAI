@@ -15,11 +15,11 @@ namespace AssemblyAI.Realtime
         /// <summary>
         /// 
         /// </summary>
-        Turn,
+        Termination,
         /// <summary>
         /// 
         /// </summary>
-        Termination,
+        Turn,
     }
 
     /// <summary>
@@ -35,8 +35,8 @@ namespace AssemblyAI.Realtime
             return value switch
             {
                 ServerEventDiscriminatorType.Begin => "Begin",
-                ServerEventDiscriminatorType.Turn => "Turn",
                 ServerEventDiscriminatorType.Termination => "Termination",
+                ServerEventDiscriminatorType.Turn => "Turn",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -48,8 +48,8 @@ namespace AssemblyAI.Realtime
             return value switch
             {
                 "Begin" => ServerEventDiscriminatorType.Begin,
-                "Turn" => ServerEventDiscriminatorType.Turn,
                 "Termination" => ServerEventDiscriminatorType.Termination,
+                "Turn" => ServerEventDiscriminatorType.Turn,
                 _ => null,
             };
         }

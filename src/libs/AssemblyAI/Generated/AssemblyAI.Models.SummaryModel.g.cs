@@ -11,7 +11,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        Informative,
+        Catchy,
         /// <summary>
         /// 
         /// </summary>
@@ -19,7 +19,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        Catchy,
+        Informative,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace AssemblyAI
         {
             return value switch
             {
-                SummaryModel.Informative => "informative",
-                SummaryModel.Conversational => "conversational",
                 SummaryModel.Catchy => "catchy",
+                SummaryModel.Conversational => "conversational",
+                SummaryModel.Informative => "informative",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace AssemblyAI
         {
             return value switch
             {
-                "informative" => SummaryModel.Informative,
-                "conversational" => SummaryModel.Conversational,
                 "catchy" => SummaryModel.Catchy,
+                "conversational" => SummaryModel.Conversational,
+                "informative" => SummaryModel.Informative,
                 _ => null,
             };
         }
