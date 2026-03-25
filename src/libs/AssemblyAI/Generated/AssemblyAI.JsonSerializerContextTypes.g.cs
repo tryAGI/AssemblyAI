@@ -108,111 +108,111 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<string>? Type20 { get; set; }
+        public global::AssemblyAI.OneOf<string, object>? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>? Type21 { get; set; }
+        public object? Type21 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>? Type22 { get; set; }
+        public global::System.Collections.Generic.IList<string>? Type22 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptLanguageCode? Type23 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>? Type23 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public object? Type24 { get; set; }
+        public global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>? Type24 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptLanguageCode>? Type25 { get; set; }
+        public global::AssemblyAI.TranscriptLanguageCode? Type25 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public float? Type26 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptLanguageCode>? Type26 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptOptionalParamsLanguageDetectionOptions? Type27 { get; set; }
+        public float? Type27 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Type28 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsLanguageDetectionOptions? Type28 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptions? Type29 { get; set; }
+        public double? Type29 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptionsOverrideAudioRedactionMethod? Type30 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptions? Type30 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.RedactPiiAudioQuality? Type31 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptionsOverrideAudioRedactionMethod? Type31 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.PiiPolicy>? Type32 { get; set; }
+        public global::AssemblyAI.RedactPiiAudioQuality? Type32 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.PiiPolicy? Type33 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.PiiPolicy>? Type33 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.SubstitutionPolicy?, object>? Type34 { get; set; }
+        public global::AssemblyAI.PiiPolicy? Type34 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SubstitutionPolicy? Type35 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.SubstitutionPolicy?, object>? Type35 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptOptionalParamsSpeakerOptions? Type36 { get; set; }
+        public global::AssemblyAI.SubstitutionPolicy? Type36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptOptionalParamsSpeechUnderstanding? Type37 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsSpeakerOptions? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TranslationRequestBody, global::AssemblyAI.SpeakerIdentificationRequestBody, global::AssemblyAI.CustomFormattingRequestBody>? Type38 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsSpeechUnderstanding? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranslationRequestBody? Type39 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.TranslationRequestBody, global::AssemblyAI.SpeakerIdentificationRequestBody, global::AssemblyAI.CustomFormattingRequestBody>? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SpeakerIdentificationRequestBody? Type40 { get; set; }
+        public global::AssemblyAI.TranslationRequestBody? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.CustomFormattingRequestBody? Type41 { get; set; }
+        public global::AssemblyAI.SpeakerIdentificationRequestBody? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SummaryModel? Type42 { get; set; }
+        public global::AssemblyAI.CustomFormattingRequestBody? Type42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SummaryType? Type43 { get; set; }
+        public global::AssemblyAI.SummaryModel? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>? Type44 { get; set; }
+        public global::AssemblyAI.SummaryType? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags? Type45 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<string, object>? Type46 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>

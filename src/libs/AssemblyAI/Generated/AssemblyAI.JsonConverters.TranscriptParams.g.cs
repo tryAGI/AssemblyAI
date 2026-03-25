@@ -38,6 +38,7 @@ namespace AssemblyAI.JsonConverters
             if (__jsonProps.Contains("custom_spelling")) __score1++;
             if (__jsonProps.Contains("custom_topics")) __score1++;
             if (__jsonProps.Contains("disfluencies")) __score1++;
+            if (__jsonProps.Contains("domain")) __score1++;
             if (__jsonProps.Contains("entity_detection")) __score1++;
             if (__jsonProps.Contains("filter_profanity")) __score1++;
             if (__jsonProps.Contains("format_text")) __score1++;
