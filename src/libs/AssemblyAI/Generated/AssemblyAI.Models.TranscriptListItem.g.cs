@@ -78,11 +78,11 @@ namespace AssemblyAI
         /// <param name="created">
         /// The date and time the transcript was created
         /// </param>
-        /// <param name="completed">
-        /// The date and time the transcript was completed
-        /// </param>
         /// <param name="audioUrl">
         /// The URL to the audio file
+        /// </param>
+        /// <param name="completed">
+        /// The date and time the transcript was completed
         /// </param>
         /// <param name="error">
         /// Error message of why the transcript failed
@@ -103,8 +103,8 @@ namespace AssemblyAI
             this.ResourceUrl = resourceUrl ?? throw new global::System.ArgumentNullException(nameof(resourceUrl));
             this.Status = status;
             this.Created = created ?? throw new global::System.ArgumentNullException(nameof(created));
-            this.AudioUrl = audioUrl ?? throw new global::System.ArgumentNullException(nameof(audioUrl));
             this.Completed = completed;
+            this.AudioUrl = audioUrl ?? throw new global::System.ArgumentNullException(nameof(audioUrl));
             this.Error = error;
         }
 

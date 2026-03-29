@@ -87,11 +87,11 @@ namespace AssemblyAI
         /// <param name="words">
         /// The words in the utterance.
         /// </param>
-        /// <param name="channel">
-        /// The channel of this utterance. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
-        /// </param>
         /// <param name="speaker">
         /// The speaker of this utterance, where each speaker is assigned a sequential capital letter - e.g. "A" for Speaker A, "B" for Speaker B, etc.
+        /// </param>
+        /// <param name="channel">
+        /// The channel of this utterance. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
         /// </param>
         /// <param name="translatedTexts">
         /// Translations keyed by language code (e.g., `{"es": "Texto traducido", "de": "Übersetzter Text"}`). Only present when `match_original_utterance` is enabled with translation.
@@ -114,8 +114,8 @@ namespace AssemblyAI
             this.End = end;
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Words = words ?? throw new global::System.ArgumentNullException(nameof(words));
-            this.Speaker = speaker ?? throw new global::System.ArgumentNullException(nameof(speaker));
             this.Channel = channel;
+            this.Speaker = speaker ?? throw new global::System.ArgumentNullException(nameof(speaker));
             this.TranslatedTexts = translatedTexts;
         }
 

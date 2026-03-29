@@ -90,9 +90,6 @@ namespace AssemblyAI.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="TurnPayload" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Message type identifier.
-        /// </param>
         /// <param name="turnOrder">
         /// Order of this turn in the conversation.
         /// </param>
@@ -105,6 +102,15 @@ namespace AssemblyAI.Realtime
         /// <param name="transcript">
         /// Transcript of all finalized words in the turn.
         /// </param>
+        /// <param name="endOfTurnConfidence">
+        /// Confidence this is end of turn (0-1).
+        /// </param>
+        /// <param name="words">
+        /// Word-level details.
+        /// </param>
+        /// <param name="type">
+        /// Message type identifier.
+        /// </param>
         /// <param name="utterance">
         /// Finalized text at the moment a pause in speech is detected.
         /// </param>
@@ -116,12 +122,6 @@ namespace AssemblyAI.Realtime
         /// </param>
         /// <param name="speakerLabel">
         /// Speaker label (when speaker_labels is enabled).
-        /// </param>
-        /// <param name="endOfTurnConfidence">
-        /// Confidence this is end of turn (0-1).
-        /// </param>
-        /// <param name="words">
-        /// Word-level details.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -139,17 +139,17 @@ namespace AssemblyAI.Realtime
             double? languageConfidence,
             string? speakerLabel)
         {
+            this.Type = type;
             this.TurnOrder = turnOrder;
             this.TurnIsFormatted = turnIsFormatted;
             this.EndOfTurn = endOfTurn;
             this.Transcript = transcript ?? throw new global::System.ArgumentNullException(nameof(transcript));
-            this.EndOfTurnConfidence = endOfTurnConfidence;
-            this.Words = words ?? throw new global::System.ArgumentNullException(nameof(words));
-            this.Type = type;
             this.Utterance = utterance;
             this.LanguageCode = languageCode;
             this.LanguageConfidence = languageConfidence;
             this.SpeakerLabel = speakerLabel;
+            this.EndOfTurnConfidence = endOfTurnConfidence;
+            this.Words = words ?? throw new global::System.ArgumentNullException(nameof(words));
         }
 
         /// <summary>

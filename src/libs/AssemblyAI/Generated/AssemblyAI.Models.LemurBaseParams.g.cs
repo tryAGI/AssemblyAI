@@ -65,6 +65,10 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="LemurBaseParams" /> class.
         /// </summary>
+        /// <param name="finalModel">
+        /// The model that is used for the final prompt after compression is performed.<br/>
+        /// Default Value: default
+        /// </param>
         /// <param name="transcriptIds">
         /// A list of completed transcripts with text. Up to a maximum of 100 hours of audio.<br/>
         /// Use either transcript_ids or input_text as input into LeMUR.
@@ -75,10 +79,6 @@ namespace AssemblyAI
         /// </param>
         /// <param name="context">
         /// Context to provide the model. This can be a string or a free-form JSON value.
-        /// </param>
-        /// <param name="finalModel">
-        /// The model that is used for the final prompt after compression is performed.<br/>
-        /// Default Value: default
         /// </param>
         /// <param name="maxOutputSize">
         /// Maximum output size in tokens, up to the `final_model`'s max [(see chart)](/docs/lemur/customize-parameters#change-the-maximum-output-size).<br/>
@@ -101,10 +101,10 @@ namespace AssemblyAI
             int? maxOutputSize,
             float? temperature)
         {
-            this.FinalModel = finalModel;
             this.TranscriptIds = transcriptIds;
             this.InputText = inputText;
             this.Context = context;
+            this.FinalModel = finalModel;
             this.MaxOutputSize = maxOutputSize;
             this.Temperature = temperature;
         }

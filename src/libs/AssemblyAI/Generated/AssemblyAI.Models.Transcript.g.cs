@@ -480,6 +480,36 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="Transcript" /> class.
         /// </summary>
+        /// <param name="audioUrl">
+        /// The URL of the media that was transcribed
+        /// </param>
+        /// <param name="autoHighlights">
+        /// Whether [Key Phrases](https://www.assemblyai.com/docs/speech-understanding/key-phrases) is enabled, either true or false
+        /// </param>
+        /// <param name="id">
+        /// The unique identifier of your transcript
+        /// </param>
+        /// <param name="redactPii">
+        /// Whether [PII Redaction](https://www.assemblyai.com/docs/pii-redaction) is enabled, either true or false
+        /// </param>
+        /// <param name="status">
+        /// The status of your transcript. Possible values are queued, processing, completed, or error.
+        /// </param>
+        /// <param name="summarization">
+        /// Whether [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled, either true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
+        /// </param>
+        /// <param name="webhookAuth">
+        /// Whether [webhook](https://www.assemblyai.com/docs/deployment/webhooks-for-pre-recorded-audio) authentication details were provided
+        /// </param>
+        /// <param name="acousticModel">
+        /// This parameter does not currently have any functionality attached to it.
+        /// </param>
+        /// <param name="languageModel">
+        /// This parameter does not currently have any functionality attached to it.
+        /// </param>
+        /// <param name="speechModel">
+        /// This parameter has been replaced with the `speech_models` parameter, learn more about the `speech_models` parameter [here](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model).
+        /// </param>
         /// <param name="audioChannels">
         /// The number of audio channels in the audio file. This is only present when [multichannel](https://www.assemblyai.com/docs/pre-recorded-audio/multichannel) is enabled.
         /// </param>
@@ -491,12 +521,6 @@ namespace AssemblyAI
         /// </param>
         /// <param name="audioStartFrom">
         /// The point in time, in milliseconds, in the file at which the transcription was started. See [Set the start and end of the transcript](https://www.assemblyai.com/docs/pre-recorded-audio/set-the-start-and-end-of-the-transcript) for more details.
-        /// </param>
-        /// <param name="audioUrl">
-        /// The URL of the media that was transcribed
-        /// </param>
-        /// <param name="autoHighlights">
-        /// Whether [Key Phrases](https://www.assemblyai.com/docs/speech-understanding/key-phrases) is enabled, either true or false
         /// </param>
         /// <param name="autoHighlightsResult">
         /// An array of results for the Key Phrases model, if it is enabled.<br/>
@@ -547,9 +571,6 @@ namespace AssemblyAI
         /// The result of the Topic Detection model, if it is enabled.<br/>
         /// See [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/topic-detection) for more information.
         /// </param>
-        /// <param name="id">
-        /// The unique identifier of your transcript
-        /// </param>
         /// <param name="keytermsPrompt">
         /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/keyterms-prompting) for more details.
         /// </param>
@@ -585,9 +606,6 @@ namespace AssemblyAI
         /// </param>
         /// <param name="punctuate">
         /// Whether [Automatic Punctuation](https://www.assemblyai.com/docs/pre-recorded-audio) is enabled, either true or false
-        /// </param>
-        /// <param name="redactPii">
-        /// Whether [PII Redaction](https://www.assemblyai.com/docs/pii-redaction) is enabled, either true or false
         /// </param>
         /// <param name="redactPiiAudio">
         /// Whether a redacted version of the audio file was generated,<br/>
@@ -634,12 +652,6 @@ namespace AssemblyAI
         /// <param name="speechUnderstanding">
         /// Speech understanding tasks like [Translation](https://www.assemblyai.com/docs/speech-understanding/translation), [Speaker Identification](https://www.assemblyai.com/docs/speech-understanding/speaker-identification), and [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting). See the task-specific docs for available options and configuration.
         /// </param>
-        /// <param name="status">
-        /// The status of your transcript. Possible values are queued, processing, completed, or error.
-        /// </param>
-        /// <param name="summarization">
-        /// Whether [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled, either true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
-        /// </param>
         /// <param name="removeAudioTags">
         /// Whether [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) were removed from the transcript text.<br/>
         /// Note: This parameter is only supported for the Universal-3 Pro model.
@@ -658,9 +670,6 @@ namespace AssemblyAI
         /// When multichannel or speaker_labels is enabled, a list of turn-by-turn utterance objects.<br/>
         /// See [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization) and [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/multichannel) for more information.
         /// </param>
-        /// <param name="webhookAuth">
-        /// Whether [webhook](https://www.assemblyai.com/docs/deployment/webhooks-for-pre-recorded-audio) authentication details were provided
-        /// </param>
         /// <param name="webhookAuthHeaderName">
         /// The header name to be sent with the transcript completed or failed [webhook](https://www.assemblyai.com/docs/deployment/webhooks-for-pre-recorded-audio) requests
         /// </param>
@@ -672,15 +681,6 @@ namespace AssemblyAI
         /// </param>
         /// <param name="words">
         /// An array of temporally-sequential word objects, one for each word in the transcript.
-        /// </param>
-        /// <param name="acousticModel">
-        /// This parameter does not currently have any functionality attached to it.
-        /// </param>
-        /// <param name="languageModel">
-        /// This parameter does not currently have any functionality attached to it.
-        /// </param>
-        /// <param name="speechModel">
-        /// This parameter has been replaced with the `speech_models` parameter, learn more about the `speech_models` parameter [here](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model).
         /// </param>
         /// <param name="translatedTexts">
         /// Translated text keyed by language code. See [Translation](https://www.assemblyai.com/docs/speech-understanding/translation) for more details.
@@ -752,20 +752,12 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord>? words,
             global::AssemblyAI.TranscriptTranslatedTexts? translatedTexts)
         {
-            this.AudioUrl = audioUrl ?? throw new global::System.ArgumentNullException(nameof(audioUrl));
-            this.AutoHighlights = autoHighlights;
-            this.Id = id;
-            this.RedactPii = redactPii;
-            this.Status = status;
-            this.Summarization = summarization;
-            this.WebhookAuth = webhookAuth;
-            this.AcousticModel = acousticModel ?? throw new global::System.ArgumentNullException(nameof(acousticModel));
-            this.LanguageModel = languageModel ?? throw new global::System.ArgumentNullException(nameof(languageModel));
-            this.SpeechModel = speechModel;
             this.AudioChannels = audioChannels;
             this.AudioDuration = audioDuration;
             this.AudioEndAt = audioEndAt;
             this.AudioStartFrom = audioStartFrom;
+            this.AudioUrl = audioUrl ?? throw new global::System.ArgumentNullException(nameof(audioUrl));
+            this.AutoHighlights = autoHighlights;
             this.AutoHighlightsResult = autoHighlightsResult;
             this.Chapters = chapters;
             this.Confidence = confidence;
@@ -781,6 +773,7 @@ namespace AssemblyAI
             this.FormatText = formatText;
             this.IabCategories = iabCategories;
             this.IabCategoriesResult = iabCategoriesResult;
+            this.Id = id;
             this.KeytermsPrompt = keytermsPrompt;
             this.LanguageCode = languageCode;
             this.LanguageCodes = languageCodes;
@@ -791,6 +784,7 @@ namespace AssemblyAI
             this.Multichannel = multichannel;
             this.Prompt = prompt;
             this.Punctuate = punctuate;
+            this.RedactPii = redactPii;
             this.RedactPiiAudio = redactPiiAudio;
             this.RedactPiiAudioOptions = redactPiiAudioOptions;
             this.RedactPiiAudioQuality = redactPiiAudioQuality;
@@ -804,15 +798,21 @@ namespace AssemblyAI
             this.SpeechModels = speechModels;
             this.SpeechThreshold = speechThreshold;
             this.SpeechUnderstanding = speechUnderstanding;
+            this.Status = status;
+            this.Summarization = summarization;
             this.RemoveAudioTags = removeAudioTags;
             this.Temperature = temperature;
             this.Text = text;
             this.Throttled = throttled;
             this.Utterances = utterances;
+            this.WebhookAuth = webhookAuth;
             this.WebhookAuthHeaderName = webhookAuthHeaderName;
             this.WebhookStatusCode = webhookStatusCode;
             this.WebhookUrl = webhookUrl;
             this.Words = words;
+            this.AcousticModel = acousticModel ?? throw new global::System.ArgumentNullException(nameof(acousticModel));
+            this.LanguageModel = languageModel ?? throw new global::System.ArgumentNullException(nameof(languageModel));
+            this.SpeechModel = speechModel;
             this.TranslatedTexts = translatedTexts;
         }
 
