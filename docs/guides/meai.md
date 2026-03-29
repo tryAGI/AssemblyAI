@@ -79,9 +79,35 @@ var response = await sttClient.GetTextAsync(
 Console.WriteLine(response.Text);
 ```
 
-### Checking Transcription Status
+### Advanced Configuration with RawRepresentationFactory
 
-AssemblyAI transcription is asynchronous. The SDK polls until completion:
+Use `RawRepresentationFactory` to access AssemblyAI-specific features like speaker diarization, sentiment analysis, entity detection, and auto chapters:
+
+```csharp
+ISpeechToTextClient sttClient = client;
+
+var response = await sttClient.GetTextAsync(
+    new MemoryStream(audioBytes),
+    new SpeechToTextOptions
+    {
+        RawRepresentationFactory = _ => TranscriptParams.FromUrl(
+            "https://example.com/meeting.mp3",
+            new TranscriptOptionalParams
+            {
+                SpeakerLabels = true,
+                SentimentAnalysis = true,
+                EntityDetection = true,
+                AutoChapters = true,
+                SpeechModels = [],
+            }),
+    });
+
+Console.WriteLine(response.Text);
+```
+
+### Accessing the Raw Response
+
+The full AssemblyAI transcript is available via `RawRepresentation` for speaker labels, sentiment analysis, entities, chapters, and word-level timestamps:
 
 ```csharp
 ISpeechToTextClient sttClient = client;
@@ -92,11 +118,39 @@ var response = await sttClient.GetTextAsync(
         AudioData = new DataContent(audioBytes, "audio/mpeg"),
     });
 
-// Response is returned after polling completes
-Console.WriteLine($"Status: completed");
-Console.WriteLine($"Text: {response.Text}");
-Console.WriteLine($"Confidence: {response.AdditionalProperties?["confidence"]}");
+// Access the full AssemblyAI Transcript object
+var raw = (Transcript)response.RawRepresentation!;
+Console.WriteLine($"Confidence: {raw.Confidence}");
+Console.WriteLine($"Audio Duration: {raw.AudioDuration}s");
+
+// Access word-level timestamps
+if (raw.Words is { Count: > 0 })
+{
+    foreach (var word in raw.Words)
+    {
+        Console.WriteLine($"  [{word.Start}ms - {word.End}ms] {word.Text} " +
+            $"(confidence: {word.Confidence:P0}, speaker: {word.Speaker})");
+    }
+}
+
+// Access utterances (when speaker_labels is enabled)
+if (raw.Utterances is { Count: > 0 })
+{
+    foreach (var utterance in raw.Utterances)
+    {
+        Console.WriteLine($"  Speaker {utterance.Speaker}: {utterance.Text}");
+    }
+}
 ```
+
+### Streaming Behavior
+
+`GetStreamingTextAsync` delegates to the non-streaming `GetTextAsync` method internally. The batch transcription job (upload + submit + poll) runs to completion first, and then the full result is converted to `SpeechToTextResponseUpdate` events using `ToSpeechToTextResponseUpdates()`.
+
+This means you will not receive incremental transcription updates as audio is processed. The entire transcript is returned at once after the job finishes. For most use cases, calling `GetTextAsync` directly is equivalent and simpler.
+
+!!! note
+    AssemblyAI does offer a real-time streaming WebSocket API via the `AssemblyAIRealtimeClient` (in the `AssemblyAI.Realtime` namespace), but it is not exposed through the MEAI `ISpeechToTextClient` interface. Use `AssemblyAIRealtimeClient` directly for real-time streaming needs.
 
 ### Usage Information
 
