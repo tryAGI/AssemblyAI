@@ -38,14 +38,14 @@ namespace AssemblyAI.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="TerminationPayload" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Message type identifier.
-        /// </param>
         /// <param name="audioDurationSeconds">
         /// Duration of audio in seconds.
         /// </param>
         /// <param name="sessionDurationSeconds">
         /// Duration of session in seconds.
+        /// </param>
+        /// <param name="type">
+        /// Message type identifier.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -55,9 +55,9 @@ namespace AssemblyAI.Realtime
             int sessionDurationSeconds,
             global::AssemblyAI.Realtime.TerminationPayloadType type)
         {
+            this.Type = type;
             this.AudioDurationSeconds = audioDurationSeconds;
             this.SessionDurationSeconds = sessionDurationSeconds;
-            this.Type = type;
         }
 
         /// <summary>

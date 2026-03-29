@@ -39,14 +39,14 @@ namespace AssemblyAI.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="SessionBeginsPayload" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Message type identifier.
-        /// </param>
         /// <param name="id">
         /// Unique session identifier.
         /// </param>
         /// <param name="expiresAt">
         /// Unix timestamp indicating when the session will expire.
+        /// </param>
+        /// <param name="type">
+        /// Message type identifier.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -56,9 +56,9 @@ namespace AssemblyAI.Realtime
             global::System.DateTimeOffset expiresAt,
             global::AssemblyAI.Realtime.SessionBeginsPayloadType type)
         {
+            this.Type = type;
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.ExpiresAt = expiresAt;
-            this.Type = type;
         }
 
         /// <summary>

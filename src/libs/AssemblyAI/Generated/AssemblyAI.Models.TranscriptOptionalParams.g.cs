@@ -351,6 +351,9 @@ namespace AssemblyAI
         /// <summary>
         /// Initializes a new instance of the <see cref="TranscriptOptionalParams" /> class.
         /// </summary>
+        /// <param name="speechModels">
+        /// List multiple speech models in priority order, allowing our system to automatically route your audio to the best available option. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
+        /// </param>
         /// <param name="audioEndAt">
         /// The point in time, in milliseconds, to stop transcribing in your media file. See [Set the start and end of the transcript](https://www.assemblyai.com/docs/pre-recorded-audio/set-the-start-and-end-of-the-transcript) for more details.
         /// </param>
@@ -472,9 +475,6 @@ namespace AssemblyAI
         /// Tells the speaker label model how many speakers it should attempt to identify. See [Set number of speakers expected](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization#set-number-of-speakers-expected) for more details.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="speechModels">
-        /// List multiple speech models in priority order, allowing our system to automatically route your audio to the best available option. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
-        /// </param>
         /// <param name="speechThreshold">
         /// Reject audio files that contain less than this fraction of speech.<br/>
         /// Valid values are in the range [0, 1] inclusive. See [Speech Threshold](https://www.assemblyai.com/docs/speech-threshold) for more details.<br/>
@@ -548,7 +548,6 @@ namespace AssemblyAI
             string? webhookAuthHeaderValue,
             string? webhookUrl)
         {
-            this.SpeechModels = speechModels ?? throw new global::System.ArgumentNullException(nameof(speechModels));
             this.AudioEndAt = audioEndAt;
             this.AudioStartFrom = audioStartFrom;
             this.AutoHighlights = autoHighlights;
@@ -580,6 +579,7 @@ namespace AssemblyAI
             this.SpeakerLabels = speakerLabels;
             this.SpeakerOptions = speakerOptions;
             this.SpeakersExpected = speakersExpected;
+            this.SpeechModels = speechModels ?? throw new global::System.ArgumentNullException(nameof(speechModels));
             this.SpeechThreshold = speechThreshold;
             this.SpeechUnderstanding = speechUnderstanding;
             this.RemoveAudioTags = removeAudioTags;
