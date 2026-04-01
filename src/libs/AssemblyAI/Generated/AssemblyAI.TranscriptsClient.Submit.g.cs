@@ -445,7 +445,6 @@ namespace AssemblyAI
         public async global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> SubmitAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::AssemblyAI.TranscriptParams
             {
             };
