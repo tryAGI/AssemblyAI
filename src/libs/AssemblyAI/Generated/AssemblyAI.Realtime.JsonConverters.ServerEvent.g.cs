@@ -68,19 +68,19 @@ namespace AssemblyAI.Realtime.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.SessionBeginsPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.SessionBeginsPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.SessionBeginsPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Begin, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Begin!, typeInfo);
             }
             else if (value.IsTurn)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.TurnPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.TurnPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.TurnPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Turn, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Turn!, typeInfo);
             }
             else if (value.IsTermination)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.TerminationPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.TerminationPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.TerminationPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Termination, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Termination!, typeInfo);
             }
         }
     }

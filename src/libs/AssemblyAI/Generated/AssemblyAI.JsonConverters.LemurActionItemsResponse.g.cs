@@ -100,7 +100,7 @@ namespace AssemblyAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.LemurStringResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.LemurStringResponse> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.LemurStringResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.String, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.String!.Value, typeInfo);
             }
         }
     }

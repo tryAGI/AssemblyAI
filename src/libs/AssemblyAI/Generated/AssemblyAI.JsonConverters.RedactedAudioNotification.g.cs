@@ -89,7 +89,7 @@ namespace AssemblyAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.RedactedAudioResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.RedactedAudioResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.RedactedAudioResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Response, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Response!, typeInfo);
             }
         }
     }
