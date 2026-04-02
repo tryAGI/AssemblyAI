@@ -37,7 +37,7 @@ namespace AssemblyAI.JsonConverters
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
 
-            global::AssemblyAI.LemurTaskParamsVariant1? value1 = default;
+            global::AssemblyAI.LemurTaskParamsVariant1? lemurTaskParamsVariant1 = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -46,7 +46,7 @@ namespace AssemblyAI.JsonConverters
                     {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.LemurTaskParamsVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.LemurTaskParamsVariant1> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.LemurTaskParamsVariant1).Name}");
-                        value1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        lemurTaskParamsVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -57,13 +57,13 @@ namespace AssemblyAI.JsonConverters
                 }
             }
 
-            if (value1 == null)
+            if (lemurTaskParamsVariant1 == null)
             {
                 try
                 {
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.LemurTaskParamsVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.LemurTaskParamsVariant1> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.LemurTaskParamsVariant1).Name}");
-                    value1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    lemurTaskParamsVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -74,7 +74,7 @@ namespace AssemblyAI.JsonConverters
             }
 
             var __value = new global::AssemblyAI.LemurTaskParams(
-                value1
+                lemurTaskParamsVariant1
                 );
 
             return __value;
@@ -89,11 +89,11 @@ namespace AssemblyAI.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsValue1)
+            if (value.IsLemurTaskParamsVariant1)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.LemurTaskParamsVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.LemurTaskParamsVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.LemurTaskParamsVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value1!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.LemurTaskParamsVariant1!, typeInfo);
             }
         }
     }
