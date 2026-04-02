@@ -15,35 +15,35 @@ namespace AssemblyAI
         /// Example: {"request_id":"5e1b27c2-691f-4414-8bc5-f14678442f9e","usage":{"input_tokens":27,"output_tokens":3}}
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::AssemblyAI.LemurBaseResponse? Value1 { get; init; }
+        public global::AssemblyAI.LemurBaseResponse? Base { get; init; }
 #else
-        public global::AssemblyAI.LemurBaseResponse? Value1 { get; }
+        public global::AssemblyAI.LemurBaseResponse? Base { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsBase => Base != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::AssemblyAI.LemurQuestionAnswerResponseVariant2? Value2 { get; init; }
+        public global::AssemblyAI.LemurQuestionAnswerResponseVariant2? LemurQuestionAnswerResponseVariant2 { get; init; }
 #else
-        public global::AssemblyAI.LemurQuestionAnswerResponseVariant2? Value2 { get; }
+        public global::AssemblyAI.LemurQuestionAnswerResponseVariant2? LemurQuestionAnswerResponseVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LemurQuestionAnswerResponseVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsLemurQuestionAnswerResponseVariant2 => LemurQuestionAnswerResponseVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -52,14 +52,14 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::AssemblyAI.LemurBaseResponse?(LemurQuestionAnswerResponse @this) => @this.Value1;
+        public static implicit operator global::AssemblyAI.LemurBaseResponse?(LemurQuestionAnswerResponse @this) => @this.Base;
 
         /// <summary>
         /// 
         /// </summary>
         public LemurQuestionAnswerResponse(global::AssemblyAI.LemurBaseResponse? value)
         {
-            Value1 = value;
+            Base = value;
         }
 
         /// <summary>
@@ -70,42 +70,42 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::AssemblyAI.LemurQuestionAnswerResponseVariant2?(LemurQuestionAnswerResponse @this) => @this.Value2;
+        public static implicit operator global::AssemblyAI.LemurQuestionAnswerResponseVariant2?(LemurQuestionAnswerResponse @this) => @this.LemurQuestionAnswerResponseVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public LemurQuestionAnswerResponse(global::AssemblyAI.LemurQuestionAnswerResponseVariant2? value)
         {
-            Value2 = value;
+            LemurQuestionAnswerResponseVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public LemurQuestionAnswerResponse(
-            global::AssemblyAI.LemurBaseResponse? value1,
-            global::AssemblyAI.LemurQuestionAnswerResponseVariant2? value2
+            global::AssemblyAI.LemurBaseResponse? @base,
+            global::AssemblyAI.LemurQuestionAnswerResponseVariant2? lemurQuestionAnswerResponseVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            Base = @base;
+            LemurQuestionAnswerResponseVariant2 = lemurQuestionAnswerResponseVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            LemurQuestionAnswerResponseVariant2 as object ??
+            Base as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            Base?.ToString() ??
+            LemurQuestionAnswerResponseVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -113,15 +113,15 @@ namespace AssemblyAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2;
+            return IsBase && IsLemurQuestionAnswerResponseVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::AssemblyAI.LemurBaseResponse?, TResult>? value1 = null,
-            global::System.Func<global::AssemblyAI.LemurQuestionAnswerResponseVariant2?, TResult>? value2 = null,
+            global::System.Func<global::AssemblyAI.LemurBaseResponse?, TResult>? @base = null,
+            global::System.Func<global::AssemblyAI.LemurQuestionAnswerResponseVariant2?, TResult>? lemurQuestionAnswerResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -129,13 +129,13 @@ namespace AssemblyAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsBase && @base != null)
             {
-                return value1(Value1!);
+                return @base(Base!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsLemurQuestionAnswerResponseVariant2 && lemurQuestionAnswerResponseVariant2 != null)
             {
-                return value2(Value2!);
+                return lemurQuestionAnswerResponseVariant2(LemurQuestionAnswerResponseVariant2!);
             }
 
             return default(TResult);
@@ -145,8 +145,8 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::AssemblyAI.LemurBaseResponse?>? value1 = null,
-            global::System.Action<global::AssemblyAI.LemurQuestionAnswerResponseVariant2?>? value2 = null,
+            global::System.Action<global::AssemblyAI.LemurBaseResponse?>? @base = null,
+            global::System.Action<global::AssemblyAI.LemurQuestionAnswerResponseVariant2?>? lemurQuestionAnswerResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -154,13 +154,13 @@ namespace AssemblyAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsBase)
             {
-                value1?.Invoke(Value1!);
+                @base?.Invoke(Base!);
             }
-            else if (IsValue2)
+            else if (IsLemurQuestionAnswerResponseVariant2)
             {
-                value2?.Invoke(Value2!);
+                lemurQuestionAnswerResponseVariant2?.Invoke(LemurQuestionAnswerResponseVariant2!);
             }
         }
 
@@ -171,9 +171,9 @@ namespace AssemblyAI
         {
             var fields = new object?[]
             {
-                Value1,
+                Base,
                 typeof(global::AssemblyAI.LemurBaseResponse),
-                Value2,
+                LemurQuestionAnswerResponseVariant2,
                 typeof(global::AssemblyAI.LemurQuestionAnswerResponseVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -191,8 +191,8 @@ namespace AssemblyAI
         public bool Equals(LemurQuestionAnswerResponse other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.LemurBaseResponse?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.LemurQuestionAnswerResponseVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.LemurBaseResponse?>.Default.Equals(Base, other.Base) &&
+                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.LemurQuestionAnswerResponseVariant2?>.Default.Equals(LemurQuestionAnswerResponseVariant2, other.LemurQuestionAnswerResponseVariant2) 
                 ;
         }
 

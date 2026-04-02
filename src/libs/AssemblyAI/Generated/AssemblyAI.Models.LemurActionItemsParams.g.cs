@@ -15,35 +15,35 @@ namespace AssemblyAI
         /// Example: {"transcript_ids":["85f9b381-e90c-46ed-beca-7d76245d375e","7c3acd18-df4d-4432-88f5-1e89f8827eea"],"context":"This is an interview about wildfires.","final_model":"anthropic/claude-sonnet-4-20250514","temperature":0,"max_output_size":3000}
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::AssemblyAI.LemurBaseParams? Value1 { get; init; }
+        public global::AssemblyAI.LemurBaseParams? Base { get; init; }
 #else
-        public global::AssemblyAI.LemurBaseParams? Value1 { get; }
+        public global::AssemblyAI.LemurBaseParams? Base { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsBase => Base != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::AssemblyAI.LemurActionItemsParamsVariant2? Value2 { get; init; }
+        public global::AssemblyAI.LemurActionItemsParamsVariant2? LemurActionItemsParamsVariant2 { get; init; }
 #else
-        public global::AssemblyAI.LemurActionItemsParamsVariant2? Value2 { get; }
+        public global::AssemblyAI.LemurActionItemsParamsVariant2? LemurActionItemsParamsVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LemurActionItemsParamsVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsLemurActionItemsParamsVariant2 => LemurActionItemsParamsVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -52,14 +52,14 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::AssemblyAI.LemurBaseParams?(LemurActionItemsParams @this) => @this.Value1;
+        public static implicit operator global::AssemblyAI.LemurBaseParams?(LemurActionItemsParams @this) => @this.Base;
 
         /// <summary>
         /// 
         /// </summary>
         public LemurActionItemsParams(global::AssemblyAI.LemurBaseParams? value)
         {
-            Value1 = value;
+            Base = value;
         }
 
         /// <summary>
@@ -70,42 +70,42 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::AssemblyAI.LemurActionItemsParamsVariant2?(LemurActionItemsParams @this) => @this.Value2;
+        public static implicit operator global::AssemblyAI.LemurActionItemsParamsVariant2?(LemurActionItemsParams @this) => @this.LemurActionItemsParamsVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public LemurActionItemsParams(global::AssemblyAI.LemurActionItemsParamsVariant2? value)
         {
-            Value2 = value;
+            LemurActionItemsParamsVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public LemurActionItemsParams(
-            global::AssemblyAI.LemurBaseParams? value1,
-            global::AssemblyAI.LemurActionItemsParamsVariant2? value2
+            global::AssemblyAI.LemurBaseParams? @base,
+            global::AssemblyAI.LemurActionItemsParamsVariant2? lemurActionItemsParamsVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            Base = @base;
+            LemurActionItemsParamsVariant2 = lemurActionItemsParamsVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            LemurActionItemsParamsVariant2 as object ??
+            Base as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            Base?.ToString() ??
+            LemurActionItemsParamsVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -113,15 +113,15 @@ namespace AssemblyAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2;
+            return IsBase && IsLemurActionItemsParamsVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::AssemblyAI.LemurBaseParams?, TResult>? value1 = null,
-            global::System.Func<global::AssemblyAI.LemurActionItemsParamsVariant2?, TResult>? value2 = null,
+            global::System.Func<global::AssemblyAI.LemurBaseParams?, TResult>? @base = null,
+            global::System.Func<global::AssemblyAI.LemurActionItemsParamsVariant2?, TResult>? lemurActionItemsParamsVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -129,13 +129,13 @@ namespace AssemblyAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsBase && @base != null)
             {
-                return value1(Value1!);
+                return @base(Base!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsLemurActionItemsParamsVariant2 && lemurActionItemsParamsVariant2 != null)
             {
-                return value2(Value2!);
+                return lemurActionItemsParamsVariant2(LemurActionItemsParamsVariant2!);
             }
 
             return default(TResult);
@@ -145,8 +145,8 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::AssemblyAI.LemurBaseParams?>? value1 = null,
-            global::System.Action<global::AssemblyAI.LemurActionItemsParamsVariant2?>? value2 = null,
+            global::System.Action<global::AssemblyAI.LemurBaseParams?>? @base = null,
+            global::System.Action<global::AssemblyAI.LemurActionItemsParamsVariant2?>? lemurActionItemsParamsVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -154,13 +154,13 @@ namespace AssemblyAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsBase)
             {
-                value1?.Invoke(Value1!);
+                @base?.Invoke(Base!);
             }
-            else if (IsValue2)
+            else if (IsLemurActionItemsParamsVariant2)
             {
-                value2?.Invoke(Value2!);
+                lemurActionItemsParamsVariant2?.Invoke(LemurActionItemsParamsVariant2!);
             }
         }
 
@@ -171,9 +171,9 @@ namespace AssemblyAI
         {
             var fields = new object?[]
             {
-                Value1,
+                Base,
                 typeof(global::AssemblyAI.LemurBaseParams),
-                Value2,
+                LemurActionItemsParamsVariant2,
                 typeof(global::AssemblyAI.LemurActionItemsParamsVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -191,8 +191,8 @@ namespace AssemblyAI
         public bool Equals(LemurActionItemsParams other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.LemurBaseParams?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.LemurActionItemsParamsVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.LemurBaseParams?>.Default.Equals(Base, other.Base) &&
+                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.LemurActionItemsParamsVariant2?>.Default.Equals(LemurActionItemsParamsVariant2, other.LemurActionItemsParamsVariant2) 
                 ;
         }
 
