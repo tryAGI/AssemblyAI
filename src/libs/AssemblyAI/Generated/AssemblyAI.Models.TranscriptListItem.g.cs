@@ -36,13 +36,13 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Created { get; set; }
+        public required global::System.DateTime Created { get; set; }
 
         /// <summary>
         /// The date and time the transcript was completed
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("completed")]
-        public string? Completed { get; set; }
+        public global::System.DateTime? Completed { get; set; }
 
         /// <summary>
         /// The URL to the audio file
@@ -94,15 +94,15 @@ namespace AssemblyAI
             global::System.Guid id,
             string resourceUrl,
             global::AssemblyAI.TranscriptStatus status,
-            string created,
+            global::System.DateTime created,
             string audioUrl,
-            string? completed,
+            global::System.DateTime? completed,
             string? error)
         {
             this.Id = id;
             this.ResourceUrl = resourceUrl ?? throw new global::System.ArgumentNullException(nameof(resourceUrl));
             this.Status = status;
-            this.Created = created ?? throw new global::System.ArgumentNullException(nameof(created));
+            this.Created = created;
             this.Completed = completed;
             this.AudioUrl = audioUrl ?? throw new global::System.ArgumentNullException(nameof(audioUrl));
             this.Error = error;
