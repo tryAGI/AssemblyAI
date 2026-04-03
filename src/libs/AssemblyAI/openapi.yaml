@@ -2172,7 +2172,7 @@ components:
             Panadol)
         duration:
           description:
-            Periods of time, specified as a number and a unit of time (e.g.,
+            Measurements of time expressed as a numerical value plus a unit (e.g.,
             8 months, 2 years)
         email_address:
           description: Email address (e.g., support@assemblyai.com)
@@ -2242,8 +2242,7 @@ components:
         phone_number:
           description: Telephone or fax number
         physical_attribute:
-          description:
-            Distinctive bodily attributes, including terms indicating race
+          description: Distinctive bodily attributes, including race
             (e.g., I'm 190cm tall, He belongs to the Black students' association)
         political_affiliation:
           description:
@@ -4226,7 +4225,7 @@ components:
             Panadol)
         duration:
           description:
-            Periods of time, specified as a number and a unit of time (e.g.,
+            Measurements of time expressed as a numerical value plus a unit (e.g.,
             8 months, 2 years)
         email_address:
           description: Email address (e.g., support@assemblyai.com)
@@ -4296,8 +4295,7 @@ components:
         phone_number:
           description: Telephone or fax number
         physical_attribute:
-          description:
-            Distinctive bodily attributes, including terms indicating race
+          description: Distinctive bodily attributes, including race
             (e.g., I'm 190cm tall, He belongs to the Black students' association)
         political_affiliation:
           description:
