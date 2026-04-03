@@ -53,7 +53,7 @@ namespace AssemblyAI
         /// </summary>
         Drug,
         /// <summary>
-        /// Periods of time, specified as a number and a unit of time (e.g., 8 months, 2 years)
+        /// Measurements of time expressed as a numerical value plus a unit (e.g., 8 months, 2 years)
         /// </summary>
         Duration,
         /// <summary>
@@ -145,7 +145,7 @@ namespace AssemblyAI
         /// </summary>
         PhoneNumber,
         /// <summary>
-        /// Distinctive bodily attributes, including terms indicating race (e.g., I'm 190cm tall, He belongs to the Black students' association)
+        /// Distinctive bodily attributes, including race (e.g., I'm 190cm tall, He belongs to the Black students' association)
         /// </summary>
         PhysicalAttribute,
         /// <summary>
