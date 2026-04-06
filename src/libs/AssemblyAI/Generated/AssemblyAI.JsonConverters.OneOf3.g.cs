@@ -3,7 +3,7 @@
 namespace AssemblyAI.JsonConverters
 {
     /// <inheritdoc />
-    public class OneOfJsonConverter<T1, T2, T3> : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.OneOf<T1, T2, T3>>
+    public class OneOfJsonConverter<[global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicProperties)] T1, [global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicProperties)] T2, [global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicProperties)] T3> : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.OneOf<T1, T2, T3>>
     {
         /// <inheritdoc />
         public override global::AssemblyAI.OneOf<T1, T2, T3> Read(
