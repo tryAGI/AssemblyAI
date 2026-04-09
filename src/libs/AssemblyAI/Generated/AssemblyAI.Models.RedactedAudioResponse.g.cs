@@ -4,8 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Redacted audio response<br/>
-    /// Example: {"redacted_audio_url":"https://s3.us-west-2.amazonaws.com/api.assembly.ai.usw2/redacted-audio/785efd9e-0e20-45e1-967b-3db17770ed9f.wav?AWSAccessKeyId=aws-access-key0id\u0026Signature=signature\u0026x-amz-security-token=security-token\u0026Expires=1698966551","status":"redacted_audio_ready"}
+    /// 
     /// </summary>
     public sealed partial class RedactedAudioResponse
     {

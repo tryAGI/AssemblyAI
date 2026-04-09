@@ -11,7 +11,7 @@ of our SDK/try to reach/exceed the level of the official one and
 extend it to all our generated SDKs for other platforms. 
 
 ## Features 🔥
-- Fully generated C# SDK based on [official AssemblyAI OpenAPI specification](https://raw.githubusercontent.com/AssemblyAI/assemblyai-api-spec/main/openapi.yml) using [OpenApiGenerator](https://github.com/HavenDV/OpenApiGenerator)
+- Fully generated C# SDK based on [official AssemblyAI OpenAPI specification](https://www.assemblyai.com/docs/api-reference/openapi.json) using [OpenApiGenerator](https://github.com/HavenDV/OpenApiGenerator)
 - Same day update to support new features
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
@@ -28,17 +28,17 @@ var fileUrl = "https://github.com/AssemblyAI-Community/audio-examples/raw/main/2
 
 //// You can also transcribe a local file by passing in a file path
 // var filePath = "./path/to/file.mp3";
-// var uploadedFile = await client.Transcript.UploadFileAsync();
+// var uploadedFile = await api.Files.UploadAsync(await File.ReadAllBytesAsync(filePath));
 // fileUrl = uploadedFile.UploadUrl;
 
-Transcript transcript = await client.Transcript.CreateTranscriptAsync(TranscriptParams.FromUrl(
-    fileUrl,
-    new TranscriptOptionalParams
-    {
-        LanguageDetection = true,
-        SpeakerLabels = true, // Identify speakers in your audios
-        AutoHighlights = true, // Identifying highlights in your audio
-    }));
+Transcript transcript = await api.Transcripts.SubmitAsync(new TranscriptParams
+{
+    AudioUrl = fileUrl,
+    SpeechModels = [],
+    LanguageDetection = true,
+    SpeakerLabels = true, // Identify speakers in your audios
+    AutoHighlights = true, // Identifying highlights in your audio
+});
 
 transcript.EnsureStatusCompleted();
 
@@ -69,18 +69,17 @@ var fileUrl = "https://github.com/AssemblyAI-Community/audio-examples/raw/main/2
 
 // You can also transcribe a local file by passing in a file path
 // var filePath = "./path/to/file.mp3";
-// var uploadedFile = await client.Transcript.UploadFileAsync();
+// var uploadedFile = await client.Files.UploadAsync(await File.ReadAllBytesAsync(filePath));
 // fileUrl = uploadedFile.UploadUrl;
 
-Transcript transcript = await client.Transcript.CreateTranscriptAsync(TranscriptParams.FromUrl(
-    fileUrl,
-    new TranscriptOptionalParams
-    {
-        SpeechModels = [],
-        LanguageDetection = true,
-        SpeakerLabels = true, // Identify speakers in your audios
-        AutoHighlights = true, // Identifying highlights in your audio
-    }));
+Transcript transcript = await client.Transcripts.SubmitAsync(new TranscriptParams
+{
+    AudioUrl = fileUrl,
+    SpeechModels = [],
+    LanguageDetection = true,
+    SpeakerLabels = true, // Identify speakers in your audios
+    AutoHighlights = true, // Identifying highlights in your audio
+});
 
 transcript.EnsureStatusCompleted();
 

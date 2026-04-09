@@ -4,12 +4,13 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Remove [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) from the transcript text. Set to `"all"` to remove all audio tags.<br/>
+    /// Note: This parameter is only supported for the Universal-3 Pro model.
     /// </summary>
     public enum TranscriptOptionalParamsRemoveAudioTags
     {
         /// <summary>
-        /// 
+        /// //www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) from the transcript text. Set to `"all"` to remove all audio tags.
         /// </summary>
         All,
     }

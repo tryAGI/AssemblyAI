@@ -4,17 +4,16 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Controls the filetype of the audio created by redact_pii_audio. Currently supports mp3 (default) and wav. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) for more details.<br/>
-    /// Example: mp3
+    /// Controls the filetype of the audio created by redact_pii_audio. Currently supports mp3 (default) and wav. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) for more details.
     /// </summary>
     public enum RedactPiiAudioQuality
     {
         /// <summary>
-        /// MP3 audio format is lower quality and lower size than WAV.
+        /// //www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) for more details.
         /// </summary>
         Mp3,
         /// <summary>
-        /// WAV audio format is the highest quality (no compression) and larger size than MP3.
+        /// //www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) for more details.
         /// </summary>
         Wav,
     }

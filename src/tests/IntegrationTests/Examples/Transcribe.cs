@@ -17,18 +17,17 @@ public partial class Tests
         
         //// You can also transcribe a local file by passing in a file path
         // var filePath = "./path/to/file.mp3";
-        // var uploadedFile = await client.Files.UploadAsync();
+        // var uploadedFile = await client.Files.UploadAsync(await File.ReadAllBytesAsync(filePath));
         // fileUrl = uploadedFile.UploadUrl;
 
-        Transcript transcript = await client.Transcripts.SubmitAsync(TranscriptParams.FromUrl(
-            fileUrl,
-            new TranscriptOptionalParams
-            {
-                SpeechModels = [],
-                LanguageDetection = true,
-                SpeakerLabels = true, // Identify speakers in your audios
-                AutoHighlights = true, // Identifying highlights in your audio
-            }));
+        Transcript transcript = await client.Transcripts.SubmitAsync(new TranscriptParams
+        {
+            AudioUrl = fileUrl,
+            SpeechModels = [],
+            LanguageDetection = true,
+            SpeakerLabels = true, // Identify speakers in your audios
+            AutoHighlights = true, // Identifying highlights in your audio
+        });
 
         transcript.EnsureStatusCompleted();
         

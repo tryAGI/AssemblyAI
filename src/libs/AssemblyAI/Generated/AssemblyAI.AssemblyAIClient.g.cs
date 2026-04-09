@@ -4,16 +4,15 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// AssemblyAI API<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
     public sealed partial class AssemblyAIClient : global::AssemblyAI.IAssemblyAIClient, global::System.IDisposable
     {
         /// <summary>
-        /// AssemblyAI API
+        /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.assemblyai.com";
+        public const string DefaultBaseUrl = "https://api.assemblyai.com/";
 
         private bool _disposeHttpClient = true;
 
@@ -40,7 +39,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public FilesClient Files => new FilesClient(HttpClient, authorizations: Authorizations)
+        public SubpackageFilesClient SubpackageFiles => new SubpackageFilesClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -49,7 +48,16 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public TranscriptsClient Transcripts => new TranscriptsClient(HttpClient, authorizations: Authorizations)
+        public SubpackageStreamingApiClient SubpackageStreamingApi => new SubpackageStreamingApiClient(HttpClient, authorizations: Authorizations)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public SubpackageTranscriptsClient SubpackageTranscripts => new SubpackageTranscriptsClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,

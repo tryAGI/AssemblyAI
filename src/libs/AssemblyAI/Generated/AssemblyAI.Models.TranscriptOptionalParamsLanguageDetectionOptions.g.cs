@@ -30,7 +30,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// The confidence threshold for [code switching](/docs/speech-to-text/pre-recorded-audio/code-switching) detection. If the code switching confidence is below this threshold, the transcript will be processed in the language with the highest `language_detection_confidence` score.<br/>
-        /// Default Value: 0.3
+        /// Default Value: 0.3F
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("code_switching_confidence_threshold")]
         public double? CodeSwitchingConfidenceThreshold { get; set; }
@@ -57,7 +57,7 @@ namespace AssemblyAI
         /// </param>
         /// <param name="codeSwitchingConfidenceThreshold">
         /// The confidence threshold for [code switching](/docs/speech-to-text/pre-recorded-audio/code-switching) detection. If the code switching confidence is below this threshold, the transcript will be processed in the language with the highest `language_detection_confidence` score.<br/>
-        /// Default Value: 0.3
+        /// Default Value: 0.3F
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

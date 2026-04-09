@@ -4,8 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// A detected entity<br/>
-    /// Example: {"entity_type":"location","text":"Canada","start":2548,"end":3130}
+    /// A detected entity
     /// </summary>
     public sealed partial class Entity
     {

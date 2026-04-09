@@ -4,8 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Auto highlight result<br/>
-    /// Example: {"count":1,"rank":0.08,"text":"air quality alerts","timestamps":[{"start":3978,"end":5114}]}
+    /// 
     /// </summary>
     public sealed partial class AutoHighlightResult
     {
@@ -21,7 +20,7 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rank")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required float Rank { get; set; }
+        public required double Rank { get; set; }
 
         /// <summary>
         /// The text itself of the key phrase
@@ -63,7 +62,7 @@ namespace AssemblyAI
 #endif
         public AutoHighlightResult(
             int count,
-            float rank,
+            double rank,
             string text,
             global::System.Collections.Generic.IList<global::AssemblyAI.Timestamp> timestamps)
         {

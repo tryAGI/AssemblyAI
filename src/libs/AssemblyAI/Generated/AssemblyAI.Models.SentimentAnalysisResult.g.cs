@@ -4,8 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// The result of the Sentiment Analysis model<br/>
-    /// Example: {"text":"Smoke from hundreds of wildfires in Canada is triggering air quality alerts throughout the US.","start":250,"end":6350,"sentiment":"NEGATIVE","confidence":0.8181032538414001,"speaker":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464"}
+    /// The result of the Sentiment Analysis model
     /// </summary>
     public sealed partial class SentimentAnalysisResult
     {

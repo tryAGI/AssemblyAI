@@ -4,7 +4,8 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Whether [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) were removed from the transcript text.<br/>
+    /// Note: This parameter is only supported for the Universal-3 Pro model.
     /// </summary>
     public enum TranscriptRemoveAudioTags
     {

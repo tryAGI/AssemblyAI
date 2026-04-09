@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace AssemblyAI;
 
-public partial struct TranscriptParams
+public sealed partial class TranscriptParams
 {
     /// <summary>
     /// 
@@ -35,11 +35,19 @@ public partial struct TranscriptParams
     public static TranscriptParams FromUrl(
         [SuppressMessage("Design", "CA1054:URI-like parameters should not be strings")]
         string url,
-        TranscriptOptionalParams? @params = null)
+        TranscriptParams? @params = null)
     {
-        return new TranscriptParams(
-            value1: TranscriptParamsVariant1.FromUrl(url),
-            value2: @params ?? new TranscriptOptionalParams { SpeechModels = [] });
+        ArgumentNullException.ThrowIfNull(url);
+
+        TranscriptParams transcriptParams = @params ?? new TranscriptParams
+        {
+            AudioUrl = url,
+            SpeechModels = [],
+        };
+        transcriptParams.AudioUrl = url;
+        transcriptParams.SpeechModels ??= [];
+
+        return transcriptParams;
     }
 
     /// <summary>
@@ -48,10 +56,10 @@ public partial struct TranscriptParams
     /// <param name="uri"></param>
     /// <param name="params"></param>
     /// <returns></returns>
-    public static TranscriptParams FromUri(Uri uri, TranscriptOptionalParams? @params = null)
+    public static TranscriptParams FromUri(Uri uri, TranscriptParams? @params = null)
     {
-        uri = uri ?? throw new ArgumentNullException(nameof(uri));
-        
+        ArgumentNullException.ThrowIfNull(uri);
+
         return FromUrl(uri.ToString(), @params);
     }
 }

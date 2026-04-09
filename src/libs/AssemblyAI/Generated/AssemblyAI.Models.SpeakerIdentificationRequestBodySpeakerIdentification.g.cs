@@ -26,7 +26,7 @@ namespace AssemblyAI
         /// An array of speaker objects with metadata to improve identification accuracy. Each object should include a `role` or `name` (depending on `speaker_type`) and an optional `description` to help the model identify the speaker. You can also include any additional custom properties (e.g., `company`, `title`) to provide more context. Use this as an alternative to `known_values` when you want to provide additional context about each speaker.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speakers")]
-        public global::System.Collections.Generic.IList<global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeaker>? Speakers { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakersItems>? Speakers { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,7 +52,7 @@ namespace AssemblyAI
         public SpeakerIdentificationRequestBodySpeakerIdentification(
             global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType speakerType,
             global::System.Collections.Generic.IList<string>? knownValues,
-            global::System.Collections.Generic.IList<global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeaker>? speakers)
+            global::System.Collections.Generic.IList<global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakersItems>? speakers)
         {
             this.SpeakerType = speakerType;
             this.KnownValues = knownValues;

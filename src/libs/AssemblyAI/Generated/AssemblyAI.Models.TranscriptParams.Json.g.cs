@@ -2,7 +2,7 @@
 
 namespace AssemblyAI
 {
-    public readonly partial struct TranscriptParams
+    public sealed partial class TranscriptParams
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -41,7 +41,7 @@ namespace AssemblyAI
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::AssemblyAI.TranscriptParams),
-                jsonSerializerContext) as global::AssemblyAI.TranscriptParams?;
+                jsonSerializerContext) as global::AssemblyAI.TranscriptParams;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace AssemblyAI
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::AssemblyAI.TranscriptParams),
-                jsonSerializerContext).ConfigureAwait(false)) as global::AssemblyAI.TranscriptParams?;
+                jsonSerializerContext).ConfigureAwait(false)) as global::AssemblyAI.TranscriptParams;
         }
 
         /// <summary>

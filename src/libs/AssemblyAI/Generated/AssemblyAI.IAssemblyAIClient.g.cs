@@ -4,7 +4,6 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// AssemblyAI API<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -43,12 +42,17 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public FilesClient Files { get; }
+        public SubpackageFilesClient SubpackageFiles { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        public TranscriptsClient Transcripts { get; }
+        public SubpackageStreamingApiClient SubpackageStreamingApi { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public SubpackageTranscriptsClient SubpackageTranscripts { get; }
 
     }
 }

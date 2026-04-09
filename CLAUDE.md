@@ -28,7 +28,7 @@ cd src/libs/AssemblyAI && ./generate.sh
 
 The SDK code in `src/libs/AssemblyAI/Generated/` is **entirely auto-generated** -- do not manually edit files there.
 
-1. `src/libs/AssemblyAI/openapi.yaml` -- the AssemblyAI OpenAPI spec (fetched from the official `assemblyai-api-spec` repo)
+1. `src/libs/AssemblyAI/openapi.yaml` -- the AssemblyAI OpenAPI spec cache (downloaded from `https://www.assemblyai.com/docs/api-reference/openapi.json`)
 2. `src/libs/AssemblyAI/asyncapi.json` -- AsyncAPI 3.0.0 spec for v3 real-time streaming WebSocket API
 3. `src/libs/AssemblyAI/generate.sh` -- orchestrates: download spec, run AutoSDK CLI for OpenAPI + AsyncAPI, output to `Generated/`
 4. CI auto-updates the spec and creates PRs if changes are detected

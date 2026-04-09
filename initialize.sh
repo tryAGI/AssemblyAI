@@ -3,6 +3,6 @@ dotnet tool install --global autosdk.cli --prerelease
 autosdk init \
   AssemblyAI \
   AssemblyAiApi \
-  https://raw.githubusercontent.com/AssemblyAI/assemblyai-api-spec/main/openapi.yml \
+  https://www.assemblyai.com/docs/api-reference/openapi.json \
   tryAGI \
   --output .

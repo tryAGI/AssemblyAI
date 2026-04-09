@@ -4,8 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Object containing words or phrases to replace, and the word or phrase to replace with<br/>
-    /// Example: {"from":["dicarlo"],"to":"Decarlo"}
+    /// Object containing words or phrases to replace, and the word or phrase to replace with
     /// </summary>
     public sealed partial class TranscriptCustomSpelling
     {

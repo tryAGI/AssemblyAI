@@ -18,12 +18,26 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
     /// <inheritdoc />
     async Task<SpeechToTextResponse> ISpeechToTextClient.GetTextAsync(Stream audioSpeechStream, SpeechToTextOptions? options, CancellationToken cancellationToken)
     {
-        TranscriptParams? transcriptParams = options?.RawRepresentationFactory?.Invoke(this) is TranscriptParams tmp ? (TranscriptParams?)tmp : null;
-        TranscriptOptionalParams optionalParams = transcriptParams?.Value2 ?? new() { SpeechModels = [] };
-        optionalParams.LanguageCode ??= options?.SpeechLanguage!;
-        optionalParams.SpeechModel ??= options?.ModelId!;
+        TranscriptParams? transcriptParams = options?.RawRepresentationFactory?.Invoke(this) as TranscriptParams;
 
-        string? audioUrl = transcriptParams?.Value1?.AudioUrl;
+        if (transcriptParams?.LanguageCode is null &&
+            options?.SpeechLanguage is { Length: > 0 } speechLanguage)
+        {
+            transcriptParams = TranscriptParams.FromUrl(
+                transcriptParams?.AudioUrl ?? string.Empty,
+                transcriptParams);
+            transcriptParams.LanguageCode =
+                TranscriptLanguageCodeExtensions.ToEnum(speechLanguage) ?? (object)speechLanguage;
+        }
+
+        if (transcriptParams is not null &&
+            (transcriptParams.SpeechModels is null || transcriptParams.SpeechModels.Count == 0) &&
+            options?.ModelId is { Length: > 0 } modelId)
+        {
+            transcriptParams.SpeechModels = [modelId];
+        }
+
+        string? audioUrl = transcriptParams?.AudioUrl;
         if (audioUrl is null)
         {
             MemoryStream ms = new();
@@ -34,8 +48,15 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
             audioUrl = upload.UploadUrl;
         }
 
+        transcriptParams = TranscriptParams.FromUrl(audioUrl, transcriptParams);
+        if (transcriptParams.SpeechModels.Count == 0 &&
+            options?.ModelId is { Length: > 0 } uploadedModelId)
+        {
+            transcriptParams.SpeechModels = [uploadedModelId];
+        }
+
         Transcript transcript = await Transcripts.SubmitAsync(
-            TranscriptParams.FromUrl(audioUrl, optionalParams),
+            transcriptParams,
             cancellationToken).ConfigureAwait(false);
 
         string id = transcript.Id.ToString();
