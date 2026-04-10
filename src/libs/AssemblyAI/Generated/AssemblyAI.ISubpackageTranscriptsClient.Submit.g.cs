@@ -14,12 +14,14 @@ namespace AssemblyAI
         /// </summary>
         /// <param name="authorization"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> SubmitAsync(
             string authorization,
 
             global::AssemblyAI.TranscriptParams request,
+            global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Transcribe audio<br/>
@@ -201,6 +203,7 @@ namespace AssemblyAI
         /// <param name="audioUrl">
         /// The URL of the audio or video file to transcribe.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> SubmitAsync(
@@ -252,6 +255,7 @@ namespace AssemblyAI
             bool? customTopics = default,
             global::AssemblyAI.OneOf<string, object>? speechModel = default,
             global::System.Collections.Generic.IList<string>? topics = default,
+            global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
