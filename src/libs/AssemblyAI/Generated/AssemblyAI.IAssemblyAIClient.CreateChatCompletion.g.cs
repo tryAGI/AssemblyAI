@@ -14,12 +14,14 @@ namespace AssemblyAI
         /// </summary>
         /// <param name="authorization"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::AssemblyAI.Response> CreateChatCompletionAsync(
             string authorization,
 
             global::AssemblyAI.LLMGatewayRequest request,
+            global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a chat completion<br/>
@@ -59,6 +61,7 @@ namespace AssemblyAI
         /// <param name="responseFormat">
         /// Specifies the format of the model's response. Use this to constrain the model to output valid JSON matching a schema. Supported by OpenAI (GPT-4.1, GPT-5.x), Gemini, and Claude models. Not supported by gpt-oss models.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::AssemblyAI.Response> CreateChatCompletionAsync(
@@ -72,6 +75,7 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<global::AssemblyAI.Tool>? tools = default,
             global::AssemblyAI.ToolChoice? toolChoice = default,
             global::AssemblyAI.ResponseFormat? responseFormat = default,
+            global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

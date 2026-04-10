@@ -14,11 +14,13 @@ namespace AssemblyAI
         /// </summary>
         /// <param name="transcriptId"></param>
         /// <param name="authorization"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::AssemblyAI.ParagraphsResponse> GetParagraphsAsync(
             string transcriptId,
             string authorization,
+            global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -14,12 +14,14 @@ namespace AssemblyAI
         /// </summary>
         /// <param name="authorization"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::AssemblyAI.CreateSpeechUnderstandingResponse200> CreateSpeechUnderstandingAsync(
             string authorization,
 
             global::AssemblyAI.UnderstandingRequest request,
+            global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Process speech understanding<br/>
@@ -36,12 +38,14 @@ namespace AssemblyAI
         /// <param name="speechUnderstanding">
         /// The speech understanding task to perform. Supports [Translation](https://www.assemblyai.com/docs/speech-understanding/translation), [Speaker Identification](https://www.assemblyai.com/docs/speech-understanding/speaker-identification), and [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting). Click into the request object below to see the available options.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::AssemblyAI.CreateSpeechUnderstandingResponse200> CreateSpeechUnderstandingAsync(
             string authorization,
             string transcriptId,
             global::AssemblyAI.UnderstandingRequestSpeechUnderstanding speechUnderstanding,
+            global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
