@@ -5,6 +5,24 @@ namespace AssemblyAI
 {
     public partial class AssemblyAIClient
     {
+
+        private static readonly global::AssemblyAI.AutoSDKServer[] s_CreateChatCompletionServers = new global::AssemblyAI.AutoSDKServer[]
+        {            new global::AssemblyAI.AutoSDKServer(
+                id: "https-api-assemblyai-com",
+                name: "api.assemblyai.com",
+                url: "https://api.assemblyai.com/",
+                description: ""),
+            new global::AssemblyAI.AutoSDKServer(
+                id: "https-llm-gateway-assemblyai-com-v1",
+                name: "llm-gateway.assemblyai.com v1",
+                url: "https://llm-gateway.assemblyai.com/v1",
+                description: ""),
+            new global::AssemblyAI.AutoSDKServer(
+                id: "https-streaming-assemblyai-com",
+                name: "streaming.assemblyai.com",
+                url: "https://streaming.assemblyai.com/",
+                description: ""),
+        };
         partial void PrepareCreateChatCompletionArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string authorization,
@@ -70,7 +88,9 @@ namespace AssemblyAI
             {
                             var __pathBuilder = new global::AssemblyAI.PathBuilder(
                                 path: "/chat/completions",
-                                baseUri: HttpClient.BaseAddress);
+                                baseUri: ResolveBaseUri(
+                                servers: s_CreateChatCompletionServers,
+                                defaultBaseUrl: "https://api.assemblyai.com/"));
                             var __path = __pathBuilder.ToString();
                 __path = global::AssemblyAI.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -395,6 +415,12 @@ namespace AssemblyAI
         /// <param name="responseFormat">
         /// Specifies the format of the model's response. Use this to constrain the model to output valid JSON matching a schema. Supported by OpenAI (GPT-4.1, GPT-5.x), Gemini, and Claude models. Not supported by gpt-oss models.
         /// </param>
+        /// <param name="fallbacks">
+        /// An array of fallback objects. Each object must include a `model` and can optionally override any field from the original request. If the primary model fails, the LLM Gateway tries each fallback in order until one succeeds. See [Specify fallback models](https://www.assemblyai.com/docs/llm-gateway/fallback) for more details.
+        /// </param>
+        /// <param name="fallbackConfig">
+        /// Configuration for fallback behavior, including retry and depth settings. See [Specify fallback models](https://www.assemblyai.com/docs/llm-gateway/fallback) for more details.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -409,6 +435,8 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<global::AssemblyAI.Tool>? tools = default,
             global::AssemblyAI.ToolChoice? toolChoice = default,
             global::AssemblyAI.ResponseFormat? responseFormat = default,
+            global::System.Collections.Generic.IList<global::AssemblyAI.FallbackObject>? fallbacks = default,
+            global::AssemblyAI.FallbackConfig? fallbackConfig = default,
             global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -423,6 +451,8 @@ namespace AssemblyAI
                 Tools = tools,
                 ToolChoice = toolChoice,
                 ResponseFormat = responseFormat,
+                Fallbacks = fallbacks,
+                FallbackConfig = fallbackConfig,
             };
 
             return await CreateChatCompletionAsync(

@@ -67,6 +67,18 @@ namespace AssemblyAI
         public global::AssemblyAI.ResponseFormat? ResponseFormat { get; set; }
 
         /// <summary>
+        /// An array of fallback objects. Each object must include a `model` and can optionally override any field from the original request. If the primary model fails, the LLM Gateway tries each fallback in order until one succeeds. See [Specify fallback models](https://www.assemblyai.com/docs/llm-gateway/fallback) for more details.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fallbacks")]
+        public global::System.Collections.Generic.IList<global::AssemblyAI.FallbackObject>? Fallbacks { get; set; }
+
+        /// <summary>
+        /// Configuration for fallback behavior, including retry and depth settings. See [Specify fallback models](https://www.assemblyai.com/docs/llm-gateway/fallback) for more details.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fallback_config")]
+        public global::AssemblyAI.FallbackConfig? FallbackConfig { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -104,6 +116,12 @@ namespace AssemblyAI
         /// <param name="responseFormat">
         /// Specifies the format of the model's response. Use this to constrain the model to output valid JSON matching a schema. Supported by OpenAI (GPT-4.1, GPT-5.x), Gemini, and Claude models. Not supported by gpt-oss models.
         /// </param>
+        /// <param name="fallbacks">
+        /// An array of fallback objects. Each object must include a `model` and can optionally override any field from the original request. If the primary model fails, the LLM Gateway tries each fallback in order until one succeeds. See [Specify fallback models](https://www.assemblyai.com/docs/llm-gateway/fallback) for more details.
+        /// </param>
+        /// <param name="fallbackConfig">
+        /// Configuration for fallback behavior, including retry and depth settings. See [Specify fallback models](https://www.assemblyai.com/docs/llm-gateway/fallback) for more details.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -116,7 +134,9 @@ namespace AssemblyAI
             bool? stream,
             global::System.Collections.Generic.IList<global::AssemblyAI.Tool>? tools,
             global::AssemblyAI.ToolChoice? toolChoice,
-            global::AssemblyAI.ResponseFormat? responseFormat)
+            global::AssemblyAI.ResponseFormat? responseFormat,
+            global::System.Collections.Generic.IList<global::AssemblyAI.FallbackObject>? fallbacks,
+            global::AssemblyAI.FallbackConfig? fallbackConfig)
         {
             this.Messages = messages;
             this.Prompt = prompt;
@@ -127,6 +147,8 @@ namespace AssemblyAI
             this.Tools = tools;
             this.ToolChoice = toolChoice;
             this.ResponseFormat = responseFormat;
+            this.Fallbacks = fallbacks;
+            this.FallbackConfig = fallbackConfig;
         }
 
         /// <summary>

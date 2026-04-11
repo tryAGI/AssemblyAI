@@ -5,6 +5,24 @@ namespace AssemblyAI
 {
     public partial class SubpackageTranscriptsClient
     {
+
+        private static readonly global::AssemblyAI.AutoSDKServer[] s_ListServers = new global::AssemblyAI.AutoSDKServer[]
+        {            new global::AssemblyAI.AutoSDKServer(
+                id: "https-api-assemblyai-com",
+                name: "api.assemblyai.com",
+                url: "https://api.assemblyai.com/",
+                description: ""),
+            new global::AssemblyAI.AutoSDKServer(
+                id: "https-llm-gateway-assemblyai-com-v1",
+                name: "llm-gateway.assemblyai.com v1",
+                url: "https://llm-gateway.assemblyai.com/v1",
+                description: ""),
+            new global::AssemblyAI.AutoSDKServer(
+                id: "https-streaming-assemblyai-com",
+                name: "streaming.assemblyai.com",
+                url: "https://streaming.assemblyai.com/",
+                description: ""),
+        };
         partial void PrepareListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref int? limit,
@@ -107,7 +125,9 @@ namespace AssemblyAI
             {
                             var __pathBuilder = new global::AssemblyAI.PathBuilder(
                                 path: "/v2/transcript",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: ResolveBaseUri(
+                                servers: s_ListServers,
+                                defaultBaseUrl: "https://api.assemblyai.com/")); 
                             __pathBuilder
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("status", status?.ToValueString())
