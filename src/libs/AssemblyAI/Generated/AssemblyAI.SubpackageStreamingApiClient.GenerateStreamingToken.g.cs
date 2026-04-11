@@ -5,6 +5,24 @@ namespace AssemblyAI
 {
     public partial class SubpackageStreamingApiClient
     {
+
+        private static readonly global::AssemblyAI.AutoSDKServer[] s_GenerateStreamingTokenServers = new global::AssemblyAI.AutoSDKServer[]
+        {            new global::AssemblyAI.AutoSDKServer(
+                id: "https-api-assemblyai-com",
+                name: "api.assemblyai.com",
+                url: "https://api.assemblyai.com/",
+                description: ""),
+            new global::AssemblyAI.AutoSDKServer(
+                id: "https-llm-gateway-assemblyai-com-v1",
+                name: "llm-gateway.assemblyai.com v1",
+                url: "https://llm-gateway.assemblyai.com/v1",
+                description: ""),
+            new global::AssemblyAI.AutoSDKServer(
+                id: "https-streaming-assemblyai-com",
+                name: "streaming.assemblyai.com",
+                url: "https://streaming.assemblyai.com/",
+                description: ""),
+        };
         partial void PrepareGenerateStreamingTokenArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref int expiresInSeconds,
@@ -68,7 +86,9 @@ namespace AssemblyAI
             {
                             var __pathBuilder = new global::AssemblyAI.PathBuilder(
                                 path: "/v3/token",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: ResolveBaseUri(
+                                servers: s_GenerateStreamingTokenServers,
+                                defaultBaseUrl: "https://api.assemblyai.com/")); 
                             __pathBuilder
                                 .AddRequiredParameter("expires_in_seconds", expiresInSeconds.ToString()!)
                                 .AddOptionalParameter("max_session_duration_seconds", maxSessionDurationSeconds?.ToString()) 
