@@ -277,6 +277,14 @@ namespace AssemblyAI
         public global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>? RemoveAudioTags { get; set; }
 
         /// <summary>
+        /// Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
+        /// Note: This parameter can only be used with the Universal-3 Pro model.<br/>
+        /// Default Value: 0
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
+        public double? Temperature { get; set; }
+
+        /// <summary>
         /// The header name to be sent with the transcript completed or failed [webhook](https://www.assemblyai.com/docs/deployment/webhooks-for-pre-recorded-audio) requests
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_auth_header_name")]
@@ -477,6 +485,11 @@ namespace AssemblyAI
         /// Remove [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) from the transcript text. Set to `"all"` to remove all audio tags.<br/>
         /// Note: This parameter is only supported for the Universal-3 Pro model.
         /// </param>
+        /// <param name="temperature">
+        /// Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
+        /// Note: This parameter can only be used with the Universal-3 Pro model.<br/>
+        /// Default Value: 0
+        /// </param>
         /// <param name="webhookAuthHeaderName">
         /// The header name to be sent with the transcript completed or failed [webhook](https://www.assemblyai.com/docs/deployment/webhooks-for-pre-recorded-audio) requests
         /// </param>
@@ -540,6 +553,7 @@ namespace AssemblyAI
             global::AssemblyAI.SummaryModel? summaryModel,
             global::AssemblyAI.SummaryType? summaryType,
             global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>? removeAudioTags,
+            double? temperature,
             string? webhookAuthHeaderName,
             string? webhookAuthHeaderValue,
             string? webhookUrl,
@@ -586,6 +600,7 @@ namespace AssemblyAI
             this.SummaryModel = summaryModel;
             this.SummaryType = summaryType;
             this.RemoveAudioTags = removeAudioTags;
+            this.Temperature = temperature;
             this.WebhookAuthHeaderName = webhookAuthHeaderName;
             this.WebhookAuthHeaderValue = webhookAuthHeaderValue;
             this.WebhookUrl = webhookUrl;

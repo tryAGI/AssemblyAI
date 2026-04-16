@@ -796,6 +796,11 @@ namespace AssemblyAI
         /// Remove [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) from the transcript text. Set to `"all"` to remove all audio tags.<br/>
         /// Note: This parameter is only supported for the Universal-3 Pro model.
         /// </param>
+        /// <param name="temperature">
+        /// Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
+        /// Note: This parameter can only be used with the Universal-3 Pro model.<br/>
+        /// Default Value: 0
+        /// </param>
         /// <param name="webhookAuthHeaderName">
         /// The header name to be sent with the transcript completed or failed [webhook](https://www.assemblyai.com/docs/deployment/webhooks-for-pre-recorded-audio) requests
         /// </param>
@@ -863,6 +868,7 @@ namespace AssemblyAI
             global::AssemblyAI.SummaryModel? summaryModel = default,
             global::AssemblyAI.SummaryType? summaryType = default,
             global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>? removeAudioTags = default,
+            double? temperature = default,
             string? webhookAuthHeaderName = default,
             string? webhookAuthHeaderValue = default,
             string? webhookUrl = default,
@@ -913,6 +919,7 @@ namespace AssemblyAI
                 SummaryModel = summaryModel,
                 SummaryType = summaryType,
                 RemoveAudioTags = removeAudioTags,
+                Temperature = temperature,
                 WebhookAuthHeaderName = webhookAuthHeaderName,
                 WebhookAuthHeaderValue = webhookAuthHeaderValue,
                 WebhookUrl = webhookUrl,
