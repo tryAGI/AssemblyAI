@@ -361,6 +361,13 @@ namespace AssemblyAI
         public global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptRemoveAudioTags?, object>? RemoveAudioTags { get; set; }
 
         /// <summary>
+        /// The temperature that was used for the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
+        /// Note: This parameter can only be used with the Universal-3 Pro model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
+        public double? Temperature { get; set; }
+
+        /// <summary>
         /// The textual transcript of your media file
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
@@ -656,6 +663,10 @@ namespace AssemblyAI
         /// Whether [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) were removed from the transcript text.<br/>
         /// Note: This parameter is only supported for the Universal-3 Pro model.
         /// </param>
+        /// <param name="temperature">
+        /// The temperature that was used for the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
+        /// Note: This parameter can only be used with the Universal-3 Pro model.
+        /// </param>
         /// <param name="text">
         /// The textual transcript of your media file
         /// </param>
@@ -751,6 +762,7 @@ namespace AssemblyAI
             string? summaryModel,
             string? summaryType,
             global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptRemoveAudioTags?, object>? removeAudioTags,
+            double? temperature,
             string? text,
             bool? throttled,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptUtterance>? utterances,
@@ -816,6 +828,7 @@ namespace AssemblyAI
             this.SummaryModel = summaryModel;
             this.SummaryType = summaryType;
             this.RemoveAudioTags = removeAudioTags;
+            this.Temperature = temperature;
             this.Text = text;
             this.Throttled = throttled;
             this.Utterances = utterances;
