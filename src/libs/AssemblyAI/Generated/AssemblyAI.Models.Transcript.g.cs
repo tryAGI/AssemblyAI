@@ -9,7 +9,7 @@ namespace AssemblyAI
     public sealed partial class Transcript
     {
         /// <summary>
-        /// The number of audio channels in the audio file. This is only present when [multichannel](https://www.assemblyai.com/docs/pre-recorded-audio/multichannel) is enabled.
+        /// The number of audio channels in the audio file. This is only present when [multichannel](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) is enabled.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_channels")]
         public int? AudioChannels { get; set; }
@@ -40,14 +40,14 @@ namespace AssemblyAI
         public required string AudioUrl { get; set; }
 
         /// <summary>
-        /// Whether [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/auto-chapters) is enabled, can be true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible chapter summaries. See the [updated Auto Chapters page](https://www.assemblyai.com/docs/speech-understanding/auto-chapters) for details.<br/>
+        /// Whether [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/create-summarized-chapters) is enabled, can be true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible chapter summaries. See the [updated Auto Chapters page](https://www.assemblyai.com/docs/speech-understanding/create-summarized-chapters) for details.<br/>
         /// Note: This parameter is only supported for the Universal-2 model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auto_chapters")]
         public bool? AutoChapters { get; set; }
 
         /// <summary>
-        /// Whether [Key Phrases](https://www.assemblyai.com/docs/speech-understanding/key-phrases) is enabled, either true or false
+        /// Whether [Key Phrases](https://www.assemblyai.com/docs/speech-understanding/identify-highlights) is enabled, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auto_highlights")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -55,14 +55,14 @@ namespace AssemblyAI
 
         /// <summary>
         /// An array of results for the Key Phrases model, if it is enabled.<br/>
-        /// See [Key Phrases](https://www.assemblyai.com/docs/speech-understanding/key-phrases) for more information.
+        /// See [Key Phrases](https://www.assemblyai.com/docs/speech-understanding/identify-highlights) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auto_highlights_result")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.AutoHighlightsResult, object>))]
         public global::AssemblyAI.OneOf<global::AssemblyAI.AutoHighlightsResult, object>? AutoHighlightsResult { get; set; }
 
         /// <summary>
-        /// An array of temporally sequential chapters for the audio file. See [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/auto-chapters) for more information.
+        /// An array of temporally sequential chapters for the audio file. See [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/create-summarized-chapters) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chapters")]
         public global::System.Collections.Generic.IList<global::AssemblyAI.Chapter>? Chapters { get; set; }
@@ -88,13 +88,13 @@ namespace AssemblyAI
         public global::AssemblyAI.OneOf<global::AssemblyAI.ContentSafetyLabelsResult, object>? ContentSafetyLabels { get; set; }
 
         /// <summary>
-        /// Customize how words are spelled and formatted using to and from values. See [Custom Spelling](https://www.assemblyai.com/docs/pre-recorded-audio/custom-spelling) for more details.
+        /// Customize how words are spelled and formatted using to and from values. See [Custom Spelling](https://www.assemblyai.com/docs/pre-recorded-audio/correct-spelling-of-terms) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_spelling")]
         public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptCustomSpelling>? CustomSpelling { get; set; }
 
         /// <summary>
-        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/filler-words), like "umm", in your media file; can be true or false
+        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disfluencies")]
         public bool? Disfluencies { get; set; }
@@ -107,13 +107,13 @@ namespace AssemblyAI
 
         /// <summary>
         /// An array of results for the Entity Detection model, if it is enabled.<br/>
-        /// See [Entity detection](https://www.assemblyai.com/docs/speech-understanding/entity-detection) for more information.
+        /// See [Entity detection](https://www.assemblyai.com/docs/speech-understanding/detect-entities-in-transcript) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("entities")]
         public global::System.Collections.Generic.IList<global::AssemblyAI.Entity>? Entities { get; set; }
 
         /// <summary>
-        /// Whether [Entity Detection](https://www.assemblyai.com/docs/speech-understanding/entity-detection) is enabled, can be true or false
+        /// Whether [Entity Detection](https://www.assemblyai.com/docs/speech-understanding/detect-entities-in-transcript) is enabled, can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("entity_detection")]
         public bool? EntityDetection { get; set; }
@@ -137,14 +137,14 @@ namespace AssemblyAI
         public bool? FormatText { get; set; }
 
         /// <summary>
-        /// Whether [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/topic-detection) is enabled, can be true or false
+        /// Whether [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/detect-discussion-topics) is enabled, can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("iab_categories")]
         public bool? IabCategories { get; set; }
 
         /// <summary>
         /// The result of the Topic Detection model, if it is enabled.<br/>
-        /// See [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/topic-detection) for more information.
+        /// See [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/detect-discussion-topics) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("iab_categories_result")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TopicDetectionModelResult, object>))]
@@ -206,7 +206,7 @@ namespace AssemblyAI
         public global::AssemblyAI.TranscriptLanguageDetectionOptions? LanguageDetectionOptions { get; set; }
 
         /// <summary>
-        /// Whether [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/multichannel) was enabled in the transcription request, either true or false
+        /// Whether [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) was enabled in the transcription request, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("multichannel")]
         public bool? Multichannel { get; set; }
@@ -268,26 +268,26 @@ namespace AssemblyAI
         public global::AssemblyAI.SubstitutionPolicy? RedactPiiSub { get; set; }
 
         /// <summary>
-        /// Whether [Sentiment Analysis](https://www.assemblyai.com/docs/speech-understanding/sentiment-analysis) is enabled, can be true or false
+        /// Whether [Sentiment Analysis](https://www.assemblyai.com/docs/speech-understanding/analyze-sentiment-of-speech) is enabled, can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sentiment_analysis")]
         public bool? SentimentAnalysis { get; set; }
 
         /// <summary>
         /// An array of results for the Sentiment Analysis model, if it is enabled.<br/>
-        /// See [Sentiment Analysis](https://www.assemblyai.com/docs/speech-understanding/sentiment-analysis) for more information.
+        /// See [Sentiment Analysis](https://www.assemblyai.com/docs/speech-understanding/analyze-sentiment-of-speech) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sentiment_analysis_results")]
         public global::System.Collections.Generic.IList<global::AssemblyAI.SentimentAnalysisResult>? SentimentAnalysisResults { get; set; }
 
         /// <summary>
-        /// Whether [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization) is enabled, can be true or false
+        /// Whether [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers) is enabled, can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker_labels")]
         public bool? SpeakerLabels { get; set; }
 
         /// <summary>
-        /// Tell the speaker label model how many speakers it should attempt to identify. See [Set number of speakers expected](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization#set-number-of-speakers-expected) for more details.
+        /// Tell the speaker label model how many speakers it should attempt to identify. See [Set number of speakers expected](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-number-of-speakers-expected) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speakers_expected")]
         public int? SpeakersExpected { get; set; }
@@ -326,7 +326,7 @@ namespace AssemblyAI
         public required global::AssemblyAI.TranscriptStatus Status { get; set; }
 
         /// <summary>
-        /// Whether [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled, either true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.<br/>
+        /// Whether [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) is enabled, either true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) for details.<br/>
         /// Note: This parameter is only supported for the Universal-2 model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summarization")]
@@ -334,20 +334,20 @@ namespace AssemblyAI
         public required bool Summarization { get; set; }
 
         /// <summary>
-        /// The generated summary of the media file, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
+        /// The generated summary of the media file, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) for details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
         public string? Summary { get; set; }
 
         /// <summary>
         /// The Summarization model used to generate the summary,<br/>
-        /// if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization#summary-models) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
+        /// if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts#summary-models) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) for details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary_model")]
         public string? SummaryModel { get; set; }
 
         /// <summary>
-        /// The type of summary generated, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization#summary-types) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
+        /// The type of summary generated, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts#summary-types) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) for details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary_type")]
         public string? SummaryType { get; set; }
@@ -381,7 +381,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// When multichannel or speaker_labels is enabled, a list of turn-by-turn utterance objects.<br/>
-        /// See [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization) and [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/multichannel) for more information.
+        /// See [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers) and [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("utterances")]
         public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptUtterance>? Utterances { get; set; }
@@ -476,7 +476,7 @@ namespace AssemblyAI
         /// The URL of the media that was transcribed
         /// </param>
         /// <param name="autoHighlights">
-        /// Whether [Key Phrases](https://www.assemblyai.com/docs/speech-understanding/key-phrases) is enabled, either true or false
+        /// Whether [Key Phrases](https://www.assemblyai.com/docs/speech-understanding/identify-highlights) is enabled, either true or false
         /// </param>
         /// <param name="id">
         /// The unique identifier of your transcript
@@ -488,7 +488,7 @@ namespace AssemblyAI
         /// The status of your transcript. Possible values are queued, processing, completed, or error.
         /// </param>
         /// <param name="summarization">
-        /// Whether [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled, either true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.<br/>
+        /// Whether [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) is enabled, either true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) for details.<br/>
         /// Note: This parameter is only supported for the Universal-2 model.
         /// </param>
         /// <param name="webhookAuth">
@@ -504,7 +504,7 @@ namespace AssemblyAI
         /// This parameter has been replaced with the `speech_models` parameter, learn more about the `speech_models` parameter [here](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model).
         /// </param>
         /// <param name="audioChannels">
-        /// The number of audio channels in the audio file. This is only present when [multichannel](https://www.assemblyai.com/docs/pre-recorded-audio/multichannel) is enabled.
+        /// The number of audio channels in the audio file. This is only present when [multichannel](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) is enabled.
         /// </param>
         /// <param name="audioDuration">
         /// The duration of this transcript object's media file, in seconds
@@ -516,15 +516,15 @@ namespace AssemblyAI
         /// The point in time, in milliseconds, in the file at which the transcription was started. See [Set the start and end of the transcript](https://www.assemblyai.com/docs/pre-recorded-audio/set-the-start-and-end-of-the-transcript) for more details.
         /// </param>
         /// <param name="autoChapters">
-        /// Whether [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/auto-chapters) is enabled, can be true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible chapter summaries. See the [updated Auto Chapters page](https://www.assemblyai.com/docs/speech-understanding/auto-chapters) for details.<br/>
+        /// Whether [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/create-summarized-chapters) is enabled, can be true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible chapter summaries. See the [updated Auto Chapters page](https://www.assemblyai.com/docs/speech-understanding/create-summarized-chapters) for details.<br/>
         /// Note: This parameter is only supported for the Universal-2 model.
         /// </param>
         /// <param name="autoHighlightsResult">
         /// An array of results for the Key Phrases model, if it is enabled.<br/>
-        /// See [Key Phrases](https://www.assemblyai.com/docs/speech-understanding/key-phrases) for more information.
+        /// See [Key Phrases](https://www.assemblyai.com/docs/speech-understanding/identify-highlights) for more information.
         /// </param>
         /// <param name="chapters">
-        /// An array of temporally sequential chapters for the audio file. See [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/auto-chapters) for more information.
+        /// An array of temporally sequential chapters for the audio file. See [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/create-summarized-chapters) for more information.
         /// </param>
         /// <param name="confidence">
         /// The confidence score for the transcript, between 0.0 (low confidence) and 1.0 (high confidence)
@@ -537,20 +537,20 @@ namespace AssemblyAI
         /// See [Content moderation](https://www.assemblyai.com/docs/content-moderation) for more information.
         /// </param>
         /// <param name="customSpelling">
-        /// Customize how words are spelled and formatted using to and from values. See [Custom Spelling](https://www.assemblyai.com/docs/pre-recorded-audio/custom-spelling) for more details.
+        /// Customize how words are spelled and formatted using to and from values. See [Custom Spelling](https://www.assemblyai.com/docs/pre-recorded-audio/correct-spelling-of-terms) for more details.
         /// </param>
         /// <param name="disfluencies">
-        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/filler-words), like "umm", in your media file; can be true or false
+        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false
         /// </param>
         /// <param name="domain">
         /// The domain-specific model applied to the transcript. When set to `"medical-v1"`, [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) was used to improve accuracy for medical terminology.
         /// </param>
         /// <param name="entities">
         /// An array of results for the Entity Detection model, if it is enabled.<br/>
-        /// See [Entity detection](https://www.assemblyai.com/docs/speech-understanding/entity-detection) for more information.
+        /// See [Entity detection](https://www.assemblyai.com/docs/speech-understanding/detect-entities-in-transcript) for more information.
         /// </param>
         /// <param name="entityDetection">
-        /// Whether [Entity Detection](https://www.assemblyai.com/docs/speech-understanding/entity-detection) is enabled, can be true or false
+        /// Whether [Entity Detection](https://www.assemblyai.com/docs/speech-understanding/detect-entities-in-transcript) is enabled, can be true or false
         /// </param>
         /// <param name="error">
         /// Error message of why the transcript failed
@@ -562,11 +562,11 @@ namespace AssemblyAI
         /// Whether [Text Formatting](https://www.assemblyai.com/docs/pre-recorded-audio) is enabled, either true or false
         /// </param>
         /// <param name="iabCategories">
-        /// Whether [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/topic-detection) is enabled, can be true or false
+        /// Whether [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/detect-discussion-topics) is enabled, can be true or false
         /// </param>
         /// <param name="iabCategoriesResult">
         /// The result of the Topic Detection model, if it is enabled.<br/>
-        /// See [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/topic-detection) for more information.
+        /// See [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/detect-discussion-topics) for more information.
         /// </param>
         /// <param name="keytermsPrompt">
         /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/keyterms-prompting) for more details.
@@ -595,7 +595,7 @@ namespace AssemblyAI
         /// Specify options for [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection).
         /// </param>
         /// <param name="multichannel">
-        /// Whether [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/multichannel) was enabled in the transcription request, either true or false
+        /// Whether [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) was enabled in the transcription request, either true or false
         /// </param>
         /// <param name="prompt">
         /// Provide natural language prompting of up to 1,500 words of contextual information to the model. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for best practices.<br/>
@@ -624,17 +624,17 @@ namespace AssemblyAI
         /// The replacement logic for detected PII, can be `entity_type` or `hash`. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more details.
         /// </param>
         /// <param name="sentimentAnalysis">
-        /// Whether [Sentiment Analysis](https://www.assemblyai.com/docs/speech-understanding/sentiment-analysis) is enabled, can be true or false
+        /// Whether [Sentiment Analysis](https://www.assemblyai.com/docs/speech-understanding/analyze-sentiment-of-speech) is enabled, can be true or false
         /// </param>
         /// <param name="sentimentAnalysisResults">
         /// An array of results for the Sentiment Analysis model, if it is enabled.<br/>
-        /// See [Sentiment Analysis](https://www.assemblyai.com/docs/speech-understanding/sentiment-analysis) for more information.
+        /// See [Sentiment Analysis](https://www.assemblyai.com/docs/speech-understanding/analyze-sentiment-of-speech) for more information.
         /// </param>
         /// <param name="speakerLabels">
-        /// Whether [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization) is enabled, can be true or false
+        /// Whether [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers) is enabled, can be true or false
         /// </param>
         /// <param name="speakersExpected">
-        /// Tell the speaker label model how many speakers it should attempt to identify. See [Set number of speakers expected](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization#set-number-of-speakers-expected) for more details.
+        /// Tell the speaker label model how many speakers it should attempt to identify. See [Set number of speakers expected](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-number-of-speakers-expected) for more details.
         /// </param>
         /// <param name="speechModelUsed">
         /// The speech model that was actually used for the transcription. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models.
@@ -650,14 +650,14 @@ namespace AssemblyAI
         /// Speech understanding tasks like [Translation](https://www.assemblyai.com/docs/speech-understanding/translation), [Speaker Identification](https://www.assemblyai.com/docs/speech-understanding/speaker-identification), and [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting). See the task-specific docs for available options and configuration.
         /// </param>
         /// <param name="summary">
-        /// The generated summary of the media file, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
+        /// The generated summary of the media file, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) for details.
         /// </param>
         /// <param name="summaryModel">
         /// The Summarization model used to generate the summary,<br/>
-        /// if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization#summary-models) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
+        /// if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts#summary-models) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) for details.
         /// </param>
         /// <param name="summaryType">
-        /// The type of summary generated, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization#summary-types) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
+        /// The type of summary generated, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts#summary-types) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) for details.
         /// </param>
         /// <param name="removeAudioTags">
         /// Whether [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) were removed from the transcript text.<br/>
@@ -675,7 +675,7 @@ namespace AssemblyAI
         /// </param>
         /// <param name="utterances">
         /// When multichannel or speaker_labels is enabled, a list of turn-by-turn utterance objects.<br/>
-        /// See [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization) and [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/multichannel) for more information.
+        /// See [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers) and [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) for more information.
         /// </param>
         /// <param name="webhookAuthHeaderName">
         /// The header name to be sent with the transcript completed or failed [webhook](https://www.assemblyai.com/docs/deployment/webhooks-for-pre-recorded-audio) requests

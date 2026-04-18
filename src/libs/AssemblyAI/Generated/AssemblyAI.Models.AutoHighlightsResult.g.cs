@@ -5,7 +5,7 @@ namespace AssemblyAI
 {
     /// <summary>
     /// An array of results for the Key Phrases model, if it is enabled.<br/>
-    /// See [Key phrases](https://www.assemblyai.com/docs/speech-understanding/key-phrases) for more information.
+    /// See [Key phrases](https://www.assemblyai.com/docs/speech-understanding/identify-highlights) for more information.
     /// </summary>
     public sealed partial class AutoHighlightsResult
     {

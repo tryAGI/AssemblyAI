@@ -5,7 +5,7 @@ namespace AssemblyAI
 {
     /// <summary>
     /// The result of the Topic Detection model, if it is enabled.<br/>
-    /// See [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/topic-detection) for more information.
+    /// See [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/detect-discussion-topics) for more information.
     /// </summary>
     public sealed partial class TopicDetectionModelResult
     {
