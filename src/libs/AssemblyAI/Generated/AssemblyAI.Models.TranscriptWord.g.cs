@@ -43,7 +43,7 @@ namespace AssemblyAI
         public string? Channel { get; set; }
 
         /// <summary>
-        /// The speaker of the word if [Speaker Diarization](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization) is enabled, else null
+        /// The speaker of the word if [Speaker Diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers) is enabled, else null
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]
         public string? Speaker { get; set; }
@@ -73,7 +73,7 @@ namespace AssemblyAI
         /// The channel of the word. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
         /// </param>
         /// <param name="speaker">
-        /// The speaker of the word if [Speaker Diarization](https://www.assemblyai.com/docs/pre-recorded-audio/speaker-diarization) is enabled, else null
+        /// The speaker of the word if [Speaker Diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers) is enabled, else null
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
