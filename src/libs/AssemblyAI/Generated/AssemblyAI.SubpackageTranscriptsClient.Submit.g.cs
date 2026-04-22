@@ -47,6 +47,7 @@ namespace AssemblyAI
         /// &gt; For the complete documentation index, see [llms.txt](https://www.assemblyai.com/docs/llms.txt)<br/>
         /// &lt;/llms-only&gt;<br/>
         /// &lt;Note&gt;To use our EU server for transcription, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
+        /// &lt;Tip&gt;Building a load test or submitting a large batch? [See our guide →](/docs/pre-recorded-audio/guides/bulk-transcription-and-load-tests-at-scale)&lt;/Tip&gt;<br/>
         /// Create a transcript from a media file that is accessible via a URL.
         /// </summary>
         /// <param name="authorization"></param>
@@ -649,6 +650,7 @@ namespace AssemblyAI
         /// &gt; For the complete documentation index, see [llms.txt](https://www.assemblyai.com/docs/llms.txt)<br/>
         /// &lt;/llms-only&gt;<br/>
         /// &lt;Note&gt;To use our EU server for transcription, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
+        /// &lt;Tip&gt;Building a load test or submitting a large batch? [See our guide →](/docs/pre-recorded-audio/guides/bulk-transcription-and-load-tests-at-scale)&lt;/Tip&gt;<br/>
         /// Create a transcript from a media file that is accessible via a URL.
         /// </summary>
         /// <param name="authorization"></param>
