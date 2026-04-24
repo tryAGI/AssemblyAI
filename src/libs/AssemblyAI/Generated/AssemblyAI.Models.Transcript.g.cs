@@ -268,6 +268,12 @@ namespace AssemblyAI
         public global::AssemblyAI.SubstitutionPolicy? RedactPiiSub { get; set; }
 
         /// <summary>
+        /// Whether the original unredacted transcript was also returned alongside the redacted one. When `true`, the response includes `unredacted_text`, `unredacted_words`, and `unredacted_utterances`. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more information.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_return_unredacted")]
+        public bool? RedactPiiReturnUnredacted { get; set; }
+
+        /// <summary>
         /// Whether [Sentiment Analysis](https://www.assemblyai.com/docs/speech-understanding/analyze-sentiment-of-speech) is enabled, can be true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sentiment_analysis")]
@@ -374,6 +380,12 @@ namespace AssemblyAI
         public string? Text { get; set; }
 
         /// <summary>
+        /// The original textual transcript of your media file before PII redaction was applied. Only returned when `redact_pii_return_unredacted` was set to `true` on the transcription request, otherwise this field is omitted and the `text` field remains fully redacted. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more information.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unredacted_text")]
+        public string? UnredactedText { get; set; }
+
+        /// <summary>
         /// True while a request is throttled and false when a request is no longer throttled
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("throttled")]
@@ -385,6 +397,12 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("utterances")]
         public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptUtterance>? Utterances { get; set; }
+
+        /// <summary>
+        /// The original turn-by-turn utterance objects before PII redaction was applied. Same shape as `utterances`. Only returned when `redact_pii_return_unredacted` was set to `true` on the transcription request, otherwise this field is omitted and the `utterances` field remains fully redacted. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more information.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unredacted_utterances")]
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptUtterance>? UnredactedUtterances { get; set; }
 
         /// <summary>
         /// Whether [webhook](https://www.assemblyai.com/docs/deployment/webhooks-for-pre-recorded-audio) authentication details were provided
@@ -416,6 +434,12 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("words")]
         public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord>? Words { get; set; }
+
+        /// <summary>
+        /// The original temporally-sequential word objects before PII redaction was applied. Same shape as `words`. Only returned when `redact_pii_return_unredacted` was set to `true` on the transcription request, otherwise this field is omitted and the `words` field remains fully redacted. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more information.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unredacted_words")]
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord>? UnredactedWords { get; set; }
 
         /// <summary>
         /// This parameter does not currently have any functionality attached to it.
@@ -623,6 +647,9 @@ namespace AssemblyAI
         /// <param name="redactPiiSub">
         /// The replacement logic for detected PII, can be `entity_type` or `hash`. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more details.
         /// </param>
+        /// <param name="redactPiiReturnUnredacted">
+        /// Whether the original unredacted transcript was also returned alongside the redacted one. When `true`, the response includes `unredacted_text`, `unredacted_words`, and `unredacted_utterances`. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more information.
+        /// </param>
         /// <param name="sentimentAnalysis">
         /// Whether [Sentiment Analysis](https://www.assemblyai.com/docs/speech-understanding/analyze-sentiment-of-speech) is enabled, can be true or false
         /// </param>
@@ -670,12 +697,18 @@ namespace AssemblyAI
         /// <param name="text">
         /// The textual transcript of your media file
         /// </param>
+        /// <param name="unredactedText">
+        /// The original textual transcript of your media file before PII redaction was applied. Only returned when `redact_pii_return_unredacted` was set to `true` on the transcription request, otherwise this field is omitted and the `text` field remains fully redacted. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more information.
+        /// </param>
         /// <param name="throttled">
         /// True while a request is throttled and false when a request is no longer throttled
         /// </param>
         /// <param name="utterances">
         /// When multichannel or speaker_labels is enabled, a list of turn-by-turn utterance objects.<br/>
         /// See [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers) and [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) for more information.
+        /// </param>
+        /// <param name="unredactedUtterances">
+        /// The original turn-by-turn utterance objects before PII redaction was applied. Same shape as `utterances`. Only returned when `redact_pii_return_unredacted` was set to `true` on the transcription request, otherwise this field is omitted and the `utterances` field remains fully redacted. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more information.
         /// </param>
         /// <param name="webhookAuthHeaderName">
         /// The header name to be sent with the transcript completed or failed [webhook](https://www.assemblyai.com/docs/deployment/webhooks-for-pre-recorded-audio) requests
@@ -688,6 +721,9 @@ namespace AssemblyAI
         /// </param>
         /// <param name="words">
         /// An array of temporally-sequential word objects, one for each word in the transcript.
+        /// </param>
+        /// <param name="unredactedWords">
+        /// The original temporally-sequential word objects before PII redaction was applied. Same shape as `words`. Only returned when `redact_pii_return_unredacted` was set to `true` on the transcription request, otherwise this field is omitted and the `words` field remains fully redacted. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more information.
         /// </param>
         /// <param name="customTopics">
         /// This parameter does not currently have any functionality attached to it.
@@ -750,6 +786,7 @@ namespace AssemblyAI
             global::AssemblyAI.OneOf<global::AssemblyAI.RedactPiiAudioQuality?, object>? redactPiiAudioQuality,
             global::System.Collections.Generic.IList<global::AssemblyAI.PiiPolicy>? redactPiiPolicies,
             global::AssemblyAI.SubstitutionPolicy? redactPiiSub,
+            bool? redactPiiReturnUnredacted,
             bool? sentimentAnalysis,
             global::System.Collections.Generic.IList<global::AssemblyAI.SentimentAnalysisResult>? sentimentAnalysisResults,
             bool? speakerLabels,
@@ -764,12 +801,15 @@ namespace AssemblyAI
             global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptRemoveAudioTags?, object>? removeAudioTags,
             double? temperature,
             string? text,
+            string? unredactedText,
             bool? throttled,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptUtterance>? utterances,
+            global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptUtterance>? unredactedUtterances,
             string? webhookAuthHeaderName,
             int? webhookStatusCode,
             string? webhookUrl,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord>? words,
+            global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord>? unredactedWords,
             bool? customTopics,
             bool? speedBoost,
             global::System.Collections.Generic.IList<string>? topics,
@@ -814,6 +854,7 @@ namespace AssemblyAI
             this.RedactPiiAudioQuality = redactPiiAudioQuality;
             this.RedactPiiPolicies = redactPiiPolicies;
             this.RedactPiiSub = redactPiiSub;
+            this.RedactPiiReturnUnredacted = redactPiiReturnUnredacted;
             this.SentimentAnalysis = sentimentAnalysis;
             this.SentimentAnalysisResults = sentimentAnalysisResults;
             this.SpeakerLabels = speakerLabels;
@@ -830,13 +871,16 @@ namespace AssemblyAI
             this.RemoveAudioTags = removeAudioTags;
             this.Temperature = temperature;
             this.Text = text;
+            this.UnredactedText = unredactedText;
             this.Throttled = throttled;
             this.Utterances = utterances;
+            this.UnredactedUtterances = unredactedUtterances;
             this.WebhookAuth = webhookAuth;
             this.WebhookAuthHeaderName = webhookAuthHeaderName;
             this.WebhookStatusCode = webhookStatusCode;
             this.WebhookUrl = webhookUrl;
             this.Words = words;
+            this.UnredactedWords = unredactedWords;
             this.AcousticModel = acousticModel ?? throw new global::System.ArgumentNullException(nameof(acousticModel));
             this.CustomTopics = customTopics;
             this.LanguageModel = languageModel ?? throw new global::System.ArgumentNullException(nameof(languageModel));

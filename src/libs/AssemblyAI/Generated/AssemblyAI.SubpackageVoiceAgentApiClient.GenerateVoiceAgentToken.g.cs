@@ -3,10 +3,10 @@
 
 namespace AssemblyAI
 {
-    public partial class SubpackageTranscriptsClient
+    public partial class SubpackageVoiceAgentApiClient
     {
 
-        private static readonly global::AssemblyAI.AutoSDKServer[] s_DeleteServers = new global::AssemblyAI.AutoSDKServer[]
+        private static readonly global::AssemblyAI.AutoSDKServer[] s_GenerateVoiceAgentTokenServers = new global::AssemblyAI.AutoSDKServer[]
         {            new global::AssemblyAI.AutoSDKServer(
                 id: "https-api-assemblyai-com",
                 name: "api.assemblyai.com",
@@ -28,50 +28,56 @@ namespace AssemblyAI
                 url: "https://agents.assemblyai.com/",
                 description: ""),
         };
-        partial void PrepareDeleteArguments(
+        partial void PrepareGenerateVoiceAgentTokenArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string transcriptId,
-            ref string authorization);
-        partial void PrepareDeleteRequest(
+            ref int expiresInSeconds,
+            ref int? maxSessionDurationSeconds);
+        partial void PrepareGenerateVoiceAgentTokenRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string transcriptId,
-            string authorization);
-        partial void ProcessDeleteResponse(
+            int expiresInSeconds,
+            int? maxSessionDurationSeconds);
+        partial void ProcessGenerateVoiceAgentTokenResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessDeleteResponseContent(
+        partial void ProcessGenerateVoiceAgentTokenResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Delete transcript<br/>
+        /// Generate temporary Voice Agent token<br/>
         /// &lt;llms-only&gt;<br/>
         /// &gt; For the complete documentation index, see [llms.txt](https://www.assemblyai.com/docs/llms.txt)<br/>
         /// &lt;/llms-only&gt;<br/>
-        /// &lt;Note&gt;To delete your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
-        /// Remove the data from the transcript and mark it as deleted.<br/>
-        /// &lt;Warning&gt;Files uploaded via the `/upload` endpoint are immediately deleted alongside the transcript when you make a DELETE request, ensuring your data is removed from our systems right away.&lt;/Warning&gt;
+        /// Generate a temporary authentication token for the Voice Agent API. Use this to<br/>
+        /// connect browser or other client-side applications to the Voice Agent API without<br/>
+        /// exposing your permanent API key. See<br/>
+        /// [Browser integration](https://www.assemblyai.com/docs/voice-agents/voice-agent-api/browser-integration)<br/>
+        /// for the full flow.<br/>
+        /// Each token is one-time use and can only be used for a single session. All usage<br/>
+        /// is attributed to the API key that generated the token.
         /// </summary>
-        /// <param name="transcriptId"></param>
-        /// <param name="authorization"></param>
+        /// <param name="expiresInSeconds"></param>
+        /// <param name="maxSessionDurationSeconds">
+        /// Default Value: 10800
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> DeleteAsync(
-            string transcriptId,
-            string authorization,
+        public async global::System.Threading.Tasks.Task<global::AssemblyAI.VoiceAgentAPIGenerateVoiceAgentTokenResponse200> GenerateVoiceAgentTokenAsync(
+            int expiresInSeconds,
+            int? maxSessionDurationSeconds = default,
             global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareDeleteArguments(
+            PrepareGenerateVoiceAgentTokenArguments(
                 httpClient: HttpClient,
-                transcriptId: ref transcriptId,
-                authorization: ref authorization);
+                expiresInSeconds: ref expiresInSeconds,
+                maxSessionDurationSeconds: ref maxSessionDurationSeconds);
 
             using var __timeoutCancellationTokenSource = global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -90,25 +96,26 @@ namespace AssemblyAI
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::AssemblyAI.PathBuilder(
-                                path: $"/v2/transcript/{transcriptId}",
+                                path: "/v1/token",
                                 baseUri: ResolveBaseUri(
-                                servers: s_DeleteServers,
-                                defaultBaseUrl: "https://api.assemblyai.com/"));
+                                servers: s_GenerateVoiceAgentTokenServers,
+                                defaultBaseUrl: "https://api.assemblyai.com/")); 
+                            __pathBuilder
+                                .AddRequiredParameter("expires_in_seconds", expiresInSeconds.ToString()!)
+                                .AddOptionalParameter("max_session_duration_seconds", maxSessionDurationSeconds?.ToString()) 
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::AssemblyAI.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Delete,
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
                 __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
-
-                __httpRequest.Headers.TryAddWithoutValidation("Authorization", authorization.ToString());
-
                 global::AssemblyAI.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -117,11 +124,11 @@ namespace AssemblyAI
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareDeleteRequest(
+                PrepareGenerateVoiceAgentTokenRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    transcriptId: transcriptId,
-                    authorization: authorization);
+                    expiresInSeconds: expiresInSeconds,
+                    maxSessionDurationSeconds: maxSessionDurationSeconds);
 
                 return __httpRequest;
             }
@@ -138,10 +145,10 @@ namespace AssemblyAI
                     await global::AssemblyAI.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "Delete",
-                                methodName: "DeleteAsync",
-                                pathTemplate: "$\"/v2/transcript/{transcriptId}\"",
-                                httpMethod: "DELETE",
+                                operationId: "GenerateVoiceAgentToken",
+                                methodName: "GenerateVoiceAgentTokenAsync",
+                                pathTemplate: "\"/v1/token\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -165,10 +172,10 @@ namespace AssemblyAI
                         await global::AssemblyAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "Delete",
-                                methodName: "DeleteAsync",
-                                pathTemplate: "$\"/v2/transcript/{transcriptId}\"",
-                                httpMethod: "DELETE",
+                                operationId: "GenerateVoiceAgentToken",
+                                methodName: "GenerateVoiceAgentTokenAsync",
+                                pathTemplate: "\"/v1/token\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -200,10 +207,10 @@ namespace AssemblyAI
                         await global::AssemblyAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "Delete",
-                                methodName: "DeleteAsync",
-                                pathTemplate: "$\"/v2/transcript/{transcriptId}\"",
-                                httpMethod: "DELETE",
+                                operationId: "GenerateVoiceAgentToken",
+                                methodName: "GenerateVoiceAgentTokenAsync",
+                                pathTemplate: "\"/v1/token\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -239,7 +246,7 @@ namespace AssemblyAI
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessDeleteResponse(
+                ProcessGenerateVoiceAgentTokenResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -247,10 +254,10 @@ namespace AssemblyAI
                     await global::AssemblyAI.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "Delete",
-                                methodName: "DeleteAsync",
-                                pathTemplate: "$\"/v2/transcript/{transcriptId}\"",
-                                httpMethod: "DELETE",
+                                operationId: "GenerateVoiceAgentToken",
+                                methodName: "GenerateVoiceAgentTokenAsync",
+                                pathTemplate: "\"/v1/token\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -267,10 +274,10 @@ namespace AssemblyAI
                     await global::AssemblyAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "Delete",
-                                methodName: "DeleteAsync",
-                                pathTemplate: "$\"/v2/transcript/{transcriptId}\"",
-                                httpMethod: "DELETE",
+                                operationId: "GenerateVoiceAgentToken",
+                                methodName: "GenerateVoiceAgentTokenAsync",
+                                pathTemplate: "\"/v1/token\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -282,7 +289,7 @@ namespace AssemblyAI
                                 willRetry: false,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Bad request
+                            // Bad request — invalid parameters.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -320,7 +327,7 @@ namespace AssemblyAI
                                         h => h.Value),
                                 };
                             }
-                            // Unauthorized
+                            // Unauthorized — invalid or missing API key.
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -358,45 +365,7 @@ namespace AssemblyAI
                                         h => h.Value),
                                 };
                             }
-                            // Not found
-                            if ((int)__response.StatusCode == 404)
-                            {
-                                string? __content_404 = null;
-                                global::System.Exception? __exception_404 = null;
-                                global::AssemblyAI.Error? __value_404 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_404 = global::AssemblyAI.Error.FromJson(__content_404, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_404 = global::AssemblyAI.Error.FromJson(__content_404, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_404 = __ex;
-                                }
-
-                                throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
-                                    message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_404,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_404,
-                                    ResponseObject = __value_404,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value),
-                                };
-                            }
-                            // Too many requests
+                            // Too Many Requests — rate limit exceeded.
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -434,7 +403,7 @@ namespace AssemblyAI
                                         h => h.Value),
                                 };
                             }
-                            // An error occurred while processing the request
+                            // Internal Server Error.
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
@@ -472,82 +441,6 @@ namespace AssemblyAI
                                         h => h.Value),
                                 };
                             }
-                            // Service unavailable
-                            if ((int)__response.StatusCode == 503)
-                            {
-                                string? __content_503 = null;
-                                global::System.Exception? __exception_503 = null;
-                                string? __value_503 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_503 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_503 = (string?)global::System.Text.Json.JsonSerializer.Deserialize(__content_503, typeof(string), JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_503 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_503 = (string?)global::System.Text.Json.JsonSerializer.Deserialize(__content_503, typeof(string), JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_503 = __ex;
-                                }
-
-                                throw new global::AssemblyAI.ApiException<string>(
-                                    message: __content_503 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_503,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_503,
-                                    ResponseObject = __value_503,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value),
-                                };
-                            }
-                            // Gateway timeout
-                            if ((int)__response.StatusCode == 504)
-                            {
-                                string? __content_504 = null;
-                                global::System.Exception? __exception_504 = null;
-                                string? __value_504 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_504 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_504 = (string?)global::System.Text.Json.JsonSerializer.Deserialize(__content_504, typeof(string), JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_504 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_504 = (string?)global::System.Text.Json.JsonSerializer.Deserialize(__content_504, typeof(string), JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_504 = __ex;
-                                }
-
-                                throw new global::AssemblyAI.ApiException<string>(
-                                    message: __content_504 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_504,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_504,
-                                    ResponseObject = __value_504,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value),
-                                };
-                            }
 
                             if (__effectiveReadResponseAsString)
                             {
@@ -561,7 +454,7 @@ namespace AssemblyAI
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessDeleteResponseContent(
+                                ProcessGenerateVoiceAgentTokenResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -571,7 +464,7 @@ namespace AssemblyAI
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::AssemblyAI.Transcript.FromJson(__content, JsonSerializerContext) ??
+                                        global::AssemblyAI.VoiceAgentAPIGenerateVoiceAgentTokenResponse200.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -601,7 +494,7 @@ namespace AssemblyAI
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::AssemblyAI.Transcript.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        await global::AssemblyAI.VoiceAgentAPIGenerateVoiceAgentTokenResponse200.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)

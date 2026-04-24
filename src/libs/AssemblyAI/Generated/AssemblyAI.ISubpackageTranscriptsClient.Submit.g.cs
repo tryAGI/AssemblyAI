@@ -139,6 +139,11 @@ namespace AssemblyAI
         /// <param name="redactPiiSub">
         /// The replacement logic for detected PII, can be `entity_type` or `hash`. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more details.
         /// </param>
+        /// <param name="redactPiiReturnUnredacted">
+        /// When set to `true`, returns the original unredacted transcript alongside the redacted one in the same response. Requires `redact_pii` to be `true`, otherwise a 400 error is returned.<br/>
+        /// When enabled, the response includes the additional fields `unredacted_text`, `unredacted_words`, and `unredacted_utterances`. The existing `text`, `words`, and `utterances` fields remain fully redacted. When disabled (default), the response is unchanged and contains only the redacted transcript. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more details.<br/>
+        /// Default Value: false
+        /// </param>
         /// <param name="sentimentAnalysis">
         /// Enable [Sentiment Analysis](https://www.assemblyai.com/docs/speech-understanding/analyze-sentiment-of-speech), can be true or false<br/>
         /// Default Value: false
@@ -240,6 +245,7 @@ namespace AssemblyAI
             global::AssemblyAI.RedactPiiAudioQuality? redactPiiAudioQuality = default,
             global::System.Collections.Generic.IList<global::AssemblyAI.PiiPolicy>? redactPiiPolicies = default,
             global::AssemblyAI.OneOf<global::AssemblyAI.SubstitutionPolicy?, object>? redactPiiSub = default,
+            bool? redactPiiReturnUnredacted = default,
             bool? sentimentAnalysis = default,
             bool? speakerLabels = default,
             global::AssemblyAI.TranscriptOptionalParamsSpeakerOptions? speakerOptions = default,

@@ -329,6 +329,7 @@ namespace AssemblyAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewayCustomFormattingResponseUtterancesItems>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.CreateSpeechUnderstandingResponse200), TypeInfoPropertyName = "CreateSpeechUnderstandingResponse2002")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.StreamingAPIGenerateStreamingTokenResponse200))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.VoiceAgentAPIGenerateVoiceAgentTokenResponse200))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakersItems>))]
