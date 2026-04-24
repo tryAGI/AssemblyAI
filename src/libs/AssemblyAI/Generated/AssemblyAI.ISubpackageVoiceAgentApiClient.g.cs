@@ -7,7 +7,7 @@ namespace AssemblyAI
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
-    public partial interface IAssemblyAIClient : global::System.IDisposable
+    public partial interface ISubpackageVoiceAgentApiClient : global::System.IDisposable
     {
         /// <summary>
         /// The HttpClient instance.
@@ -64,26 +64,6 @@ namespace AssemblyAI
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public SubpackageFilesClient SubpackageFiles { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public SubpackageStreamingApiClient SubpackageStreamingApi { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public SubpackageTranscriptsClient SubpackageTranscripts { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public SubpackageVoiceAgentApiClient SubpackageVoiceAgentApi { get; }
 
     }
 }

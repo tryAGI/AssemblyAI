@@ -22,6 +22,11 @@ namespace AssemblyAI
                 name: "streaming.assemblyai.com",
                 url: "https://streaming.assemblyai.com/",
                 description: ""),
+            new global::AssemblyAI.AutoSDKServer(
+                id: "https-agents-assemblyai-com",
+                name: "agents.assemblyai.com",
+                url: "https://agents.assemblyai.com/",
+                description: ""),
         };
         partial void PrepareGetParagraphsArguments(
             global::System.Net.Http.HttpClient httpClient,

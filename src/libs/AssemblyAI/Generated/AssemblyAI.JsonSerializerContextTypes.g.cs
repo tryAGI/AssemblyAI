@@ -752,7 +752,11 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type181 { get; set; }
+        public global::AssemblyAI.VoiceAgentAPIGenerateVoiceAgentTokenResponse200? Type181 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[]? Type182 { get; set; }
 
         /// <summary>
         /// 

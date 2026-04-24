@@ -72,6 +72,16 @@ namespace AssemblyAI
             AutoSDKServerConfiguration = AutoSDKServerConfiguration,
         };
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public SubpackageVoiceAgentApiClient SubpackageVoiceAgentApi => new SubpackageVoiceAgentApiClient(HttpClient, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+            AutoSDKServerConfiguration = AutoSDKServerConfiguration,
+        };
+
 
         private static readonly global::AssemblyAI.AutoSDKServer[] s_availableServers = new global::AssemblyAI.AutoSDKServer[]
         {            new global::AssemblyAI.AutoSDKServer(
@@ -88,6 +98,11 @@ namespace AssemblyAI
                 id: "https-streaming-assemblyai-com",
                 name: "streaming.assemblyai.com",
                 url: "https://streaming.assemblyai.com/",
+                description: ""),
+            new global::AssemblyAI.AutoSDKServer(
+                id: "https-agents-assemblyai-com",
+                name: "agents.assemblyai.com",
+                url: "https://agents.assemblyai.com/",
                 description: ""),
         };
 

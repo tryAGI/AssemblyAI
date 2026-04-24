@@ -7,7 +7,7 @@ namespace AssemblyAI
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
-    public sealed partial class SubpackageStreamingApiClient : global::AssemblyAI.ISubpackageStreamingApiClient, global::System.IDisposable
+    public sealed partial class SubpackageVoiceAgentApiClient : global::AssemblyAI.ISubpackageVoiceAgentApiClient, global::System.IDisposable
     {
         /// <summary>
         /// 
@@ -81,7 +81,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        /// Creates a new instance of the SubpackageStreamingApiClient.
+        /// Creates a new instance of the SubpackageVoiceAgentApiClient.
         /// If no httpClient is provided, a new one will be created.
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
         /// </summary>
@@ -89,7 +89,7 @@ namespace AssemblyAI
         /// <param name="baseUri">The base URL for the API. If not provided, the default baseUri from OpenAPI spec will be used.</param>
         /// <param name="authorizations">The authorizations to use for the requests.</param>
         /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
-        public SubpackageStreamingApiClient(
+        public SubpackageVoiceAgentApiClient(
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,
             global::System.Collections.Generic.List<global::AssemblyAI.EndPointAuthorization>? authorizations = null,
@@ -103,7 +103,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        /// Creates a new instance of the SubpackageStreamingApiClient.
+        /// Creates a new instance of the SubpackageVoiceAgentApiClient.
         /// If no httpClient is provided, a new one will be created.
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
         /// </summary>
@@ -112,7 +112,7 @@ namespace AssemblyAI
         /// <param name="authorizations">The authorizations to use for the requests.</param>
         /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
         /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
-        public SubpackageStreamingApiClient(
+        public SubpackageVoiceAgentApiClient(
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,
             global::System.Collections.Generic.List<global::AssemblyAI.EndPointAuthorization>? authorizations = null,
