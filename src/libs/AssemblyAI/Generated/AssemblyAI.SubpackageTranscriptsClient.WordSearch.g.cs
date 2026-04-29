@@ -127,9 +127,9 @@ namespace AssemblyAI
                 PrepareWordSearchRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    transcriptId: transcriptId,
-                    words: words,
-                    authorization: authorization);
+                    transcriptId: transcriptId!,
+                    words: words!,
+                    authorization: authorization!);
 
                 return __httpRequest;
             }

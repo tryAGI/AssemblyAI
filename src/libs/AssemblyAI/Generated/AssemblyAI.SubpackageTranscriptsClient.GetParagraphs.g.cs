@@ -119,8 +119,8 @@ namespace AssemblyAI
                 PrepareGetParagraphsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    transcriptId: transcriptId,
-                    authorization: authorization);
+                    transcriptId: transcriptId!,
+                    authorization: authorization!);
 
                 return __httpRequest;
             }

@@ -173,7 +173,7 @@ namespace AssemblyAI
                     beforeId: beforeId,
                     afterId: afterId,
                     throttledOnly: throttledOnly,
-                    authorization: authorization);
+                    authorization: authorization!);
 
                 return __httpRequest;
             }
