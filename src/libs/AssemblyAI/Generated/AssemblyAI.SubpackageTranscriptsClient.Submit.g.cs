@@ -129,7 +129,7 @@ namespace AssemblyAI
                 PrepareSubmitRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    authorization: authorization,
+                    authorization: authorization!,
                     request: request);
 
                 return __httpRequest;

@@ -127,7 +127,7 @@ namespace AssemblyAI
                 PrepareGenerateVoiceAgentTokenRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    expiresInSeconds: expiresInSeconds,
+                    expiresInSeconds: expiresInSeconds!,
                     maxSessionDurationSeconds: maxSessionDurationSeconds);
 
                 return __httpRequest;

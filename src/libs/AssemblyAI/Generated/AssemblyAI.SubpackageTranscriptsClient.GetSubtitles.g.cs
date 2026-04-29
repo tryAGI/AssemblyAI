@@ -134,10 +134,10 @@ namespace AssemblyAI
                 PrepareGetSubtitlesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    transcriptId: transcriptId,
-                    subtitleFormat: subtitleFormat,
+                    transcriptId: transcriptId!,
+                    subtitleFormat: subtitleFormat!,
                     charsPerCaption: charsPerCaption,
-                    authorization: authorization);
+                    authorization: authorization!);
 
                 return __httpRequest;
             }
