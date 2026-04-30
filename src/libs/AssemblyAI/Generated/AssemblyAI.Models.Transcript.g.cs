@@ -359,7 +359,7 @@ namespace AssemblyAI
         public string? SummaryType { get; set; }
 
         /// <summary>
-        /// Whether [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) were removed from the transcript text.<br/>
+        /// Universal-3 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations from the transcript text, producing clean plain-text output.<br/>
         /// Note: This parameter is only supported for the Universal-3 Pro model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("remove_audio_tags")]
@@ -687,7 +687,7 @@ namespace AssemblyAI
         /// The type of summary generated, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts#summary-types) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarize-transcripts) for details.
         /// </param>
         /// <param name="removeAudioTags">
-        /// Whether [audio event tags](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro#audio-event-tags) were removed from the transcript text.<br/>
+        /// Universal-3 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations from the transcript text, producing clean plain-text output.<br/>
         /// Note: This parameter is only supported for the Universal-3 Pro model.
         /// </param>
         /// <param name="temperature">
