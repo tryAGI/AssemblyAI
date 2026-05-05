@@ -32,6 +32,25 @@ namespace AssemblyAI
         /// Generates a response from a model given a prompt or a series of messages.
         /// </summary>
         /// <param name="authorization"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::AssemblyAI.AutoSDKHttpResponse<global::AssemblyAI.Response>> CreateChatCompletionAsResponseAsync(
+            string authorization,
+
+            global::AssemblyAI.LLMGatewayRequest request,
+            global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create a chat completion<br/>
+        /// &lt;llms-only&gt;<br/>
+        /// &gt; For the complete documentation index, see [llms.txt](https://www.assemblyai.com/docs/llms.txt)<br/>
+        /// &lt;/llms-only&gt;<br/>
+        /// &lt;Note&gt;To use our EU server for LLM Gateway, replace `llm-gateway.assemblyai.com` with `llm-gateway.eu.assemblyai.com`.&lt;/Note&gt;<br/>
+        /// Generates a response from a model given a prompt or a series of messages.
+        /// </summary>
+        /// <param name="authorization"></param>
         /// <param name="messages">
         /// A list of messages comprising the conversation so far.
         /// </param>
