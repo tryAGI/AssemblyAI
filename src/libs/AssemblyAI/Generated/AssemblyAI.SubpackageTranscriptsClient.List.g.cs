@@ -100,6 +100,64 @@ namespace AssemblyAI
             global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await ListAsResponseAsync(
+                authorization: authorization,
+                limit: limit,
+                status: status,
+                createdOn: createdOn,
+                beforeId: beforeId,
+                afterId: afterId,
+                throttledOnly: throttledOnly,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// List transcripts<br/>
+        /// &lt;llms-only&gt;<br/>
+        /// &gt; For the complete documentation index, see [llms.txt](https://www.assemblyai.com/docs/llms.txt)<br/>
+        /// &lt;/llms-only&gt;<br/>
+        /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
+        /// Retrieve a list of transcripts you created.<br/>
+        /// Transcripts are sorted from newest to oldest and can be retrieved for the last 90 days of usage. The previous URL always points to a page with older transcripts.<br/>
+        /// If you need to retrieve transcripts from more than 90 days ago please reach out to our Support team at support@assemblyai.com.<br/>
+        /// **Pagination**<br/>
+        /// This endpoint returns paginated results. The response includes a `page_details` object with the following properties:<br/>
+        /// - `page_details.limit` - Maximum number of transcripts per page.<br/>
+        /// - `page_details.result_count` - Total number of transcripts returned on the current page.<br/>
+        /// - `page_details.current_url` - URL to the current page.<br/>
+        /// - `page_details.prev_url` - URL to the previous page of older transcripts.<br/>
+        /// - `page_details.next_url` - URL to the next page of newer transcripts.
+        /// </summary>
+        /// <param name="limit">
+        /// Default Value: 10
+        /// </param>
+        /// <param name="status">
+        /// The status of your transcript. Possible values are queued, processing, completed, or error.
+        /// </param>
+        /// <param name="createdOn"></param>
+        /// <param name="beforeId"></param>
+        /// <param name="afterId"></param>
+        /// <param name="throttledOnly">
+        /// Default Value: false
+        /// </param>
+        /// <param name="authorization"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::AssemblyAI.AutoSDKHttpResponse<global::AssemblyAI.TranscriptList>> ListAsResponseAsync(
+            string authorization,
+            int? limit = default,
+            global::AssemblyAI.TranscriptStatus? status = default,
+            global::System.DateTime? createdOn = default,
+            global::System.Guid? beforeId = default,
+            global::System.Guid? afterId = default,
+            bool? throttledOnly = default,
+            global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareListArguments(
@@ -128,18 +186,19 @@ namespace AssemblyAI
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::AssemblyAI.PathBuilder(
                                 path: "/v2/transcript",
                                 baseUri: ResolveBaseUri(
                                 servers: s_ListServers,
-                                defaultBaseUrl: "https://api.assemblyai.com/")); 
+                                defaultBaseUrl: "https://api.assemblyai.com/"));
                             __pathBuilder
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("status", status?.ToValueString())
                                 .AddOptionalParameter("created_on", createdOn?.ToString("yyyy-MM-dd"))
                                 .AddOptionalParameter("before_id", beforeId?.ToString())
                                 .AddOptionalParameter("after_id", afterId?.ToString())
-                                .AddOptionalParameter("throttled_only", throttledOnly?.ToString().ToLowerInvariant()) 
+                                .AddOptionalParameter("throttled_only", throttledOnly?.ToString().ToLowerInvariant())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::AssemblyAI.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -203,6 +262,8 @@ namespace AssemblyAI
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -213,6 +274,11 @@ namespace AssemblyAI
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::AssemblyAI.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::AssemblyAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -230,6 +296,8 @@ namespace AssemblyAI
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -239,8 +307,7 @@ namespace AssemblyAI
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::AssemblyAI.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -249,6 +316,11 @@ namespace AssemblyAI
                         __attempt < __maxAttempts &&
                         global::AssemblyAI.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::AssemblyAI.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::AssemblyAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -265,14 +337,15 @@ namespace AssemblyAI
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::AssemblyAI.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -312,6 +385,8 @@ namespace AssemblyAI
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -332,6 +407,8 @@ namespace AssemblyAI
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                             // Bad request
@@ -622,9 +699,13 @@ namespace AssemblyAI
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::AssemblyAI.TranscriptList.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::AssemblyAI.TranscriptList.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::AssemblyAI.AutoSDKHttpResponse<global::AssemblyAI.TranscriptList>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::AssemblyAI.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -652,9 +733,13 @@ namespace AssemblyAI
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::AssemblyAI.TranscriptList.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::AssemblyAI.TranscriptList.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::AssemblyAI.AutoSDKHttpResponse<global::AssemblyAI.TranscriptList>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::AssemblyAI.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

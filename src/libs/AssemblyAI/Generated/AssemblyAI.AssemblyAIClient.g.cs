@@ -45,7 +45,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public SubpackageFilesClient SubpackageFiles => new SubpackageFilesClient(HttpClient, authorizations: Authorizations, options: Options)
+        public SubpackageFilesClient SubpackageFiles => new SubpackageFilesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -55,7 +55,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public SubpackageStreamingApiClient SubpackageStreamingApi => new SubpackageStreamingApiClient(HttpClient, authorizations: Authorizations, options: Options)
+        public SubpackageStreamingApiClient SubpackageStreamingApi => new SubpackageStreamingApiClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -65,7 +65,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public SubpackageTranscriptsClient SubpackageTranscripts => new SubpackageTranscriptsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public SubpackageTranscriptsClient SubpackageTranscripts => new SubpackageTranscriptsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -75,7 +75,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public SubpackageVoiceAgentApiClient SubpackageVoiceAgentApi => new SubpackageVoiceAgentApiClient(HttpClient, authorizations: Authorizations, options: Options)
+        public SubpackageVoiceAgentApiClient SubpackageVoiceAgentApi => new SubpackageVoiceAgentApiClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -153,10 +153,10 @@ namespace AssemblyAI
         /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
         /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
         public AssemblyAIClient(
-            global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null,
-            global::System.Collections.Generic.List<global::AssemblyAI.EndPointAuthorization>? authorizations = null,
-            global::AssemblyAI.AutoSDKClientOptions? options = null,
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Uri? baseUri,
+            global::System.Collections.Generic.List<global::AssemblyAI.EndPointAuthorization>? authorizations,
+            global::AssemblyAI.AutoSDKClientOptions? options,
             bool disposeHttpClient = true)
         {
 

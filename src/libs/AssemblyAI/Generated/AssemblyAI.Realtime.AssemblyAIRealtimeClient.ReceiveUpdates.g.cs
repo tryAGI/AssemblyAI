@@ -41,8 +41,14 @@ namespace AssemblyAI.Realtime
                     }
                     catch (global::System.Net.WebSockets.WebSocketException exception)
                     {
+                        RaiseException(exception);
                         var rethrow = false;
                         OnReceiveException(exception, ref rethrow);
+                        if (await TryReconnectAsync(exception, cancellationToken).ConfigureAwait(false))
+                        {
+                            continue;
+                        }
+
                         if (rethrow)
                         {
                             throw;
@@ -52,6 +58,11 @@ namespace AssemblyAI.Realtime
                     }
                     catch (global::System.OperationCanceledException exception)
                     {
+                        if (!cancellationToken.IsCancellationRequested)
+                        {
+                            RaiseException(exception);
+                        }
+
                         var rethrow = false;
                         OnReceiveException(exception, ref rethrow);
                         if (rethrow)
@@ -64,6 +75,7 @@ namespace AssemblyAI.Realtime
 
                     if (result.MessageType == global::System.Net.WebSockets.WebSocketMessageType.Close)
                     {
+                        RaiseClosed(result.CloseStatus, result.CloseStatusDescription);
                         await _clientWebSocket.CloseAsync(
                             closeStatus: global::System.Net.WebSockets.WebSocketCloseStatus.NormalClosure,
                             statusDescription: "Closing",
@@ -93,9 +105,95 @@ namespace AssemblyAI.Realtime
                 }
 
                 string json = global::System.Text.Encoding.UTF8.GetString(__messageBuffer.ToArray());
-                    var @event = (global::AssemblyAI.Realtime.ServerEvent)global::System.Text.Json.JsonSerializer.Deserialize(json, typeof(global::AssemblyAI.Realtime.ServerEvent), JsonSerializerContext)!;
+                    global::AssemblyAI.Realtime.ServerEvent @event;
+                    try
+                    {
+                        @event = (global::AssemblyAI.Realtime.ServerEvent)global::System.Text.Json.JsonSerializer.Deserialize(json, typeof(global::AssemblyAI.Realtime.ServerEvent), JsonSerializerContext)!;
+                    }
+                    catch (global::System.Exception exception) when (
+                        exception is global::System.Text.Json.JsonException ||
+                        exception is global::System.NotSupportedException ||
+                        exception is global::System.InvalidOperationException)
+                    {
+                        var rethrow = false;
+                        OnReceiveException(exception, ref rethrow);
+                        DispatchUnknownMessage(json);
+                        if (rethrow)
+                        {
+                            throw;
+                        }
 
+                        continue;
+                    }
+
+                    DispatchReceivedMessage(@event, json);
                     yield return @event;
+            }
+        }
+
+
+        private static global::System.Text.Json.JsonElement? TryParseMessageJson(
+            string rawText)
+        {
+            try
+            {
+                using var document = global::System.Text.Json.JsonDocument.Parse(rawText);
+                return document.RootElement.Clone();
+            }
+            catch (global::System.Text.Json.JsonException)
+            {
+                return null;
+            }
+        }
+
+        private void DispatchUnknownMessage(
+            string rawText)
+        {
+            UnknownMessage?.Invoke(
+                this,
+                new AutoSDKWebSocketUnknownMessageEventArgs(
+                    rawText,
+                    TryParseMessageJson(rawText)));
+        }
+
+        private void DispatchReceivedMessage(
+            global::AssemblyAI.Realtime.ServerEvent @event,
+            string rawText)
+        {
+            var json = TryParseMessageJson(rawText);
+            MessageReceived?.Invoke(
+                this,
+                new AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.ServerEvent>(
+                    @event,
+                    rawText,
+                    json));
+
+            if (@event.SessionBegins is { } __SessionBeginsReceived)
+            {
+                SessionBeginsReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.SessionBeginsPayload>(
+                        __SessionBeginsReceived,
+                        rawText,
+                        json));
+            }
+            if (@event.Turn is { } __TurnReceived)
+            {
+                TurnReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.TurnPayload>(
+                        __TurnReceived,
+                        rawText,
+                        json));
+            }
+            if (@event.Termination is { } __TerminationReceived)
+            {
+                TerminationReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.TerminationPayload>(
+                        __TerminationReceived,
+                        rawText,
+                        json));
             }
         }
     }

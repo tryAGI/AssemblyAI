@@ -66,6 +66,35 @@ namespace AssemblyAI
             global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await GenerateStreamingTokenAsResponseAsync(
+                expiresInSeconds: expiresInSeconds,
+                maxSessionDurationSeconds: maxSessionDurationSeconds,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Generate temporary streaming token<br/>
+        /// &lt;llms-only&gt;<br/>
+        /// &gt; For the complete documentation index, see [llms.txt](https://www.assemblyai.com/docs/llms.txt)<br/>
+        /// &lt;/llms-only&gt;<br/>
+        /// Generates a temporary authentication token for use with streaming services. See [Authenticate with a temporary token](https://www.assemblyai.com/docs/streaming/authenticate-with-a-temporary-token) for more details.
+        /// </summary>
+        /// <param name="expiresInSeconds"></param>
+        /// <param name="maxSessionDurationSeconds">
+        /// Default Value: 10800
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::AssemblyAI.AutoSDKHttpResponse<global::AssemblyAI.StreamingAPIGenerateStreamingTokenResponse200>> GenerateStreamingTokenAsResponseAsync(
+            int expiresInSeconds,
+            int? maxSessionDurationSeconds = default,
+            global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareGenerateStreamingTokenArguments(
@@ -89,14 +118,15 @@ namespace AssemblyAI
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::AssemblyAI.PathBuilder(
                                 path: "/v3/token",
                                 baseUri: ResolveBaseUri(
                                 servers: s_GenerateStreamingTokenServers,
-                                defaultBaseUrl: "https://api.assemblyai.com/")); 
+                                defaultBaseUrl: "https://api.assemblyai.com/"));
                             __pathBuilder
                                 .AddRequiredParameter("expires_in_seconds", expiresInSeconds.ToString()!)
-                                .AddOptionalParameter("max_session_duration_seconds", maxSessionDurationSeconds?.ToString()) 
+                                .AddOptionalParameter("max_session_duration_seconds", maxSessionDurationSeconds?.ToString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::AssemblyAI.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -152,6 +182,8 @@ namespace AssemblyAI
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -162,6 +194,11 @@ namespace AssemblyAI
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::AssemblyAI.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::AssemblyAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -179,6 +216,8 @@ namespace AssemblyAI
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -188,8 +227,7 @@ namespace AssemblyAI
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::AssemblyAI.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -198,6 +236,11 @@ namespace AssemblyAI
                         __attempt < __maxAttempts &&
                         global::AssemblyAI.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::AssemblyAI.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::AssemblyAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -214,14 +257,15 @@ namespace AssemblyAI
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::AssemblyAI.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -261,6 +305,8 @@ namespace AssemblyAI
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -281,6 +327,8 @@ namespace AssemblyAI
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                             // Bad Request - Invalid parameters
@@ -457,9 +505,13 @@ namespace AssemblyAI
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::AssemblyAI.StreamingAPIGenerateStreamingTokenResponse200.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::AssemblyAI.StreamingAPIGenerateStreamingTokenResponse200.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::AssemblyAI.AutoSDKHttpResponse<global::AssemblyAI.StreamingAPIGenerateStreamingTokenResponse200>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::AssemblyAI.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -487,9 +539,13 @@ namespace AssemblyAI
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::AssemblyAI.StreamingAPIGenerateStreamingTokenResponse200.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::AssemblyAI.StreamingAPIGenerateStreamingTokenResponse200.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::AssemblyAI.AutoSDKHttpResponse<global::AssemblyAI.StreamingAPIGenerateStreamingTokenResponse200>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::AssemblyAI.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
