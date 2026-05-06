@@ -105,6 +105,10 @@ namespace AssemblyAI
 
             typeof(global::AssemblyAI.JsonConverters.ResponseFormatTypeNullableJsonConverter),
 
+            typeof(global::AssemblyAI.JsonConverters.PostProcessingStepTypeJsonConverter),
+
+            typeof(global::AssemblyAI.JsonConverters.PostProcessingStepTypeNullableJsonConverter),
+
             typeof(global::AssemblyAI.JsonConverters.FunctionToolCallTypeJsonConverter),
 
             typeof(global::AssemblyAI.JsonConverters.FunctionToolCallTypeNullableJsonConverter),
@@ -286,9 +290,12 @@ namespace AssemblyAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.FallbackObject))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.Message>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.FallbackConfig))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.PostProcessingStepType), TypeInfoPropertyName = "PostProcessingStepType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.PostProcessingStep))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.LLMGatewayRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.Tool>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.FallbackObject>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.PostProcessingStep>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.ResponseMessage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.FunctionToolCallType), TypeInfoPropertyName = "FunctionToolCallType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.FunctionCall))]
@@ -357,6 +364,7 @@ namespace AssemblyAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.Message>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.Tool>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.FallbackObject>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.PostProcessingStep>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.FunctionToolCall>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.Choice>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.LlmGatewayTranslationResponseUtterancesItems>))]

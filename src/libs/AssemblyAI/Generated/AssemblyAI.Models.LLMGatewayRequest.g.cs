@@ -79,6 +79,12 @@ namespace AssemblyAI
         public global::AssemblyAI.FallbackConfig? FallbackConfig { get; set; }
 
         /// <summary>
+        /// An ordered list of post-processing steps to apply to the model's response after generation. Currently supports `json-repair`, which automatically fixes malformed JSON in LLM Gateway content responses. See [Post-processing](https://www.assemblyai.com/docs/llm-gateway/post-processing) for details.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("post_processing_steps")]
+        public global::System.Collections.Generic.IList<global::AssemblyAI.PostProcessingStep>? PostProcessingSteps { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -122,6 +128,9 @@ namespace AssemblyAI
         /// <param name="fallbackConfig">
         /// Configuration for fallback behavior, including retry and depth settings. See [Specify fallback models](https://www.assemblyai.com/docs/llm-gateway/fallback) for more details.
         /// </param>
+        /// <param name="postProcessingSteps">
+        /// An ordered list of post-processing steps to apply to the model's response after generation. Currently supports `json-repair`, which automatically fixes malformed JSON in LLM Gateway content responses. See [Post-processing](https://www.assemblyai.com/docs/llm-gateway/post-processing) for details.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -136,7 +145,8 @@ namespace AssemblyAI
             global::AssemblyAI.ToolChoice? toolChoice,
             global::AssemblyAI.ResponseFormat? responseFormat,
             global::System.Collections.Generic.IList<global::AssemblyAI.FallbackObject>? fallbacks,
-            global::AssemblyAI.FallbackConfig? fallbackConfig)
+            global::AssemblyAI.FallbackConfig? fallbackConfig,
+            global::System.Collections.Generic.IList<global::AssemblyAI.PostProcessingStep>? postProcessingSteps)
         {
             this.Messages = messages;
             this.Prompt = prompt;
@@ -149,6 +159,7 @@ namespace AssemblyAI
             this.ResponseFormat = responseFormat;
             this.Fallbacks = fallbacks;
             this.FallbackConfig = fallbackConfig;
+            this.PostProcessingSteps = postProcessingSteps;
         }
 
         /// <summary>
