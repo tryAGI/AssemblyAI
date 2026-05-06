@@ -483,6 +483,9 @@ namespace AssemblyAI
         /// <param name="fallbackConfig">
         /// Configuration for fallback behavior, including retry and depth settings. See [Specify fallback models](https://www.assemblyai.com/docs/llm-gateway/fallback) for more details.
         /// </param>
+        /// <param name="postProcessingSteps">
+        /// An ordered list of post-processing steps to apply to the model's response after generation. Currently supports `json-repair`, which automatically fixes malformed JSON in LLM Gateway content responses. See [Post-processing](https://www.assemblyai.com/docs/llm-gateway/post-processing) for details.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -499,6 +502,7 @@ namespace AssemblyAI
             global::AssemblyAI.ResponseFormat? responseFormat = default,
             global::System.Collections.Generic.IList<global::AssemblyAI.FallbackObject>? fallbacks = default,
             global::AssemblyAI.FallbackConfig? fallbackConfig = default,
+            global::System.Collections.Generic.IList<global::AssemblyAI.PostProcessingStep>? postProcessingSteps = default,
             global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -515,6 +519,7 @@ namespace AssemblyAI
                 ResponseFormat = responseFormat,
                 Fallbacks = fallbacks,
                 FallbackConfig = fallbackConfig,
+                PostProcessingSteps = postProcessingSteps,
             };
 
             return await CreateChatCompletionAsync(
