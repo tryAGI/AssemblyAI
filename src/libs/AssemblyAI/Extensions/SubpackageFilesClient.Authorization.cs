@@ -8,5 +8,8 @@ public partial class SubpackageFilesClient
     public Task<UploadedFile> UploadAsync(
         byte[] request,
         CancellationToken cancellationToken = default) =>
-        UploadAsync(Authorizations.GetAuthorizationValue(), request, cancellationToken);
+        UploadAsync(
+            authorization: Authorizations.GetAuthorizationValue(),
+            request: request,
+            cancellationToken: cancellationToken);
 }
