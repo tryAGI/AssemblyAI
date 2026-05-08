@@ -29,6 +29,19 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickTranslationResponse(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.TranslationResponse? value)
+        {
+            value = TranslationResponse;
+            return IsTranslationResponse;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.SpeakerIdentificationResponse? SpeakerIdentificationResponse { get; init; }
 #else
@@ -46,6 +59,19 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickSpeakerIdentificationResponse(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.SpeakerIdentificationResponse? value)
+        {
+            value = SpeakerIdentificationResponse;
+            return IsSpeakerIdentificationResponse;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.CustomFormattingResponse? CustomFormattingResponse { get; init; }
 #else
@@ -59,6 +85,19 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomFormattingResponse))]
 #endif
         public bool IsCustomFormattingResponse => CustomFormattingResponse != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCustomFormattingResponse(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.CustomFormattingResponse? value)
+        {
+            value = CustomFormattingResponse;
+            return IsCustomFormattingResponse;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -157,9 +196,9 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::AssemblyAI.TranslationResponse?, TResult>? translationResponse = null,
-            global::System.Func<global::AssemblyAI.SpeakerIdentificationResponse?, TResult>? speakerIdentificationResponse = null,
-            global::System.Func<global::AssemblyAI.CustomFormattingResponse?, TResult>? customFormattingResponse = null,
+            global::System.Func<global::AssemblyAI.TranslationResponse, TResult>? translationResponse = null,
+            global::System.Func<global::AssemblyAI.SpeakerIdentificationResponse, TResult>? speakerIdentificationResponse = null,
+            global::System.Func<global::AssemblyAI.CustomFormattingResponse, TResult>? customFormattingResponse = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +226,39 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::AssemblyAI.TranslationResponse?>? translationResponse = null,
-            global::System.Action<global::AssemblyAI.SpeakerIdentificationResponse?>? speakerIdentificationResponse = null,
-            global::System.Action<global::AssemblyAI.CustomFormattingResponse?>? customFormattingResponse = null,
+            global::System.Action<global::AssemblyAI.TranslationResponse>? translationResponse = null,
+
+            global::System.Action<global::AssemblyAI.SpeakerIdentificationResponse>? speakerIdentificationResponse = null,
+
+            global::System.Action<global::AssemblyAI.CustomFormattingResponse>? customFormattingResponse = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsTranslationResponse)
+            {
+                translationResponse?.Invoke(TranslationResponse!);
+            }
+            else if (IsSpeakerIdentificationResponse)
+            {
+                speakerIdentificationResponse?.Invoke(SpeakerIdentificationResponse!);
+            }
+            else if (IsCustomFormattingResponse)
+            {
+                customFormattingResponse?.Invoke(CustomFormattingResponse!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::AssemblyAI.TranslationResponse>? translationResponse = null,
+            global::System.Action<global::AssemblyAI.SpeakerIdentificationResponse>? speakerIdentificationResponse = null,
+            global::System.Action<global::AssemblyAI.CustomFormattingResponse>? customFormattingResponse = null,
             bool validate = true)
         {
             if (validate)

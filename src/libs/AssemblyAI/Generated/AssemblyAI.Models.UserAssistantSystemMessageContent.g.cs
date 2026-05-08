@@ -29,6 +29,19 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickUserAssistantSystemMessageContentVariant1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out string? value)
+        {
+            value = UserAssistantSystemMessageContentVariant1;
+            return IsUserAssistantSystemMessageContentVariant1;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::System.Collections.Generic.IList<global::AssemblyAI.ContentPart>? UserAssistantSystemMessageContent1 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UserAssistantSystemMessageContent1))]
 #endif
         public bool IsUserAssistantSystemMessageContent1 => UserAssistantSystemMessageContent1 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickUserAssistantSystemMessageContent1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::System.Collections.Generic.IList<global::AssemblyAI.ContentPart>? value)
+        {
+            value = UserAssistantSystemMessageContent1;
+            return IsUserAssistantSystemMessageContent1;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -100,8 +126,8 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<string?, TResult>? userAssistantSystemMessageContentVariant1 = null,
-            global::System.Func<global::System.Collections.Generic.IList<global::AssemblyAI.ContentPart>?, TResult>? userAssistantSystemMessageContent1 = null,
+            global::System.Func<string, TResult>? userAssistantSystemMessageContentVariant1 = null,
+            global::System.Func<global::System.Collections.Generic.IList<global::AssemblyAI.ContentPart>, TResult>? userAssistantSystemMessageContent1 = null,
             bool validate = true)
         {
             if (validate)
@@ -125,8 +151,32 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<string?>? userAssistantSystemMessageContentVariant1 = null,
-            global::System.Action<global::System.Collections.Generic.IList<global::AssemblyAI.ContentPart>?>? userAssistantSystemMessageContent1 = null,
+            global::System.Action<string>? userAssistantSystemMessageContentVariant1 = null,
+
+            global::System.Action<global::System.Collections.Generic.IList<global::AssemblyAI.ContentPart>>? userAssistantSystemMessageContent1 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsUserAssistantSystemMessageContentVariant1)
+            {
+                userAssistantSystemMessageContentVariant1?.Invoke(UserAssistantSystemMessageContentVariant1!);
+            }
+            else if (IsUserAssistantSystemMessageContent1)
+            {
+                userAssistantSystemMessageContent1?.Invoke(UserAssistantSystemMessageContent1!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<string>? userAssistantSystemMessageContentVariant1 = null,
+            global::System.Action<global::System.Collections.Generic.IList<global::AssemblyAI.ContentPart>>? userAssistantSystemMessageContent1 = null,
             bool validate = true)
         {
             if (validate)

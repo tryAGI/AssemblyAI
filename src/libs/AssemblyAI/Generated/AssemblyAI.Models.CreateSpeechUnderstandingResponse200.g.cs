@@ -29,6 +29,19 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickLLMGatewayTranslationResponse(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.LLMGatewayTranslationResponse? value)
+        {
+            value = LLMGatewayTranslationResponse;
+            return IsLLMGatewayTranslationResponse;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse? LLMGatewaySpeakerIdentificationResponse { get; init; }
 #else
@@ -46,6 +59,19 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickLLMGatewaySpeakerIdentificationResponse(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse? value)
+        {
+            value = LLMGatewaySpeakerIdentificationResponse;
+            return IsLLMGatewaySpeakerIdentificationResponse;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.LLMGatewayCustomFormattingResponse? LLMGatewayCustomFormattingResponse { get; init; }
 #else
@@ -59,6 +85,19 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LLMGatewayCustomFormattingResponse))]
 #endif
         public bool IsLLMGatewayCustomFormattingResponse => LLMGatewayCustomFormattingResponse != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickLLMGatewayCustomFormattingResponse(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.LLMGatewayCustomFormattingResponse? value)
+        {
+            value = LLMGatewayCustomFormattingResponse;
+            return IsLLMGatewayCustomFormattingResponse;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -157,9 +196,9 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::AssemblyAI.LLMGatewayTranslationResponse?, TResult>? lLMGatewayTranslationResponse = null,
-            global::System.Func<global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse?, TResult>? lLMGatewaySpeakerIdentificationResponse = null,
-            global::System.Func<global::AssemblyAI.LLMGatewayCustomFormattingResponse?, TResult>? lLMGatewayCustomFormattingResponse = null,
+            global::System.Func<global::AssemblyAI.LLMGatewayTranslationResponse, TResult>? lLMGatewayTranslationResponse = null,
+            global::System.Func<global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse, TResult>? lLMGatewaySpeakerIdentificationResponse = null,
+            global::System.Func<global::AssemblyAI.LLMGatewayCustomFormattingResponse, TResult>? lLMGatewayCustomFormattingResponse = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +226,39 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::AssemblyAI.LLMGatewayTranslationResponse?>? lLMGatewayTranslationResponse = null,
-            global::System.Action<global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse?>? lLMGatewaySpeakerIdentificationResponse = null,
-            global::System.Action<global::AssemblyAI.LLMGatewayCustomFormattingResponse?>? lLMGatewayCustomFormattingResponse = null,
+            global::System.Action<global::AssemblyAI.LLMGatewayTranslationResponse>? lLMGatewayTranslationResponse = null,
+
+            global::System.Action<global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse>? lLMGatewaySpeakerIdentificationResponse = null,
+
+            global::System.Action<global::AssemblyAI.LLMGatewayCustomFormattingResponse>? lLMGatewayCustomFormattingResponse = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsLLMGatewayTranslationResponse)
+            {
+                lLMGatewayTranslationResponse?.Invoke(LLMGatewayTranslationResponse!);
+            }
+            else if (IsLLMGatewaySpeakerIdentificationResponse)
+            {
+                lLMGatewaySpeakerIdentificationResponse?.Invoke(LLMGatewaySpeakerIdentificationResponse!);
+            }
+            else if (IsLLMGatewayCustomFormattingResponse)
+            {
+                lLMGatewayCustomFormattingResponse?.Invoke(LLMGatewayCustomFormattingResponse!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::AssemblyAI.LLMGatewayTranslationResponse>? lLMGatewayTranslationResponse = null,
+            global::System.Action<global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse>? lLMGatewaySpeakerIdentificationResponse = null,
+            global::System.Action<global::AssemblyAI.LLMGatewayCustomFormattingResponse>? lLMGatewayCustomFormattingResponse = null,
             bool validate = true)
         {
             if (validate)

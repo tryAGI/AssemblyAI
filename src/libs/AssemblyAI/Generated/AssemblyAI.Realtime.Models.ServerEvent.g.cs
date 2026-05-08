@@ -32,6 +32,19 @@ namespace AssemblyAI.Realtime
         public bool IsBegin => Begin != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickBegin(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.Realtime.SessionBeginsPayload? value)
+        {
+            value = Begin;
+            return IsBegin;
+        }
+
+        /// <summary>
         /// Turn-based transcription result.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -49,6 +62,19 @@ namespace AssemblyAI.Realtime
         public bool IsTurn => Turn != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTurn(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.Realtime.TurnPayload? value)
+        {
+            value = Turn;
+            return IsTurn;
+        }
+
+        /// <summary>
         /// Server event confirming session termination with statistics.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -64,6 +90,19 @@ namespace AssemblyAI.Realtime
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Termination))]
 #endif
         public bool IsTermination => Termination != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTermination(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.Realtime.TerminationPayload? value)
+        {
+            value = Termination;
+            return IsTermination;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -165,9 +204,9 @@ namespace AssemblyAI.Realtime
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::AssemblyAI.Realtime.SessionBeginsPayload?, TResult>? begin = null,
-            global::System.Func<global::AssemblyAI.Realtime.TurnPayload?, TResult>? turn = null,
-            global::System.Func<global::AssemblyAI.Realtime.TerminationPayload?, TResult>? termination = null,
+            global::System.Func<global::AssemblyAI.Realtime.SessionBeginsPayload, TResult>? begin = null,
+            global::System.Func<global::AssemblyAI.Realtime.TurnPayload, TResult>? turn = null,
+            global::System.Func<global::AssemblyAI.Realtime.TerminationPayload, TResult>? termination = null,
             bool validate = true)
         {
             if (validate)
@@ -195,9 +234,39 @@ namespace AssemblyAI.Realtime
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::AssemblyAI.Realtime.SessionBeginsPayload?>? begin = null,
-            global::System.Action<global::AssemblyAI.Realtime.TurnPayload?>? turn = null,
-            global::System.Action<global::AssemblyAI.Realtime.TerminationPayload?>? termination = null,
+            global::System.Action<global::AssemblyAI.Realtime.SessionBeginsPayload>? begin = null,
+
+            global::System.Action<global::AssemblyAI.Realtime.TurnPayload>? turn = null,
+
+            global::System.Action<global::AssemblyAI.Realtime.TerminationPayload>? termination = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBegin)
+            {
+                begin?.Invoke(Begin!);
+            }
+            else if (IsTurn)
+            {
+                turn?.Invoke(Turn!);
+            }
+            else if (IsTermination)
+            {
+                termination?.Invoke(Termination!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::AssemblyAI.Realtime.SessionBeginsPayload>? begin = null,
+            global::System.Action<global::AssemblyAI.Realtime.TurnPayload>? turn = null,
+            global::System.Action<global::AssemblyAI.Realtime.TerminationPayload>? termination = null,
             bool validate = true)
         {
             if (validate)
