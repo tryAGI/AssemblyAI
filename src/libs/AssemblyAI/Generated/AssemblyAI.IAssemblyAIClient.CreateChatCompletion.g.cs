@@ -57,6 +57,9 @@ namespace AssemblyAI
         /// <param name="prompt">
         /// A simple string prompt. The API will automatically convert this into a user message.
         /// </param>
+        /// <param name="transcriptId">
+        /// Optional. The ID of an AssemblyAI transcript whose text replaces the first `{{ transcript }}` tag in the prompt. See [Inject a transcript by ID](https://www.assemblyai.com/docs/llm-gateway/chat-completions#inject-a-transcript-by-id) for substitution rules and edge cases.
+        /// </param>
         /// <param name="model">
         /// The ID of the model to use for this request. See [LLM Gateway Overview](https://www.assemblyai.com/docs/llm-gateway/overview#available-models) for available models.
         /// </param>
@@ -97,6 +100,7 @@ namespace AssemblyAI
             string model,
             global::System.Collections.Generic.IList<global::AssemblyAI.Message>? messages = default,
             string? prompt = default,
+            string? transcriptId = default,
             int? maxTokens = default,
             double? temperature = default,
             bool? stream = default,
