@@ -29,6 +29,19 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickToolChoice0(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.ToolChoice0? value)
+        {
+            value = ToolChoice0;
+            return IsToolChoice0;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.ToolChoice1? ToolChoice1 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolChoice1))]
 #endif
         public bool IsToolChoice1 => ToolChoice1 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickToolChoice1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.ToolChoice1? value)
+        {
+            value = ToolChoice1;
+            return IsToolChoice1;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -119,7 +145,7 @@ namespace AssemblyAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::AssemblyAI.ToolChoice0?, TResult>? toolChoice0 = null,
-            global::System.Func<global::AssemblyAI.ToolChoice1?, TResult>? toolChoice1 = null,
+            global::System.Func<global::AssemblyAI.ToolChoice1, TResult>? toolChoice1 = null,
             bool validate = true)
         {
             if (validate)
@@ -144,7 +170,31 @@ namespace AssemblyAI
         /// </summary>
         public void Match(
             global::System.Action<global::AssemblyAI.ToolChoice0?>? toolChoice0 = null,
-            global::System.Action<global::AssemblyAI.ToolChoice1?>? toolChoice1 = null,
+
+            global::System.Action<global::AssemblyAI.ToolChoice1>? toolChoice1 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsToolChoice0)
+            {
+                toolChoice0?.Invoke(ToolChoice0!);
+            }
+            else if (IsToolChoice1)
+            {
+                toolChoice1?.Invoke(ToolChoice1!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::AssemblyAI.ToolChoice0?>? toolChoice0 = null,
+            global::System.Action<global::AssemblyAI.ToolChoice1>? toolChoice1 = null,
             bool validate = true)
         {
             if (validate)

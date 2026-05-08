@@ -27,6 +27,19 @@ namespace AssemblyAI
         public bool IsMessageVariant1 => MessageVariant1 != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickMessageVariant1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.MessageVariant1? value)
+        {
+            value = MessageVariant1;
+            return IsMessageVariant1;
+        }
+
+        /// <summary>
         /// assistant variant
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -42,6 +55,19 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(MessageVariant2))]
 #endif
         public bool IsMessageVariant2 => MessageVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickMessageVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.MessageVariant2? value)
+        {
+            value = MessageVariant2;
+            return IsMessageVariant2;
+        }
 
         /// <summary>
         /// system variant
@@ -61,6 +87,19 @@ namespace AssemblyAI
         public bool IsMessageVariant3 => MessageVariant3 != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickMessageVariant3(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.MessageVariant3? value)
+        {
+            value = MessageVariant3;
+            return IsMessageVariant3;
+        }
+
+        /// <summary>
         /// tool variant
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -76,6 +115,19 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Tool))]
 #endif
         public bool IsTool => Tool != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTool(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.MessageVariant4? value)
+        {
+            value = Tool;
+            return IsTool;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -196,10 +248,10 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::AssemblyAI.MessageVariant1?, TResult>? messageVariant1 = null,
-            global::System.Func<global::AssemblyAI.MessageVariant2?, TResult>? messageVariant2 = null,
-            global::System.Func<global::AssemblyAI.MessageVariant3?, TResult>? messageVariant3 = null,
-            global::System.Func<global::AssemblyAI.MessageVariant4?, TResult>? tool = null,
+            global::System.Func<global::AssemblyAI.MessageVariant1, TResult>? messageVariant1 = null,
+            global::System.Func<global::AssemblyAI.MessageVariant2, TResult>? messageVariant2 = null,
+            global::System.Func<global::AssemblyAI.MessageVariant3, TResult>? messageVariant3 = null,
+            global::System.Func<global::AssemblyAI.MessageVariant4, TResult>? tool = null,
             bool validate = true)
         {
             if (validate)
@@ -231,10 +283,46 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::AssemblyAI.MessageVariant1?>? messageVariant1 = null,
-            global::System.Action<global::AssemblyAI.MessageVariant2?>? messageVariant2 = null,
-            global::System.Action<global::AssemblyAI.MessageVariant3?>? messageVariant3 = null,
-            global::System.Action<global::AssemblyAI.MessageVariant4?>? tool = null,
+            global::System.Action<global::AssemblyAI.MessageVariant1>? messageVariant1 = null,
+
+            global::System.Action<global::AssemblyAI.MessageVariant2>? messageVariant2 = null,
+
+            global::System.Action<global::AssemblyAI.MessageVariant3>? messageVariant3 = null,
+
+            global::System.Action<global::AssemblyAI.MessageVariant4>? tool = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsMessageVariant1)
+            {
+                messageVariant1?.Invoke(MessageVariant1!);
+            }
+            else if (IsMessageVariant2)
+            {
+                messageVariant2?.Invoke(MessageVariant2!);
+            }
+            else if (IsMessageVariant3)
+            {
+                messageVariant3?.Invoke(MessageVariant3!);
+            }
+            else if (IsTool)
+            {
+                tool?.Invoke(Tool!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::AssemblyAI.MessageVariant1>? messageVariant1 = null,
+            global::System.Action<global::AssemblyAI.MessageVariant2>? messageVariant2 = null,
+            global::System.Action<global::AssemblyAI.MessageVariant3>? messageVariant3 = null,
+            global::System.Action<global::AssemblyAI.MessageVariant4>? tool = null,
             bool validate = true)
         {
             if (validate)

@@ -27,6 +27,19 @@ namespace AssemblyAI
         public bool IsTranslationRequestBody => TranslationRequestBody != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTranslationRequestBody(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.TranslationRequestBody? value)
+        {
+            value = TranslationRequestBody;
+            return IsTranslationRequestBody;
+        }
+
+        /// <summary>
         /// Request body for [Speaker Identification](https://www.assemblyai.com/docs/speech-understanding/speaker-identification).
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -44,6 +57,19 @@ namespace AssemblyAI
         public bool IsSpeakerIdentificationRequestBody => SpeakerIdentificationRequestBody != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSpeakerIdentificationRequestBody(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.SpeakerIdentificationRequestBody? value)
+        {
+            value = SpeakerIdentificationRequestBody;
+            return IsSpeakerIdentificationRequestBody;
+        }
+
+        /// <summary>
         /// Request body for [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting).
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -59,6 +85,19 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomFormattingRequestBody))]
 #endif
         public bool IsCustomFormattingRequestBody => CustomFormattingRequestBody != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCustomFormattingRequestBody(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.CustomFormattingRequestBody? value)
+        {
+            value = CustomFormattingRequestBody;
+            return IsCustomFormattingRequestBody;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -157,9 +196,9 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::AssemblyAI.TranslationRequestBody?, TResult>? translationRequestBody = null,
-            global::System.Func<global::AssemblyAI.SpeakerIdentificationRequestBody?, TResult>? speakerIdentificationRequestBody = null,
-            global::System.Func<global::AssemblyAI.CustomFormattingRequestBody?, TResult>? customFormattingRequestBody = null,
+            global::System.Func<global::AssemblyAI.TranslationRequestBody, TResult>? translationRequestBody = null,
+            global::System.Func<global::AssemblyAI.SpeakerIdentificationRequestBody, TResult>? speakerIdentificationRequestBody = null,
+            global::System.Func<global::AssemblyAI.CustomFormattingRequestBody, TResult>? customFormattingRequestBody = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +226,39 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::AssemblyAI.TranslationRequestBody?>? translationRequestBody = null,
-            global::System.Action<global::AssemblyAI.SpeakerIdentificationRequestBody?>? speakerIdentificationRequestBody = null,
-            global::System.Action<global::AssemblyAI.CustomFormattingRequestBody?>? customFormattingRequestBody = null,
+            global::System.Action<global::AssemblyAI.TranslationRequestBody>? translationRequestBody = null,
+
+            global::System.Action<global::AssemblyAI.SpeakerIdentificationRequestBody>? speakerIdentificationRequestBody = null,
+
+            global::System.Action<global::AssemblyAI.CustomFormattingRequestBody>? customFormattingRequestBody = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsTranslationRequestBody)
+            {
+                translationRequestBody?.Invoke(TranslationRequestBody!);
+            }
+            else if (IsSpeakerIdentificationRequestBody)
+            {
+                speakerIdentificationRequestBody?.Invoke(SpeakerIdentificationRequestBody!);
+            }
+            else if (IsCustomFormattingRequestBody)
+            {
+                customFormattingRequestBody?.Invoke(CustomFormattingRequestBody!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::AssemblyAI.TranslationRequestBody>? translationRequestBody = null,
+            global::System.Action<global::AssemblyAI.SpeakerIdentificationRequestBody>? speakerIdentificationRequestBody = null,
+            global::System.Action<global::AssemblyAI.CustomFormattingRequestBody>? customFormattingRequestBody = null,
             bool validate = true)
         {
             if (validate)
