@@ -405,3 +405,7 @@ FodyWeavers.xsd
 site/
 _site/
 docs/assets/
+
+# Local secrets (API keys for live integration tests)
+.env
+**/.env

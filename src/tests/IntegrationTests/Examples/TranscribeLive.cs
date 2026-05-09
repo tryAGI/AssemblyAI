@@ -23,10 +23,12 @@ public partial class Tests
                 ? apiKeyValue
                 : throw new AssertInconclusiveException("ASSEMBLYAI_API_KEY environment variable is not found.");
 
-        //// Create the realtime client and connect.
+        //// Create the realtime client and connect with API-key auth (Authorization header).
         using var client = new AssemblyAIRealtimeClient();
-        await client.ConnectAsync(
-            new Uri($"wss://streaming.assemblyai.com/v3/ws?api_key={apiKey}"));
+        await client.ConnectAsync(apiKey, new StreamingConnectOptions
+        {
+            FormatTurns = true,
+        });
 
         client.IsConnected.Should().BeTrue();
 
@@ -42,9 +44,9 @@ public partial class Tests
                 Console.WriteLine($"Session started: {serverEvent.Begin?.Id}");
                 Console.WriteLine($"Expires at: {serverEvent.Begin?.ExpiresAt}");
 
-                //// After session starts, send audio data.
+                //// After the session starts, send audio data.
                 //// In a real application, you would stream microphone PCM16 audio:
-                //// await client.SendAsync(audioBytes, WebSocketMessageType.Binary, true, cts.Token);
+                //// await client.SendAsync(new ArraySegment<byte>(audioBytes), WebSocketMessageType.Binary, true, cts.Token);
 
                 //// Update configuration for turn detection sensitivity.
                 await client.SendUpdateConfigurationAsync(new UpdateConfigurationPayload
@@ -55,23 +57,6 @@ public partial class Tests
 
                 //// For this example, manually force an endpoint to get results.
                 await client.SendForceEndpointAsync(new ForceEndpointPayload());
-            }
-            else if (serverEvent.IsTurn)
-            {
-                var turn = serverEvent.Turn!;
-                Console.WriteLine($"Turn {turn.TurnOrder}: {turn.Transcript}");
-                Console.WriteLine($"  End of turn: {turn.EndOfTurn}");
-                Console.WriteLine($"  Confidence: {turn.EndOfTurnConfidence}");
-
-                if (turn.EndOfTurn == true)
-                {
-                    break;
-                }
-            }
-            else if (serverEvent.IsTermination)
-            {
-                var termination = serverEvent.Termination!;
-                Console.WriteLine($"Session terminated. Audio: {termination.AudioDurationSeconds}s, Session: {termination.SessionDurationSeconds}s");
                 break;
             }
         }

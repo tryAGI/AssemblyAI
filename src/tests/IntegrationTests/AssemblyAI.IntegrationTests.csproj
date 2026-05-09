@@ -23,4 +23,13 @@
     <ProjectReference Include="..\..\libs\AssemblyAI\AssemblyAI.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include=".env" Condition="Exists('.env')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
