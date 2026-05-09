@@ -34,6 +34,12 @@
         },
         "termination": {
           "$ref": "#/components/messages/Termination"
+        },
+        "error": {
+          "$ref": "#/components/messages/Error"
+        },
+        "keepAlive": {
+          "$ref": "#/components/messages/KeepAlive"
         }
       }
     }
@@ -108,6 +114,30 @@
       "messages": [
         {
           "$ref": "#/channels/streaming/messages/termination"
+        }
+      ]
+    },
+    "receiveError": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/streaming"
+      },
+      "summary": "Receive a server-emitted error frame before the connection is closed.",
+      "messages": [
+        {
+          "$ref": "#/channels/streaming/messages/error"
+        }
+      ]
+    },
+    "sendKeepAlive": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/streaming"
+      },
+      "summary": "Send a keep-alive ping to reset inactivity_timeout.",
+      "messages": [
+        {
+          "$ref": "#/channels/streaming/messages/keepAlive"
         }
       ]
     }
@@ -209,6 +239,10 @@
           "word_is_final": {
             "type": "boolean",
             "description": "Whether the word is finalized."
+          },
+          "speaker": {
+            "type": "string",
+            "description": "Speaker label for this final word (when speaker_labels is enabled)."
           }
         }
       },
@@ -286,6 +320,38 @@
             "description": "Duration of session in seconds."
           }
         }
+      },
+      "ErrorPayload": {
+        "type": "object",
+        "description": "Server-emitted validation, authentication or quota error. Typically delivered immediately before the WebSocket is closed by the server.",
+        "required": ["type", "error_code", "error"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Message type identifier.",
+            "enum": ["Error"]
+          },
+          "error_code": {
+            "type": "integer",
+            "description": "AssemblyAI numeric error code (e.g. 3006 for invalid input, 4003 for unauthorized)."
+          },
+          "error": {
+            "type": "string",
+            "description": "Human-readable error message."
+          }
+        }
+      },
+      "KeepAlivePayload": {
+        "type": "object",
+        "description": "Keep-alive ping that resets the server-side `inactivity_timeout` timer. Only needed when `inactivity_timeout` is set and audio is paused without terminating the session.",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Message type identifier.",
+            "enum": ["KeepAlive"]
+          }
+        }
       }
     },
     "messages": {
@@ -335,6 +401,22 @@
         "contentType": "application/json",
         "payload": {
           "$ref": "#/components/schemas/TerminationPayload"
+        }
+      },
+      "Error": {
+        "name": "Error",
+        "summary": "Server-emitted error frame (validation, auth, quota, etc.).",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/ErrorPayload"
+        }
+      },
+      "KeepAlive": {
+        "name": "KeepAlive",
+        "summary": "Keep-alive ping to reset inactivity_timeout.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/KeepAlivePayload"
         }
       }
     },

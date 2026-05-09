@@ -44,6 +44,12 @@ namespace AssemblyAI.Realtime
         public required bool WordIsFinal { get; set; }
 
         /// <summary>
+        /// Speaker label for this final word (when speaker_labels is enabled).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]
+        public string? Speaker { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -67,6 +73,9 @@ namespace AssemblyAI.Realtime
         /// <param name="wordIsFinal">
         /// Whether the word is finalized.
         /// </param>
+        /// <param name="speaker">
+        /// Speaker label for this final word (when speaker_labels is enabled).
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -75,13 +84,15 @@ namespace AssemblyAI.Realtime
             int start,
             int end,
             double confidence,
-            bool wordIsFinal)
+            bool wordIsFinal,
+            string? speaker)
         {
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Start = start;
             this.End = end;
             this.Confidence = confidence;
             this.WordIsFinal = wordIsFinal;
+            this.Speaker = speaker;
         }
 
         /// <summary>

@@ -276,6 +276,10 @@ namespace AssemblyAI.Realtime
         /// Raised after a termination message is deserialized.
         /// </summary>
         public event global::System.EventHandler<AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.TerminationPayload>>? TerminationReceived;
+        /// <summary>
+        /// Raised after a error message is deserialized.
+        /// </summary>
+        public event global::System.EventHandler<AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.ErrorPayload>>? ErrorReceived;
 
         /// <summary>
         /// 

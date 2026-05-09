@@ -195,6 +195,15 @@ namespace AssemblyAI.Realtime
                         rawText,
                         json));
             }
+            if (@event.Error is { } __ErrorReceived)
+            {
+                ErrorReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.ErrorPayload>(
+                        __ErrorReceived,
+                        rawText,
+                        json));
+            }
         }
     }
 }

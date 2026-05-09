@@ -37,6 +37,14 @@ namespace AssemblyAI.Realtime
 
             typeof(global::AssemblyAI.Realtime.JsonConverters.TerminationPayloadTypeNullableJsonConverter),
 
+            typeof(global::AssemblyAI.Realtime.JsonConverters.ErrorPayloadTypeJsonConverter),
+
+            typeof(global::AssemblyAI.Realtime.JsonConverters.ErrorPayloadTypeNullableJsonConverter),
+
+            typeof(global::AssemblyAI.Realtime.JsonConverters.KeepAlivePayloadTypeJsonConverter),
+
+            typeof(global::AssemblyAI.Realtime.JsonConverters.KeepAlivePayloadTypeNullableJsonConverter),
+
             typeof(global::AssemblyAI.Realtime.JsonConverters.ServerEventDiscriminatorTypeJsonConverter),
 
             typeof(global::AssemblyAI.Realtime.JsonConverters.ServerEventDiscriminatorTypeNullableJsonConverter),
@@ -63,6 +71,10 @@ namespace AssemblyAI.Realtime
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.Word>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.TerminationPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.TerminationPayloadType), TypeInfoPropertyName = "TerminationPayloadType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.ErrorPayload))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.ErrorPayloadType), TypeInfoPropertyName = "ErrorPayloadType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.KeepAlivePayload))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.KeepAlivePayloadType), TypeInfoPropertyName = "KeepAlivePayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.ServerEvent), TypeInfoPropertyName = "ServerEvent2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.ServerEventDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.ServerEventDiscriminatorType), TypeInfoPropertyName = "ServerEventDiscriminatorType2")]

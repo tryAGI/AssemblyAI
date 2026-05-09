@@ -103,6 +103,36 @@ namespace AssemblyAI.Realtime
             value = Termination;
             return IsTermination;
         }
+
+        /// <summary>
+        /// Server-emitted validation, authentication or quota error. Typically delivered immediately before the WebSocket is closed by the server.
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::AssemblyAI.Realtime.ErrorPayload? Error { get; init; }
+#else
+        public global::AssemblyAI.Realtime.ErrorPayload? Error { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Error))]
+#endif
+        public bool IsError => Error != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickError(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.Realtime.ErrorPayload? value)
+        {
+            value = Error;
+            return IsError;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -160,11 +190,30 @@ namespace AssemblyAI.Realtime
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator ServerEvent(global::AssemblyAI.Realtime.ErrorPayload value) => new ServerEvent((global::AssemblyAI.Realtime.ErrorPayload?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::AssemblyAI.Realtime.ErrorPayload?(ServerEvent @this) => @this.Error;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ServerEvent(global::AssemblyAI.Realtime.ErrorPayload? value)
+        {
+            Error = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ServerEvent(
             global::AssemblyAI.Realtime.ServerEventDiscriminatorType? type,
             global::AssemblyAI.Realtime.SessionBeginsPayload? begin,
             global::AssemblyAI.Realtime.TurnPayload? turn,
-            global::AssemblyAI.Realtime.TerminationPayload? termination
+            global::AssemblyAI.Realtime.TerminationPayload? termination,
+            global::AssemblyAI.Realtime.ErrorPayload? error
             )
         {
             Type = type;
@@ -172,12 +221,14 @@ namespace AssemblyAI.Realtime
             Begin = begin;
             Turn = turn;
             Termination = termination;
+            Error = error;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
+            Error as object ??
             Termination as object ??
             Turn as object ??
             Begin as object 
@@ -189,7 +240,8 @@ namespace AssemblyAI.Realtime
         public override string? ToString() =>
             Begin?.ToString() ??
             Turn?.ToString() ??
-            Termination?.ToString() 
+            Termination?.ToString() ??
+            Error?.ToString() 
             ;
 
         /// <summary>
@@ -197,7 +249,7 @@ namespace AssemblyAI.Realtime
         /// </summary>
         public bool Validate()
         {
-            return IsBegin && !IsTurn && !IsTermination || !IsBegin && IsTurn && !IsTermination || !IsBegin && !IsTurn && IsTermination;
+            return IsBegin && !IsTurn && !IsTermination && !IsError || !IsBegin && IsTurn && !IsTermination && !IsError || !IsBegin && !IsTurn && IsTermination && !IsError || !IsBegin && !IsTurn && !IsTermination && IsError;
         }
 
         /// <summary>
@@ -207,6 +259,7 @@ namespace AssemblyAI.Realtime
             global::System.Func<global::AssemblyAI.Realtime.SessionBeginsPayload, TResult>? begin = null,
             global::System.Func<global::AssemblyAI.Realtime.TurnPayload, TResult>? turn = null,
             global::System.Func<global::AssemblyAI.Realtime.TerminationPayload, TResult>? termination = null,
+            global::System.Func<global::AssemblyAI.Realtime.ErrorPayload, TResult>? error = null,
             bool validate = true)
         {
             if (validate)
@@ -226,6 +279,10 @@ namespace AssemblyAI.Realtime
             {
                 return termination(Termination!);
             }
+            else if (IsError && error != null)
+            {
+                return error(Error!);
+            }
 
             return default(TResult);
         }
@@ -239,6 +296,8 @@ namespace AssemblyAI.Realtime
             global::System.Action<global::AssemblyAI.Realtime.TurnPayload>? turn = null,
 
             global::System.Action<global::AssemblyAI.Realtime.TerminationPayload>? termination = null,
+
+            global::System.Action<global::AssemblyAI.Realtime.ErrorPayload>? error = null,
             bool validate = true)
         {
             if (validate)
@@ -257,6 +316,10 @@ namespace AssemblyAI.Realtime
             else if (IsTermination)
             {
                 termination?.Invoke(Termination!);
+            }
+            else if (IsError)
+            {
+                error?.Invoke(Error!);
             }
         }
 
@@ -267,6 +330,7 @@ namespace AssemblyAI.Realtime
             global::System.Action<global::AssemblyAI.Realtime.SessionBeginsPayload>? begin = null,
             global::System.Action<global::AssemblyAI.Realtime.TurnPayload>? turn = null,
             global::System.Action<global::AssemblyAI.Realtime.TerminationPayload>? termination = null,
+            global::System.Action<global::AssemblyAI.Realtime.ErrorPayload>? error = null,
             bool validate = true)
         {
             if (validate)
@@ -285,6 +349,10 @@ namespace AssemblyAI.Realtime
             else if (IsTermination)
             {
                 termination?.Invoke(Termination!);
+            }
+            else if (IsError)
+            {
+                error?.Invoke(Error!);
             }
         }
 
@@ -301,6 +369,8 @@ namespace AssemblyAI.Realtime
                 typeof(global::AssemblyAI.Realtime.TurnPayload),
                 Termination,
                 typeof(global::AssemblyAI.Realtime.TerminationPayload),
+                Error,
+                typeof(global::AssemblyAI.Realtime.ErrorPayload),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -319,7 +389,8 @@ namespace AssemblyAI.Realtime
             return
                 global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.Realtime.SessionBeginsPayload?>.Default.Equals(Begin, other.Begin) &&
                 global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.Realtime.TurnPayload?>.Default.Equals(Turn, other.Turn) &&
-                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.Realtime.TerminationPayload?>.Default.Equals(Termination, other.Termination) 
+                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.Realtime.TerminationPayload?>.Default.Equals(Termination, other.Termination) &&
+                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.Realtime.ErrorPayload?>.Default.Equals(Error, other.Error) 
                 ;
         }
 

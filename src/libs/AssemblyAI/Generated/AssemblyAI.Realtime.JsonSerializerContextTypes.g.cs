@@ -104,15 +104,31 @@ namespace AssemblyAI.Realtime
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Realtime.ServerEvent? Type19 { get; set; }
+        public global::AssemblyAI.Realtime.ErrorPayload? Type19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Realtime.ServerEventDiscriminator? Type20 { get; set; }
+        public global::AssemblyAI.Realtime.ErrorPayloadType? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Realtime.ServerEventDiscriminatorType? Type21 { get; set; }
+        public global::AssemblyAI.Realtime.KeepAlivePayload? Type21 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.Realtime.KeepAlivePayloadType? Type22 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.Realtime.ServerEvent? Type23 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.Realtime.ServerEventDiscriminator? Type24 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.Realtime.ServerEventDiscriminatorType? Type25 { get; set; }
 
         /// <summary>
         /// 

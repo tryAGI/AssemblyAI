@@ -42,6 +42,13 @@ namespace AssemblyAI.Realtime.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::AssemblyAI.Realtime.TerminationPayload)}");
                 termination = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::AssemblyAI.Realtime.ErrorPayload? error = default;
+            if (discriminator?.Type == global::AssemblyAI.Realtime.ServerEventDiscriminatorType.Error)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.ErrorPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.ErrorPayload> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::AssemblyAI.Realtime.ErrorPayload)}");
+                error = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
 
             var __value = new global::AssemblyAI.Realtime.ServerEvent(
                 discriminator?.Type,
@@ -49,7 +56,9 @@ namespace AssemblyAI.Realtime.JsonConverters
 
                 turn,
 
-                termination
+                termination,
+
+                error
                 );
 
             return __value;
@@ -81,6 +90,12 @@ namespace AssemblyAI.Realtime.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.TerminationPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.TerminationPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.TerminationPayload).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Termination!, typeInfo);
+            }
+            else if (value.IsError)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.ErrorPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.ErrorPayload?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.ErrorPayload).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Error!, typeInfo);
             }
         }
     }
