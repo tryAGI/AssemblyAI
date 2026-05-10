@@ -89,6 +89,11 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public static UserAssistantSystemMessageContent FromUserAssistantSystemMessageContentVariant1(string? value) => new UserAssistantSystemMessageContent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public UserAssistantSystemMessageContent(
             string? userAssistantSystemMessageContentVariant1,
             global::System.Collections.Generic.IList<global::AssemblyAI.ContentPart>? userAssistantSystemMessageContent1

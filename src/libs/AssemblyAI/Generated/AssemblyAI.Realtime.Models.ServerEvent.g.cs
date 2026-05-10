@@ -154,6 +154,11 @@ namespace AssemblyAI.Realtime
         /// <summary>
         /// 
         /// </summary>
+        public static ServerEvent FromBegin(global::AssemblyAI.Realtime.SessionBeginsPayload? value) => new ServerEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ServerEvent(global::AssemblyAI.Realtime.TurnPayload value) => new ServerEvent((global::AssemblyAI.Realtime.TurnPayload?)value);
 
         /// <summary>
@@ -168,6 +173,11 @@ namespace AssemblyAI.Realtime
         {
             Turn = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ServerEvent FromTurn(global::AssemblyAI.Realtime.TurnPayload? value) => new ServerEvent(value);
 
         /// <summary>
         /// 
@@ -190,6 +200,11 @@ namespace AssemblyAI.Realtime
         /// <summary>
         /// 
         /// </summary>
+        public static ServerEvent FromTermination(global::AssemblyAI.Realtime.TerminationPayload? value) => new ServerEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ServerEvent(global::AssemblyAI.Realtime.ErrorPayload value) => new ServerEvent((global::AssemblyAI.Realtime.ErrorPayload?)value);
 
         /// <summary>
@@ -204,6 +219,11 @@ namespace AssemblyAI.Realtime
         {
             Error = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ServerEvent FromError(global::AssemblyAI.Realtime.ErrorPayload? value) => new ServerEvent(value);
 
         /// <summary>
         /// 

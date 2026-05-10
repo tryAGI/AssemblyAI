@@ -89,6 +89,11 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public static ToolChoice FromToolChoice0(global::AssemblyAI.ToolChoice0? value) => new ToolChoice(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ToolChoice(global::AssemblyAI.ToolChoice1 value) => new ToolChoice((global::AssemblyAI.ToolChoice1?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace AssemblyAI
         {
             ToolChoice1 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ToolChoice FromToolChoice1(global::AssemblyAI.ToolChoice1? value) => new ToolChoice(value);
 
         /// <summary>
         /// 

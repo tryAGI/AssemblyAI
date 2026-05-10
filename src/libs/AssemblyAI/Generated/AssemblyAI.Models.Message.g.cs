@@ -149,6 +149,11 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public static Message FromMessageVariant1(global::AssemblyAI.MessageVariant1? value) => new Message(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Message(global::AssemblyAI.MessageVariant2 value) => new Message((global::AssemblyAI.MessageVariant2?)value);
 
         /// <summary>
@@ -163,6 +168,11 @@ namespace AssemblyAI
         {
             MessageVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Message FromMessageVariant2(global::AssemblyAI.MessageVariant2? value) => new Message(value);
 
         /// <summary>
         /// 
@@ -185,6 +195,11 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public static Message FromMessageVariant3(global::AssemblyAI.MessageVariant3? value) => new Message(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Message(global::AssemblyAI.MessageVariant4 value) => new Message((global::AssemblyAI.MessageVariant4?)value);
 
         /// <summary>
@@ -199,6 +214,11 @@ namespace AssemblyAI
         {
             Tool = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Message FromTool(global::AssemblyAI.MessageVariant4? value) => new Message(value);
 
         /// <summary>
         /// 
