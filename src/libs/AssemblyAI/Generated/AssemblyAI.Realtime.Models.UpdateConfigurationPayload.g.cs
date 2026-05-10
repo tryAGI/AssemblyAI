@@ -75,5 +75,6 @@ namespace AssemblyAI.Realtime
         public UpdateConfigurationPayload()
         {
         }
+
     }
 }

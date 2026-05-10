@@ -896,5 +896,6 @@ namespace AssemblyAI
         public Transcript()
         {
         }
+
     }
 }

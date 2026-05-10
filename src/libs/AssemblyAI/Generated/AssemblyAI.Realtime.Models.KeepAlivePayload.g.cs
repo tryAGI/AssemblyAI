@@ -42,5 +42,6 @@ namespace AssemblyAI.Realtime
         public KeepAlivePayload()
         {
         }
+
     }
 }

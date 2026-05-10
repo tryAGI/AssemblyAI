@@ -54,5 +54,6 @@ namespace AssemblyAI
         public TranscriptList()
         {
         }
+
     }
 }

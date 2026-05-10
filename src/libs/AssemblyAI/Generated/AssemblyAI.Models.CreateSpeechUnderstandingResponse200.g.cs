@@ -42,6 +42,13 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public global::AssemblyAI.LLMGatewayTranslationResponse PickLLMGatewayTranslationResponse() => IsLLMGatewayTranslationResponse
+            ? LLMGatewayTranslationResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'LLMGatewayTranslationResponse' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse? LLMGatewaySpeakerIdentificationResponse { get; init; }
 #else
@@ -72,6 +79,13 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse PickLLMGatewaySpeakerIdentificationResponse() => IsLLMGatewaySpeakerIdentificationResponse
+            ? LLMGatewaySpeakerIdentificationResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'LLMGatewaySpeakerIdentificationResponse' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.LLMGatewayCustomFormattingResponse? LLMGatewayCustomFormattingResponse { get; init; }
 #else
@@ -98,6 +112,13 @@ namespace AssemblyAI
             value = LLMGatewayCustomFormattingResponse;
             return IsLLMGatewayCustomFormattingResponse;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.LLMGatewayCustomFormattingResponse PickLLMGatewayCustomFormattingResponse() => IsLLMGatewayCustomFormattingResponse
+            ? LLMGatewayCustomFormattingResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'LLMGatewayCustomFormattingResponse' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

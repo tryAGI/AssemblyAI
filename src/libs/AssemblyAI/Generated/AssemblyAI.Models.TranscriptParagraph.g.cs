@@ -90,5 +90,6 @@ namespace AssemblyAI
         public TranscriptParagraph()
         {
         }
+
     }
 }

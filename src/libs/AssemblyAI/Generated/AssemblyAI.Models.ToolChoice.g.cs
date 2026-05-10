@@ -42,6 +42,13 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public global::AssemblyAI.ToolChoice0 PickToolChoice0() => IsToolChoice0
+            ? ToolChoice0!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ToolChoice0' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.ToolChoice1? ToolChoice1 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace AssemblyAI
             value = ToolChoice1;
             return IsToolChoice1;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.ToolChoice1 PickToolChoice1() => IsToolChoice1
+            ? ToolChoice1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ToolChoice1' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

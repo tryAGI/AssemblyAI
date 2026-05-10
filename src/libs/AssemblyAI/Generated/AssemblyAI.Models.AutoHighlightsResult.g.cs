@@ -56,5 +56,6 @@ namespace AssemblyAI
         public AutoHighlightsResult()
         {
         }
+
     }
 }

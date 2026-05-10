@@ -42,6 +42,13 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public string PickUserAssistantSystemMessageContentVariant1() => IsUserAssistantSystemMessageContentVariant1
+            ? UserAssistantSystemMessageContentVariant1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'UserAssistantSystemMessageContentVariant1' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::System.Collections.Generic.IList<global::AssemblyAI.ContentPart>? UserAssistantSystemMessageContent1 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace AssemblyAI
             value = UserAssistantSystemMessageContent1;
             return IsUserAssistantSystemMessageContent1;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::AssemblyAI.ContentPart> PickUserAssistantSystemMessageContent1() => IsUserAssistantSystemMessageContent1
+            ? UserAssistantSystemMessageContent1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'UserAssistantSystemMessageContent1' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

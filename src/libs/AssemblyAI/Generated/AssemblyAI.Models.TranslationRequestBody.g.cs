@@ -40,5 +40,6 @@ namespace AssemblyAI
         public TranslationRequestBody()
         {
         }
+
     }
 }

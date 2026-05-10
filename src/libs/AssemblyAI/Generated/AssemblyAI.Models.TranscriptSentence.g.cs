@@ -112,5 +112,6 @@ namespace AssemblyAI
         public TranscriptSentence()
         {
         }
+
     }
 }

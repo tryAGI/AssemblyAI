@@ -40,6 +40,13 @@ namespace AssemblyAI
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.MessageVariant1 PickMessageVariant1() => IsMessageVariant1
+            ? MessageVariant1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'MessageVariant1' but the value was {ToString()}.");
+
+        /// <summary>
         /// assistant variant
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -68,6 +75,13 @@ namespace AssemblyAI
             value = MessageVariant2;
             return IsMessageVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.MessageVariant2 PickMessageVariant2() => IsMessageVariant2
+            ? MessageVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'MessageVariant2' but the value was {ToString()}.");
 
         /// <summary>
         /// system variant
@@ -100,6 +114,13 @@ namespace AssemblyAI
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.MessageVariant3 PickMessageVariant3() => IsMessageVariant3
+            ? MessageVariant3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'MessageVariant3' but the value was {ToString()}.");
+
+        /// <summary>
         /// tool variant
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -128,6 +149,13 @@ namespace AssemblyAI
             value = Tool;
             return IsTool;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.MessageVariant4 PickTool() => IsTool
+            ? Tool!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Tool' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

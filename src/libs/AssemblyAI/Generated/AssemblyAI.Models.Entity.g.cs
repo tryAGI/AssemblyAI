@@ -79,5 +79,6 @@ namespace AssemblyAI
         public Entity()
         {
         }
+
     }
 }

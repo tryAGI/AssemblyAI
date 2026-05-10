@@ -55,5 +55,6 @@ namespace AssemblyAI
         public TranscriptOptionalParamsRedactPiiAudioOptions()
         {
         }
+
     }
 }
