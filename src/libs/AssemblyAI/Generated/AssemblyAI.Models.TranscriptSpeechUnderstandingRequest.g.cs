@@ -119,6 +119,11 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public static TranscriptSpeechUnderstandingRequest FromTranslationRequestBody(global::AssemblyAI.TranslationRequestBody? value) => new TranscriptSpeechUnderstandingRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TranscriptSpeechUnderstandingRequest(global::AssemblyAI.SpeakerIdentificationRequestBody value) => new TranscriptSpeechUnderstandingRequest((global::AssemblyAI.SpeakerIdentificationRequestBody?)value);
 
         /// <summary>
@@ -137,6 +142,11 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public static TranscriptSpeechUnderstandingRequest FromSpeakerIdentificationRequestBody(global::AssemblyAI.SpeakerIdentificationRequestBody? value) => new TranscriptSpeechUnderstandingRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TranscriptSpeechUnderstandingRequest(global::AssemblyAI.CustomFormattingRequestBody value) => new TranscriptSpeechUnderstandingRequest((global::AssemblyAI.CustomFormattingRequestBody?)value);
 
         /// <summary>
@@ -151,6 +161,11 @@ namespace AssemblyAI
         {
             CustomFormattingRequestBody = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TranscriptSpeechUnderstandingRequest FromCustomFormattingRequestBody(global::AssemblyAI.CustomFormattingRequestBody? value) => new TranscriptSpeechUnderstandingRequest(value);
 
         /// <summary>
         /// 

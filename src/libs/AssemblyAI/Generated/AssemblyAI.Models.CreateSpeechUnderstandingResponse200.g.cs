@@ -119,6 +119,11 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public static CreateSpeechUnderstandingResponse200 FromLLMGatewayTranslationResponse(global::AssemblyAI.LLMGatewayTranslationResponse? value) => new CreateSpeechUnderstandingResponse200(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateSpeechUnderstandingResponse200(global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse value) => new CreateSpeechUnderstandingResponse200((global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse?)value);
 
         /// <summary>
@@ -137,6 +142,11 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public static CreateSpeechUnderstandingResponse200 FromLLMGatewaySpeakerIdentificationResponse(global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse? value) => new CreateSpeechUnderstandingResponse200(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateSpeechUnderstandingResponse200(global::AssemblyAI.LLMGatewayCustomFormattingResponse value) => new CreateSpeechUnderstandingResponse200((global::AssemblyAI.LLMGatewayCustomFormattingResponse?)value);
 
         /// <summary>
@@ -151,6 +161,11 @@ namespace AssemblyAI
         {
             LLMGatewayCustomFormattingResponse = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateSpeechUnderstandingResponse200 FromLLMGatewayCustomFormattingResponse(global::AssemblyAI.LLMGatewayCustomFormattingResponse? value) => new CreateSpeechUnderstandingResponse200(value);
 
         /// <summary>
         /// 
