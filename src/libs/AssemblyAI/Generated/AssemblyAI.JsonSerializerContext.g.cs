@@ -89,6 +89,10 @@ namespace AssemblyAI
 
             typeof(global::AssemblyAI.JsonConverters.ToolMessageRoleNullableJsonConverter),
 
+            typeof(global::AssemblyAI.JsonConverters.MessageDiscriminatorRoleJsonConverter),
+
+            typeof(global::AssemblyAI.JsonConverters.MessageDiscriminatorRoleNullableJsonConverter),
+
             typeof(global::AssemblyAI.JsonConverters.ToolTypeJsonConverter),
 
             typeof(global::AssemblyAI.JsonConverters.ToolTypeNullableJsonConverter),
@@ -276,6 +280,7 @@ namespace AssemblyAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.MessageVariant3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.MessageVariant4))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.MessageDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.MessageDiscriminatorRole), TypeInfoPropertyName = "MessageDiscriminatorRole2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.ToolType), TypeInfoPropertyName = "ToolType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.FunctionDescription))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Tool))]

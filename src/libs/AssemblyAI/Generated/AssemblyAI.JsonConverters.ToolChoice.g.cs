@@ -84,6 +84,7 @@ namespace AssemblyAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.ToolChoice0), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.ToolChoice0> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.ToolChoice0).Name}");
                     toolChoice0 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -94,9 +95,13 @@ namespace AssemblyAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (toolChoice0 == null && toolChoice1 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.ToolChoice1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.ToolChoice1> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.ToolChoice1).Name}");
                     toolChoice1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

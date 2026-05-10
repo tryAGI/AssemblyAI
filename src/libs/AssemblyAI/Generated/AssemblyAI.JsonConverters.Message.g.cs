@@ -122,6 +122,7 @@ namespace AssemblyAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.MessageVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.MessageVariant1> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.MessageVariant1).Name}");
                     messageVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -132,9 +133,13 @@ namespace AssemblyAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (messageVariant1 == null && messageVariant2 == null && messageVariant3 == null && tool == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.MessageVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.MessageVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.MessageVariant2).Name}");
                     messageVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -145,9 +150,13 @@ namespace AssemblyAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (messageVariant1 == null && messageVariant2 == null && messageVariant3 == null && tool == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.MessageVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.MessageVariant3> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.MessageVariant3).Name}");
                     messageVariant3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -158,9 +167,13 @@ namespace AssemblyAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (messageVariant1 == null && messageVariant2 == null && messageVariant3 == null && tool == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.MessageVariant4), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.MessageVariant4> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.MessageVariant4).Name}");
                     tool = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

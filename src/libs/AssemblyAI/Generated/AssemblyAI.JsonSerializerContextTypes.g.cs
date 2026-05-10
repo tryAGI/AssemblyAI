@@ -524,251 +524,255 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ToolType? Type124 { get; set; }
+        public global::AssemblyAI.MessageDiscriminatorRole? Type124 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.FunctionDescription? Type125 { get; set; }
+        public global::AssemblyAI.ToolType? Type125 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Tool? Type126 { get; set; }
+        public global::AssemblyAI.FunctionDescription? Type126 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ToolChoice0? Type127 { get; set; }
+        public global::AssemblyAI.Tool? Type127 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ToolChoiceOneOf1Type? Type128 { get; set; }
+        public global::AssemblyAI.ToolChoice0? Type128 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ToolChoiceOneOf1Function? Type129 { get; set; }
+        public global::AssemblyAI.ToolChoiceOneOf1Type? Type129 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ToolChoice1? Type130 { get; set; }
+        public global::AssemblyAI.ToolChoiceOneOf1Function? Type130 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ToolChoice? Type131 { get; set; }
+        public global::AssemblyAI.ToolChoice1? Type131 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ResponseFormatType? Type132 { get; set; }
+        public global::AssemblyAI.ToolChoice? Type132 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.JsonSchemaConfig? Type133 { get; set; }
+        public global::AssemblyAI.ResponseFormatType? Type133 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ResponseFormat? Type134 { get; set; }
+        public global::AssemblyAI.JsonSchemaConfig? Type134 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.FallbackObject? Type135 { get; set; }
+        public global::AssemblyAI.ResponseFormat? Type135 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.Message>? Type136 { get; set; }
+        public global::AssemblyAI.FallbackObject? Type136 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.FallbackConfig? Type137 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.Message>? Type137 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.PostProcessingStepType? Type138 { get; set; }
+        public global::AssemblyAI.FallbackConfig? Type138 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.PostProcessingStep? Type139 { get; set; }
+        public global::AssemblyAI.PostProcessingStepType? Type139 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LLMGatewayRequest? Type140 { get; set; }
+        public global::AssemblyAI.PostProcessingStep? Type140 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.Tool>? Type141 { get; set; }
+        public global::AssemblyAI.LLMGatewayRequest? Type141 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.FallbackObject>? Type142 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.Tool>? Type142 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.PostProcessingStep>? Type143 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.FallbackObject>? Type143 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ResponseMessage? Type144 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.PostProcessingStep>? Type144 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.FunctionToolCallType? Type145 { get; set; }
+        public global::AssemblyAI.ResponseMessage? Type145 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.FunctionCall? Type146 { get; set; }
+        public global::AssemblyAI.FunctionToolCallType? Type146 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.FunctionToolCall? Type147 { get; set; }
+        public global::AssemblyAI.FunctionCall? Type147 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Choice? Type148 { get; set; }
+        public global::AssemblyAI.FunctionToolCall? Type148 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.FunctionToolCall>? Type149 { get; set; }
+        public global::AssemblyAI.Choice? Type149 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ResponseRequest? Type150 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.FunctionToolCall>? Type150 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Usage? Type151 { get; set; }
+        public global::AssemblyAI.ResponseRequest? Type151 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Response? Type152 { get; set; }
+        public global::AssemblyAI.Usage? Type152 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.Choice>? Type153 { get; set; }
+        public global::AssemblyAI.Response? Type153 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public long? Type154 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.Choice>? Type154 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.UnderstandingRequestSpeechUnderstandingRequest? Type155 { get; set; }
+        public long? Type155 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.UnderstandingRequestSpeechUnderstanding? Type156 { get; set; }
+        public global::AssemblyAI.UnderstandingRequestSpeechUnderstandingRequest? Type156 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.UnderstandingRequest? Type157 { get; set; }
+        public global::AssemblyAI.UnderstandingRequestSpeechUnderstanding? Type157 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewayTranslationResponseSpeechUnderstandingResponseTranslation? Type158 { get; set; }
+        public global::AssemblyAI.UnderstandingRequest? Type158 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewayTranslationResponseSpeechUnderstandingResponse? Type159 { get; set; }
+        public global::AssemblyAI.LlmGatewayTranslationResponseSpeechUnderstandingResponseTranslation? Type159 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewayTranslationResponseSpeechUnderstanding? Type160 { get; set; }
+        public global::AssemblyAI.LlmGatewayTranslationResponseSpeechUnderstandingResponse? Type160 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewayTranslationResponseUtterancesItems? Type161 { get; set; }
+        public global::AssemblyAI.LlmGatewayTranslationResponseSpeechUnderstanding? Type161 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewayTranslationResponseWordsItems? Type162 { get; set; }
+        public global::AssemblyAI.LlmGatewayTranslationResponseUtterancesItems? Type162 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LLMGatewayTranslationResponse? Type163 { get; set; }
+        public global::AssemblyAI.LlmGatewayTranslationResponseWordsItems? Type163 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewayTranslationResponseUtterancesItems>? Type164 { get; set; }
+        public global::AssemblyAI.LLMGatewayTranslationResponse? Type164 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewayTranslationResponseWordsItems>? Type165 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewayTranslationResponseUtterancesItems>? Type165 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseSpeechUnderstandingResponseSpeakerIdentification? Type166 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewayTranslationResponseWordsItems>? Type166 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseSpeechUnderstandingResponse? Type167 { get; set; }
+        public global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseSpeechUnderstandingResponseSpeakerIdentification? Type167 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseSpeechUnderstanding? Type168 { get; set; }
+        public global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseSpeechUnderstandingResponse? Type168 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseUtterancesItems? Type169 { get; set; }
+        public global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseSpeechUnderstanding? Type169 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseWordsItems? Type170 { get; set; }
+        public global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseUtterancesItems? Type170 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse? Type171 { get; set; }
+        public global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseWordsItems? Type171 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseUtterancesItems>? Type172 { get; set; }
+        public global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse? Type172 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseWordsItems>? Type173 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseUtterancesItems>? Type173 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewayCustomFormattingResponseSpeechUnderstandingResponseCustomFormattingFormattedUtterancesItems? Type174 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewaySpeakerIdentificationResponseWordsItems>? Type174 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewayCustomFormattingResponseSpeechUnderstandingResponseCustomFormatting? Type175 { get; set; }
+        public global::AssemblyAI.LlmGatewayCustomFormattingResponseSpeechUnderstandingResponseCustomFormattingFormattedUtterancesItems? Type175 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewayCustomFormattingResponseSpeechUnderstandingResponseCustomFormattingFormattedUtterancesItems>? Type176 { get; set; }
+        public global::AssemblyAI.LlmGatewayCustomFormattingResponseSpeechUnderstandingResponseCustomFormatting? Type176 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewayCustomFormattingResponseSpeechUnderstandingResponse? Type177 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewayCustomFormattingResponseSpeechUnderstandingResponseCustomFormattingFormattedUtterancesItems>? Type177 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewayCustomFormattingResponseSpeechUnderstanding? Type178 { get; set; }
+        public global::AssemblyAI.LlmGatewayCustomFormattingResponseSpeechUnderstandingResponse? Type178 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LlmGatewayCustomFormattingResponseUtterancesItems? Type179 { get; set; }
+        public global::AssemblyAI.LlmGatewayCustomFormattingResponseSpeechUnderstanding? Type179 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.LLMGatewayCustomFormattingResponse? Type180 { get; set; }
+        public global::AssemblyAI.LlmGatewayCustomFormattingResponseUtterancesItems? Type180 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewayCustomFormattingResponseUtterancesItems>? Type181 { get; set; }
+        public global::AssemblyAI.LLMGatewayCustomFormattingResponse? Type181 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.CreateSpeechUnderstandingResponse200? Type182 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.LlmGatewayCustomFormattingResponseUtterancesItems>? Type182 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.StreamingAPIGenerateStreamingTokenResponse200? Type183 { get; set; }
+        public global::AssemblyAI.CreateSpeechUnderstandingResponse200? Type183 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.VoiceAgentAPIGenerateVoiceAgentTokenResponse200? Type184 { get; set; }
+        public global::AssemblyAI.StreamingAPIGenerateStreamingTokenResponse200? Type184 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type185 { get; set; }
+        public global::AssemblyAI.VoiceAgentAPIGenerateVoiceAgentTokenResponse200? Type185 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[]? Type186 { get; set; }
 
         /// <summary>
         /// 
