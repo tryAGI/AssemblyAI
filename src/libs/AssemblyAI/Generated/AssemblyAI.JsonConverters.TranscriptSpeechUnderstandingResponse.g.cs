@@ -107,6 +107,7 @@ namespace AssemblyAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.TranslationResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.TranslationResponse> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.TranslationResponse).Name}");
                     translationResponse = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -117,9 +118,13 @@ namespace AssemblyAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (translationResponse == null && speakerIdentificationResponse == null && customFormattingResponse == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.SpeakerIdentificationResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.SpeakerIdentificationResponse> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.SpeakerIdentificationResponse).Name}");
                     speakerIdentificationResponse = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -130,9 +135,13 @@ namespace AssemblyAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (translationResponse == null && speakerIdentificationResponse == null && customFormattingResponse == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.CustomFormattingResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.CustomFormattingResponse> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.CustomFormattingResponse).Name}");
                     customFormattingResponse = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

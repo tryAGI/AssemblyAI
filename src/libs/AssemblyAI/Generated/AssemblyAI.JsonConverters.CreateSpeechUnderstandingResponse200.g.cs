@@ -114,6 +114,7 @@ namespace AssemblyAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.LLMGatewayTranslationResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.LLMGatewayTranslationResponse> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.LLMGatewayTranslationResponse).Name}");
                     lLMGatewayTranslationResponse = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -124,9 +125,13 @@ namespace AssemblyAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (lLMGatewayTranslationResponse == null && lLMGatewaySpeakerIdentificationResponse == null && lLMGatewayCustomFormattingResponse == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.LLMGatewaySpeakerIdentificationResponse).Name}");
                     lLMGatewaySpeakerIdentificationResponse = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -137,9 +142,13 @@ namespace AssemblyAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (lLMGatewayTranslationResponse == null && lLMGatewaySpeakerIdentificationResponse == null && lLMGatewayCustomFormattingResponse == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.LLMGatewayCustomFormattingResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.LLMGatewayCustomFormattingResponse> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.LLMGatewayCustomFormattingResponse).Name}");
                     lLMGatewayCustomFormattingResponse = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

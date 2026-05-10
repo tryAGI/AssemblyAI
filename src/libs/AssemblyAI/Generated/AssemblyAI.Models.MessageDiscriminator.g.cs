@@ -12,7 +12,8 @@ namespace AssemblyAI
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
-        public string? Role { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.MessageDiscriminatorRoleJsonConverter))]
+        public global::AssemblyAI.MessageDiscriminatorRole? Role { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public MessageDiscriminator(
-            string? role)
+            global::AssemblyAI.MessageDiscriminatorRole? role)
         {
             this.Role = role;
         }
