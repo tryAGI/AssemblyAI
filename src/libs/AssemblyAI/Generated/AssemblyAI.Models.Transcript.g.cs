@@ -94,7 +94,7 @@ namespace AssemblyAI
         public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptCustomSpelling>? CustomSpelling { get; set; }
 
         /// <summary>
-        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false
+        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3 Pro and Universal-2.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disfluencies")]
         public bool? Disfluencies { get; set; }
@@ -564,7 +564,7 @@ namespace AssemblyAI
         /// Customize how words are spelled and formatted using to and from values. See [Custom Spelling](https://www.assemblyai.com/docs/pre-recorded-audio/correct-spelling-of-terms) for more details.
         /// </param>
         /// <param name="disfluencies">
-        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false
+        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3 Pro and Universal-2.
         /// </param>
         /// <param name="domain">
         /// The domain-specific model applied to the transcript. When set to `"medical-v1"`, [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) was used to improve accuracy for medical terminology.
