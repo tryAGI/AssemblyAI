@@ -631,5 +631,6 @@ namespace AssemblyAI
         public TranscriptParams()
         {
         }
+
     }
 }

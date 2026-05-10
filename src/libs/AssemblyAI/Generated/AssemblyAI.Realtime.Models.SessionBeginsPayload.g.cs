@@ -67,5 +67,6 @@ namespace AssemblyAI.Realtime
         public SessionBeginsPayload()
         {
         }
+
     }
 }

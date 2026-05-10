@@ -88,5 +88,6 @@ namespace AssemblyAI
         public PageDetails()
         {
         }
+
     }
 }

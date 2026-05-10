@@ -80,5 +80,6 @@ namespace AssemblyAI
         public TranscriptOptionalParamsLanguageDetectionOptions()
         {
         }
+
     }
 }

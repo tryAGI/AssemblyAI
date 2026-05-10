@@ -101,5 +101,6 @@ namespace AssemblyAI.Realtime
         public Word()
         {
         }
+
     }
 }

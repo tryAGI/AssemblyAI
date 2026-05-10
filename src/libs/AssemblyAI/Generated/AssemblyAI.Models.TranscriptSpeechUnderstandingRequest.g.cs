@@ -40,6 +40,13 @@ namespace AssemblyAI
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.TranslationRequestBody PickTranslationRequestBody() => IsTranslationRequestBody
+            ? TranslationRequestBody!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TranslationRequestBody' but the value was {ToString()}.");
+
+        /// <summary>
         /// Request body for [Speaker Identification](https://www.assemblyai.com/docs/speech-understanding/speaker-identification).
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -70,6 +77,13 @@ namespace AssemblyAI
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.SpeakerIdentificationRequestBody PickSpeakerIdentificationRequestBody() => IsSpeakerIdentificationRequestBody
+            ? SpeakerIdentificationRequestBody!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SpeakerIdentificationRequestBody' but the value was {ToString()}.");
+
+        /// <summary>
         /// Request body for [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting).
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -98,6 +112,13 @@ namespace AssemblyAI
             value = CustomFormattingRequestBody;
             return IsCustomFormattingRequestBody;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.CustomFormattingRequestBody PickCustomFormattingRequestBody() => IsCustomFormattingRequestBody
+            ? CustomFormattingRequestBody!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CustomFormattingRequestBody' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

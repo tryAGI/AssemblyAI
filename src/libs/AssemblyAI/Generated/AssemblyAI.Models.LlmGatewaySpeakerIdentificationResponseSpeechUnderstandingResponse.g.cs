@@ -39,5 +39,6 @@ namespace AssemblyAI
         public LlmGatewaySpeakerIdentificationResponseSpeechUnderstandingResponse()
         {
         }
+
     }
 }

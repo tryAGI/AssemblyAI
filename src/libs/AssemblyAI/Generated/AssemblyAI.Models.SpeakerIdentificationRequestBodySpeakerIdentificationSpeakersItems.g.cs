@@ -63,5 +63,6 @@ namespace AssemblyAI
         public SpeakerIdentificationRequestBodySpeakerIdentificationSpeakersItems()
         {
         }
+
     }
 }

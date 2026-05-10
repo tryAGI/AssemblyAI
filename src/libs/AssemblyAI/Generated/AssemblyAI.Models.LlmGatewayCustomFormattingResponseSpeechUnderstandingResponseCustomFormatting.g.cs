@@ -70,5 +70,6 @@ namespace AssemblyAI
         public LlmGatewayCustomFormattingResponseSpeechUnderstandingResponseCustomFormatting()
         {
         }
+
     }
 }

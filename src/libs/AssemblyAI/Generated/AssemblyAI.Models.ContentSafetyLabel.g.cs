@@ -66,5 +66,6 @@ namespace AssemblyAI
         public ContentSafetyLabel()
         {
         }
+
     }
 }

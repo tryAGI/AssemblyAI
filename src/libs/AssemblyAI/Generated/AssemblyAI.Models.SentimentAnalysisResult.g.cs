@@ -113,5 +113,6 @@ namespace AssemblyAI
         public SentimentAnalysisResult()
         {
         }
+
     }
 }

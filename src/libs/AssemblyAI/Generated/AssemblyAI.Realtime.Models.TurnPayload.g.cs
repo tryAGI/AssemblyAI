@@ -158,5 +158,6 @@ namespace AssemblyAI.Realtime
         public TurnPayload()
         {
         }
+
     }
 }
