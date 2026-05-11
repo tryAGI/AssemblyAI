@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// The type of PII to redact
+    /// The type of PII to redact. See [PII redaction](https://www.assemblyai.com/docs/streaming/pii-redaction) for the full list of policies and their descriptions.
     /// </summary>
     public enum PiiPolicy
     {
@@ -71,6 +71,10 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        Gender,
+        /// <summary>
+        /// 
+        /// </summary>
         GenderSexuality,
         /// <summary>
         /// 
@@ -92,6 +96,34 @@ namespace AssemblyAI
         /// 
         /// </summary>
         Location,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationAddress,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationAddressStreet,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationCity,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationCoordinate,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationCountry,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationState,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationZip,
         /// <summary>
         /// 
         /// </summary>
@@ -127,6 +159,10 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        OrganizationMedicalFacility,
+        /// <summary>
+        /// 
+        /// </summary>
         PassportNumber,
         /// <summary>
         /// 
@@ -156,6 +192,10 @@ namespace AssemblyAI
         /// 
         /// </summary>
         Religion,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sexuality,
         /// <summary>
         /// 
         /// </summary>
@@ -213,12 +253,20 @@ namespace AssemblyAI
                 PiiPolicy.EmailAddress => "email_address",
                 PiiPolicy.Event => "event",
                 PiiPolicy.Filename => "filename",
+                PiiPolicy.Gender => "gender",
                 PiiPolicy.GenderSexuality => "gender_sexuality",
                 PiiPolicy.HealthcareNumber => "healthcare_number",
                 PiiPolicy.Injury => "injury",
                 PiiPolicy.IpAddress => "ip_address",
                 PiiPolicy.Language => "language",
                 PiiPolicy.Location => "location",
+                PiiPolicy.LocationAddress => "location_address",
+                PiiPolicy.LocationAddressStreet => "location_address_street",
+                PiiPolicy.LocationCity => "location_city",
+                PiiPolicy.LocationCoordinate => "location_coordinate",
+                PiiPolicy.LocationCountry => "location_country",
+                PiiPolicy.LocationState => "location_state",
+                PiiPolicy.LocationZip => "location_zip",
                 PiiPolicy.MaritalStatus => "marital_status",
                 PiiPolicy.MedicalCondition => "medical_condition",
                 PiiPolicy.MedicalProcess => "medical_process",
@@ -227,6 +275,7 @@ namespace AssemblyAI
                 PiiPolicy.NumberSequence => "number_sequence",
                 PiiPolicy.Occupation => "occupation",
                 PiiPolicy.Organization => "organization",
+                PiiPolicy.OrganizationMedicalFacility => "organization_medical_facility",
                 PiiPolicy.PassportNumber => "passport_number",
                 PiiPolicy.Password => "password",
                 PiiPolicy.PersonAge => "person_age",
@@ -235,6 +284,7 @@ namespace AssemblyAI
                 PiiPolicy.PhysicalAttribute => "physical_attribute",
                 PiiPolicy.PoliticalAffiliation => "political_affiliation",
                 PiiPolicy.Religion => "religion",
+                PiiPolicy.Sexuality => "sexuality",
                 PiiPolicy.Statistics => "statistics",
                 PiiPolicy.Time => "time",
                 PiiPolicy.Url => "url",
@@ -267,12 +317,20 @@ namespace AssemblyAI
                 "email_address" => PiiPolicy.EmailAddress,
                 "event" => PiiPolicy.Event,
                 "filename" => PiiPolicy.Filename,
+                "gender" => PiiPolicy.Gender,
                 "gender_sexuality" => PiiPolicy.GenderSexuality,
                 "healthcare_number" => PiiPolicy.HealthcareNumber,
                 "injury" => PiiPolicy.Injury,
                 "ip_address" => PiiPolicy.IpAddress,
                 "language" => PiiPolicy.Language,
                 "location" => PiiPolicy.Location,
+                "location_address" => PiiPolicy.LocationAddress,
+                "location_address_street" => PiiPolicy.LocationAddressStreet,
+                "location_city" => PiiPolicy.LocationCity,
+                "location_coordinate" => PiiPolicy.LocationCoordinate,
+                "location_country" => PiiPolicy.LocationCountry,
+                "location_state" => PiiPolicy.LocationState,
+                "location_zip" => PiiPolicy.LocationZip,
                 "marital_status" => PiiPolicy.MaritalStatus,
                 "medical_condition" => PiiPolicy.MedicalCondition,
                 "medical_process" => PiiPolicy.MedicalProcess,
@@ -281,6 +339,7 @@ namespace AssemblyAI
                 "number_sequence" => PiiPolicy.NumberSequence,
                 "occupation" => PiiPolicy.Occupation,
                 "organization" => PiiPolicy.Organization,
+                "organization_medical_facility" => PiiPolicy.OrganizationMedicalFacility,
                 "passport_number" => PiiPolicy.PassportNumber,
                 "password" => PiiPolicy.Password,
                 "person_age" => PiiPolicy.PersonAge,
@@ -289,6 +348,7 @@ namespace AssemblyAI
                 "physical_attribute" => PiiPolicy.PhysicalAttribute,
                 "political_affiliation" => PiiPolicy.PoliticalAffiliation,
                 "religion" => PiiPolicy.Religion,
+                "sexuality" => PiiPolicy.Sexuality,
                 "statistics" => PiiPolicy.Statistics,
                 "time" => PiiPolicy.Time,
                 "url" => PiiPolicy.Url,
