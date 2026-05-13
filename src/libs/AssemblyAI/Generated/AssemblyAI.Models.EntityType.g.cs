@@ -71,6 +71,10 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        Gender,
+        /// <summary>
+        /// 
+        /// </summary>
         GenderSexuality,
         /// <summary>
         /// 
@@ -92,6 +96,34 @@ namespace AssemblyAI
         /// 
         /// </summary>
         Location,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationAddress,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationAddressStreet,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationCity,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationCoordinate,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationCountry,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationState,
+        /// <summary>
+        /// 
+        /// </summary>
+        LocationZip,
         /// <summary>
         /// 
         /// </summary>
@@ -127,6 +159,10 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        OrganizationMedicalFacility,
+        /// <summary>
+        /// 
+        /// </summary>
         PassportNumber,
         /// <summary>
         /// 
@@ -156,6 +192,10 @@ namespace AssemblyAI
         /// 
         /// </summary>
         Religion,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sexuality,
         /// <summary>
         /// 
         /// </summary>
@@ -213,12 +253,20 @@ namespace AssemblyAI
                 EntityType.EmailAddress => "email_address",
                 EntityType.Event => "event",
                 EntityType.Filename => "filename",
+                EntityType.Gender => "gender",
                 EntityType.GenderSexuality => "gender_sexuality",
                 EntityType.HealthcareNumber => "healthcare_number",
                 EntityType.Injury => "injury",
                 EntityType.IpAddress => "ip_address",
                 EntityType.Language => "language",
                 EntityType.Location => "location",
+                EntityType.LocationAddress => "location_address",
+                EntityType.LocationAddressStreet => "location_address_street",
+                EntityType.LocationCity => "location_city",
+                EntityType.LocationCoordinate => "location_coordinate",
+                EntityType.LocationCountry => "location_country",
+                EntityType.LocationState => "location_state",
+                EntityType.LocationZip => "location_zip",
                 EntityType.MaritalStatus => "marital_status",
                 EntityType.MedicalCondition => "medical_condition",
                 EntityType.MedicalProcess => "medical_process",
@@ -227,6 +275,7 @@ namespace AssemblyAI
                 EntityType.NumberSequence => "number_sequence",
                 EntityType.Occupation => "occupation",
                 EntityType.Organization => "organization",
+                EntityType.OrganizationMedicalFacility => "organization_medical_facility",
                 EntityType.PassportNumber => "passport_number",
                 EntityType.Password => "password",
                 EntityType.PersonAge => "person_age",
@@ -235,6 +284,7 @@ namespace AssemblyAI
                 EntityType.PhysicalAttribute => "physical_attribute",
                 EntityType.PoliticalAffiliation => "political_affiliation",
                 EntityType.Religion => "religion",
+                EntityType.Sexuality => "sexuality",
                 EntityType.Statistics => "statistics",
                 EntityType.Time => "time",
                 EntityType.Url => "url",
@@ -267,12 +317,20 @@ namespace AssemblyAI
                 "email_address" => EntityType.EmailAddress,
                 "event" => EntityType.Event,
                 "filename" => EntityType.Filename,
+                "gender" => EntityType.Gender,
                 "gender_sexuality" => EntityType.GenderSexuality,
                 "healthcare_number" => EntityType.HealthcareNumber,
                 "injury" => EntityType.Injury,
                 "ip_address" => EntityType.IpAddress,
                 "language" => EntityType.Language,
                 "location" => EntityType.Location,
+                "location_address" => EntityType.LocationAddress,
+                "location_address_street" => EntityType.LocationAddressStreet,
+                "location_city" => EntityType.LocationCity,
+                "location_coordinate" => EntityType.LocationCoordinate,
+                "location_country" => EntityType.LocationCountry,
+                "location_state" => EntityType.LocationState,
+                "location_zip" => EntityType.LocationZip,
                 "marital_status" => EntityType.MaritalStatus,
                 "medical_condition" => EntityType.MedicalCondition,
                 "medical_process" => EntityType.MedicalProcess,
@@ -281,6 +339,7 @@ namespace AssemblyAI
                 "number_sequence" => EntityType.NumberSequence,
                 "occupation" => EntityType.Occupation,
                 "organization" => EntityType.Organization,
+                "organization_medical_facility" => EntityType.OrganizationMedicalFacility,
                 "passport_number" => EntityType.PassportNumber,
                 "password" => EntityType.Password,
                 "person_age" => EntityType.PersonAge,
@@ -289,6 +348,7 @@ namespace AssemblyAI
                 "physical_attribute" => EntityType.PhysicalAttribute,
                 "political_affiliation" => EntityType.PoliticalAffiliation,
                 "religion" => EntityType.Religion,
+                "sexuality" => EntityType.Sexuality,
                 "statistics" => EntityType.Statistics,
                 "time" => EntityType.Time,
                 "url" => EntityType.Url,
