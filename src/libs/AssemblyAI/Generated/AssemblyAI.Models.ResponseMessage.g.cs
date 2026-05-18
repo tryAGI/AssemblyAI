@@ -15,10 +15,16 @@ namespace AssemblyAI
         public string? Role { get; set; }
 
         /// <summary>
-        /// 
+        /// The text content of the model's response. Null or empty when the model is only emitting tool_calls.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
         public string? Content { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tool_calls")]
+        public global::System.Collections.Generic.IList<global::AssemblyAI.FunctionToolCall>? ToolCalls { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,16 +36,21 @@ namespace AssemblyAI
         /// Initializes a new instance of the <see cref="ResponseMessage" /> class.
         /// </summary>
         /// <param name="role"></param>
-        /// <param name="content"></param>
+        /// <param name="content">
+        /// The text content of the model's response. Null or empty when the model is only emitting tool_calls.
+        /// </param>
+        /// <param name="toolCalls"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ResponseMessage(
             string? role,
-            string? content)
+            string? content,
+            global::System.Collections.Generic.IList<global::AssemblyAI.FunctionToolCall>? toolCalls)
         {
             this.Role = role;
             this.Content = content;
+            this.ToolCalls = toolCalls;
         }
 
         /// <summary>

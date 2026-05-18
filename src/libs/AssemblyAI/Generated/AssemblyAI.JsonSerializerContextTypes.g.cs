@@ -608,27 +608,27 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ResponseMessage? Type145 { get; set; }
+        public global::AssemblyAI.FunctionToolCallType? Type145 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.FunctionToolCallType? Type146 { get; set; }
+        public global::AssemblyAI.FunctionCall? Type146 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.FunctionCall? Type147 { get; set; }
+        public global::AssemblyAI.FunctionToolCall? Type147 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.FunctionToolCall? Type148 { get; set; }
+        public global::AssemblyAI.ResponseMessage? Type148 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Choice? Type149 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.FunctionToolCall>? Type149 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.FunctionToolCall>? Type150 { get; set; }
+        public global::AssemblyAI.Choice? Type150 { get; set; }
         /// <summary>
         /// 
         /// </summary>
