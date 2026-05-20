@@ -40,5 +40,6 @@ namespace AssemblyAI.Realtime
         public ServerEventDiscriminator()
         {
         }
+
     }
 }

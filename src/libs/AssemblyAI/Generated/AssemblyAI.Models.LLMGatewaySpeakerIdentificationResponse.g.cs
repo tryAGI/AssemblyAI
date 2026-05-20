@@ -57,5 +57,6 @@ namespace AssemblyAI
         public LLMGatewaySpeakerIdentificationResponse()
         {
         }
+
     }
 }

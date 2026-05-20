@@ -124,5 +124,6 @@ namespace AssemblyAI
         public TranscriptUtterance()
         {
         }
+
     }
 }

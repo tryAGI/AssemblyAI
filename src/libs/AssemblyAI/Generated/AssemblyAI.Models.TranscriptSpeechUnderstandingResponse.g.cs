@@ -42,6 +42,13 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public global::AssemblyAI.TranslationResponse PickTranslationResponse() => IsTranslationResponse
+            ? TranslationResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TranslationResponse' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.SpeakerIdentificationResponse? SpeakerIdentificationResponse { get; init; }
 #else
@@ -72,6 +79,13 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public global::AssemblyAI.SpeakerIdentificationResponse PickSpeakerIdentificationResponse() => IsSpeakerIdentificationResponse
+            ? SpeakerIdentificationResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SpeakerIdentificationResponse' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.CustomFormattingResponse? CustomFormattingResponse { get; init; }
 #else
@@ -98,6 +112,13 @@ namespace AssemblyAI
             value = CustomFormattingResponse;
             return IsCustomFormattingResponse;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.CustomFormattingResponse PickCustomFormattingResponse() => IsCustomFormattingResponse
+            ? CustomFormattingResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CustomFormattingResponse' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -115,6 +136,11 @@ namespace AssemblyAI
         {
             TranslationResponse = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TranscriptSpeechUnderstandingResponse FromTranslationResponse(global::AssemblyAI.TranslationResponse? value) => new TranscriptSpeechUnderstandingResponse(value);
 
         /// <summary>
         /// 
@@ -137,6 +163,11 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
+        public static TranscriptSpeechUnderstandingResponse FromSpeakerIdentificationResponse(global::AssemblyAI.SpeakerIdentificationResponse? value) => new TranscriptSpeechUnderstandingResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TranscriptSpeechUnderstandingResponse(global::AssemblyAI.CustomFormattingResponse value) => new TranscriptSpeechUnderstandingResponse((global::AssemblyAI.CustomFormattingResponse?)value);
 
         /// <summary>
@@ -151,6 +182,11 @@ namespace AssemblyAI
         {
             CustomFormattingResponse = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TranscriptSpeechUnderstandingResponse FromCustomFormattingResponse(global::AssemblyAI.CustomFormattingResponse? value) => new TranscriptSpeechUnderstandingResponse(value);
 
         /// <summary>
         /// 

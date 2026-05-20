@@ -108,7 +108,10 @@ namespace AssemblyAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (userAssistantSystemMessageContentVariant1 == null && userAssistantSystemMessageContent1 == null)
+            {
                 try
                 {
 

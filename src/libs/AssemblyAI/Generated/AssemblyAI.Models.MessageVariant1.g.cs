@@ -65,5 +65,6 @@ namespace AssemblyAI
         public MessageVariant1()
         {
         }
+
     }
 }

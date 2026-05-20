@@ -41,5 +41,6 @@ namespace AssemblyAI
         public TranscriptTranslatedTexts()
         {
         }
+
     }
 }

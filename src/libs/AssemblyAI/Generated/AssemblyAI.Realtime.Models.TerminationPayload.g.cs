@@ -66,5 +66,6 @@ namespace AssemblyAI.Realtime
         public TerminationPayload()
         {
         }
+
     }
 }

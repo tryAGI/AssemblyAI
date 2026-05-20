@@ -64,5 +64,6 @@ namespace AssemblyAI
         public MessageVariant4()
         {
         }
+
     }
 }

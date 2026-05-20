@@ -16,7 +16,7 @@ namespace AssemblyAI
         public required string Token { get; set; }
 
         /// <summary>
-        /// The actual expiration time of the token in seconds.
+        /// The token redemption window in seconds — the time the client has to use this token to open a WebSocket before it expires unused. This is not the session duration; see `max_session_duration_seconds` for that.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("expires_in_seconds")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -35,7 +35,7 @@ namespace AssemblyAI
         /// The temporary authentication token. Pass as the `token` query parameter when opening the WebSocket.
         /// </param>
         /// <param name="expiresInSeconds">
-        /// The actual expiration time of the token in seconds.
+        /// The token redemption window in seconds — the time the client has to use this token to open a WebSocket before it expires unused. This is not the session duration; see `max_session_duration_seconds` for that.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -54,5 +54,6 @@ namespace AssemblyAI
         public VoiceAgentAPIGenerateVoiceAgentTokenResponse200()
         {
         }
+
     }
 }

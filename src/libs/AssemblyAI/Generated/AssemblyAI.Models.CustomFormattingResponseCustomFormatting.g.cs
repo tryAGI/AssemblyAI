@@ -48,5 +48,6 @@ namespace AssemblyAI
         public CustomFormattingResponseCustomFormatting()
         {
         }
+
     }
 }

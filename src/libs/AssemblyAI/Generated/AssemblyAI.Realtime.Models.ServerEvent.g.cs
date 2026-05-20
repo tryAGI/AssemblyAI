@@ -45,6 +45,13 @@ namespace AssemblyAI.Realtime
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.Realtime.SessionBeginsPayload PickBegin() => IsBegin
+            ? Begin!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Begin' but the value was {ToString()}.");
+
+        /// <summary>
         /// Turn-based transcription result.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace AssemblyAI.Realtime
             value = Turn;
             return IsTurn;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.Realtime.TurnPayload PickTurn() => IsTurn
+            ? Turn!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Turn' but the value was {ToString()}.");
 
         /// <summary>
         /// Server event confirming session termination with statistics.
@@ -105,6 +119,13 @@ namespace AssemblyAI.Realtime
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.Realtime.TerminationPayload PickTermination() => IsTermination
+            ? Termination!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Termination' but the value was {ToString()}.");
+
+        /// <summary>
         /// Server-emitted validation, authentication or quota error. Typically delivered immediately before the WebSocket is closed by the server.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -133,6 +154,13 @@ namespace AssemblyAI.Realtime
             value = Error;
             return IsError;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.Realtime.ErrorPayload PickError() => IsError
+            ? Error!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -150,6 +178,11 @@ namespace AssemblyAI.Realtime
         {
             Begin = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ServerEvent FromBegin(global::AssemblyAI.Realtime.SessionBeginsPayload? value) => new ServerEvent(value);
 
         /// <summary>
         /// 
@@ -172,6 +205,11 @@ namespace AssemblyAI.Realtime
         /// <summary>
         /// 
         /// </summary>
+        public static ServerEvent FromTurn(global::AssemblyAI.Realtime.TurnPayload? value) => new ServerEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ServerEvent(global::AssemblyAI.Realtime.TerminationPayload value) => new ServerEvent((global::AssemblyAI.Realtime.TerminationPayload?)value);
 
         /// <summary>
@@ -190,6 +228,11 @@ namespace AssemblyAI.Realtime
         /// <summary>
         /// 
         /// </summary>
+        public static ServerEvent FromTermination(global::AssemblyAI.Realtime.TerminationPayload? value) => new ServerEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ServerEvent(global::AssemblyAI.Realtime.ErrorPayload value) => new ServerEvent((global::AssemblyAI.Realtime.ErrorPayload?)value);
 
         /// <summary>
@@ -204,6 +247,11 @@ namespace AssemblyAI.Realtime
         {
             Error = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ServerEvent FromError(global::AssemblyAI.Realtime.ErrorPayload? value) => new ServerEvent(value);
 
         /// <summary>
         /// 

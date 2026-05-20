@@ -168,7 +168,7 @@ namespace AssemblyAI.Realtime
                     rawText,
                     json));
 
-            if (@event.SessionBegins is { } __SessionBeginsReceived)
+            if (@event.Begin is { } __SessionBeginsReceived)
             {
                 SessionBeginsReceived?.Invoke(
                     this,
