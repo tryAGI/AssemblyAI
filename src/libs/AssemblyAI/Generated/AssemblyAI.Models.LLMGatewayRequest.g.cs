@@ -85,6 +85,12 @@ namespace AssemblyAI
         public global::AssemblyAI.FallbackConfig? FallbackConfig { get; set; }
 
         /// <summary>
+        /// Controls reasoning behavior for supported models. OpenAI-compatible models, Gemini 3+ models, and Anthropic models support reasoning. Use `effort` to set the reasoning effort level, or `max_tokens` to cap the number of tokens the model can use for reasoning.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reasoning")]
+        public global::AssemblyAI.Reasoning? Reasoning { get; set; }
+
+        /// <summary>
         /// An ordered list of post-processing steps to apply to the model's response after generation. Currently supports `json-repair`, which automatically fixes malformed JSON in LLM Gateway content responses. See [Post-processing](https://www.assemblyai.com/docs/llm-gateway/post-processing) for details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("post_processing_steps")]
@@ -137,6 +143,9 @@ namespace AssemblyAI
         /// <param name="fallbackConfig">
         /// Configuration for fallback behavior, including retry and depth settings. See [Specify fallback models](https://www.assemblyai.com/docs/llm-gateway/fallback) for more details.
         /// </param>
+        /// <param name="reasoning">
+        /// Controls reasoning behavior for supported models. OpenAI-compatible models, Gemini 3+ models, and Anthropic models support reasoning. Use `effort` to set the reasoning effort level, or `max_tokens` to cap the number of tokens the model can use for reasoning.
+        /// </param>
         /// <param name="postProcessingSteps">
         /// An ordered list of post-processing steps to apply to the model's response after generation. Currently supports `json-repair`, which automatically fixes malformed JSON in LLM Gateway content responses. See [Post-processing](https://www.assemblyai.com/docs/llm-gateway/post-processing) for details.
         /// </param>
@@ -156,6 +165,7 @@ namespace AssemblyAI
             global::AssemblyAI.ResponseFormat? responseFormat,
             global::System.Collections.Generic.IList<global::AssemblyAI.FallbackObject>? fallbacks,
             global::AssemblyAI.FallbackConfig? fallbackConfig,
+            global::AssemblyAI.Reasoning? reasoning,
             global::System.Collections.Generic.IList<global::AssemblyAI.PostProcessingStep>? postProcessingSteps)
         {
             this.Messages = messages;
@@ -170,6 +180,7 @@ namespace AssemblyAI
             this.ResponseFormat = responseFormat;
             this.Fallbacks = fallbacks;
             this.FallbackConfig = fallbackConfig;
+            this.Reasoning = reasoning;
             this.PostProcessingSteps = postProcessingSteps;
         }
 

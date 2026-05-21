@@ -109,6 +109,10 @@ namespace AssemblyAI
 
             typeof(global::AssemblyAI.JsonConverters.ResponseFormatTypeNullableJsonConverter),
 
+            typeof(global::AssemblyAI.JsonConverters.ReasoningEffortJsonConverter),
+
+            typeof(global::AssemblyAI.JsonConverters.ReasoningEffortNullableJsonConverter),
+
             typeof(global::AssemblyAI.JsonConverters.PostProcessingStepTypeJsonConverter),
 
             typeof(global::AssemblyAI.JsonConverters.PostProcessingStepTypeNullableJsonConverter),
@@ -295,6 +299,8 @@ namespace AssemblyAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.FallbackObject))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.Message>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.FallbackConfig))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.ReasoningEffort), TypeInfoPropertyName = "ReasoningEffort2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Reasoning))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.PostProcessingStepType), TypeInfoPropertyName = "PostProcessingStepType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.PostProcessingStep))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.LLMGatewayRequest))]

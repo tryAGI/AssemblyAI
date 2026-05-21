@@ -486,6 +486,9 @@ namespace AssemblyAI
         /// <param name="fallbackConfig">
         /// Configuration for fallback behavior, including retry and depth settings. See [Specify fallback models](https://www.assemblyai.com/docs/llm-gateway/fallback) for more details.
         /// </param>
+        /// <param name="reasoning">
+        /// Controls reasoning behavior for supported models. OpenAI-compatible models, Gemini 3+ models, and Anthropic models support reasoning. Use `effort` to set the reasoning effort level, or `max_tokens` to cap the number of tokens the model can use for reasoning.
+        /// </param>
         /// <param name="postProcessingSteps">
         /// An ordered list of post-processing steps to apply to the model's response after generation. Currently supports `json-repair`, which automatically fixes malformed JSON in LLM Gateway content responses. See [Post-processing](https://www.assemblyai.com/docs/llm-gateway/post-processing) for details.
         /// </param>
@@ -506,6 +509,7 @@ namespace AssemblyAI
             global::AssemblyAI.ResponseFormat? responseFormat = default,
             global::System.Collections.Generic.IList<global::AssemblyAI.FallbackObject>? fallbacks = default,
             global::AssemblyAI.FallbackConfig? fallbackConfig = default,
+            global::AssemblyAI.Reasoning? reasoning = default,
             global::System.Collections.Generic.IList<global::AssemblyAI.PostProcessingStep>? postProcessingSteps = default,
             global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -524,6 +528,7 @@ namespace AssemblyAI
                 ResponseFormat = responseFormat,
                 Fallbacks = fallbacks,
                 FallbackConfig = fallbackConfig,
+                Reasoning = reasoning,
                 PostProcessingSteps = postProcessingSteps,
             };
 
