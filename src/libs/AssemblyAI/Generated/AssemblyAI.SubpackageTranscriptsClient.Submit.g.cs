@@ -366,18 +366,17 @@ namespace AssemblyAI
                                     __exception_400 = __ex;
                                 }
 
-                                throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
+
+                                throw global::AssemblyAI.ApiException<global::AssemblyAI.Error>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_400,
-                                    ResponseObject = __value_400,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_400,
+                                    responseObject: __value_400,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Unauthorized
                             if ((int)__response.StatusCode == 401)
@@ -404,18 +403,17 @@ namespace AssemblyAI
                                     __exception_401 = __ex;
                                 }
 
-                                throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
+
+                                throw global::AssemblyAI.ApiException<global::AssemblyAI.Error>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_401,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_401,
-                                    ResponseObject = __value_401,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_401,
+                                    responseObject: __value_401,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Not found
                             if ((int)__response.StatusCode == 404)
@@ -442,18 +440,17 @@ namespace AssemblyAI
                                     __exception_404 = __ex;
                                 }
 
-                                throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
+
+                                throw global::AssemblyAI.ApiException<global::AssemblyAI.Error>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_404,
-                                    ResponseObject = __value_404,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_404,
+                                    responseObject: __value_404,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Too many requests
                             if ((int)__response.StatusCode == 429)
@@ -480,18 +477,17 @@ namespace AssemblyAI
                                     __exception_429 = __ex;
                                 }
 
-                                throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
+
+                                throw global::AssemblyAI.ApiException<global::AssemblyAI.Error>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_429,
-                                    ResponseObject = __value_429,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_429,
+                                    responseObject: __value_429,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // An error occurred while processing the request
                             if ((int)__response.StatusCode == 500)
@@ -518,18 +514,17 @@ namespace AssemblyAI
                                     __exception_500 = __ex;
                                 }
 
-                                throw new global::AssemblyAI.ApiException<global::AssemblyAI.Error>(
+
+                                throw global::AssemblyAI.ApiException<global::AssemblyAI.Error>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_500,
-                                    ResponseObject = __value_500,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_500,
+                                    responseObject: __value_500,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Service unavailable
                             if ((int)__response.StatusCode == 503)
@@ -556,18 +551,17 @@ namespace AssemblyAI
                                     __exception_503 = __ex;
                                 }
 
-                                throw new global::AssemblyAI.ApiException<string>(
+
+                                throw global::AssemblyAI.ApiException<string>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_503 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_503,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_503,
-                                    ResponseObject = __value_503,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_503,
+                                    responseObject: __value_503,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Gateway timeout
                             if ((int)__response.StatusCode == 504)
@@ -594,18 +588,17 @@ namespace AssemblyAI
                                     __exception_504 = __ex;
                                 }
 
-                                throw new global::AssemblyAI.ApiException<string>(
+
+                                throw global::AssemblyAI.ApiException<string>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_504 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_504,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_504,
-                                    ResponseObject = __value_504,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_504,
+                                    responseObject: __value_504,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
 
                             if (__effectiveReadResponseAsString)
@@ -639,17 +632,15 @@ namespace AssemblyAI
                                 }
                                 catch (global::System.Exception __ex)
                                 {
-                                    throw new global::AssemblyAI.ApiException(
+                                    throw global::AssemblyAI.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
                             else
@@ -686,17 +677,15 @@ namespace AssemblyAI
                                     {
                                     }
 
-                                    throw new global::AssemblyAI.ApiException(
+                                    throw global::AssemblyAI.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
 
