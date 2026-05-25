@@ -138,7 +138,7 @@ namespace AssemblyAI
             {
 
                             var __pathBuilder = new global::AssemblyAI.PathBuilder(
-                                path: $"/v2/transcript/{transcriptId}/{subtitleFormat}",
+                                path: $"/v2/transcript/{transcriptId}/{(global::System.Uri.EscapeDataString(subtitleFormat.ToValueString()))}",
                                 baseUri: ResolveBaseUri(
                                 servers: s_GetSubtitlesServers,
                                 defaultBaseUrl: "https://api.assemblyai.com/"));
@@ -193,7 +193,7 @@ namespace AssemblyAI
                             context: global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "GetSubtitles",
                                 methodName: "GetSubtitlesAsync",
-                                pathTemplate: "$\"/v2/transcript/{transcriptId}/{subtitleFormat}\"",
+                                pathTemplate: "$\"/v2/transcript/{transcriptId}/{(global::System.Uri.EscapeDataString(subtitleFormat.ToValueString()))}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -227,7 +227,7 @@ namespace AssemblyAI
                             context: global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "GetSubtitles",
                                 methodName: "GetSubtitlesAsync",
-                                pathTemplate: "$\"/v2/transcript/{transcriptId}/{subtitleFormat}\"",
+                                pathTemplate: "$\"/v2/transcript/{transcriptId}/{(global::System.Uri.EscapeDataString(subtitleFormat.ToValueString()))}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -268,7 +268,7 @@ namespace AssemblyAI
                             context: global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "GetSubtitles",
                                 methodName: "GetSubtitlesAsync",
-                                pathTemplate: "$\"/v2/transcript/{transcriptId}/{subtitleFormat}\"",
+                                pathTemplate: "$\"/v2/transcript/{transcriptId}/{(global::System.Uri.EscapeDataString(subtitleFormat.ToValueString()))}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -316,7 +316,7 @@ namespace AssemblyAI
                             context: global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "GetSubtitles",
                                 methodName: "GetSubtitlesAsync",
-                                pathTemplate: "$\"/v2/transcript/{transcriptId}/{subtitleFormat}\"",
+                                pathTemplate: "$\"/v2/transcript/{transcriptId}/{(global::System.Uri.EscapeDataString(subtitleFormat.ToValueString()))}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -338,7 +338,7 @@ namespace AssemblyAI
                             context: global::AssemblyAI.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "GetSubtitles",
                                 methodName: "GetSubtitlesAsync",
-                                pathTemplate: "$\"/v2/transcript/{transcriptId}/{subtitleFormat}\"",
+                                pathTemplate: "$\"/v2/transcript/{transcriptId}/{(global::System.Uri.EscapeDataString(subtitleFormat.ToValueString()))}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
