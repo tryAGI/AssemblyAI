@@ -206,6 +206,13 @@ namespace AssemblyAI
         public global::AssemblyAI.TranscriptLanguageDetectionOptions? LanguageDetectionOptions { get; set; }
 
         /// <summary>
+        /// Additional metadata about the transcription, including any warnings emitted while processing the request. Only present when there is information to report; if no fields would be populated, `metadata` is omitted from the response entirely.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TranscriptMetadata, object>))]
+        public global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptMetadata, object>? Metadata { get; set; }
+
+        /// <summary>
         /// Whether [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) was enabled in the transcription request, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("multichannel")]
@@ -618,6 +625,9 @@ namespace AssemblyAI
         /// <param name="languageDetectionOptions">
         /// Specify options for [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection).
         /// </param>
+        /// <param name="metadata">
+        /// Additional metadata about the transcription, including any warnings emitted while processing the request. Only present when there is information to report; if no fields would be populated, `metadata` is omitted from the response entirely.
+        /// </param>
         /// <param name="multichannel">
         /// Whether [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) was enabled in the transcription request, either true or false
         /// </param>
@@ -778,6 +788,7 @@ namespace AssemblyAI
             double? languageConfidenceThreshold,
             bool? languageDetection,
             global::AssemblyAI.TranscriptLanguageDetectionOptions? languageDetectionOptions,
+            global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptMetadata, object>? metadata,
             bool? multichannel,
             string? prompt,
             bool? punctuate,
@@ -845,6 +856,7 @@ namespace AssemblyAI
             this.LanguageConfidenceThreshold = languageConfidenceThreshold;
             this.LanguageDetection = languageDetection;
             this.LanguageDetectionOptions = languageDetectionOptions;
+            this.Metadata = metadata;
             this.Multichannel = multichannel;
             this.Prompt = prompt;
             this.Punctuate = punctuate;
