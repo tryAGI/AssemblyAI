@@ -9,7 +9,7 @@ namespace AssemblyAI
     public enum RedactedAudioStatus
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         RedactedAudioReady,
     }

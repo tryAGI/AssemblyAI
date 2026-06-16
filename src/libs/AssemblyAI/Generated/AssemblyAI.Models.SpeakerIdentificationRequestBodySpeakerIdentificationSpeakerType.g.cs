@@ -9,11 +9,11 @@ namespace AssemblyAI
     public enum SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Name,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Role,
     }

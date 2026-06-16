@@ -20,7 +20,7 @@ namespace AssemblyAI.JsonConverters
                     {
                         return global::AssemblyAI.SummaryModelExtensions.ToEnum(stringValue);
                     }
-
+                    
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

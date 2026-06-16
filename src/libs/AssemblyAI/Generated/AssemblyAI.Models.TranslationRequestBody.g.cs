@@ -9,7 +9,7 @@ namespace AssemblyAI
     public sealed partial class TranslationRequestBody
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("translation")]
         [global::System.Text.Json.Serialization.JsonRequired]

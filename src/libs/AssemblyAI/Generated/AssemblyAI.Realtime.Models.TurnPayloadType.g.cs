@@ -9,7 +9,7 @@ namespace AssemblyAI.Realtime
     public enum TurnPayloadType
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Turn,
     }

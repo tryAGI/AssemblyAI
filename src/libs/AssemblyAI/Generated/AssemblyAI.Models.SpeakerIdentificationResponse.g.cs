@@ -4,12 +4,12 @@
 namespace AssemblyAI
 {
     /// <summary>
-    ///
+    /// 
     /// </summary>
     public sealed partial class SpeakerIdentificationResponse
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker_identification")]
         public global::AssemblyAI.SpeakerIdentificationResponseSpeakerIdentification? SpeakerIdentification { get; set; }

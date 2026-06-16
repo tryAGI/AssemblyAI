@@ -159,7 +159,7 @@ namespace AssemblyAI
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                }
+                } 
             }
                 global::AssemblyAI.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
@@ -427,7 +427,7 @@ namespace AssemblyAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Returned when `subtitle_format` is not `srt` or `vtt`. The response body is a plain HTML 404 page — the literal string `404: Not Found` — not JSON. Unknown `transcript_id` lookups, by contrast, return a `400` with a JSON `Error` object.
+                            // Returned when `subtitle_format` is not `srt` or `vtt`. The response body is a plain HTML 404 page — the literal string `404: Not Found` — not JSON. Unknown `transcript_id` lookups, by contrast, return a `400` with a JSON `Error` object. 
                             if ((int)__response.StatusCode == 404)
                             {
                                 string? __content_404 = null;
@@ -538,7 +538,7 @@ namespace AssemblyAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            //
+                            // 
                             if ((int)__response.StatusCode == 503)
                             {
                                 string? __content_503 = null;
@@ -570,7 +570,7 @@ namespace AssemblyAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            //
+                            // 
                             if ((int)__response.StatusCode == 504)
                             {
                                 string? __content_504 = null;

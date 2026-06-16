@@ -10,11 +10,11 @@ namespace AssemblyAI
     public enum TranscriptLanguageCode
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Af,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Am,
         /// <summary>
@@ -26,39 +26,39 @@ namespace AssemblyAI
         /// </summary>
         As,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Az,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ba,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Be,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Bg,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Bn,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Bo,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Br,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Bs,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ca,
         /// <summary>
@@ -66,11 +66,11 @@ namespace AssemblyAI
         /// </summary>
         Cs,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Cy,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Da,
         /// <summary>
@@ -78,23 +78,23 @@ namespace AssemblyAI
         /// </summary>
         De,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         El,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         En,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         EnAu,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         EnUk,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         EnUs,
         /// <summary>
@@ -102,15 +102,15 @@ namespace AssemblyAI
         /// </summary>
         Es,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Et,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Eu,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Fa,
         /// <summary>
@@ -122,11 +122,11 @@ namespace AssemblyAI
         /// </summary>
         Fo,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Fr,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Gl,
         /// <summary>
@@ -134,11 +134,11 @@ namespace AssemblyAI
         /// </summary>
         Gu,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ha,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Haw,
         /// <summary>
@@ -146,11 +146,11 @@ namespace AssemblyAI
         /// </summary>
         He,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Hi,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Hr,
         /// <summary>
@@ -158,51 +158,51 @@ namespace AssemblyAI
         /// </summary>
         Ht,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Hu,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Hy,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Id,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Is,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         It,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ja,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Jw,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ka,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Kk,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Km,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Kn,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ko,
         /// <summary>
@@ -210,75 +210,75 @@ namespace AssemblyAI
         /// </summary>
         La,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Lb,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ln,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Lo,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Lt,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Lv,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Mg,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Mi,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Mk,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ml,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Mn,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Mr,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ms,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Mt,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         My,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ne,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Nl,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Nn,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         No,
         /// <summary>
@@ -286,11 +286,11 @@ namespace AssemblyAI
         /// </summary>
         Oc,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Pa,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Pl,
         /// <summary>
@@ -298,23 +298,23 @@ namespace AssemblyAI
         /// </summary>
         Ps,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Pt,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ro,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ru,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Sa,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Sd,
         /// <summary>
@@ -322,27 +322,27 @@ namespace AssemblyAI
         /// </summary>
         Si,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Sk,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Sl,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Sn,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         So,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Sq,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Sr,
         /// <summary>
@@ -350,15 +350,15 @@ namespace AssemblyAI
         /// </summary>
         Su,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Sv,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Sw,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Ta,
         /// <summary>
@@ -366,23 +366,23 @@ namespace AssemblyAI
         /// </summary>
         Te,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Tg,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Th,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Tk,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Tl,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Tr,
         /// <summary>
@@ -390,7 +390,7 @@ namespace AssemblyAI
         /// </summary>
         Tt,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Uk,
         /// <summary>
@@ -398,15 +398,15 @@ namespace AssemblyAI
         /// </summary>
         Ur,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Uz,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Vi,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Yi,
         /// <summary>
@@ -414,7 +414,7 @@ namespace AssemblyAI
         /// </summary>
         Yo,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Zh,
     }

@@ -9,7 +9,7 @@ namespace AssemblyAI
     public enum TranscriptOptionalParamsRedactPiiAudioOptionsOverrideAudioRedactionMethod
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Silence,
     }

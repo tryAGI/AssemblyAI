@@ -9,7 +9,7 @@ namespace AssemblyAI
     public sealed partial class CustomFormattingRequestBody
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_formatting")]
         [global::System.Text.Json.Serialization.JsonRequired]

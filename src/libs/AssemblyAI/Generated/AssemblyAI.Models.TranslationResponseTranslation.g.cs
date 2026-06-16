@@ -4,12 +4,12 @@
 namespace AssemblyAI
 {
     /// <summary>
-    ///
+    /// 
     /// </summary>
     public sealed partial class TranslationResponseTranslation
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         public string? Status { get; set; }

@@ -34,7 +34,7 @@ namespace AssemblyAI
         /// <inheritdoc/>
         public global::AssemblyAI.AutoSDKClientOptions Options { get; }
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; } = global::AssemblyAI.SourceGenerationContext.Default;
 

@@ -9,11 +9,11 @@ namespace AssemblyAI
     public enum AudioIntelligenceModelStatus
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Success,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Unavailable,
     }

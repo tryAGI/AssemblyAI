@@ -4,16 +4,16 @@
 namespace AssemblyAI
 {
     /// <summary>
-    ///
+    /// 
     /// </summary>
     public enum TranscriptOptionalParamsRemoveAudioTags
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         All,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Speaker,
     }

@@ -35,13 +35,13 @@ namespace AssemblyAI
         /// <inheritdoc/>
         public global::AssemblyAI.AutoSDKClientOptions Options { get; }
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; } = global::AssemblyAI.SourceGenerationContext.Default;
 
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public FilesClient Files => new FilesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -50,7 +50,7 @@ namespace AssemblyAI
         };
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public TranscriptsClient Transcripts => new TranscriptsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {

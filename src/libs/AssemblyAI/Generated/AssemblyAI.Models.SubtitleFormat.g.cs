@@ -9,11 +9,11 @@ namespace AssemblyAI
     public enum SubtitleFormat
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Srt,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Vtt,
     }

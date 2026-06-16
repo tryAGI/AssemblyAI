@@ -40,18 +40,18 @@ namespace AssemblyAI
 
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public FilesClient Files { get; }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public TranscriptsClient Transcripts { get; }
 

@@ -9,7 +9,7 @@ namespace AssemblyAI.Realtime
     public enum KeepAlivePayloadType
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         KeepAlive,
     }

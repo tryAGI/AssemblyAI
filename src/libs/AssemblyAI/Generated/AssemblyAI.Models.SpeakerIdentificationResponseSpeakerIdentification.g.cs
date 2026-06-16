@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    ///
+    /// 
     /// </summary>
     public sealed partial class SpeakerIdentificationResponseSpeakerIdentification
     {
@@ -15,7 +15,7 @@ namespace AssemblyAI
         public global::System.Collections.Generic.Dictionary<string, string>? Mapping { get; set; }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         public string? Status { get; set; }

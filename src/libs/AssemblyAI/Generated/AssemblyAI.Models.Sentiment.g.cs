@@ -9,15 +9,15 @@ namespace AssemblyAI
     public enum Sentiment
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Negative,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Neutral,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Positive,
     }

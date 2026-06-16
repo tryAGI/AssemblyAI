@@ -9,7 +9,7 @@ namespace AssemblyAI
     public sealed partial class SpeakerIdentificationRequestBody
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker_identification")]
         [global::System.Text.Json.Serialization.JsonRequired]

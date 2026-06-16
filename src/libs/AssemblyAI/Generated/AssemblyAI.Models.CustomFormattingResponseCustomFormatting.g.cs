@@ -4,18 +4,18 @@
 namespace AssemblyAI
 {
     /// <summary>
-    ///
+    /// 
     /// </summary>
     public sealed partial class CustomFormattingResponseCustomFormatting
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mapping")]
         public global::System.Collections.Generic.Dictionary<string, string>? Mapping { get; set; }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("formatted_text")]
         public string? FormattedText { get; set; }
