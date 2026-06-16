@@ -11,7 +11,7 @@ namespace AssemblyAI
     public readonly partial struct TranscriptParams : global::System.IEquatable<TranscriptParams>
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.TranscriptParamsVariant1? TranscriptParamsVariant1 { get; init; }
@@ -20,7 +20,7 @@ namespace AssemblyAI
 #endif
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TranscriptParamsVariant1))]
@@ -28,7 +28,7 @@ namespace AssemblyAI
         public bool IsTranscriptParamsVariant1 => TranscriptParamsVariant1 != null;
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public bool TryPickTranscriptParamsVariant1(
 #if NET6_0_OR_GREATER
@@ -41,7 +41,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public global::AssemblyAI.TranscriptParamsVariant1 PickTranscriptParamsVariant1() => IsTranscriptParamsVariant1
             ? TranscriptParamsVariant1!
@@ -58,7 +58,7 @@ namespace AssemblyAI
 #endif
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Optional))]
@@ -66,7 +66,7 @@ namespace AssemblyAI
         public bool IsOptional => Optional != null;
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public bool TryPickOptional(
 #if NET6_0_OR_GREATER
@@ -79,23 +79,23 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public global::AssemblyAI.TranscriptOptionalParams PickOptional() => IsOptional
             ? Optional!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Optional' but the value was {ToString()}.");
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static implicit operator TranscriptParams(global::AssemblyAI.TranscriptParamsVariant1 value) => new TranscriptParams((global::AssemblyAI.TranscriptParamsVariant1?)value);
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static implicit operator global::AssemblyAI.TranscriptParamsVariant1?(TranscriptParams @this) => @this.TranscriptParamsVariant1;
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public TranscriptParams(global::AssemblyAI.TranscriptParamsVariant1? value)
         {
@@ -103,22 +103,22 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static TranscriptParams FromTranscriptParamsVariant1(global::AssemblyAI.TranscriptParamsVariant1? value) => new TranscriptParams(value);
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static implicit operator TranscriptParams(global::AssemblyAI.TranscriptOptionalParams value) => new TranscriptParams((global::AssemblyAI.TranscriptOptionalParams?)value);
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static implicit operator global::AssemblyAI.TranscriptOptionalParams?(TranscriptParams @this) => @this.Optional;
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public TranscriptParams(global::AssemblyAI.TranscriptOptionalParams? value)
         {
@@ -126,12 +126,12 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static TranscriptParams FromOptional(global::AssemblyAI.TranscriptOptionalParams? value) => new TranscriptParams(value);
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public TranscriptParams(
             global::AssemblyAI.TranscriptParamsVariant1? transcriptParamsVariant1,
@@ -143,23 +143,23 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public object? Object =>
             Optional as object ??
-            TranscriptParamsVariant1 as object
+            TranscriptParamsVariant1 as object 
             ;
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public override string? ToString() =>
             TranscriptParamsVariant1?.ToString() ??
-            Optional?.ToString()
+            Optional?.ToString() 
             ;
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public bool Validate()
         {
@@ -167,7 +167,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::AssemblyAI.TranscriptParamsVariant1, TResult>? transcriptParamsVariant1 = null,
@@ -192,7 +192,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public void Match(
             global::System.Action<global::AssemblyAI.TranscriptParamsVariant1>? transcriptParamsVariant1 = null,
@@ -216,7 +216,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public void Switch(
             global::System.Action<global::AssemblyAI.TranscriptParamsVariant1>? transcriptParamsVariant1 = null,
@@ -239,7 +239,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public override int GetHashCode()
         {
@@ -260,18 +260,18 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public bool Equals(TranscriptParams other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.TranscriptParamsVariant1?>.Default.Equals(TranscriptParamsVariant1, other.TranscriptParamsVariant1) &&
-                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.TranscriptOptionalParams?>.Default.Equals(Optional, other.Optional)
+                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.TranscriptOptionalParams?>.Default.Equals(Optional, other.Optional) 
                 ;
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static bool operator ==(TranscriptParams obj1, TranscriptParams obj2)
         {
@@ -279,7 +279,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static bool operator !=(TranscriptParams obj1, TranscriptParams obj2)
         {
@@ -287,7 +287,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public override bool Equals(object? obj)
         {

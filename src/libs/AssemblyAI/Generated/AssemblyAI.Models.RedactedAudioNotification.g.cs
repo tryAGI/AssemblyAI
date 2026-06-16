@@ -20,7 +20,7 @@ namespace AssemblyAI
 #endif
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Response))]
@@ -28,7 +28,7 @@ namespace AssemblyAI
         public bool IsResponse => Response != null;
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public bool TryPickResponse(
 #if NET6_0_OR_GREATER
@@ -41,23 +41,23 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public global::AssemblyAI.RedactedAudioResponse PickResponse() => IsResponse
             ? Response!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Response' but the value was {ToString()}.");
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static implicit operator RedactedAudioNotification(global::AssemblyAI.RedactedAudioResponse value) => new RedactedAudioNotification((global::AssemblyAI.RedactedAudioResponse?)value);
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static implicit operator global::AssemblyAI.RedactedAudioResponse?(RedactedAudioNotification @this) => @this.Response;
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public RedactedAudioNotification(global::AssemblyAI.RedactedAudioResponse? value)
         {
@@ -65,26 +65,26 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static RedactedAudioNotification FromResponse(global::AssemblyAI.RedactedAudioResponse? value) => new RedactedAudioNotification(value);
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public object? Object =>
-            Response as object
+            Response as object 
             ;
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public override string? ToString() =>
-            Response?.ToString()
+            Response?.ToString() 
             ;
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public bool Validate()
         {
@@ -92,7 +92,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::AssemblyAI.RedactedAudioResponse, TResult>? response = null,
@@ -112,7 +112,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public void Match(
             global::System.Action<global::AssemblyAI.RedactedAudioResponse>? response = null,
@@ -130,7 +130,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public void Switch(
             global::System.Action<global::AssemblyAI.RedactedAudioResponse>? response = null,
@@ -148,7 +148,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public override int GetHashCode()
         {
@@ -167,17 +167,17 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public bool Equals(RedactedAudioNotification other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.RedactedAudioResponse?>.Default.Equals(Response, other.Response)
+                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.RedactedAudioResponse?>.Default.Equals(Response, other.Response) 
                 ;
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static bool operator ==(RedactedAudioNotification obj1, RedactedAudioNotification obj2)
         {
@@ -185,7 +185,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public static bool operator !=(RedactedAudioNotification obj1, RedactedAudioNotification obj2)
         {
@@ -193,7 +193,7 @@ namespace AssemblyAI
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         public override bool Equals(object? obj)
         {

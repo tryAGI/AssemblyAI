@@ -20,7 +20,7 @@ namespace AssemblyAI.Realtime.JsonConverters
                     {
                         return global::AssemblyAI.Realtime.UpdateConfigurationPayloadTypeExtensions.ToEnum(stringValue) ?? default;
                     }
-
+                    
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

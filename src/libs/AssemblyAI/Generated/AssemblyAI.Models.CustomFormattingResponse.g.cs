@@ -4,12 +4,12 @@
 namespace AssemblyAI
 {
     /// <summary>
-    ///
+    /// 
     /// </summary>
     public sealed partial class CustomFormattingResponse
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_formatting")]
         public global::AssemblyAI.CustomFormattingResponseCustomFormatting? CustomFormatting { get; set; }

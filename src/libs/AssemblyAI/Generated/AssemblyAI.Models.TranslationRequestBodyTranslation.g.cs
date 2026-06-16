@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    ///
+    /// 
     /// </summary>
     public sealed partial class TranslationRequestBodyTranslation
     {

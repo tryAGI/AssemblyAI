@@ -9,7 +9,7 @@ namespace AssemblyAI.Realtime
     public enum SessionBeginsPayloadType
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Begin,
     }

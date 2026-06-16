@@ -9,23 +9,23 @@ namespace AssemblyAI
     public enum SummaryType
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Bullets,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         BulletsVerbose,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Gist,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Headline,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Paragraph,
     }

@@ -9,15 +9,15 @@ namespace AssemblyAI
     public enum SummaryModel
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Catchy,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Conversational,
         /// <summary>
-        ///
+        /// 
         /// </summary>
         Informative,
     }
