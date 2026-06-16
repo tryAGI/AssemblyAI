@@ -13,7 +13,7 @@ fetch_spec() {
     --connect-timeout 30 --max-time 300
 }
 
-# OpenAPI spec: https://www.assemblyai.com/docs/api-reference/openapi.json (+ AsyncAPI)
+# OpenAPI spec: https://www.assemblyai.com/docs/openapi.yaml (+ AsyncAPI)
 
 use_pinned_spec=false
 for arg in "$@"; do
@@ -34,7 +34,7 @@ install_autosdk_cli
 rm -rf Generated
 if [[ "$use_pinned_spec" == false ]]; then
   tmp_openapi="$(mktemp)"
-  if fetch_spec --fail --silent --show-error -L -o "$tmp_openapi" https://www.assemblyai.com/docs/api-reference/openapi.json; then
+  if fetch_spec --fail --silent --show-error -L -o "$tmp_openapi" https://www.assemblyai.com/docs/openapi.yaml; then
     mv "$tmp_openapi" openapi.yaml
   else
     echo "warning: failed to download AssemblyAI OpenAPI spec, using committed openapi.yaml" >&2

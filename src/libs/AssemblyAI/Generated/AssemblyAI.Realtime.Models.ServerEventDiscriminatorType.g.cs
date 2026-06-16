@@ -4,24 +4,24 @@
 namespace AssemblyAI.Realtime
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ServerEventDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Begin,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Termination,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Turn,
     }

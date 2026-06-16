@@ -4,16 +4,16 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification<br/>
+    /// AssemblyAI API<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
     public sealed partial class AssemblyAIClient : global::AssemblyAI.IAssemblyAIClient, global::System.IDisposable
     {
         /// <summary>
-        /// 
+        /// AssemblyAI API
         /// </summary>
-        public const string DefaultBaseUrl = "http://sandbox.mintlify.com/";
+        public const string DefaultBaseUrl = "https://api.assemblyai.com/";
 
         private bool _disposeHttpClient = true;
 
@@ -35,10 +35,28 @@ namespace AssemblyAI
         /// <inheritdoc/>
         public global::AssemblyAI.AutoSDKClientOptions Options { get; }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; } = global::AssemblyAI.SourceGenerationContext.Default;
 
+
+        /// <summary>
+        ///
+        /// </summary>
+        public FilesClient Files => new FilesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        ///
+        /// </summary>
+        public TranscriptsClient Transcripts => new TranscriptsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+        };
 
         /// <summary>
         /// Creates a new instance of the AssemblyAIClient.

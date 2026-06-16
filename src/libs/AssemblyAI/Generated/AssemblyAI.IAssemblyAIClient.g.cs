@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification<br/>
+    /// AssemblyAI API<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -40,10 +40,20 @@ namespace AssemblyAI
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
+
+        /// <summary>
+        ///
+        /// </summary>
+        public FilesClient Files { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public TranscriptsClient Transcripts { get; }
 
     }
 }

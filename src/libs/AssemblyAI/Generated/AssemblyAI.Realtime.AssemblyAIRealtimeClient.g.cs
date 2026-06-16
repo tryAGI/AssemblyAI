@@ -282,7 +282,7 @@ namespace AssemblyAI.Realtime
         public event global::System.EventHandler<AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.ErrorPayload>>? ErrorReceived;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; } = global::AssemblyAI.Realtime.RealtimeSourceGenerationContext.Default;

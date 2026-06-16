@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace AssemblyAI;
 
-public sealed partial class TranscriptParams
+public readonly partial struct TranscriptParams
 {
     /// <summary>
     /// 
@@ -30,36 +30,33 @@ public sealed partial class TranscriptParams
     /// 
     /// </summary>
     /// <param name="url"></param>
-    /// <param name="params"></param>
+    /// <param name="optionalParams"></param>
     /// <returns></returns>
     public static TranscriptParams FromUrl(
         [SuppressMessage("Design", "CA1054:URI-like parameters should not be strings")]
         string url,
-        TranscriptParams? @params = null)
+        TranscriptOptionalParams? optionalParams = null)
     {
         ArgumentNullException.ThrowIfNull(url);
 
-        TranscriptParams transcriptParams = @params ?? new TranscriptParams
-        {
-            AudioUrl = url,
-            SpeechModels = [],
-        };
-        transcriptParams.AudioUrl = url;
-        transcriptParams.SpeechModels ??= [];
+        optionalParams ??= new TranscriptOptionalParams();
+        optionalParams.SpeechModels ??= [];
 
-        return transcriptParams;
+        return new TranscriptParams(
+            new TranscriptParamsVariant1(url),
+            optionalParams);
     }
 
     /// <summary>
     /// 
     /// </summary>
     /// <param name="uri"></param>
-    /// <param name="params"></param>
+    /// <param name="optionalParams"></param>
     /// <returns></returns>
-    public static TranscriptParams FromUri(Uri uri, TranscriptParams? @params = null)
+    public static TranscriptParams FromUri(Uri uri, TranscriptOptionalParams? optionalParams = null)
     {
         ArgumentNullException.ThrowIfNull(uri);
 
-        return FromUrl(uri.ToString(), @params);
+        return FromUrl(uri.ToString(), optionalParams);
     }
 }

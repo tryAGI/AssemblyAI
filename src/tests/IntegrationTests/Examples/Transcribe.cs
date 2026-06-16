@@ -20,14 +20,16 @@ public partial class Tests
         //// var uploaded = await client.Files.UploadAsync(apiKey, await File.ReadAllBytesAsync("./path/to/file.mp3"));
         //// fileUrl = uploaded.UploadUrl!;
 
-        var queued = await client.Transcripts.SubmitAsync(new TranscriptParams
-        {
-            AudioUrl = fileUrl,
-            SpeechModels = [],
-            LanguageDetection = true,
-            SpeakerLabels = true,
-            AutoHighlights = true,
-        });
+        var queued = await client.Transcripts.SubmitAsync(
+            TranscriptParams.FromUrl(
+                fileUrl,
+                new TranscriptOptionalParams
+                {
+                    SpeechModels = [],
+                    LanguageDetection = true,
+                    SpeakerLabels = true,
+                    AutoHighlights = true,
+                }));
 
         //// Submit returns immediately; poll Transcripts.GetAsync until the status is Completed (or Error).
         var transcript = await PollUntilTerminalAsync(client, queued.Id);
@@ -48,7 +50,9 @@ public partial class Tests
         while (true)
         {
             cts.Token.ThrowIfCancellationRequested();
-            var t = await client.Transcripts.GetAsync(id.ToString(), cts.Token);
+            var t = await client.Transcripts.GetAsync(
+                id.ToString(),
+                cancellationToken: cts.Token);
             if (t.Status is TranscriptStatus.Completed or TranscriptStatus.Error)
             {
                 return t;
