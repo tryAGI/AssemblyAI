@@ -43,7 +43,7 @@ namespace AssemblyAI
         public required string AudioUrl { get; set; }
 
         /// <summary>
-        /// Whether [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/auto-chapters) is enabled, can be true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible chapter summaries. See the [updated Auto Chapters page](https://www.assemblyai.com/docs/speech-understanding/auto-chapters) for details.<br/>
+        /// Whether [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/auto-chapters) is enabled, can be true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/quickstart) instead for more flexible chapter summaries. See the [updated Auto Chapters page](https://www.assemblyai.com/docs/speech-understanding/auto-chapters) for details.<br/>
         /// Note: This parameter is only supported for the Universal-2 model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auto_chapters")]
@@ -336,7 +336,7 @@ namespace AssemblyAI
         public required global::AssemblyAI.TranscriptStatus Status { get; set; }
 
         /// <summary>
-        /// Whether [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled, either true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.<br/>
+        /// Whether [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled, either true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/quickstart) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.<br/>
         /// Note: This parameter is only supported for the Universal-2 model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summarization")]
@@ -344,7 +344,7 @@ namespace AssemblyAI
         public required bool Summarization { get; set; }
 
         /// <summary>
-        /// The generated summary of the media file, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
+        /// The generated summary of the media file, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/quickstart) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
         [global::System.Obsolete("This property marked as deprecated.")]
@@ -352,14 +352,14 @@ namespace AssemblyAI
 
         /// <summary>
         /// The Summarization model used to generate the summary,<br/>
-        /// if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
+        /// if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/quickstart) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary_model")]
         [global::System.Obsolete("This property marked as deprecated.")]
         public string? SummaryModel { get; set; }
 
         /// <summary>
-        /// The type of summary generated, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
+        /// The type of summary generated, if [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/quickstart) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary_type")]
         [global::System.Obsolete("This property marked as deprecated.")]
@@ -522,7 +522,7 @@ namespace AssemblyAI
         /// The status of your transcript. Possible values are queued, processing, completed, or error.
         /// </param>
         /// <param name="summarization">
-        /// Whether [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled, either true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/overview) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.<br/>
+        /// Whether [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization) is enabled, either true or false. Deprecated - use [LLM Gateway](https://www.assemblyai.com/docs/llm-gateway/quickstart) instead for more flexible summaries. See the [updated Summarization page](https://www.assemblyai.com/docs/speech-understanding/summarization) for details.<br/>
         /// Note: This parameter is only supported for the Universal-2 model.
         /// </param>
         /// <param name="webhookAuth">
