@@ -1,7 +1,5 @@
 using System.Globalization;
 using System.Text;
-using System.Text.Encodings.Web;
-using System.Text.Json;
 
 namespace AssemblyAI.Realtime;
 
@@ -138,7 +136,7 @@ public sealed record StreamingConnectOptions
             }
             if (nonEmpty.Count > 0)
             {
-                Append(query, "keyterms_prompt", JsonSerializer.Serialize(nonEmpty, SerializerOptions));
+                Append(query, "keyterms_prompt", SerializeStringArray(nonEmpty));
             }
         }
 
@@ -186,10 +184,68 @@ public sealed record StreamingConnectOptions
         }
     }
 
-    private static readonly JsonSerializerOptions SerializerOptions = new()
+    private static string SerializeStringArray(List<string> values)
     {
-        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-    };
+        var json = new StringBuilder();
+        json.Append('[');
+
+        for (var i = 0; i < values.Count; i++)
+        {
+            if (i > 0)
+            {
+                json.Append(',');
+            }
+
+            json.Append('"');
+            AppendEscapedJsonString(json, values[i]);
+            json.Append('"');
+        }
+
+        json.Append(']');
+        return json.ToString();
+    }
+
+    private static void AppendEscapedJsonString(StringBuilder json, string value)
+    {
+        foreach (var character in value)
+        {
+            switch (character)
+            {
+                case '"':
+                    json.Append("\\\"");
+                    break;
+                case '\\':
+                    json.Append("\\\\");
+                    break;
+                case '\b':
+                    json.Append("\\b");
+                    break;
+                case '\f':
+                    json.Append("\\f");
+                    break;
+                case '\n':
+                    json.Append("\\n");
+                    break;
+                case '\r':
+                    json.Append("\\r");
+                    break;
+                case '\t':
+                    json.Append("\\t");
+                    break;
+                default:
+                    if (char.IsControl(character))
+                    {
+                        json.Append("\\u");
+                        json.Append(((int)character).ToString("x4", CultureInfo.InvariantCulture));
+                    }
+                    else
+                    {
+                        json.Append(character);
+                    }
+                    break;
+            }
+        }
+    }
 }
 
 /// <summary>
