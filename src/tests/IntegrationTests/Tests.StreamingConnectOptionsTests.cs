@@ -128,8 +128,8 @@ public partial class Tests
         var uri = new StreamingConnectOptions
         {
             AgentContext = "What is your email address?",
-            LanguageCode = "en",
-            VoiceFocus = "near-field",
+            LanguageCode = StreamingLanguageCode.English,
+            VoiceFocus = StreamingVoiceFocus.NearField,
             VoiceFocusThreshold = 0.75,
             SpeakerLabels = true,
             MaxSpeakers = 2,
@@ -149,5 +149,22 @@ public partial class Tests
         uri.Query.Should().Contain("continuous_partials=true");
         uri.Query.Should().Contain("include_partial_turns=true");
         uri.Query.Should().Contain("interruption_delay=250");
+    }
+
+    [TestMethod]
+    public void StreamingConnectOptions_StillAcceptsRawStringEscapeHatches()
+    {
+        var uri = new StreamingConnectOptions
+        {
+            SpeechModel = "custom-realtime-model",
+            Mode = "custom-mode",
+            LanguageCode = "xx",
+            VoiceFocus = "custom-focus",
+        }.BuildUri();
+
+        uri.Query.Should().Contain("speech_model=custom-realtime-model");
+        uri.Query.Should().Contain("mode=custom-mode");
+        uri.Query.Should().Contain("language_code=xx");
+        uri.Query.Should().Contain("voice_focus=custom-focus");
     }
 }

@@ -27,9 +27,10 @@ public partial class Tests
         using var client = new AssemblyAIRealtimeClient();
         await client.ConnectAsync(apiKey, new StreamingConnectOptions
         {
+            SpeechModel = StreamingSpeechModel.Universal35ProRealtime,
             FormatTurns = true,
             AgentContext = "Thanks for calling Contoso support. What is your email address?",
-            VoiceFocus = "near-field",
+            VoiceFocus = StreamingVoiceFocus.NearField,
             SpeakerLabels = true,
             MaxSpeakers = 2,
         });

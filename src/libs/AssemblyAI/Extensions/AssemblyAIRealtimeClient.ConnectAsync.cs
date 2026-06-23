@@ -21,7 +21,7 @@ public sealed record StreamingConnectOptions
     /// Speech model to use for the streaming session. Defaults to <c>u3-rt-pro</c>,
     /// AssemblyAI's current Universal-3.5 Pro Realtime model.
     /// </summary>
-    public string SpeechModel { get; init; } = "u3-rt-pro";
+    public StreamingSpeechModel SpeechModel { get; init; } = StreamingSpeechModel.Universal35ProRealtime;
 
     /// <summary>Audio encoding. v3 supports <c>pcm_s16le</c> (default) and <c>pcm_mulaw</c>.</summary>
     public string Encoding { get; init; } = "pcm_s16le";
@@ -39,16 +39,16 @@ public sealed record StreamingConnectOptions
     public IReadOnlyList<string>? KeytermsPrompt { get; init; }
 
     /// <summary>Latency and accuracy preset, for example <c>min_latency</c>, <c>balanced</c>, or <c>max_accuracy</c>.</summary>
-    public string? Mode { get; init; }
+    public StreamingMode? Mode { get; init; }
 
     /// <summary>Steer transcription toward a specific language code while still allowing token-level transcription.</summary>
-    public string? LanguageCode { get; init; }
+    public StreamingLanguageCode? LanguageCode { get; init; }
 
     /// <summary>Whether to include detected language metadata in turn messages.</summary>
     public bool? LanguageDetection { get; init; }
 
     /// <summary>Voice Focus mode. Use <c>near-field</c> for close microphones or <c>far-field</c> for distant microphones.</summary>
-    public string? VoiceFocus { get; init; }
+    public StreamingVoiceFocus? VoiceFocus { get; init; }
 
     /// <summary>Voice Focus suppression strength from 0.0 to 1.0. Requires <see cref="VoiceFocus"/>.</summary>
     public double? VoiceFocusThreshold { get; init; }
@@ -105,15 +105,15 @@ public sealed record StreamingConnectOptions
 
         var query = new StringBuilder();
         Append(query, "sample_rate", SampleRate.ToString(CultureInfo.InvariantCulture));
-        Append(query, "speech_model", SpeechModel);
+        Append(query, "speech_model", SpeechModel.ToString());
         Append(query, "encoding", Encoding);
         Append(query, "format_turns", FormatTurns);
         Append(query, "prompt", Prompt);
         Append(query, "agent_context", AgentContext);
-        Append(query, "mode", Mode);
-        Append(query, "language_code", LanguageCode);
+        Append(query, "mode", Mode?.ToString());
+        Append(query, "language_code", LanguageCode?.ToString());
         Append(query, "language_detection", LanguageDetection);
-        Append(query, "voice_focus", VoiceFocus);
+        Append(query, "voice_focus", VoiceFocus?.ToString());
         Append(query, "voice_focus_threshold", VoiceFocusThreshold);
         Append(query, "speaker_labels", SpeakerLabels);
         Append(query, "max_speakers", MaxSpeakers);

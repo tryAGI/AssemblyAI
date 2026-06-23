@@ -1,74 +1,51 @@
 # Transcribe Live
 
-
-
-This example assumes `using AssemblyAI;` is in scope and `apiKey` contains your AssemblyAI API key.
+Connect to AssemblyAI's v3 realtime streaming API with Universal-3.5 Pro Realtime.
 
 ```csharp
-using var client = GetAuthenticatedApi();
+using AssemblyAI.Realtime;
 
-// - You need to have `sox` installed on your system. If not, run:
-//   macOS: brew install sox (macOS)
-//   Linux: sudo apt-get install sox libsox-fmt-all
-//   Windows: manually download and install sox, and add sox to your PATH environment variable.
-//            https://sourceforge.net/projects/sox/
+using var client = new AssemblyAIRealtimeClient();
+using var cts = new CancellationTokenSource();
 
-// Set up the cancellation token, so we can stop the program with Ctrl+C
-var cts = new CancellationTokenSource();
-var ct = cts.Token;
-Console.CancelKeyPress += (sender, e) => cts.Cancel();
-
-// Set up the realtime transcriber
-// await using var transcriber = new RealtimeTranscriber(new RealtimeTranscriberOptions
-// {
-//     SampleRate = 16_000
-// });
-//
-// transcriber.PartialTranscriptReceived.Subscribe(transcript =>
-// {
-//     if (transcript.Text == "") return;
-//     Console.WriteLine($"Partial transcript: {transcript.Text}");
-// });
-// transcriber.FinalTranscriptReceived.Subscribe(transcript =>
-// {
-//     Console.WriteLine($"Final transcript: {transcript.Text}");
-// });
-
-//await transcriber.ConnectAsync();
-
-var soxArguments = string.Join(' ', [
-    // --default-device doesn't work on Windows
-    OperatingSystem.IsWindows() ? "-t waveaudio default" : "--default-device",
-    "--no-show-progress",
-    "--rate 16000",
-    "--channels 1",
-    "--encoding signed-integer",
-    "--bits 16",
-    "--type wav",
-    "-" // pipe
-]);
-Console.WriteLine($"sox {soxArguments}");
-using var soxProcess = new Process();
-soxProcess.StartInfo = new ProcessStartInfo
+await client.ConnectAsync(apiKey, new StreamingConnectOptions
 {
-    FileName = "sox",
-    Arguments = soxArguments,
-    RedirectStandardOutput = true,
-    RedirectStandardError = true,
-    UseShellExecute = false,
-    CreateNoWindow = true
-};
+    SpeechModel = StreamingSpeechModel.Universal35ProRealtime,
+    FormatTurns = true,
+    AgentContext = "Thanks for calling Contoso support. What is your email address?",
+    VoiceFocus = StreamingVoiceFocus.NearField,
+    SpeakerLabels = true,
+    MaxSpeakers = 2,
+});
 
-soxProcess.Start();
-soxProcess.BeginErrorReadLine();
-var soxOutputStream = soxProcess.StandardOutput.BaseStream;
-var buffer = new Memory<byte>(new byte[4096]);
-while (await soxOutputStream.ReadAsync(buffer, ct) > 0)
+await foreach (var serverEvent in client.ReceiveUpdatesAsync(cts.Token))
 {
-    if (ct.IsCancellationRequested) break;
-    //await transcriber.SendAudioAsync(buffer);
+    if (serverEvent.IsBegin)
+    {
+        Console.WriteLine($"Session started: {serverEvent.Begin?.Id}");
+    }
+    else if (serverEvent.IsTurn)
+    {
+        Console.WriteLine(serverEvent.Turn?.Transcript);
+    }
+    else if (serverEvent.IsSpeakerRevision)
+    {
+        foreach (var revision in serverEvent.SpeakerRevision!.Revisions)
+        {
+            Console.WriteLine($"Speaker revision for turn {revision.TurnOrder}: {revision.SpeakerLabel}");
+        }
+    }
 }
+```
 
-soxProcess.Kill();
-//await transcriber.CloseAsync();
+To upgrade an existing realtime integration that pins models, set `SpeechModel` to `StreamingSpeechModel.Universal35ProRealtime` or the raw value `"u3-rt-pro"`.
+
+For voice-agent context carryover, send your agent's spoken reply after TTS starts or finishes:
+
+```csharp
+await client.SendUpdateConfigurationAsync(new UpdateConfigurationPayload
+{
+    AgentContext = "Got it. Could you spell the account ID?",
+    Mode = UpdateConfigurationPayloadMode.Balanced,
+});
 ```
