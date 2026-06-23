@@ -17,6 +17,10 @@ namespace AssemblyAI.Realtime
 
             typeof(global::AssemblyAI.Realtime.JsonConverters.UpdateConfigurationPayloadTypeNullableJsonConverter),
 
+            typeof(global::AssemblyAI.Realtime.JsonConverters.UpdateConfigurationPayloadModeJsonConverter),
+
+            typeof(global::AssemblyAI.Realtime.JsonConverters.UpdateConfigurationPayloadModeNullableJsonConverter),
+
             typeof(global::AssemblyAI.Realtime.JsonConverters.ForceEndpointPayloadTypeJsonConverter),
 
             typeof(global::AssemblyAI.Realtime.JsonConverters.ForceEndpointPayloadTypeNullableJsonConverter),
@@ -29,9 +33,17 @@ namespace AssemblyAI.Realtime
 
             typeof(global::AssemblyAI.Realtime.JsonConverters.SessionBeginsPayloadTypeNullableJsonConverter),
 
+            typeof(global::AssemblyAI.Realtime.JsonConverters.SpeechStartedPayloadTypeJsonConverter),
+
+            typeof(global::AssemblyAI.Realtime.JsonConverters.SpeechStartedPayloadTypeNullableJsonConverter),
+
             typeof(global::AssemblyAI.Realtime.JsonConverters.TurnPayloadTypeJsonConverter),
 
             typeof(global::AssemblyAI.Realtime.JsonConverters.TurnPayloadTypeNullableJsonConverter),
+
+            typeof(global::AssemblyAI.Realtime.JsonConverters.SpeakerRevisionPayloadTypeJsonConverter),
+
+            typeof(global::AssemblyAI.Realtime.JsonConverters.SpeakerRevisionPayloadTypeNullableJsonConverter),
 
             typeof(global::AssemblyAI.Realtime.JsonConverters.TerminationPayloadTypeJsonConverter),
 
@@ -56,19 +68,27 @@ namespace AssemblyAI.Realtime
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.UpdateConfigurationPayloadType), TypeInfoPropertyName = "UpdateConfigurationPayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.UpdateConfigurationPayloadMode), TypeInfoPropertyName = "UpdateConfigurationPayloadMode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.ForceEndpointPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.ForceEndpointPayloadType), TypeInfoPropertyName = "ForceEndpointPayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SessionTerminationPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SessionTerminationPayloadType), TypeInfoPropertyName = "SessionTerminationPayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SessionBeginsPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SessionBeginsPayloadType), TypeInfoPropertyName = "SessionBeginsPayloadType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SpeechStartedPayload))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SpeechStartedPayloadType), TypeInfoPropertyName = "SpeechStartedPayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.Word))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.TurnPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.TurnPayloadType), TypeInfoPropertyName = "TurnPayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.Word>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SpeakerRevisionPayload))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SpeakerRevisionPayloadType), TypeInfoPropertyName = "SpeakerRevisionPayloadType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.SpeakerRevision>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SpeakerRevision))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.TerminationPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.TerminationPayloadType), TypeInfoPropertyName = "TerminationPayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.ErrorPayload))]
@@ -78,7 +98,9 @@ namespace AssemblyAI.Realtime
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.ServerEvent), TypeInfoPropertyName = "ServerEvent2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.ServerEventDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.ServerEventDiscriminatorType), TypeInfoPropertyName = "ServerEventDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.Realtime.Word>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.Realtime.SpeakerRevision>))]
     public sealed partial class RealtimeSourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }

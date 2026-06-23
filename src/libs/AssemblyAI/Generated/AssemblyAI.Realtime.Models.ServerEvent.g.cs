@@ -89,6 +89,80 @@ namespace AssemblyAI.Realtime
             : throw new global::System.InvalidOperationException($"Expected union variant 'Turn' but the value was {ToString()}.");
 
         /// <summary>
+        /// Server event indicating speech has been detected.
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::AssemblyAI.Realtime.SpeechStartedPayload? SpeechStarted { get; init; }
+#else
+        public global::AssemblyAI.Realtime.SpeechStartedPayload? SpeechStarted { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SpeechStarted))]
+#endif
+        public bool IsSpeechStarted => SpeechStarted != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSpeechStarted(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.Realtime.SpeechStartedPayload? value)
+        {
+            value = SpeechStarted;
+            return IsSpeechStarted;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.Realtime.SpeechStartedPayload PickSpeechStarted() => IsSpeechStarted
+            ? SpeechStarted!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SpeechStarted' but the value was {ToString()}.");
+
+        /// <summary>
+        /// Server event containing corrected speaker labels after termination.
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::AssemblyAI.Realtime.SpeakerRevisionPayload? SpeakerRevision { get; init; }
+#else
+        public global::AssemblyAI.Realtime.SpeakerRevisionPayload? SpeakerRevision { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SpeakerRevision))]
+#endif
+        public bool IsSpeakerRevision => SpeakerRevision != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSpeakerRevision(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::AssemblyAI.Realtime.SpeakerRevisionPayload? value)
+        {
+            value = SpeakerRevision;
+            return IsSpeakerRevision;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.Realtime.SpeakerRevisionPayload PickSpeakerRevision() => IsSpeakerRevision
+            ? SpeakerRevision!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SpeakerRevision' but the value was {ToString()}.");
+
+        /// <summary>
         /// Server event confirming session termination with statistics.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -210,6 +284,52 @@ namespace AssemblyAI.Realtime
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator ServerEvent(global::AssemblyAI.Realtime.SpeechStartedPayload value) => new ServerEvent((global::AssemblyAI.Realtime.SpeechStartedPayload?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::AssemblyAI.Realtime.SpeechStartedPayload?(ServerEvent @this) => @this.SpeechStarted;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ServerEvent(global::AssemblyAI.Realtime.SpeechStartedPayload? value)
+        {
+            SpeechStarted = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ServerEvent FromSpeechStarted(global::AssemblyAI.Realtime.SpeechStartedPayload? value) => new ServerEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator ServerEvent(global::AssemblyAI.Realtime.SpeakerRevisionPayload value) => new ServerEvent((global::AssemblyAI.Realtime.SpeakerRevisionPayload?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::AssemblyAI.Realtime.SpeakerRevisionPayload?(ServerEvent @this) => @this.SpeakerRevision;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ServerEvent(global::AssemblyAI.Realtime.SpeakerRevisionPayload? value)
+        {
+            SpeakerRevision = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ServerEvent FromSpeakerRevision(global::AssemblyAI.Realtime.SpeakerRevisionPayload? value) => new ServerEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ServerEvent(global::AssemblyAI.Realtime.TerminationPayload value) => new ServerEvent((global::AssemblyAI.Realtime.TerminationPayload?)value);
 
         /// <summary>
@@ -260,6 +380,8 @@ namespace AssemblyAI.Realtime
             global::AssemblyAI.Realtime.ServerEventDiscriminatorType? type,
             global::AssemblyAI.Realtime.SessionBeginsPayload? begin,
             global::AssemblyAI.Realtime.TurnPayload? turn,
+            global::AssemblyAI.Realtime.SpeechStartedPayload? speechStarted,
+            global::AssemblyAI.Realtime.SpeakerRevisionPayload? speakerRevision,
             global::AssemblyAI.Realtime.TerminationPayload? termination,
             global::AssemblyAI.Realtime.ErrorPayload? error
             )
@@ -268,6 +390,8 @@ namespace AssemblyAI.Realtime
 
             Begin = begin;
             Turn = turn;
+            SpeechStarted = speechStarted;
+            SpeakerRevision = speakerRevision;
             Termination = termination;
             Error = error;
         }
@@ -278,6 +402,8 @@ namespace AssemblyAI.Realtime
         public object? Object =>
             Error as object ??
             Termination as object ??
+            SpeakerRevision as object ??
+            SpeechStarted as object ??
             Turn as object ??
             Begin as object 
             ;
@@ -288,6 +414,8 @@ namespace AssemblyAI.Realtime
         public override string? ToString() =>
             Begin?.ToString() ??
             Turn?.ToString() ??
+            SpeechStarted?.ToString() ??
+            SpeakerRevision?.ToString() ??
             Termination?.ToString() ??
             Error?.ToString() 
             ;
@@ -297,7 +425,7 @@ namespace AssemblyAI.Realtime
         /// </summary>
         public bool Validate()
         {
-            return IsBegin && !IsTurn && !IsTermination && !IsError || !IsBegin && IsTurn && !IsTermination && !IsError || !IsBegin && !IsTurn && IsTermination && !IsError || !IsBegin && !IsTurn && !IsTermination && IsError;
+            return IsBegin && !IsTurn && !IsSpeechStarted && !IsSpeakerRevision && !IsTermination && !IsError || !IsBegin && IsTurn && !IsSpeechStarted && !IsSpeakerRevision && !IsTermination && !IsError || !IsBegin && !IsTurn && IsSpeechStarted && !IsSpeakerRevision && !IsTermination && !IsError || !IsBegin && !IsTurn && !IsSpeechStarted && IsSpeakerRevision && !IsTermination && !IsError || !IsBegin && !IsTurn && !IsSpeechStarted && !IsSpeakerRevision && IsTermination && !IsError || !IsBegin && !IsTurn && !IsSpeechStarted && !IsSpeakerRevision && !IsTermination && IsError;
         }
 
         /// <summary>
@@ -306,6 +434,8 @@ namespace AssemblyAI.Realtime
         public TResult? Match<TResult>(
             global::System.Func<global::AssemblyAI.Realtime.SessionBeginsPayload, TResult>? begin = null,
             global::System.Func<global::AssemblyAI.Realtime.TurnPayload, TResult>? turn = null,
+            global::System.Func<global::AssemblyAI.Realtime.SpeechStartedPayload, TResult>? speechStarted = null,
+            global::System.Func<global::AssemblyAI.Realtime.SpeakerRevisionPayload, TResult>? speakerRevision = null,
             global::System.Func<global::AssemblyAI.Realtime.TerminationPayload, TResult>? termination = null,
             global::System.Func<global::AssemblyAI.Realtime.ErrorPayload, TResult>? error = null,
             bool validate = true)
@@ -322,6 +452,14 @@ namespace AssemblyAI.Realtime
             else if (IsTurn && turn != null)
             {
                 return turn(Turn!);
+            }
+            else if (IsSpeechStarted && speechStarted != null)
+            {
+                return speechStarted(SpeechStarted!);
+            }
+            else if (IsSpeakerRevision && speakerRevision != null)
+            {
+                return speakerRevision(SpeakerRevision!);
             }
             else if (IsTermination && termination != null)
             {
@@ -343,6 +481,10 @@ namespace AssemblyAI.Realtime
 
             global::System.Action<global::AssemblyAI.Realtime.TurnPayload>? turn = null,
 
+            global::System.Action<global::AssemblyAI.Realtime.SpeechStartedPayload>? speechStarted = null,
+
+            global::System.Action<global::AssemblyAI.Realtime.SpeakerRevisionPayload>? speakerRevision = null,
+
             global::System.Action<global::AssemblyAI.Realtime.TerminationPayload>? termination = null,
 
             global::System.Action<global::AssemblyAI.Realtime.ErrorPayload>? error = null,
@@ -360,6 +502,14 @@ namespace AssemblyAI.Realtime
             else if (IsTurn)
             {
                 turn?.Invoke(Turn!);
+            }
+            else if (IsSpeechStarted)
+            {
+                speechStarted?.Invoke(SpeechStarted!);
+            }
+            else if (IsSpeakerRevision)
+            {
+                speakerRevision?.Invoke(SpeakerRevision!);
             }
             else if (IsTermination)
             {
@@ -377,6 +527,8 @@ namespace AssemblyAI.Realtime
         public void Switch(
             global::System.Action<global::AssemblyAI.Realtime.SessionBeginsPayload>? begin = null,
             global::System.Action<global::AssemblyAI.Realtime.TurnPayload>? turn = null,
+            global::System.Action<global::AssemblyAI.Realtime.SpeechStartedPayload>? speechStarted = null,
+            global::System.Action<global::AssemblyAI.Realtime.SpeakerRevisionPayload>? speakerRevision = null,
             global::System.Action<global::AssemblyAI.Realtime.TerminationPayload>? termination = null,
             global::System.Action<global::AssemblyAI.Realtime.ErrorPayload>? error = null,
             bool validate = true)
@@ -393,6 +545,14 @@ namespace AssemblyAI.Realtime
             else if (IsTurn)
             {
                 turn?.Invoke(Turn!);
+            }
+            else if (IsSpeechStarted)
+            {
+                speechStarted?.Invoke(SpeechStarted!);
+            }
+            else if (IsSpeakerRevision)
+            {
+                speakerRevision?.Invoke(SpeakerRevision!);
             }
             else if (IsTermination)
             {
@@ -415,6 +575,10 @@ namespace AssemblyAI.Realtime
                 typeof(global::AssemblyAI.Realtime.SessionBeginsPayload),
                 Turn,
                 typeof(global::AssemblyAI.Realtime.TurnPayload),
+                SpeechStarted,
+                typeof(global::AssemblyAI.Realtime.SpeechStartedPayload),
+                SpeakerRevision,
+                typeof(global::AssemblyAI.Realtime.SpeakerRevisionPayload),
                 Termination,
                 typeof(global::AssemblyAI.Realtime.TerminationPayload),
                 Error,
@@ -437,6 +601,8 @@ namespace AssemblyAI.Realtime
             return
                 global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.Realtime.SessionBeginsPayload?>.Default.Equals(Begin, other.Begin) &&
                 global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.Realtime.TurnPayload?>.Default.Equals(Turn, other.Turn) &&
+                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.Realtime.SpeechStartedPayload?>.Default.Equals(SpeechStarted, other.SpeechStarted) &&
+                global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.Realtime.SpeakerRevisionPayload?>.Default.Equals(SpeakerRevision, other.SpeakerRevision) &&
                 global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.Realtime.TerminationPayload?>.Default.Equals(Termination, other.Termination) &&
                 global::System.Collections.Generic.EqualityComparer<global::AssemblyAI.Realtime.ErrorPayload?>.Default.Equals(Error, other.Error) 
                 ;

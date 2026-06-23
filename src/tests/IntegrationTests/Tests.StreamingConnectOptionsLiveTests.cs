@@ -159,6 +159,7 @@ public partial class Tests
         await client.ConnectAsync(apiKey, new StreamingConnectOptions
         {
             Region = "eu",
+            SpeechModel = "universal-streaming-english",
         });
 
         client.IsConnected.Should().BeTrue();

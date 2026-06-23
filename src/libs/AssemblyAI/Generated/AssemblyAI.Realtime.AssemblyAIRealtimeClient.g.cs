@@ -273,6 +273,14 @@ namespace AssemblyAI.Realtime
         /// </summary>
         public event global::System.EventHandler<AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.TurnPayload>>? TurnReceived;
         /// <summary>
+        /// Raised after a speechStarted message is deserialized.
+        /// </summary>
+        public event global::System.EventHandler<AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.SpeechStartedPayload>>? SpeechStartedReceived;
+        /// <summary>
+        /// Raised after a speakerRevision message is deserialized.
+        /// </summary>
+        public event global::System.EventHandler<AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.SpeakerRevisionPayload>>? SpeakerRevisionReceived;
+        /// <summary>
         /// Raised after a termination message is deserialized.
         /// </summary>
         public event global::System.EventHandler<AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.TerminationPayload>>? TerminationReceived;

@@ -19,6 +19,14 @@ namespace AssemblyAI.Realtime
         /// <summary>
         /// 
         /// </summary>
+        SpeakerRevision,
+        /// <summary>
+        /// 
+        /// </summary>
+        SpeechStarted,
+        /// <summary>
+        /// 
+        /// </summary>
         Termination,
         /// <summary>
         /// 
@@ -40,6 +48,8 @@ namespace AssemblyAI.Realtime
             {
                 ServerEventDiscriminatorType.Begin => "Begin",
                 ServerEventDiscriminatorType.Error => "Error",
+                ServerEventDiscriminatorType.SpeakerRevision => "SpeakerRevision",
+                ServerEventDiscriminatorType.SpeechStarted => "SpeechStarted",
                 ServerEventDiscriminatorType.Termination => "Termination",
                 ServerEventDiscriminatorType.Turn => "Turn",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -54,6 +64,8 @@ namespace AssemblyAI.Realtime
             {
                 "Begin" => ServerEventDiscriminatorType.Begin,
                 "Error" => ServerEventDiscriminatorType.Error,
+                "SpeakerRevision" => ServerEventDiscriminatorType.SpeakerRevision,
+                "SpeechStarted" => ServerEventDiscriminatorType.SpeechStarted,
                 "Termination" => ServerEventDiscriminatorType.Termination,
                 "Turn" => ServerEventDiscriminatorType.Turn,
                 _ => null,

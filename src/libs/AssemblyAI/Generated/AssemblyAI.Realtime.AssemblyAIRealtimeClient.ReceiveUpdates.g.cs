@@ -186,6 +186,24 @@ namespace AssemblyAI.Realtime
                         rawText,
                         json));
             }
+            if (@event.SpeechStarted is { } __SpeechStartedReceived)
+            {
+                SpeechStartedReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.SpeechStartedPayload>(
+                        __SpeechStartedReceived,
+                        rawText,
+                        json));
+            }
+            if (@event.SpeakerRevision is { } __SpeakerRevisionReceived)
+            {
+                SpeakerRevisionReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::AssemblyAI.Realtime.SpeakerRevisionPayload>(
+                        __SpeakerRevisionReceived,
+                        rawText,
+                        json));
+            }
             if (@event.Termination is { } __TerminationReceived)
             {
                 TerminationReceived?.Invoke(

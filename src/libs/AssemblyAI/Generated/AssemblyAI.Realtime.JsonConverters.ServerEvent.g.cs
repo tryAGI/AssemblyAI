@@ -35,6 +35,20 @@ namespace AssemblyAI.Realtime.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::AssemblyAI.Realtime.TurnPayload)}");
                 turn = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::AssemblyAI.Realtime.SpeechStartedPayload? speechStarted = default;
+            if (discriminator?.Type == global::AssemblyAI.Realtime.ServerEventDiscriminatorType.SpeechStarted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.SpeechStartedPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.SpeechStartedPayload> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::AssemblyAI.Realtime.SpeechStartedPayload)}");
+                speechStarted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::AssemblyAI.Realtime.SpeakerRevisionPayload? speakerRevision = default;
+            if (discriminator?.Type == global::AssemblyAI.Realtime.ServerEventDiscriminatorType.SpeakerRevision)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.SpeakerRevisionPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.SpeakerRevisionPayload> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::AssemblyAI.Realtime.SpeakerRevisionPayload)}");
+                speakerRevision = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::AssemblyAI.Realtime.TerminationPayload? termination = default;
             if (discriminator?.Type == global::AssemblyAI.Realtime.ServerEventDiscriminatorType.Termination)
             {
@@ -55,6 +69,10 @@ namespace AssemblyAI.Realtime.JsonConverters
                 begin,
 
                 turn,
+
+                speechStarted,
+
+                speakerRevision,
 
                 termination,
 
@@ -84,6 +102,18 @@ namespace AssemblyAI.Realtime.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.TurnPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.TurnPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.TurnPayload).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Turn!, typeInfo);
+            }
+            else if (value.IsSpeechStarted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.SpeechStartedPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.SpeechStartedPayload?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.SpeechStartedPayload).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SpeechStarted!, typeInfo);
+            }
+            else if (value.IsSpeakerRevision)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.SpeakerRevisionPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.SpeakerRevisionPayload?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.SpeakerRevisionPayload).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SpeakerRevision!, typeInfo);
             }
             else if (value.IsTermination)
             {

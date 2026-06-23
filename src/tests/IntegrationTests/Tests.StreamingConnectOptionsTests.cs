@@ -13,6 +13,7 @@ public partial class Tests
         uri.Host.Should().Be("streaming.assemblyai.com");
         uri.AbsolutePath.Should().Be("/v3/ws");
         uri.Query.Should().Contain("sample_rate=16000");
+        uri.Query.Should().Contain("speech_model=u3-rt-pro");
         uri.Query.Should().Contain("encoding=pcm_s16le");
         uri.Query.Should().Contain("format_turns=false");
         uri.Query.Should().NotContain("token=");
@@ -119,5 +120,34 @@ public partial class Tests
         var uri = new StreamingConnectOptions { SampleRate = 8000 }.BuildUri();
 
         uri.Query.Should().Contain("sample_rate=8000");
+    }
+
+    [TestMethod]
+    public void StreamingConnectOptions_RendersUniversal35ProRealtimeOptions()
+    {
+        var uri = new StreamingConnectOptions
+        {
+            AgentContext = "What is your email address?",
+            LanguageCode = "en",
+            VoiceFocus = "near-field",
+            VoiceFocusThreshold = 0.75,
+            SpeakerLabels = true,
+            MaxSpeakers = 2,
+            PreviousContextNTurns = 3,
+            ContinuousPartials = true,
+            IncludePartialTurns = true,
+            InterruptionDelay = 250,
+        }.BuildUri();
+
+        uri.Query.Should().Contain("agent_context=What%20is%20your%20email%20address%3F");
+        uri.Query.Should().Contain("language_code=en");
+        uri.Query.Should().Contain("voice_focus=near-field");
+        uri.Query.Should().Contain("voice_focus_threshold=0.75");
+        uri.Query.Should().Contain("speaker_labels=true");
+        uri.Query.Should().Contain("max_speakers=2");
+        uri.Query.Should().Contain("previous_context_n_turns=3");
+        uri.Query.Should().Contain("continuous_partials=true");
+        uri.Query.Should().Contain("include_partial_turns=true");
+        uri.Query.Should().Contain("interruption_delay=250");
     }
 }

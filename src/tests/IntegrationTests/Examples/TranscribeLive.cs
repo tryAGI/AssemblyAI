@@ -28,6 +28,10 @@ public partial class Tests
         await client.ConnectAsync(apiKey, new StreamingConnectOptions
         {
             FormatTurns = true,
+            AgentContext = "Thanks for calling Contoso support. What is your email address?",
+            VoiceFocus = "near-field",
+            SpeakerLabels = true,
+            MaxSpeakers = 2,
         });
 
         client.IsConnected.Should().BeTrue();
@@ -51,7 +55,8 @@ public partial class Tests
                 //// Update configuration for turn detection sensitivity.
                 await client.SendUpdateConfigurationAsync(new UpdateConfigurationPayload
                 {
-                    EndOfTurnConfidenceThreshold = 0.5,
+                    AgentContext = "Got it. Could you spell the account ID?",
+                    Mode = UpdateConfigurationPayloadMode.Balanced,
                     MaxTurnSilence = 2000,
                 });
 
