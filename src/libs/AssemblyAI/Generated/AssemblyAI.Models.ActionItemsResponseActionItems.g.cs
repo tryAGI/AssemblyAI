@@ -6,14 +6,13 @@ namespace AssemblyAI
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class SummarizationResponseSummarizationSummarization
+    public sealed partial class ActionItemsResponseActionItems
     {
         /// <summary>
-        /// Array of summaries.
+        /// Array of action items.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<object> Summary { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("items")]
+        public global::System.Collections.Generic.IList<object>? Items { get; set; }
 
         /// <summary>
         /// 
@@ -29,27 +28,27 @@ namespace AssemblyAI
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SummarizationResponseSummarizationSummarization" /> class.
+        /// Initializes a new instance of the <see cref="ActionItemsResponseActionItems" /> class.
         /// </summary>
-        /// <param name="summary">
-        /// Array of summaries.
-        /// </param>
         /// <param name="status"></param>
+        /// <param name="items">
+        /// Array of action items.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public SummarizationResponseSummarizationSummarization(
-            global::System.Collections.Generic.IList<object> summary,
-            string status)
+        public ActionItemsResponseActionItems(
+            string status,
+            global::System.Collections.Generic.IList<object>? items)
         {
-            this.Summary = summary ?? throw new global::System.ArgumentNullException(nameof(summary));
+            this.Items = items;
             this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SummarizationResponseSummarizationSummarization" /> class.
+        /// Initializes a new instance of the <see cref="ActionItemsResponseActionItems" /> class.
         /// </summary>
-        public SummarizationResponseSummarizationSummarization()
+        public ActionItemsResponseActionItems()
         {
         }
 
