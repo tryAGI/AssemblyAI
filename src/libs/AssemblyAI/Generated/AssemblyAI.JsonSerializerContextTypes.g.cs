@@ -184,7 +184,7 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TranslationRequestBody, global::AssemblyAI.SpeakerIdentificationRequestBody, global::AssemblyAI.CustomFormattingRequestBody>? Type39 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.TranslationRequestBody, global::AssemblyAI.SpeakerIdentificationRequestBody, global::AssemblyAI.CustomFormattingRequestBody, global::AssemblyAI.SummarizationRequestBody>? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -200,311 +200,343 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SummaryModel? Type43 { get; set; }
+        public global::AssemblyAI.SummarizationRequestBody? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SummaryType? Type44 { get; set; }
+        public global::AssemblyAI.SummaryModel? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>? Type45 { get; set; }
+        public global::AssemblyAI.SummaryType? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags? Type46 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptParams? Type47 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptParamsVariant1? Type48 { get; set; }
+        public global::AssemblyAI.TranscriptParams? Type48 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptUtterance? Type49 { get; set; }
+        public global::AssemblyAI.TranscriptParamsVariant1? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord>? Type50 { get; set; }
+        public global::AssemblyAI.TranscriptUtterance? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptWord? Type51 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord>? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, string>? Type52 { get; set; }
+        public global::AssemblyAI.TranscriptWord? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptStatus? Type53 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Transcript? Type54 { get; set; }
+        public global::AssemblyAI.TranscriptStatus? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.AutoHighlightsResult2, object>? Type55 { get; set; }
+        public global::AssemblyAI.Transcript? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.AutoHighlightsResult2? Type56 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.AutoHighlightsResult2, object>? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.Chapter>? Type57 { get; set; }
+        public global::AssemblyAI.AutoHighlightsResult2? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Chapter? Type58 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.Chapter>? Type58 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.ContentSafetyLabelsResult, object>? Type59 { get; set; }
+        public global::AssemblyAI.Chapter? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ContentSafetyLabelsResult? Type60 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.ContentSafetyLabelsResult, object>? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.Entity>? Type61 { get; set; }
+        public global::AssemblyAI.ContentSafetyLabelsResult? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Entity? Type62 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.Entity>? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TopicDetectionModelResult, object>? Type63 { get; set; }
+        public global::AssemblyAI.Entity? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TopicDetectionModelResult? Type64 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.TopicDetectionModelResult, object>? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptLanguageDetectionOptions? Type65 { get; set; }
+        public global::AssemblyAI.TopicDetectionModelResult? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptRedactPiiAudioOptions? Type66 { get; set; }
+        public global::AssemblyAI.TranscriptLanguageDetectionOptions? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptRedactPiiAudioOptionsOverrideAudioRedactionMethod? Type67 { get; set; }
+        public global::AssemblyAI.TranscriptRedactPiiAudioOptions? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.RedactPiiAudioQuality?, object>? Type68 { get; set; }
+        public global::AssemblyAI.TranscriptRedactPiiAudioOptionsOverrideAudioRedactionMethod? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.SentimentAnalysisResult>? Type69 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.RedactPiiAudioQuality?, object>? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SentimentAnalysisResult? Type70 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.SentimentAnalysisResult>? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptSpeechUnderstanding? Type71 { get; set; }
+        public global::AssemblyAI.SentimentAnalysisResult? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TranslationResponse, global::AssemblyAI.SpeakerIdentificationResponse, global::AssemblyAI.CustomFormattingResponse>? Type72 { get; set; }
+        public global::AssemblyAI.TranscriptSpeechUnderstanding? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranslationResponse? Type73 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.TranslationResponse, global::AssemblyAI.SpeakerIdentificationResponse, global::AssemblyAI.CustomFormattingResponse, global::AssemblyAI.SummarizationResponse>? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SpeakerIdentificationResponse? Type74 { get; set; }
+        public global::AssemblyAI.TranslationResponse? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.CustomFormattingResponse? Type75 { get; set; }
+        public global::AssemblyAI.SpeakerIdentificationResponse? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptRemoveAudioTags?, object>? Type76 { get; set; }
+        public global::AssemblyAI.CustomFormattingResponse? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptRemoveAudioTags? Type77 { get; set; }
+        public global::AssemblyAI.SummarizationResponse? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptUtterance>? Type78 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptRemoveAudioTags?, object>? Type78 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptTranslatedTexts? Type79 { get; set; }
+        public global::AssemblyAI.TranscriptRemoveAudioTags? Type79 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.AudioIntelligenceModelStatus? Type80 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptUtterance>? Type80 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.TopicDetectionResult>? Type81 { get; set; }
+        public global::AssemblyAI.TranscriptTranslatedTexts? Type81 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TopicDetectionResult? Type82 { get; set; }
+        public global::AssemblyAI.AudioIntelligenceModelStatus? Type82 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, double>? Type83 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TopicDetectionResult>? Type83 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.ContentSafetyLabelResult>? Type84 { get; set; }
+        public global::AssemblyAI.TopicDetectionResult? Type84 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ContentSafetyLabelResult? Type85 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, double>? Type85 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::AssemblyAI.SeverityScoreSummary>? Type86 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.ContentSafetyLabelResult>? Type86 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SeverityScoreSummary? Type87 { get; set; }
+        public global::AssemblyAI.ContentSafetyLabelResult? Type87 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.EntityType? Type88 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::AssemblyAI.SeverityScoreSummary>? Type88 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Sentiment? Type89 { get; set; }
+        public global::AssemblyAI.SeverityScoreSummary? Type89 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.TopicDetectionResultLabel>? Type90 { get; set; }
+        public global::AssemblyAI.EntityType? Type90 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TopicDetectionResultLabel? Type91 { get; set; }
+        public global::AssemblyAI.Sentiment? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ContentSafetyLabel? Type92 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TopicDetectionResultLabel>? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.ContentSafetyLabel>? Type93 { get; set; }
+        public global::AssemblyAI.TopicDetectionResultLabel? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.AutoHighlightResult>? Type94 { get; set; }
+        public global::AssemblyAI.ContentSafetyLabel? Type94 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.AutoHighlightResult? Type95 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.ContentSafetyLabel>? Type95 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.Timestamp>? Type96 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.AutoHighlightResult>? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptSentence? Type97 { get; set; }
+        public global::AssemblyAI.AutoHighlightResult? Type97 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SentencesResponse? Type98 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.Timestamp>? Type98 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptSentence>? Type99 { get; set; }
+        public global::AssemblyAI.TranscriptSentence? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptParagraph? Type100 { get; set; }
+        public global::AssemblyAI.SentencesResponse? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.ParagraphsResponse? Type101 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptSentence>? Type101 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptParagraph>? Type102 { get; set; }
+        public global::AssemblyAI.TranscriptParagraph? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.PageDetails? Type103 { get; set; }
+        public global::AssemblyAI.ParagraphsResponse? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptListItem? Type104 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptParagraph>? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.DateTime? Type105 { get; set; }
+        public global::AssemblyAI.PageDetails? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptList? Type106 { get; set; }
+        public global::AssemblyAI.TranscriptListItem? Type106 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptListItem>? Type107 { get; set; }
+        public global::System.DateTime? Type107 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.UploadedFile? Type108 { get; set; }
+        public global::AssemblyAI.TranscriptList? Type108 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.Error? Type109 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptListItem>? Type109 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranslationRequestBodyTranslation? Type110 { get; set; }
+        public global::AssemblyAI.UploadedFile? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentification? Type111 { get; set; }
+        public global::AssemblyAI.Error? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType? Type112 { get; set; }
+        public global::AssemblyAI.TranslationRequestBodyTranslation? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeaker>? Type113 { get; set; }
+        public global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentification? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeaker? Type114 { get; set; }
+        public global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeakerType? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.CustomFormattingRequestBodyCustomFormatting? Type115 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeaker>? Type115 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranslationResponseTranslation? Type116 { get; set; }
+        public global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeaker? Type116 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SpeakerIdentificationResponseSpeakerIdentification? Type117 { get; set; }
+        public global::AssemblyAI.CustomFormattingRequestBodyCustomFormatting? Type117 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.CustomFormattingResponseCustomFormatting? Type118 { get; set; }
+        public global::AssemblyAI.SummarizationRequestBodySummarization? Type118 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type119 { get; set; }
+        public global::AssemblyAI.SummarizationRequestBodySummarizationSummaryType? Type119 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.SummarizationRequestBodySummarizationEffort? Type120 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.TranslationResponseTranslation? Type121 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.SpeakerIdentificationResponseSpeakerIdentification? Type122 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.CustomFormattingResponseCustomFormatting? Type123 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.SummarizationResponseSummarization? Type124 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.SummarizationResponseSummarizationSummarization? Type125 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<object>? Type126 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[]? Type127 { get; set; }
 
         /// <summary>
         /// 
@@ -598,5 +630,9 @@ namespace AssemblyAI
         /// 
         /// </summary>
         public global::System.Collections.Generic.List<global::AssemblyAI.SpeakerIdentificationRequestBodySpeakerIdentificationSpeaker>? ListType22 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<object>? ListType23 { get; set; }
     }
 }

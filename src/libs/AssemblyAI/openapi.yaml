@@ -1495,6 +1495,7 @@ components:
                 - $ref: '#/components/schemas/TranslationRequestBody'
                 - $ref: '#/components/schemas/SpeakerIdentificationRequestBody'
                 - $ref: '#/components/schemas/CustomFormattingRequestBody'
+                - $ref: '#/components/schemas/SummarizationRequestBody'
           required:
             - request
         summarization:
@@ -3284,11 +3285,13 @@ components:
                 - $ref: '#/components/schemas/TranslationRequestBody'
                 - $ref: '#/components/schemas/SpeakerIdentificationRequestBody'
                 - $ref: '#/components/schemas/CustomFormattingRequestBody'
+                - $ref: '#/components/schemas/SummarizationRequestBody'
             response:
               oneOf:
                 - $ref: '#/components/schemas/TranslationResponse'
                 - $ref: '#/components/schemas/SpeakerIdentificationResponse'
                 - $ref: '#/components/schemas/CustomFormattingResponse'
+                - $ref: '#/components/schemas/SummarizationResponse'
         status:
           x-label: Status
           description: >-
@@ -5937,6 +5940,32 @@ components:
                 for more details.
       required:
         - custom_formatting
+    SummarizationRequestBody:
+      type: object
+      description: >-
+        Request body for
+        [Summarization](https://www.assemblyai.com/docs/speech-understanding/summarization).
+      properties:
+        summarization:
+          type: object
+          properties:
+            summary_type:
+              type: string
+              enum:
+                - paragraph
+                - bullets
+              description: >-
+                Type of summary. Bullets returns short bullet point style
+                summaries, paragraph is generally more verbose and detailed.
+            effort:
+              type: string
+              enum:
+                - low
+                - medium
+          required:
+            - summary_type
+      required:
+        - summarization
     TranslationResponse:
       type: object
       properties:
@@ -5972,6 +6001,25 @@ components:
                 type: string
             formatted_text:
               type: string
+    SummarizationResponse:
+      type: object
+      properties:
+        summarization:
+          type: object
+          properties:
+            summarization:
+              type: object
+              properties:
+                summary:
+                  type: array
+                  description: Array of summaries.
+                  items:
+                    type: object
+                status:
+                  type: string
+              required:
+                - summary
+                - status
   examples:
     VttSubtitlesResponse:
       value: >
