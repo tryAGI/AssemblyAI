@@ -4,9 +4,9 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    /// Option to include decision making in action items.
     /// </summary>
-    public sealed partial class SummarizationResponseSummarizationSummarizationSummaryItem
+    public sealed partial class ActionItemsRequestBodyActionItemsIncludeDecisions
     {
 
         /// <summary>

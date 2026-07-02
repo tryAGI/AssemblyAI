@@ -184,23 +184,23 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TranslationRequestBody, global::AssemblyAI.SpeakerIdentificationRequestBody, global::AssemblyAI.CustomFormattingRequestBody, global::AssemblyAI.SummarizationRequestBody>? Type39 { get; set; }
+        public global::AssemblyAI.TranslationRequestBody? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranslationRequestBody? Type40 { get; set; }
+        public global::AssemblyAI.SpeakerIdentificationRequestBody? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SpeakerIdentificationRequestBody? Type41 { get; set; }
+        public global::AssemblyAI.CustomFormattingRequestBody? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.CustomFormattingRequestBody? Type42 { get; set; }
+        public global::AssemblyAI.SummarizationRequestBody? Type42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SummarizationRequestBody? Type43 { get; set; }
+        public global::AssemblyAI.ActionItemsRequestBody? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -320,23 +320,23 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TranslationResponse, global::AssemblyAI.SpeakerIdentificationResponse, global::AssemblyAI.CustomFormattingResponse, global::AssemblyAI.SummarizationResponse>? Type73 { get; set; }
+        public global::AssemblyAI.TranslationResponse? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranslationResponse? Type74 { get; set; }
+        public global::AssemblyAI.SpeakerIdentificationResponse? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SpeakerIdentificationResponse? Type75 { get; set; }
+        public global::AssemblyAI.CustomFormattingResponse? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.CustomFormattingResponse? Type76 { get; set; }
+        public global::AssemblyAI.SummarizationResponse? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SummarizationResponse? Type77 { get; set; }
+        public global::AssemblyAI.ActionItemsResponse? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -512,31 +512,39 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranslationResponseTranslation? Type121 { get; set; }
+        public global::AssemblyAI.ActionItemsRequestBodyActionItems? Type121 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SpeakerIdentificationResponseSpeakerIdentification? Type122 { get; set; }
+        public global::AssemblyAI.ActionItemsRequestBodyActionItemsEffort? Type122 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.CustomFormattingResponseCustomFormatting? Type123 { get; set; }
+        public global::AssemblyAI.TranslationResponseTranslation? Type123 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SummarizationResponseSummarization? Type124 { get; set; }
+        public global::AssemblyAI.SpeakerIdentificationResponseSpeakerIdentification? Type124 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.SummarizationResponseSummarizationSummarization? Type125 { get; set; }
+        public global::AssemblyAI.CustomFormattingResponseCustomFormatting? Type125 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<object>? Type126 { get; set; }
+        public global::AssemblyAI.SummarizationResponseSummarization? Type126 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type127 { get; set; }
+        public global::System.Collections.Generic.IList<object>? Type127 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::AssemblyAI.ActionItemsResponseActionItems? Type128 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[]? Type129 { get; set; }
 
         /// <summary>
         /// 
