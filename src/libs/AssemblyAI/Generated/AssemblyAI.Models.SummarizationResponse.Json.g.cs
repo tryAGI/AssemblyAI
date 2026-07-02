@@ -2,7 +2,7 @@
 
 namespace AssemblyAI
 {
-    public readonly partial struct OneOf<T1, T2, T3>
+    public sealed partial class SummarizationResponse
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -47,20 +47,20 @@ namespace AssemblyAI
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::AssemblyAI.OneOf<T1, T2, T3>? FromJson(
+        public static global::AssemblyAI.SummarizationResponse? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::AssemblyAI.OneOf<T1, T2, T3>),
-                jsonSerializerContext) as global::AssemblyAI.OneOf<T1, T2, T3>?;
+                typeof(global::AssemblyAI.SummarizationResponse),
+                jsonSerializerContext) as global::AssemblyAI.SummarizationResponse;
         }
 
         /// <summary>
         /// Deserializes a JSON string using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::AssemblyAI.OneOf<T1, T2, T3>? FromJson(
+        public static global::AssemblyAI.SummarizationResponse? FromJson(
             string json)
         {
             return FromJson(
@@ -75,7 +75,7 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::AssemblyAI.OneOf<T1, T2, T3>? FromJson(
+        public static global::AssemblyAI.SummarizationResponse? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -86,7 +86,7 @@ namespace AssemblyAI
                     global::AssemblyAI.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::AssemblyAI.OneOf<T1, T2, T3>>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::AssemblyAI.SummarizationResponse>(
                 json,
                 jsonSerializerOptions);
         }
@@ -94,20 +94,20 @@ namespace AssemblyAI
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::AssemblyAI.OneOf<T1, T2, T3>?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::AssemblyAI.SummarizationResponse?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::AssemblyAI.OneOf<T1, T2, T3>),
-                jsonSerializerContext).ConfigureAwait(false)) as global::AssemblyAI.OneOf<T1, T2, T3>?;
+                typeof(global::AssemblyAI.SummarizationResponse),
+                jsonSerializerContext).ConfigureAwait(false)) as global::AssemblyAI.SummarizationResponse;
         }
 
         /// <summary>
         /// Deserializes a JSON stream using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::System.Threading.Tasks.ValueTask<global::AssemblyAI.OneOf<T1, T2, T3>?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::AssemblyAI.SummarizationResponse?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream)
         {
             return FromJsonStreamAsync(
@@ -122,7 +122,7 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::AssemblyAI.OneOf<T1, T2, T3>?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::AssemblyAI.SummarizationResponse?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -133,7 +133,7 @@ namespace AssemblyAI
                     global::AssemblyAI.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::AssemblyAI.OneOf<T1, T2, T3>?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::AssemblyAI.SummarizationResponse?>(
                 jsonStream,
                 jsonSerializerOptions);
         }
