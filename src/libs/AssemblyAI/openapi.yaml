@@ -962,7 +962,7 @@ components:
 
         disfluencies:
           x-label: Disfluencies
-          description: Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3 Pro and Universal-2.
+          description: Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.5 Pro and Universal-2.
           type: boolean
           default: false
 
@@ -1004,7 +1004,7 @@ components:
         keyterms_prompt:
           x-label: Keyterms prompt
           description: |
-            Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro/prompting#keyterms-prompting) for more details.
+            Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3.5 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-5-pro/prompting#keyterms-prompting) for more details.
           type: array
           items:
             x-label: Keyterm
@@ -1096,7 +1096,7 @@ components:
           description: |
             Provide natural language prompting of up to 1,500 words of contextual information to the model. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for best practices.
 
-            Note: This parameter is only supported for the Universal-3 Pro model.
+            Note: This parameter is only supported for the Universal-3.5 Pro model.
           type: string
 
         punctuate:
@@ -1198,14 +1198,14 @@ components:
           properties:
             min_speakers_expected:
               x-label: Minimum speakers expected
-              description: The minimum number of speakers expected in the audio file. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.
+              description: A hard lower limit on the number of speaker labels — the model won't return fewer speakers than this. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.
               type: integer
               default: 1
             max_speakers_expected:
               x-label: Maximum speakers expected
               description: |
                 <Warning>Setting this parameter too high may hurt model accuracy</Warning>
-                The maximum number of speakers expected in the audio file. The default depends on audio duration: no limit for 0-2 minutes, 10 for 2-10 minutes, and 30 for 10+ minutes. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.
+                A hard upper limit on the number of speaker labels. If more people speak than this value, the additional speakers are merged into existing labels. Setting it higher than the true number of speakers can cause the model to over-split and return more speakers than are actually present. The default depends on audio duration: no limit for 0-2 minutes, 10 for 2-10 minutes, and 30 for 10+ minutes. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.
               type: integer
 
         speakers_expected:
@@ -1217,14 +1217,13 @@ components:
         speech_models:
           x-label: Speech models
           description: |
-            Optional. List multiple speech models in priority order, allowing our system to automatically route your audio to the best available option. If omitted, defaults to `["universal-3-pro", "universal-2"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
+            Optional. Supported values: `universal-3-5-pro`, `universal-2`. If omitted, defaults to `universal-3-5-pro`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
           type: array
           items:
             x-label: Speech model
             $ref: "#/components/schemas/SpeechModel"
           default:
-            - universal-3-pro
-            - universal-2
+            - universal-3-5-pro
 
         speech_threshold:
           x-label: Speech threshold
@@ -1279,9 +1278,9 @@ components:
         remove_audio_tags:
           x-label: Remove audio tags
           description: |
-            Universal-3 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations.
+            Universal-3.5 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations.
 
-            Note: This parameter is only supported for the Universal-3 Pro model.
+            Note: This parameter is only supported for the Universal-3.5 Pro model.
           oneOf:
             - type: string
               enum:
@@ -1295,7 +1294,7 @@ components:
           description: |
             Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.
 
-            Note: This parameter can only be used with the Universal-3 Pro model.
+            Note: This parameter can only be used with the Universal-3.5 Pro model.
           type: number
           minimum: 0.0
           maximum: 1.0
@@ -2061,6 +2060,9 @@ components:
       x-label: Speech model
       type: string
       description: The speech model to use for the transcription. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models.
+      enum:
+        - universal-3-5-pro
+        - universal-2
       x-fern-sdk-group-name: transcripts
 
     TranscriptLanguageCode:
@@ -2523,7 +2525,7 @@ components:
 
         disfluencies:
           x-label: Disfluencies
-          description: Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3 Pro and Universal-2.
+          description: Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.5 Pro and Universal-2.
           type: [boolean, "null"]
 
         domain:
@@ -2585,7 +2587,7 @@ components:
         keyterms_prompt:
           x-label: Keyterms prompt
           description: |
-            Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro/prompting#keyterms-prompting) for more details.
+            Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3.5 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-5-pro/prompting#keyterms-prompting) for more details.
           type: array
           items:
             x-label: Keyterm
@@ -2680,7 +2682,7 @@ components:
           description: |
             Provide natural language prompting of up to 1,500 words of contextual information to the model. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for best practices.
 
-            Note: This parameter is only supported for the Universal-3 Pro model.
+            Note: This parameter is only supported for the Universal-3.5 Pro model.
           type: string
 
         punctuate:
@@ -2784,7 +2786,7 @@ components:
         speech_models:
           x-label: Speech models
           description: |
-            List of speech models that were used (in priority order) to transcribe the audio. If not specified in the request, this defaults to `["universal-3-pro", "universal-2"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
+            List of speech models that were used (in priority order) to transcribe the audio. If not specified in the request, this defaults to `universal-3-5-pro`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
           type: [array, "null"]
           items:
             x-label: Speech model
@@ -2858,9 +2860,9 @@ components:
         remove_audio_tags:
           x-label: Remove audio tags
           description: |
-            Universal-3 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations.
+            Universal-3.5 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations.
 
-            Note: This parameter is only supported for the Universal-3 Pro model.
+            Note: This parameter is only supported for the Universal-3.5 Pro model.
           oneOf:
             - type: string
               enum:
@@ -2873,7 +2875,7 @@ components:
           description: |
             The temperature that was used for the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.
 
-            Note: This parameter can only be used with the Universal-3 Pro model.
+            Note: This parameter can only be used with the Universal-3.5 Pro model.
           type: [number, "null"]
           minimum: 0.0
           maximum: 1.0
