@@ -98,7 +98,7 @@ namespace AssemblyAI
         public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptCustomSpelling>? CustomSpelling { get; set; }
 
         /// <summary>
-        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3 Pro and Universal-2.
+        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.5 Pro and Universal-2.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disfluencies")]
         public bool? Disfluencies { get; set; }
@@ -162,7 +162,7 @@ namespace AssemblyAI
         public required global::System.Guid Id { get; set; }
 
         /// <summary>
-        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro/prompting#keyterms-prompting) for more details.
+        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3.5 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-5-pro/prompting#keyterms-prompting) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("keyterms_prompt")]
         public global::System.Collections.Generic.IList<string>? KeytermsPrompt { get; set; }
@@ -217,7 +217,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Provide natural language prompting of up to 1,500 words of contextual information to the model. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for best practices.<br/>
-        /// Note: This parameter is only supported for the Universal-3 Pro model.
+        /// Note: This parameter is only supported for the Universal-3.5 Pro model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         public string? Prompt { get; set; }
@@ -306,13 +306,14 @@ namespace AssemblyAI
         /// The speech model that was actually used for the transcription. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_model_used")]
-        public string? SpeechModelUsed { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.SpeechModel2JsonConverter))]
+        public global::AssemblyAI.SpeechModel2? SpeechModelUsed { get; set; }
 
         /// <summary>
-        /// List of speech models that were used (in priority order) to transcribe the audio. If not specified in the request, this defaults to `["universal-3-pro", "universal-2"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
+        /// List of speech models that were used (in priority order) to transcribe the audio. If not specified in the request, this defaults to `universal-3-5-pro`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_models")]
-        public global::System.Collections.Generic.IList<string>? SpeechModels { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel2>? SpeechModels { get; set; }
 
         /// <summary>
         /// Defaults to null. Reject audio files that contain less than this fraction of speech.<br/>
@@ -366,8 +367,8 @@ namespace AssemblyAI
         public string? SummaryType { get; set; }
 
         /// <summary>
-        /// Universal-3 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations.<br/>
-        /// Note: This parameter is only supported for the Universal-3 Pro model.
+        /// Universal-3.5 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations.<br/>
+        /// Note: This parameter is only supported for the Universal-3.5 Pro model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("remove_audio_tags")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TranscriptRemoveAudioTags?, object>))]
@@ -375,7 +376,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// The temperature that was used for the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
-        /// Note: This parameter can only be used with the Universal-3 Pro model.
+        /// Note: This parameter can only be used with the Universal-3.5 Pro model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
         public double? Temperature { get; set; }
@@ -473,9 +474,9 @@ namespace AssemblyAI
         /// This parameter has been replaced with the `speech_models` parameter, learn more about the `speech_models` parameter [here](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<string, object>))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.SpeechModel2?, object>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::AssemblyAI.OneOf<string, object> SpeechModel { get; set; }
+        public required global::AssemblyAI.OneOf<global::AssemblyAI.SpeechModel2?, object> SpeechModel { get; set; }
 
         /// <summary>
         /// This parameter does not currently have any functionality attached to it.
@@ -570,7 +571,7 @@ namespace AssemblyAI
         /// Customize how words are spelled and formatted using to and from values. See [Custom Spelling](https://www.assemblyai.com/docs/pre-recorded-audio/correct-spelling-of-terms) for more details.
         /// </param>
         /// <param name="disfluencies">
-        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3 Pro and Universal-2.
+        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.5 Pro and Universal-2.
         /// </param>
         /// <param name="domain">
         /// The domain-specific model applied to the transcript. When set to `"medical-v1"`, [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) was used to improve accuracy for medical terminology.
@@ -599,7 +600,7 @@ namespace AssemblyAI
         /// See [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/topic-detection) for more information.
         /// </param>
         /// <param name="keytermsPrompt">
-        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-pro/prompting#keyterms-prompting) for more details.
+        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3.5 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-5-pro/prompting#keyterms-prompting) for more details.
         /// </param>
         /// <param name="languageCode">
         /// The language of your audio file.<br/>
@@ -629,7 +630,7 @@ namespace AssemblyAI
         /// </param>
         /// <param name="prompt">
         /// Provide natural language prompting of up to 1,500 words of contextual information to the model. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for best practices.<br/>
-        /// Note: This parameter is only supported for the Universal-3 Pro model.
+        /// Note: This parameter is only supported for the Universal-3.5 Pro model.
         /// </param>
         /// <param name="punctuate">
         /// Whether [Automatic Punctuation](https://www.assemblyai.com/docs/pre-recorded-audio) is enabled, either true or false
@@ -673,7 +674,7 @@ namespace AssemblyAI
         /// The speech model that was actually used for the transcription. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models.
         /// </param>
         /// <param name="speechModels">
-        /// List of speech models that were used (in priority order) to transcribe the audio. If not specified in the request, this defaults to `["universal-3-pro", "universal-2"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
+        /// List of speech models that were used (in priority order) to transcribe the audio. If not specified in the request, this defaults to `universal-3-5-pro`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
         /// </param>
         /// <param name="speechThreshold">
         /// Defaults to null. Reject audio files that contain less than this fraction of speech.<br/>
@@ -683,12 +684,12 @@ namespace AssemblyAI
         /// Speech understanding tasks like [Translation](https://www.assemblyai.com/docs/speech-understanding/translation), [Speaker Identification](https://www.assemblyai.com/docs/speech-understanding/speaker-identification), and [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting). See the task-specific docs for available options and configuration.
         /// </param>
         /// <param name="removeAudioTags">
-        /// Universal-3 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations.<br/>
-        /// Note: This parameter is only supported for the Universal-3 Pro model.
+        /// Universal-3.5 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations.<br/>
+        /// Note: This parameter is only supported for the Universal-3.5 Pro model.
         /// </param>
         /// <param name="temperature">
         /// The temperature that was used for the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
-        /// Note: This parameter can only be used with the Universal-3 Pro model.
+        /// Note: This parameter can only be used with the Universal-3.5 Pro model.
         /// </param>
         /// <param name="text">
         /// The textual transcript of your media file
@@ -737,7 +738,7 @@ namespace AssemblyAI
             bool webhookAuth,
             string acousticModel,
             string languageModel,
-            global::AssemblyAI.OneOf<string, object> speechModel,
+            global::AssemblyAI.OneOf<global::AssemblyAI.SpeechModel2?, object> speechModel,
             int? audioChannels,
             int? audioDuration,
             int? audioEndAt,
@@ -777,8 +778,8 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<global::AssemblyAI.SentimentAnalysisResult>? sentimentAnalysisResults,
             bool? speakerLabels,
             int? speakersExpected,
-            string? speechModelUsed,
-            global::System.Collections.Generic.IList<string>? speechModels,
+            global::AssemblyAI.SpeechModel2? speechModelUsed,
+            global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel2>? speechModels,
             float? speechThreshold,
             global::AssemblyAI.TranscriptSpeechUnderstanding? speechUnderstanding,
             global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptRemoveAudioTags?, object>? removeAudioTags,

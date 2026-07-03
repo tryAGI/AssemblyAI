@@ -49,6 +49,10 @@ namespace AssemblyAI
 
             typeof(global::AssemblyAI.JsonConverters.PiiPolicyNullableJsonConverter),
 
+            typeof(global::AssemblyAI.JsonConverters.SpeechModel2JsonConverter),
+
+            typeof(global::AssemblyAI.JsonConverters.SpeechModel2NullableJsonConverter),
+
             typeof(global::AssemblyAI.JsonConverters.TranscriptLanguageCodeJsonConverter),
 
             typeof(global::AssemblyAI.JsonConverters.TranscriptLanguageCodeNullableJsonConverter),
@@ -113,7 +117,7 @@ namespace AssemblyAI
 
             typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>),
 
-            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<string, object>),
+            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.SpeechModel2?, object>),
 
             typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.AutoHighlightsResult2, object>),
 
@@ -131,7 +135,7 @@ namespace AssemblyAI
 
             typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TranscriptRemoveAudioTags?, object>),
 
-            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<string, object>),
+            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.SpeechModel2?, object>),
 
             typeof(global::AssemblyAI.JsonConverters.UnixTimestampJsonConverter),
         })]
@@ -174,6 +178,8 @@ namespace AssemblyAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.SubstitutionPolicy), TypeInfoPropertyName = "SubstitutionPolicy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptOptionalParamsSpeakerOptions))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel2>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.SpeechModel2), TypeInfoPropertyName = "SpeechModel22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptOptionalParamsSpeechUnderstanding))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.OneOf<global::AssemblyAI.TranslationRequestBody, global::AssemblyAI.SpeakerIdentificationRequestBody, global::AssemblyAI.CustomFormattingRequestBody, global::AssemblyAI.SummarizationRequestBody, global::AssemblyAI.ActionItemsRequestBody>), TypeInfoPropertyName = "ActionItemsRequestBody_96ae176b810c4f16")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranslationRequestBody))]
@@ -185,6 +191,7 @@ namespace AssemblyAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.SummaryType), TypeInfoPropertyName = "SummaryType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>), TypeInfoPropertyName = "OneOfTranscriptOptionalParamsRemoveAudioTagsObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags), TypeInfoPropertyName = "TranscriptOptionalParamsRemoveAudioTags2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.OneOf<global::AssemblyAI.SpeechModel2?, object>), TypeInfoPropertyName = "OneOfSpeechModel2Object2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptParams), TypeInfoPropertyName = "TranscriptParams2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptParamsVariant1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptUtterance))]
@@ -278,6 +285,7 @@ namespace AssemblyAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.TranscriptLanguageCode>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.PiiPolicy>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.SpeechModel2>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.TranscriptWord>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.Chapter>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.Entity>))]
