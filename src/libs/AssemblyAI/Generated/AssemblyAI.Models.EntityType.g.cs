@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// The type of entity for the detected entity
+    /// The type of entity for the detected entity. Entity Detection returns every location reference under the single `location` value; granular location subtypes (`location_address`, `location_city`, etc.) are supported only by PII redaction.
     /// </summary>
     public enum EntityType
     {
@@ -96,34 +96,6 @@ namespace AssemblyAI
         /// Any Location reference including mailing address, postal code, city, state, province, country, or coordinates. (e.g., Lake Victoria, 145 Windsor St., 90210)
         /// </summary>
         Location,
-        /// <summary>
-        /// A complete mailing address (e.g., 145 Windsor St., Toronto, ON M5A 2P5)
-        /// </summary>
-        LocationAddress,
-        /// <summary>
-        /// Street-level component of an address (e.g., 145 Windsor St.)
-        /// </summary>
-        LocationAddressStreet,
-        /// <summary>
-        /// City name (e.g., Toronto, San Francisco)
-        /// </summary>
-        LocationCity,
-        /// <summary>
-        /// Geographic coordinates (e.g., 40.7128° N, 74.0060° W)
-        /// </summary>
-        LocationCoordinate,
-        /// <summary>
-        /// Country name (e.g., Canada, United States)
-        /// </summary>
-        LocationCountry,
-        /// <summary>
-        /// State, province, or region name (e.g., Ontario, California)
-        /// </summary>
-        LocationState,
-        /// <summary>
-        /// Postal or ZIP code (e.g., M5A 2P5, 90210)
-        /// </summary>
-        LocationZip,
         /// <summary>
         /// Terms indicating marital status (e.g., Single, common-law, ex-wife, married)
         /// </summary>
@@ -260,13 +232,6 @@ namespace AssemblyAI
                 EntityType.IpAddress => "ip_address",
                 EntityType.Language => "language",
                 EntityType.Location => "location",
-                EntityType.LocationAddress => "location_address",
-                EntityType.LocationAddressStreet => "location_address_street",
-                EntityType.LocationCity => "location_city",
-                EntityType.LocationCoordinate => "location_coordinate",
-                EntityType.LocationCountry => "location_country",
-                EntityType.LocationState => "location_state",
-                EntityType.LocationZip => "location_zip",
                 EntityType.MaritalStatus => "marital_status",
                 EntityType.MedicalCondition => "medical_condition",
                 EntityType.MedicalProcess => "medical_process",
@@ -324,13 +289,6 @@ namespace AssemblyAI
                 "ip_address" => EntityType.IpAddress,
                 "language" => EntityType.Language,
                 "location" => EntityType.Location,
-                "location_address" => EntityType.LocationAddress,
-                "location_address_street" => EntityType.LocationAddressStreet,
-                "location_city" => EntityType.LocationCity,
-                "location_coordinate" => EntityType.LocationCoordinate,
-                "location_country" => EntityType.LocationCountry,
-                "location_state" => EntityType.LocationState,
-                "location_zip" => EntityType.LocationZip,
                 "marital_status" => EntityType.MaritalStatus,
                 "medical_condition" => EntityType.MedicalCondition,
                 "medical_process" => EntityType.MedicalProcess,
