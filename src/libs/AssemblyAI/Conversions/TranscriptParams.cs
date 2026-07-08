@@ -40,11 +40,9 @@ public readonly partial struct TranscriptParams
         ArgumentNullException.ThrowIfNull(url);
 
         optionalParams ??= new TranscriptOptionalParams();
-        optionalParams.SpeechModels ??= [];
+        optionalParams.AdditionalProperties["audio_url"] = url;
 
-        return new TranscriptParams(
-            new TranscriptParamsVariant1(url),
-            optionalParams);
+        return new TranscriptParams(optionalParams);
     }
 
     /// <summary>

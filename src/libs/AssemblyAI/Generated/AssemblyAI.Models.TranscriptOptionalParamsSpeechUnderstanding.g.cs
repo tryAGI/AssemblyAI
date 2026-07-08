@@ -12,9 +12,9 @@ namespace AssemblyAI
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("request")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TranslationRequestBody, global::AssemblyAI.SpeakerIdentificationRequestBody, global::AssemblyAI.CustomFormattingRequestBody>))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TranslationRequestBody, global::AssemblyAI.SpeakerIdentificationRequestBody, global::AssemblyAI.CustomFormattingRequestBody, global::AssemblyAI.SummarizationRequestBody, global::AssemblyAI.ActionItemsRequestBody>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::AssemblyAI.OneOf<global::AssemblyAI.TranslationRequestBody, global::AssemblyAI.SpeakerIdentificationRequestBody, global::AssemblyAI.CustomFormattingRequestBody> Request { get; set; }
+        public required global::AssemblyAI.OneOf<global::AssemblyAI.TranslationRequestBody, global::AssemblyAI.SpeakerIdentificationRequestBody, global::AssemblyAI.CustomFormattingRequestBody, global::AssemblyAI.SummarizationRequestBody, global::AssemblyAI.ActionItemsRequestBody> Request { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,7 +30,7 @@ namespace AssemblyAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TranscriptOptionalParamsSpeechUnderstanding(
-            global::AssemblyAI.OneOf<global::AssemblyAI.TranslationRequestBody, global::AssemblyAI.SpeakerIdentificationRequestBody, global::AssemblyAI.CustomFormattingRequestBody> request)
+            global::AssemblyAI.OneOf<global::AssemblyAI.TranslationRequestBody, global::AssemblyAI.SpeakerIdentificationRequestBody, global::AssemblyAI.CustomFormattingRequestBody, global::AssemblyAI.SummarizationRequestBody, global::AssemblyAI.ActionItemsRequestBody> request)
         {
             this.Request = request;
         }

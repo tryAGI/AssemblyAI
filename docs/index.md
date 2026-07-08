@@ -31,14 +31,25 @@ var fileUrl = "https://github.com/AssemblyAI-Community/audio-examples/raw/main/2
 // var uploadedFile = await api.Files.UploadAsync(await File.ReadAllBytesAsync(filePath));
 // fileUrl = uploadedFile.UploadUrl;
 
-Transcript transcript = await api.Transcripts.SubmitAsync(new TranscriptParams
+var queued = await api.Transcripts.SubmitAsync(
+    TranscriptParams.FromUrl(
+        fileUrl,
+        new TranscriptOptionalParams
+        {
+            SpeechModels = [SpeechModel2.Universal35Pro],
+            LanguageDetection = true, // Enables native code-switching routing.
+            SpeakerLabels = true, // Speaker diarization.
+            Prompt = "Canadian wildfire news interview with air quality and public health terms.",
+            KeytermsPrompt = ["Peter DeCarlo", "Johns Hopkins", "particulate matter"],
+        }));
+
+Transcript transcript;
+do
 {
-    AudioUrl = fileUrl,
-    SpeechModels = [],
-    LanguageDetection = true,
-    SpeakerLabels = true, // Identify speakers in your audios
-    AutoHighlights = true, // Identifying highlights in your audio
-});
+    await Task.Delay(TimeSpan.FromSeconds(2));
+    transcript = await api.Transcripts.GetAsync(queued.Id.ToString());
+}
+while (transcript.Status is TranscriptStatus.Queued or TranscriptStatus.Processing);
 
 transcript.EnsureStatusCompleted();
 
@@ -72,14 +83,18 @@ var fileUrl = "https://github.com/AssemblyAI-Community/audio-examples/raw/main/2
 // var uploadedFile = await client.Files.UploadAsync(await File.ReadAllBytesAsync(filePath));
 // fileUrl = uploadedFile.UploadUrl;
 
-Transcript transcript = await client.Transcripts.SubmitAsync(new TranscriptParams
-{
-    AudioUrl = fileUrl,
-    SpeechModels = [],
-    LanguageDetection = true,
-    SpeakerLabels = true, // Identify speakers in your audios
-    AutoHighlights = true, // Identifying highlights in your audio
-});
+var queued = await client.Transcripts.SubmitAsync(
+    TranscriptParams.FromUrl(
+        fileUrl,
+        new TranscriptOptionalParams
+        {
+            SpeechModels = [SpeechModel2.Universal35Pro],
+            LanguageDetection = true,
+            SpeakerLabels = true,
+            AutoHighlights = true,
+        }));
+
+var transcript = await PollUntilTerminalAsync(client, queued.Id);
 
 transcript.EnsureStatusCompleted();
 

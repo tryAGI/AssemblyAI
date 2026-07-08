@@ -25,7 +25,7 @@ public partial class Tests
                 fileUrl,
                 new TranscriptOptionalParams
                 {
-                    SpeechModels = [],
+                    SpeechModels = [SpeechModel2.Universal35Pro],
                     LanguageDetection = true,
                     SpeakerLabels = true,
                     AutoHighlights = true,

@@ -9,20 +9,22 @@ using var client = GetAuthenticatedApi();
 
 var fileUrl = "https://github.com/AssemblyAI-Community/audio-examples/raw/main/20230607_me_canadian_wildfires.mp3";
 
-// You can also transcribe a local file by passing in a file path
-// var filePath = "./path/to/file.mp3";
-// var uploadedFile = await client.Transcript.UploadFileAsync();
-// fileUrl = uploadedFile.UploadUrl;
+// You can also transcribe a local file by uploading bytes first:
+// var uploaded = await client.Files.UploadAsync(await File.ReadAllBytesAsync("./path/to/file.mp3"));
+// fileUrl = uploaded.UploadUrl!;
 
-Transcript transcript = await client.Transcript.CreateTranscriptAsync(TranscriptParams.FromUrl(
-    fileUrl,
-    new TranscriptOptionalParams
-    {
-        SpeechModels = [],
-        LanguageDetection = true,
-        SpeakerLabels = true, // Identify speakers in your audios
-        AutoHighlights = true, // Identifying highlights in your audio
-    }));
+var queued = await client.Transcripts.SubmitAsync(
+    TranscriptParams.FromUrl(
+        fileUrl,
+        new TranscriptOptionalParams
+        {
+            SpeechModels = [SpeechModel2.Universal35Pro],
+            LanguageDetection = true,
+            SpeakerLabels = true,
+            AutoHighlights = true,
+        }));
+
+var transcript = await PollUntilTerminalAsync(client, queued.Id);
 
 transcript.EnsureStatusCompleted();
 

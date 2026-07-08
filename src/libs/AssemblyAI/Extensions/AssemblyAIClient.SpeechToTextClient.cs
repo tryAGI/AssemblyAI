@@ -1,6 +1,7 @@
 #nullable enable
 using Microsoft.Extensions.AI;
 using System.Runtime.CompilerServices;
+using System.Text.Json;
 
 namespace AssemblyAI;
 
@@ -24,7 +25,8 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
             rawRepresentation is TranscriptParams rawRequest ? rawRequest.Optional :
             null;
         string? audioUrl =
-            rawRepresentation is TranscriptParams rawRequestWithUrl ? rawRequestWithUrl.TranscriptParamsVariant1?.AudioUrl :
+            rawRepresentation is TranscriptParams rawRequestWithUrl ? rawRequestWithUrl.TranscriptParamsVariant1?.AudioUrl ?? GetAudioUrl(rawRequestWithUrl.Optional) :
+            rawRepresentation is TranscriptOptionalParams rawOptionalParamsWithUrl ? GetAudioUrl(rawOptionalParamsWithUrl) :
             null;
 
         if (transcriptParams is null &&
@@ -47,9 +49,10 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
 
         if (transcriptParams is not null &&
             (transcriptParams.SpeechModels is null || transcriptParams.SpeechModels.Count == 0) &&
-            options?.ModelId is { Length: > 0 } modelId)
+            options?.ModelId is { Length: > 0 } modelId &&
+            SpeechModel2Extensions.ToEnum(modelId) is { } speechModel)
         {
-            transcriptParams.SpeechModels = [modelId];
+            transcriptParams.SpeechModels = [speechModel];
         }
 
         if (audioUrl is null)
@@ -67,9 +70,10 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
         transcriptParams ??= new TranscriptOptionalParams();
         transcriptParams.SpeechModels ??= [];
         if (transcriptParams.SpeechModels.Count == 0 &&
-            options?.ModelId is { Length: > 0 } uploadedModelId)
+            options?.ModelId is { Length: > 0 } uploadedModelId &&
+            SpeechModel2Extensions.ToEnum(uploadedModelId) is { } uploadedSpeechModel)
         {
-            transcriptParams.SpeechModels = [uploadedModelId];
+            transcriptParams.SpeechModels = [uploadedSpeechModel];
         }
 
         var request = TranscriptParams.FromUrl(audioUrl, transcriptParams);
@@ -94,7 +98,7 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
         return new(transcript.Text)
         {
             EndTime = transcript.AudioEndAt is int audioEndAt ? TimeSpan.FromMilliseconds(audioEndAt) : null,
-            ModelId = transcript.LanguageModel,
+            ModelId = transcript.SpeechModelUsed?.ToValueString() ?? transcript.LanguageModel,
             RawRepresentation = transcript,
             ResponseId = id,
             StartTime = transcript.AudioStartFrom is int audioStartFrom ? TimeSpan.FromMilliseconds(audioStartFrom) : null,
@@ -110,5 +114,21 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
         {
             yield return update;
         }
+    }
+
+    private static string? GetAudioUrl(TranscriptOptionalParams? transcriptParams)
+    {
+        if (transcriptParams?.AdditionalProperties.TryGetValue("audio_url", out var value) != true)
+        {
+            return null;
+        }
+
+        return value switch
+        {
+            string url => url,
+            Uri uri => uri.ToString(),
+            JsonElement { ValueKind: JsonValueKind.String } json => json.GetString(),
+            _ => null,
+        };
     }
 }

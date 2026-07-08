@@ -81,7 +81,7 @@ Console.WriteLine(response.Text);
 
 ### Advanced Configuration with RawRepresentationFactory
 
-Use `RawRepresentationFactory` to access AssemblyAI-specific features like speaker diarization, sentiment analysis, entity detection, and auto chapters:
+Use `RawRepresentationFactory` to access AssemblyAI-specific features like Universal-3.5 Pro model selection, speaker diarization, contextual prompting, keyterms prompting, sentiment analysis, and entity detection:
 
 ```csharp
 ISpeechToTextClient sttClient = client;
@@ -94,11 +94,13 @@ var response = await sttClient.GetTextAsync(
             "https://example.com/meeting.mp3",
             new TranscriptOptionalParams
             {
+                SpeechModels = [SpeechModel2.Universal35Pro],
+                LanguageDetection = true,
                 SpeakerLabels = true,
+                Prompt = "Customer support call about billing and account access.",
+                KeytermsPrompt = ["ACME Pro", "account recovery"],
                 SentimentAnalysis = true,
                 EntityDetection = true,
-                AutoChapters = true,
-                SpeechModels = [],
             }),
     });
 
