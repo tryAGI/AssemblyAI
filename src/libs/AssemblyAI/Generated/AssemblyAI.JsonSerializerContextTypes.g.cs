@@ -104,27 +104,27 @@ namespace AssemblyAI
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<string, object>? Type19 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsDomain? Type19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public object? Type20 { get; set; }
+        public global::System.Collections.Generic.IList<string>? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<string>? Type21 { get; set; }
+        public global::AssemblyAI.OneOf<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>? Type21 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.OneOf<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>? Type22 { get; set; }
+        public global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>? Type22 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>? Type23 { get; set; }
+        public global::AssemblyAI.TranscriptLanguageCode? Type23 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::AssemblyAI.TranscriptLanguageCode? Type24 { get; set; }
+        public object? Type24 { get; set; }
         /// <summary>
         /// 
         /// </summary>
