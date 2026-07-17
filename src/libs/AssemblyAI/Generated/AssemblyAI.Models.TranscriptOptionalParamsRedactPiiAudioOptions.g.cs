@@ -9,7 +9,7 @@ namespace AssemblyAI
     public sealed partial class TranscriptOptionalParamsRedactPiiAudioOptions
     {
         /// <summary>
-        /// By default, audio redaction provides redacted audio URLs only when speech is detected. However, if your use-case specifically requires redacted audio files even for silent audio files without any dialogue, you can opt to receive these URLs by setting this parameter to `true`.<br/>
+        /// By default, audio redaction provides redacted audio URLs only when speech is detected. However, if your use-case specifically requires redacted audio files even for silent audio files without any dialogue, you can opt to receive these URLs by setting this parameter to `true`. Requires `redact_pii_audio` to be `true`.<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("return_redacted_no_speech_audio")]
@@ -32,7 +32,7 @@ namespace AssemblyAI
         /// Initializes a new instance of the <see cref="TranscriptOptionalParamsRedactPiiAudioOptions" /> class.
         /// </summary>
         /// <param name="returnRedactedNoSpeechAudio">
-        /// By default, audio redaction provides redacted audio URLs only when speech is detected. However, if your use-case specifically requires redacted audio files even for silent audio files without any dialogue, you can opt to receive these URLs by setting this parameter to `true`.<br/>
+        /// By default, audio redaction provides redacted audio URLs only when speech is detected. However, if your use-case specifically requires redacted audio files even for silent audio files without any dialogue, you can opt to receive these URLs by setting this parameter to `true`. Requires `redact_pii_audio` to be `true`.<br/>
         /// Default Value: false
         /// </param>
         /// <param name="overrideAudioRedactionMethod">

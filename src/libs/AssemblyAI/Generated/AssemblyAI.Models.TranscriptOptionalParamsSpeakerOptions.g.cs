@@ -4,13 +4,12 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Specify options for [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers). Use this to set a range of possible speakers.
+    /// Specify options for [Speaker diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers). Use this to set a range of possible speakers. Requires `speaker_labels` to be `true`, and cannot be used together with `speakers_expected`. When both bounds are set, `min_speakers_expected` must be less than or equal to `max_speakers_expected`.
     /// </summary>
     public sealed partial class TranscriptOptionalParamsSpeakerOptions
     {
         /// <summary>
-        /// A hard lower limit on the number of speaker labels — the model won't return fewer speakers than this. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.<br/>
-        /// Default Value: 1
+        /// A hard lower limit on the number of speaker labels — the model won't return fewer speakers than this. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("min_speakers_expected")]
         public int? MinSpeakersExpected { get; set; }
@@ -32,8 +31,7 @@ namespace AssemblyAI
         /// Initializes a new instance of the <see cref="TranscriptOptionalParamsSpeakerOptions" /> class.
         /// </summary>
         /// <param name="minSpeakersExpected">
-        /// A hard lower limit on the number of speaker labels — the model won't return fewer speakers than this. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.<br/>
-        /// Default Value: 1
+        /// A hard lower limit on the number of speaker labels — the model won't return fewer speakers than this. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.
         /// </param>
         /// <param name="maxSpeakersExpected">
         /// &lt;Warning&gt;Setting this parameter too high may hurt model accuracy&lt;/Warning&gt;<br/>

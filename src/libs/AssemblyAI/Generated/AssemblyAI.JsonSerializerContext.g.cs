@@ -21,6 +21,10 @@ namespace AssemblyAI
 
             typeof(global::AssemblyAI.JsonConverters.SubtitleFormatNullableJsonConverter),
 
+            typeof(global::AssemblyAI.JsonConverters.TranscriptOptionalParamsDomainJsonConverter),
+
+            typeof(global::AssemblyAI.JsonConverters.TranscriptOptionalParamsDomainNullableJsonConverter),
+
             typeof(global::AssemblyAI.JsonConverters.TranscriptOptionalParamsRedactPiiAudioOptionsOverrideAudioRedactionMethodJsonConverter),
 
             typeof(global::AssemblyAI.JsonConverters.TranscriptOptionalParamsRedactPiiAudioOptionsOverrideAudioRedactionMethodNullableJsonConverter),
@@ -105,8 +109,6 @@ namespace AssemblyAI
 
             typeof(global::AssemblyAI.JsonConverters.TranscriptParamsJsonConverter),
 
-            typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<string, object>),
-
             typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>),
 
             typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverter<global::AssemblyAI.TranscriptLanguageCode?, string>),
@@ -159,12 +161,12 @@ namespace AssemblyAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptCustomSpelling>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptCustomSpelling))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.OneOf<string, object>), TypeInfoPropertyName = "OneOfStringObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptOptionalParamsDomain), TypeInfoPropertyName = "TranscriptOptionalParamsDomain2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.OneOf<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>), TypeInfoPropertyName = "OneOfAnyOfTranscriptLanguageCodeStringObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>), TypeInfoPropertyName = "AnyOfTranscriptLanguageCodeString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptLanguageCode), TypeInfoPropertyName = "TranscriptLanguageCode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptLanguageCode>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(float))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptOptionalParamsLanguageDetectionOptions))]
