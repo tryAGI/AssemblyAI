@@ -169,8 +169,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// The language of your audio file.<br/>
-        /// Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).<br/>
-        /// The default value is 'en_us'.
+        /// Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_code")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.AnyOfJsonConverter<global::AssemblyAI.TranscriptLanguageCode?, string>))]
@@ -310,7 +309,7 @@ namespace AssemblyAI
         public global::AssemblyAI.SpeechModel2? SpeechModelUsed { get; set; }
 
         /// <summary>
-        /// List of speech models that were used (in priority order) to transcribe the audio. If not specified in the request, this defaults to `universal-3-5-pro`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
+        /// List of speech models that were used (in priority order) to transcribe the audio. If not specified in the request, this defaults to `["universal-3-5-pro", "universal-2"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_models")]
         public global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel2>? SpeechModels { get; set; }
@@ -604,8 +603,7 @@ namespace AssemblyAI
         /// </param>
         /// <param name="languageCode">
         /// The language of your audio file.<br/>
-        /// Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).<br/>
-        /// The default value is 'en_us'.
+        /// Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
         /// </param>
         /// <param name="languageCodes">
         /// The language codes of your audio file. Used for [Code switching](/speech-to-text/pre-recorded-audio/code-switching)<br/>
@@ -674,7 +672,7 @@ namespace AssemblyAI
         /// The speech model that was actually used for the transcription. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models.
         /// </param>
         /// <param name="speechModels">
-        /// List of speech models that were used (in priority order) to transcribe the audio. If not specified in the request, this defaults to `universal-3-5-pro`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
+        /// List of speech models that were used (in priority order) to transcribe the audio. If not specified in the request, this defaults to `["universal-3-5-pro", "universal-2"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
         /// </param>
         /// <param name="speechThreshold">
         /// Defaults to null. Reject audio files that contain less than this fraction of speech.<br/>
