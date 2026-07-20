@@ -4,8 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// The language of your audio file. Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).<br/>
-    /// The default value is 'en_us'.
+    /// The language of your audio file. Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
     /// </summary>
     public enum TranscriptLanguageCode
     {

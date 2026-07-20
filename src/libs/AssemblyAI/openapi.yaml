@@ -1153,13 +1153,13 @@ components:
             [Supported
             Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
 
-            The default value is 'en_us'.
+            If you don't specify a language, it's detected automatically. Cannot
+            be used together with `language_detection`.
           oneOf:
             - anyOf:
                 - $ref: '#/components/schemas/TranscriptLanguageCode'
                 - type: string
             - type: 'null'
-          default: en_us
           x-ts-type: LiteralUnion<TranscriptLanguageCode, string> | null
           x-go-type: TranscriptLanguageCode
         language_codes:
@@ -1182,7 +1182,8 @@ components:
             An error will be returned if the language confidence is below this
             threshold.
 
-            Defaults to 0. See [Automatic Language
+            Defaults to 0. Can only be set when `language_detection` is enabled.
+            See [Automatic Language
             Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection)
             for more details.
           type: number
@@ -1192,12 +1193,15 @@ components:
           default: 0
         language_detection:
           x-label: Language detection
-          description: >-
-            Enable [Automatic language
-            detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection),
-            either true or false.
+          description: >
+            [Automatic language
+            detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection)
+            identifies the spoken language and routes the request to the best
+            model. It's applied automatically when you don't specify a
+            `language_code`. Set to `false` only together with a
+            `language_code`; disabling it without specifying a language returns
+            an error.
           type: boolean
-          default: false
         language_detection_options:
           x-label: Specify options for Automatic Language Detection.
           description: >-
@@ -1471,7 +1475,8 @@ components:
           x-label: Speech models
           description: >
             Optional. Supported values: `universal-3-5-pro`, `universal-2`. If
-            omitted, defaults to `universal-3-5-pro`. See [Model
+            omitted, defaults to `["universal-3-5-pro", "universal-2"]`. See
+            [Model
             Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model)
             for available models and routing behavior.
           type: array
@@ -1480,6 +1485,7 @@ components:
             $ref: '#/components/schemas/SpeechModel'
           default:
             - universal-3-5-pro
+            - universal-2
         speech_threshold:
           x-label: Speech threshold
           description: >
@@ -1658,7 +1664,6 @@ components:
           deprecated: true
       example:
         speech_model: null
-        language_code: en_us
         language_detection: true
         language_confidence_threshold: 0.7
         punctuate: true
@@ -1723,7 +1728,6 @@ components:
         - $ref: '#/components/schemas/TranscriptOptionalParams'
       example:
         speech_model: null
-        language_code: en_us
         language_detection: true
         language_confidence_threshold: 0.7
         audio_url: https://assembly.ai/wildfires.mp3
@@ -2379,8 +2383,6 @@ components:
       description: >
         The language of your audio file. Possible values are found in [Supported
         Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
-
-        The default value is 'en_us'.
       x-fern-sdk-group-name: transcripts
       enum:
         - en
@@ -2989,8 +2991,6 @@ components:
 
             Possible values are found in [Supported
             Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
-
-            The default value is 'en_us'.
           anyOf:
             - $ref: '#/components/schemas/TranscriptLanguageCode'
             - type: string
@@ -3279,7 +3279,7 @@ components:
           description: >
             List of speech models that were used (in priority order) to
             transcribe the audio. If not specified in the request, this defaults
-            to `universal-3-5-pro`. See [Model
+            to `["universal-3-5-pro", "universal-2"]`. See [Model
             Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model)
             for available models and routing behavior.
           type:
