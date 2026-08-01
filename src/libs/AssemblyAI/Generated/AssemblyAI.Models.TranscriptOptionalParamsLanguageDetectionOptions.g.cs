@@ -36,6 +36,13 @@ namespace AssemblyAI
         public double? CodeSwitchingConfidenceThreshold { get; set; }
 
         /// <summary>
+        /// Render the transcript in a regional variant of the detected language. Supported values are `en_au` (Australian English) and `en_uk` (British English) — only English is supported today, and you can specify at most one locale per base language. Base or default-region codes such as `en` and `en_us` are not localization variants and return a `400`.<br/>
+        /// When the detected language matches the requested locale's base language, the transcript uses that locale's spelling and `language_code` returns the region-aware code (for example `en_au`) instead of the base `en`. Otherwise, when the detected language isn't available as a locale, the option is ignored. See [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) for more details.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("localization")]
+        public global::System.Collections.Generic.IList<string>? Localization { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -59,6 +66,10 @@ namespace AssemblyAI
         /// The confidence threshold for [code switching](/speech-to-text/pre-recorded-audio/code-switching) detection. If the code switching confidence is below this threshold, the transcript will be processed in the language with the highest `language_detection_confidence` score.<br/>
         /// Default Value: 0.3
         /// </param>
+        /// <param name="localization">
+        /// Render the transcript in a regional variant of the detected language. Supported values are `en_au` (Australian English) and `en_uk` (British English) — only English is supported today, and you can specify at most one locale per base language. Base or default-region codes such as `en` and `en_us` are not localization variants and return a `400`.<br/>
+        /// When the detected language matches the requested locale's base language, the transcript uses that locale's spelling and `language_code` returns the region-aware code (for example `en_au`) instead of the base `en`. Otherwise, when the detected language isn't available as a locale, the option is ignored. See [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) for more details.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -66,12 +77,14 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<string>? expectedLanguages,
             string? fallbackLanguage,
             bool? codeSwitching,
-            double? codeSwitchingConfidenceThreshold)
+            double? codeSwitchingConfidenceThreshold,
+            global::System.Collections.Generic.IList<string>? localization)
         {
             this.ExpectedLanguages = expectedLanguages;
             this.FallbackLanguage = fallbackLanguage;
             this.CodeSwitching = codeSwitching;
             this.CodeSwitchingConfidenceThreshold = codeSwitchingConfidenceThreshold;
+            this.Localization = localization;
         }
 
         /// <summary>
