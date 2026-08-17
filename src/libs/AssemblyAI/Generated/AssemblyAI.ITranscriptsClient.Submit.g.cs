@@ -14,6 +14,14 @@ namespace AssemblyAI
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        /// <remarks>
+        /// import os<br/>
+        /// from assemblyai.prerecorded.v2 import Transcriber<br/>
+        /// transcriber = Transcriber(api_key=os.environ["ASSEMBLYAI_API_KEY"])<br/>
+        /// # `submit` queues the job and returns right away; `transcribe` submits and polls.<br/>
+        /// transcript = transcriber.submit("https://assembly.ai/wildfires.mp3")<br/>
+        /// print(transcript.id, transcript.status)
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::AssemblyAI.Transcript> SubmitAsync(
 
             global::AssemblyAI.TranscriptParams request,
@@ -29,6 +37,14 @@ namespace AssemblyAI
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        /// <remarks>
+        /// import os<br/>
+        /// from assemblyai.prerecorded.v2 import Transcriber<br/>
+        /// transcriber = Transcriber(api_key=os.environ["ASSEMBLYAI_API_KEY"])<br/>
+        /// # `submit` queues the job and returns right away; `transcribe` submits and polls.<br/>
+        /// transcript = transcriber.submit("https://assembly.ai/wildfires.mp3")<br/>
+        /// print(transcript.id, transcript.status)
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::AssemblyAI.AutoSDKHttpResponse<global::AssemblyAI.Transcript>> SubmitAsResponseAsync(
 
             global::AssemblyAI.TranscriptParams request,

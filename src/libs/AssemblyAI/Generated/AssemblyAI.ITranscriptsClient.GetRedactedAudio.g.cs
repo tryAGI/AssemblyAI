@@ -14,6 +14,15 @@ namespace AssemblyAI
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        /// <remarks>
+        /// import os<br/>
+        /// import assemblyai<br/>
+        /// from assemblyai.prerecorded.v2 import Transcript<br/>
+        /// # `Transcript.get_by_id()` uses the default client, which reads the global settings.<br/>
+        /// assemblyai.settings.api_key = os.environ["ASSEMBLYAI_API_KEY"]<br/>
+        /// transcript = Transcript.get_by_id("&lt;TRANSCRIPT_ID&gt;")<br/>
+        /// print(transcript.get_redacted_audio_url())
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::AssemblyAI.RedactedAudioResponse> GetRedactedAudioAsync(
             string transcriptId,
             global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,
@@ -28,6 +37,15 @@ namespace AssemblyAI
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        /// <remarks>
+        /// import os<br/>
+        /// import assemblyai<br/>
+        /// from assemblyai.prerecorded.v2 import Transcript<br/>
+        /// # `Transcript.get_by_id()` uses the default client, which reads the global settings.<br/>
+        /// assemblyai.settings.api_key = os.environ["ASSEMBLYAI_API_KEY"]<br/>
+        /// transcript = Transcript.get_by_id("&lt;TRANSCRIPT_ID&gt;")<br/>
+        /// print(transcript.get_redacted_audio_url())
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::AssemblyAI.AutoSDKHttpResponse<global::AssemblyAI.RedactedAudioResponse>> GetRedactedAudioAsResponseAsync(
             string transcriptId,
             global::AssemblyAI.AutoSDKRequestOptions? requestOptions = default,

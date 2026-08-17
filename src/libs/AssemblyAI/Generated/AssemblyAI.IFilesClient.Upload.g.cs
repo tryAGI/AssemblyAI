@@ -14,6 +14,13 @@ namespace AssemblyAI
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        /// <remarks>
+        /// import os<br/>
+        /// from assemblyai.prerecorded.v2 import Transcriber<br/>
+        /// transcriber = Transcriber(api_key=os.environ["ASSEMBLYAI_API_KEY"])<br/>
+        /// upload_url = transcriber.upload_file("./audio.mp3")<br/>
+        /// print(upload_url)
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::AssemblyAI.UploadedFile> UploadAsync(
 
             byte[] request,
@@ -29,6 +36,13 @@ namespace AssemblyAI
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        /// <remarks>
+        /// import os<br/>
+        /// from assemblyai.prerecorded.v2 import Transcriber<br/>
+        /// transcriber = Transcriber(api_key=os.environ["ASSEMBLYAI_API_KEY"])<br/>
+        /// upload_url = transcriber.upload_file("./audio.mp3")<br/>
+        /// print(upload_url)
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::AssemblyAI.AutoSDKHttpResponse<global::AssemblyAI.UploadedFile>> UploadAsResponseAsync(
 
             byte[] request,

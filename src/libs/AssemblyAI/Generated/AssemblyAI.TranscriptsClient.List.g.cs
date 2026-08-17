@@ -80,6 +80,17 @@ namespace AssemblyAI
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        /// <remarks>
+        /// import os<br/>
+        /// from assemblyai import ListTranscriptParameters<br/>
+        /// from assemblyai.prerecorded.v2 import Transcriber<br/>
+        /// transcriber = Transcriber(api_key=os.environ["ASSEMBLYAI_API_KEY"])<br/>
+        /// page = transcriber.list_transcripts(<br/>
+        ///     ListTranscriptParameters(limit=5, status="completed")<br/>
+        /// )<br/>
+        /// for item in page.transcripts:<br/>
+        ///     print(item.id, item.status)
+        /// </remarks>
         public async global::System.Threading.Tasks.Task<global::AssemblyAI.TranscriptList> ListAsync(
             int? limit = default,
             global::AssemblyAI.TranscriptStatus? status = default,
@@ -132,6 +143,17 @@ namespace AssemblyAI
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        /// <remarks>
+        /// import os<br/>
+        /// from assemblyai import ListTranscriptParameters<br/>
+        /// from assemblyai.prerecorded.v2 import Transcriber<br/>
+        /// transcriber = Transcriber(api_key=os.environ["ASSEMBLYAI_API_KEY"])<br/>
+        /// page = transcriber.list_transcripts(<br/>
+        ///     ListTranscriptParameters(limit=5, status="completed")<br/>
+        /// )<br/>
+        /// for item in page.transcripts:<br/>
+        ///     print(item.id, item.status)
+        /// </remarks>
         public async global::System.Threading.Tasks.Task<global::AssemblyAI.AutoSDKHttpResponse<global::AssemblyAI.TranscriptList>> ListAsResponseAsync(
             int? limit = default,
             global::AssemblyAI.TranscriptStatus? status = default,
