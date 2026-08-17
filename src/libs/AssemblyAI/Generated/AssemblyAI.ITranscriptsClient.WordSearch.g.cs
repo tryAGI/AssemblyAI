@@ -14,6 +14,17 @@ namespace AssemblyAI
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        /// <remarks>
+        /// import os<br/>
+        /// import assemblyai<br/>
+        /// from assemblyai.prerecorded.v2 import Transcript<br/>
+        /// # `Transcript.get_by_id()` uses the default client, which reads the global settings.<br/>
+        /// assemblyai.settings.api_key = os.environ["ASSEMBLYAI_API_KEY"]<br/>
+        /// transcript = Transcript.get_by_id("&lt;TRANSCRIPT_ID&gt;")<br/>
+        /// matches = transcript.word_search(["foo", "bar", "foo bar"])<br/>
+        /// for match in matches:<br/>
+        ///     print(f"Found '{match.text}' {match.count} times in the transcript")
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::AssemblyAI.WordSearchResponse> WordSearchAsync(
             string transcriptId,
             global::System.Collections.Generic.IList<string> words,
@@ -29,6 +40,17 @@ namespace AssemblyAI
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::AssemblyAI.ApiException"></exception>
+        /// <remarks>
+        /// import os<br/>
+        /// import assemblyai<br/>
+        /// from assemblyai.prerecorded.v2 import Transcript<br/>
+        /// # `Transcript.get_by_id()` uses the default client, which reads the global settings.<br/>
+        /// assemblyai.settings.api_key = os.environ["ASSEMBLYAI_API_KEY"]<br/>
+        /// transcript = Transcript.get_by_id("&lt;TRANSCRIPT_ID&gt;")<br/>
+        /// matches = transcript.word_search(["foo", "bar", "foo bar"])<br/>
+        /// for match in matches:<br/>
+        ///     print(f"Found '{match.text}' {match.count} times in the transcript")
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::AssemblyAI.AutoSDKHttpResponse<global::AssemblyAI.WordSearchResponse>> WordSearchAsResponseAsync(
             string transcriptId,
             global::System.Collections.Generic.IList<string> words,

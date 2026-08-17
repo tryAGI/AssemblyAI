@@ -48,6 +48,64 @@ paths:
             schema:
               type: string
               format: binary
+      x-codeSamples:
+        - lang: python
+          label: Python SDK
+          source: |
+            import os
+
+            from assemblyai.prerecorded.v2 import Transcriber
+
+            transcriber = Transcriber(api_key=os.environ["ASSEMBLYAI_API_KEY"])
+
+            upload_url = transcriber.upload_file("./audio.mp3")
+            print(upload_url)
+        - lang: javascript
+          label: JavaScript SDK
+          source: |
+            import { AssemblyAI } from "assemblyai";
+
+            const client = new AssemblyAI({ apiKey: process.env.ASSEMBLYAI_API_KEY });
+
+            const uploadUrl = await client.files.upload("./audio.mp3");
+            console.log(uploadUrl);
+        - lang: bash
+          label: cURL
+          source: |
+            curl -s -X POST https://api.assemblyai.com/v2/upload \
+              -H "authorization: $ASSEMBLYAI_API_KEY" \
+              --data-binary @./audio.mp3 | jq -r .upload_url
+        - lang: python
+          label: Python
+          source: |
+            import os
+
+            import requests
+
+            headers = {"authorization": os.environ["ASSEMBLYAI_API_KEY"]}
+
+            with open("./audio.mp3", "rb") as f:
+                response = requests.post(
+                    "https://api.assemblyai.com/v2/upload", headers=headers, data=f
+                )
+
+            response.raise_for_status()
+            print(response.json()["upload_url"])
+        - lang: javascript
+          label: JavaScript
+          source: |
+            import { readFileSync } from "fs";
+
+            const audio = readFileSync("./audio.mp3");
+
+            const response = await fetch("https://api.assemblyai.com/v2/upload", {
+              method: "POST",
+              headers: { authorization: process.env.ASSEMBLYAI_API_KEY },
+              body: audio,
+            });
+
+            const { upload_url } = await response.json();
+            console.log(upload_url);
       responses:
         "200":
           x-label: Media file uploaded
@@ -102,6 +160,67 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/TranscriptParams"
+      x-codeSamples:
+        - lang: python
+          label: Python SDK
+          source: |
+            import os
+
+            from assemblyai.prerecorded.v2 import Transcriber
+
+            transcriber = Transcriber(api_key=os.environ["ASSEMBLYAI_API_KEY"])
+
+            # `submit` queues the job and returns right away; `transcribe` submits and polls.
+            transcript = transcriber.submit("https://assembly.ai/wildfires.mp3")
+            print(transcript.id, transcript.status)
+        - lang: javascript
+          label: JavaScript SDK
+          source: |
+            import { AssemblyAI } from "assemblyai";
+
+            const client = new AssemblyAI({ apiKey: process.env.ASSEMBLYAI_API_KEY });
+
+            // `submit` queues the job and returns right away; `transcribe` submits and polls.
+            const transcript = await client.transcripts.submit({
+              audio_url: "https://assembly.ai/wildfires.mp3",
+            });
+            console.log(transcript.id, transcript.status);
+        - lang: bash
+          label: cURL
+          source: |
+            curl -s -X POST https://api.assemblyai.com/v2/transcript \
+              -H "authorization: $ASSEMBLYAI_API_KEY" \
+              -H "content-type: application/json" \
+              -d '{"audio_url": "https://assembly.ai/wildfires.mp3"}' | jq -r .id
+        - lang: python
+          label: Python
+          source: |
+            import os
+
+            import requests
+
+            response = requests.post(
+                "https://api.assemblyai.com/v2/transcript",
+                headers={"authorization": os.environ["ASSEMBLYAI_API_KEY"]},
+                json={"audio_url": "https://assembly.ai/wildfires.mp3"},
+            )
+
+            response.raise_for_status()
+            print(response.json()["id"])
+        - lang: javascript
+          label: JavaScript
+          source: |
+            const response = await fetch("https://api.assemblyai.com/v2/transcript", {
+              method: "POST",
+              headers: {
+                authorization: process.env.ASSEMBLYAI_API_KEY,
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({ audio_url: "https://assembly.ai/wildfires.mp3" }),
+            });
+
+            const transcript = await response.json();
+            console.log(transcript.id, transcript.status);
       responses:
         "200":
           x-label: Transcript created
@@ -327,6 +446,72 @@ paths:
             type: boolean
             default: false
           deprecated: true
+      x-codeSamples:
+        - lang: python
+          label: Python SDK
+          source: |
+            import os
+
+            from assemblyai import ListTranscriptParameters
+            from assemblyai.prerecorded.v2 import Transcriber
+
+            transcriber = Transcriber(api_key=os.environ["ASSEMBLYAI_API_KEY"])
+
+            page = transcriber.list_transcripts(
+                ListTranscriptParameters(limit=5, status="completed")
+            )
+
+            for item in page.transcripts:
+                print(item.id, item.status)
+        - lang: javascript
+          label: JavaScript SDK
+          source: |
+            import { AssemblyAI } from "assemblyai";
+
+            const client = new AssemblyAI({ apiKey: process.env.ASSEMBLYAI_API_KEY });
+
+            const page = await client.transcripts.list({ limit: 5, status: "completed" });
+
+            for (const item of page.transcripts) {
+              console.log(item.id, item.status);
+            }
+        - lang: bash
+          label: cURL
+          source: |
+            curl -s "https://api.assemblyai.com/v2/transcript?limit=5&status=completed" \
+              -H "authorization: $ASSEMBLYAI_API_KEY" | jq -r '.transcripts[].id'
+        - lang: python
+          label: Python
+          source: |
+            import os
+
+            import requests
+
+            response = requests.get(
+                "https://api.assemblyai.com/v2/transcript",
+                headers={"authorization": os.environ["ASSEMBLYAI_API_KEY"]},
+                params={"limit": 5, "status": "completed"},
+            )
+
+            response.raise_for_status()
+
+            for item in response.json()["transcripts"]:
+                print(item["id"], item["status"])
+        - lang: javascript
+          label: JavaScript
+          source: |
+            const params = new URLSearchParams({ limit: "5", status: "completed" });
+
+            const response = await fetch(
+              `https://api.assemblyai.com/v2/transcript?${params}`,
+              { headers: { authorization: process.env.ASSEMBLYAI_API_KEY } },
+            );
+
+            const page = await response.json();
+
+            for (const item of page.transcripts) {
+              console.log(item.id, item.status);
+            }
       responses:
         "200":
           description: |
@@ -370,6 +555,60 @@ paths:
           required: true
           schema:
             type: string
+      x-codeSamples:
+        - lang: python
+          label: Python SDK
+          source: |
+            import os
+
+            import assemblyai
+            from assemblyai.prerecorded.v2 import Transcript
+
+            # `Transcript.get_by_id()` uses the default client, which reads the global settings.
+            assemblyai.settings.api_key = os.environ["ASSEMBLYAI_API_KEY"]
+
+            transcript = Transcript.get_by_id("<TRANSCRIPT_ID>")
+            print(transcript.status, transcript.text)
+        - lang: javascript
+          label: JavaScript SDK
+          source: |
+            import { AssemblyAI } from "assemblyai";
+
+            const client = new AssemblyAI({ apiKey: process.env.ASSEMBLYAI_API_KEY });
+
+            const transcript = await client.transcripts.get("<TRANSCRIPT_ID>");
+            console.log(transcript.status, transcript.text);
+        - lang: bash
+          label: cURL
+          source: |
+            curl -s "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>" \
+              -H "authorization: $ASSEMBLYAI_API_KEY" | jq -r '.status, .text'
+        - lang: python
+          label: Python
+          source: |
+            import os
+
+            import requests
+
+            response = requests.get(
+                "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>",
+                headers={"authorization": os.environ["ASSEMBLYAI_API_KEY"]},
+            )
+
+            response.raise_for_status()
+
+            transcript = response.json()
+            print(transcript["status"], transcript["text"])
+        - lang: javascript
+          label: JavaScript
+          source: |
+            const response = await fetch(
+              "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>",
+              { headers: { authorization: process.env.ASSEMBLYAI_API_KEY } },
+            );
+
+            const transcript = await response.json();
+            console.log(transcript.status, transcript.text);
       responses:
         "200":
           description: The transcript resource
@@ -426,6 +665,61 @@ paths:
           required: true
           schema:
             type: string
+      x-codeSamples:
+        - lang: python
+          label: Python SDK
+          source: |
+            import os
+
+            import assemblyai
+            from assemblyai.prerecorded.v2 import Transcript
+
+            # `Transcript.delete_by_id()` uses the default client, which reads the global settings.
+            assemblyai.settings.api_key = os.environ["ASSEMBLYAI_API_KEY"]
+
+            transcript = Transcript.delete_by_id("<TRANSCRIPT_ID>")
+            print(transcript.status)
+        - lang: javascript
+          label: JavaScript SDK
+          source: |
+            import { AssemblyAI } from "assemblyai";
+
+            const client = new AssemblyAI({ apiKey: process.env.ASSEMBLYAI_API_KEY });
+
+            const transcript = await client.transcripts.delete("<TRANSCRIPT_ID>");
+            console.log(transcript.status);
+        - lang: bash
+          label: cURL
+          source: |
+            curl -s -X DELETE "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>" \
+              -H "authorization: $ASSEMBLYAI_API_KEY" | jq -r .status
+        - lang: python
+          label: Python
+          source: |
+            import os
+
+            import requests
+
+            response = requests.delete(
+                "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>",
+                headers={"authorization": os.environ["ASSEMBLYAI_API_KEY"]},
+            )
+
+            response.raise_for_status()
+            print(response.json()["status"])
+        - lang: javascript
+          label: JavaScript
+          source: |
+            const response = await fetch(
+              "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>",
+              {
+                method: "DELETE",
+                headers: { authorization: process.env.ASSEMBLYAI_API_KEY },
+              },
+            );
+
+            const transcript = await response.json();
+            console.log(transcript.status);
       responses:
         "200":
           description: The deleted transcript response
@@ -482,6 +776,63 @@ paths:
           schema:
             type: integer
 
+      x-codeSamples:
+        - lang: python
+          label: Python SDK
+          source: |
+            import os
+
+            import assemblyai
+            from assemblyai.prerecorded.v2 import Transcript
+
+            # `Transcript.get_by_id()` uses the default client, which reads the global settings.
+            assemblyai.settings.api_key = os.environ["ASSEMBLYAI_API_KEY"]
+
+            transcript = Transcript.get_by_id("<TRANSCRIPT_ID>")
+
+            srt = transcript.export_subtitles_srt(chars_per_caption=32)
+            # vtt = transcript.export_subtitles_vtt(chars_per_caption=32)
+            print(srt)
+        - lang: javascript
+          label: JavaScript SDK
+          source: |
+            import { AssemblyAI } from "assemblyai";
+
+            const client = new AssemblyAI({ apiKey: process.env.ASSEMBLYAI_API_KEY });
+
+            const srt = await client.transcripts.subtitles("<TRANSCRIPT_ID>", "srt", 32);
+            // const vtt = await client.transcripts.subtitles("<TRANSCRIPT_ID>", "vtt", 32);
+            console.log(srt);
+        - lang: bash
+          label: cURL
+          source: |
+            curl -s "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/srt?chars_per_caption=32" \
+              -H "authorization: $ASSEMBLYAI_API_KEY"
+        - lang: python
+          label: Python
+          source: |
+            import os
+
+            import requests
+
+            response = requests.get(
+                "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/srt",
+                headers={"authorization": os.environ["ASSEMBLYAI_API_KEY"]},
+                params={"chars_per_caption": 32},
+            )
+
+            response.raise_for_status()
+            print(response.text)
+        - lang: javascript
+          label: JavaScript
+          source: |
+            const response = await fetch(
+              "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/srt?chars_per_caption=32",
+              { headers: { authorization: process.env.ASSEMBLYAI_API_KEY } },
+            );
+
+            const srt = await response.text();
+            console.log(srt);
       responses:
         "200":
           description: The exported captions as text
@@ -560,6 +911,62 @@ paths:
           required: true
           schema:
             type: string
+      x-codeSamples:
+        - lang: python
+          label: Python SDK
+          source: |
+            import os
+
+            import assemblyai
+            from assemblyai.prerecorded.v2 import Transcript
+
+            # `Transcript.get_by_id()` uses the default client, which reads the global settings.
+            assemblyai.settings.api_key = os.environ["ASSEMBLYAI_API_KEY"]
+
+            transcript = Transcript.get_by_id("<TRANSCRIPT_ID>")
+
+            sentences = transcript.get_sentences()
+            print(len(sentences), sentences[0].text)
+        - lang: javascript
+          label: JavaScript SDK
+          source: |
+            import { AssemblyAI } from "assemblyai";
+
+            const client = new AssemblyAI({ apiKey: process.env.ASSEMBLYAI_API_KEY });
+
+            const { sentences } = await client.transcripts.sentences("<TRANSCRIPT_ID>");
+            console.log(sentences.length, sentences[0].text);
+        - lang: bash
+          label: cURL
+          source: |
+            curl -s "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/sentences" \
+              -H "authorization: $ASSEMBLYAI_API_KEY" | jq -r '.sentences[].text'
+        - lang: python
+          label: Python
+          source: |
+            import os
+
+            import requests
+
+            response = requests.get(
+                "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/sentences",
+                headers={"authorization": os.environ["ASSEMBLYAI_API_KEY"]},
+            )
+
+            response.raise_for_status()
+
+            sentences = response.json()["sentences"]
+            print(len(sentences), sentences[0]["text"])
+        - lang: javascript
+          label: JavaScript
+          source: |
+            const response = await fetch(
+              "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/sentences",
+              { headers: { authorization: process.env.ASSEMBLYAI_API_KEY } },
+            );
+
+            const { sentences } = await response.json();
+            console.log(sentences.length, sentences[0].text);
       responses:
         "200":
           description: Exported sentences
@@ -602,6 +1009,62 @@ paths:
           required: true
           schema:
             type: string
+      x-codeSamples:
+        - lang: python
+          label: Python SDK
+          source: |
+            import os
+
+            import assemblyai
+            from assemblyai.prerecorded.v2 import Transcript
+
+            # `Transcript.get_by_id()` uses the default client, which reads the global settings.
+            assemblyai.settings.api_key = os.environ["ASSEMBLYAI_API_KEY"]
+
+            transcript = Transcript.get_by_id("<TRANSCRIPT_ID>")
+
+            paragraphs = transcript.get_paragraphs()
+            print(len(paragraphs), paragraphs[0].text)
+        - lang: javascript
+          label: JavaScript SDK
+          source: |
+            import { AssemblyAI } from "assemblyai";
+
+            const client = new AssemblyAI({ apiKey: process.env.ASSEMBLYAI_API_KEY });
+
+            const { paragraphs } = await client.transcripts.paragraphs("<TRANSCRIPT_ID>");
+            console.log(paragraphs.length, paragraphs[0].text);
+        - lang: bash
+          label: cURL
+          source: |
+            curl -s "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/paragraphs" \
+              -H "authorization: $ASSEMBLYAI_API_KEY" | jq -r '.paragraphs[].text'
+        - lang: python
+          label: Python
+          source: |
+            import os
+
+            import requests
+
+            response = requests.get(
+                "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/paragraphs",
+                headers={"authorization": os.environ["ASSEMBLYAI_API_KEY"]},
+            )
+
+            response.raise_for_status()
+
+            paragraphs = response.json()["paragraphs"]
+            print(len(paragraphs), paragraphs[0]["text"])
+        - lang: javascript
+          label: JavaScript
+          source: |
+            const response = await fetch(
+              "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/paragraphs",
+              { headers: { authorization: process.env.ASSEMBLYAI_API_KEY } },
+            );
+
+            const { paragraphs } = await response.json();
+            console.log(paragraphs.length, paragraphs[0].text);
       responses:
         "200":
           description: Exported paragraphs
@@ -657,6 +1120,78 @@ paths:
               x-label: Word
               type: string
 
+      x-codeSamples:
+        - lang: python
+          label: Python SDK
+          source: |
+            import os
+
+            import assemblyai
+            from assemblyai.prerecorded.v2 import Transcript
+
+            # `Transcript.get_by_id()` uses the default client, which reads the global settings.
+            assemblyai.settings.api_key = os.environ["ASSEMBLYAI_API_KEY"]
+
+            transcript = Transcript.get_by_id("<TRANSCRIPT_ID>")
+
+            matches = transcript.word_search(["foo", "bar", "foo bar"])
+
+            for match in matches:
+                print(f"Found '{match.text}' {match.count} times in the transcript")
+        - lang: javascript
+          label: JavaScript SDK
+          source: |
+            import { AssemblyAI } from "assemblyai";
+
+            const client = new AssemblyAI({ apiKey: process.env.ASSEMBLYAI_API_KEY });
+
+            const { matches } = await client.transcripts.wordSearch("<TRANSCRIPT_ID>", [
+              "foo",
+              "bar",
+              "foo bar",
+            ]);
+
+            for (const match of matches) {
+              console.log(`Found '${match.text}' ${match.count} times in the transcript`);
+            }
+        - lang: bash
+          label: cURL
+          source: |
+            curl -s "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/word-search?words=foo,bar,foo%20bar" \
+              -H "authorization: $ASSEMBLYAI_API_KEY" | jq -c '.matches[] | {text, count}'
+        - lang: python
+          label: Python
+          source: |
+            import os
+
+            import requests
+
+            response = requests.get(
+                "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/word-search",
+                headers={"authorization": os.environ["ASSEMBLYAI_API_KEY"]},
+                params={"words": ",".join(["foo", "bar", "foo bar"])},
+            )
+
+            response.raise_for_status()
+
+            for match in response.json()["matches"]:
+                print(f"Found '{match['text']}' {match['count']} times in the transcript")
+        - lang: javascript
+          label: JavaScript
+          source: |
+            const words = ["foo", "bar", "foo bar"];
+            const params = new URLSearchParams({ words: words.join(",") });
+
+            const response = await fetch(
+              `https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/word-search?${params}`,
+              { headers: { authorization: process.env.ASSEMBLYAI_API_KEY } },
+            );
+
+            const { matches } = await response.json();
+
+            for (const match of matches) {
+              console.log(`Found '${match.text}' ${match.count} times in the transcript`);
+            }
       responses:
         "200":
           description: Word search response
@@ -701,6 +1236,62 @@ paths:
           schema:
             type: string
 
+      x-codeSamples:
+        - lang: python
+          label: Python SDK
+          source: |
+            import os
+
+            import assemblyai
+            from assemblyai.prerecorded.v2 import Transcript
+
+            # `Transcript.get_by_id()` uses the default client, which reads the global settings.
+            assemblyai.settings.api_key = os.environ["ASSEMBLYAI_API_KEY"]
+
+            transcript = Transcript.get_by_id("<TRANSCRIPT_ID>")
+
+            print(transcript.get_redacted_audio_url())
+        - lang: javascript
+          label: JavaScript SDK
+          source: |
+            import { AssemblyAI } from "assemblyai";
+
+            const client = new AssemblyAI({ apiKey: process.env.ASSEMBLYAI_API_KEY });
+
+            const { status, redacted_audio_url } =
+              await client.transcripts.redactedAudio("<TRANSCRIPT_ID>");
+            console.log(status, redacted_audio_url);
+        - lang: bash
+          label: cURL
+          source: |
+            curl -s "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/redacted-audio" \
+              -H "authorization: $ASSEMBLYAI_API_KEY" | jq -r '.status, .redacted_audio_url'
+        - lang: python
+          label: Python
+          source: |
+            import os
+
+            import requests
+
+            response = requests.get(
+                "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/redacted-audio",
+                headers={"authorization": os.environ["ASSEMBLYAI_API_KEY"]},
+            )
+
+            response.raise_for_status()
+
+            redacted_audio = response.json()
+            print(redacted_audio["status"], redacted_audio["redacted_audio_url"])
+        - lang: javascript
+          label: JavaScript
+          source: |
+            const response = await fetch(
+              "https://api.assemblyai.com/v2/transcript/<TRANSCRIPT_ID>/redacted-audio",
+              { headers: { authorization: process.env.ASSEMBLYAI_API_KEY } },
+            );
+
+            const { status, redacted_audio_url } = await response.json();
+            console.log(status, redacted_audio_url);
       responses:
         "200":
           description: The redacted audio object containing the status and URL to the redacted audio
