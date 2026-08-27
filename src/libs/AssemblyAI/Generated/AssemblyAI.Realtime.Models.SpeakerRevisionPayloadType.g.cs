@@ -9,7 +9,7 @@ namespace AssemblyAI.Realtime
     public enum SpeakerRevisionPayloadType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SpeakerRevision,
     }

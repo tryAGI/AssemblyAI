@@ -11,7 +11,7 @@ namespace AssemblyAI
     public enum TranscriptOptionalParamsLanguageDetectionOptionsOnNoSpeechDetected
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
         /// <summary>

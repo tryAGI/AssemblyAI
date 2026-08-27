@@ -9,15 +9,15 @@ namespace AssemblyAI.Realtime
     public enum UpdateConfigurationPayloadMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Balanced,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MaxAccuracy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MinLatency,
     }

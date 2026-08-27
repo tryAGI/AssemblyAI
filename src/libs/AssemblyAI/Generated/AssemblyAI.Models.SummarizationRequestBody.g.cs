@@ -9,7 +9,7 @@ namespace AssemblyAI
     public sealed partial class SummarizationRequestBody
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summarization")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -9,7 +9,7 @@ namespace AssemblyAI.Realtime
     public enum ForceEndpointPayloadType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ForceEndpoint,
     }

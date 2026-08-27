@@ -9,11 +9,11 @@ namespace AssemblyAI
     public enum SpeechModel2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Universal2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Universal35Pro,
     }
