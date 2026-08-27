@@ -43,6 +43,15 @@ namespace AssemblyAI
         public global::System.Collections.Generic.IList<string>? Localization { get; set; }
 
         /// <summary>
+        /// Controls what happens when no speech is detected in the audio. With `error` (the default), the transcript fails and the reason is returned in `error`. With `fallback`, the transcript completes with an empty `text`, `language_code` is set to the `fallback_language`, and an explanatory warning is returned in `metadata.warnings`.<br/>
+        /// `fallback` requires `fallback_language` to be set to a specific language code; `auto` returns a `400`. See [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) for more details.<br/>
+        /// Default Value: error
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("on_no_speech_detected")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.TranscriptOptionalParamsLanguageDetectionOptionsOnNoSpeechDetectedJsonConverter))]
+        public global::AssemblyAI.TranscriptOptionalParamsLanguageDetectionOptionsOnNoSpeechDetected? OnNoSpeechDetected { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -70,6 +79,11 @@ namespace AssemblyAI
         /// Render the transcript in a regional variant of the detected language. Supported values are `en_au` (Australian English) and `en_uk` (British English) — only English is supported today, and you can specify at most one locale per base language. Base or default-region codes such as `en` and `en_us` are not localization variants and return a `400`.<br/>
         /// When the detected language matches the requested locale's base language, the transcript uses that locale's spelling and `language_code` returns the region-aware code (for example `en_au`) instead of the base `en`. Otherwise, when the detected language isn't available as a locale, the option is ignored. See [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) for more details.
         /// </param>
+        /// <param name="onNoSpeechDetected">
+        /// Controls what happens when no speech is detected in the audio. With `error` (the default), the transcript fails and the reason is returned in `error`. With `fallback`, the transcript completes with an empty `text`, `language_code` is set to the `fallback_language`, and an explanatory warning is returned in `metadata.warnings`.<br/>
+        /// `fallback` requires `fallback_language` to be set to a specific language code; `auto` returns a `400`. See [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) for more details.<br/>
+        /// Default Value: error
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -78,13 +92,15 @@ namespace AssemblyAI
             string? fallbackLanguage,
             bool? codeSwitching,
             double? codeSwitchingConfidenceThreshold,
-            global::System.Collections.Generic.IList<string>? localization)
+            global::System.Collections.Generic.IList<string>? localization,
+            global::AssemblyAI.TranscriptOptionalParamsLanguageDetectionOptionsOnNoSpeechDetected? onNoSpeechDetected)
         {
             this.ExpectedLanguages = expectedLanguages;
             this.FallbackLanguage = fallbackLanguage;
             this.CodeSwitching = codeSwitching;
             this.CodeSwitchingConfidenceThreshold = codeSwitchingConfidenceThreshold;
             this.Localization = localization;
+            this.OnNoSpeechDetected = onNoSpeechDetected;
         }
 
         /// <summary>

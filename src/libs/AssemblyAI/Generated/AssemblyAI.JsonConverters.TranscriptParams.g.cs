@@ -62,6 +62,7 @@ namespace AssemblyAI.JsonConverters
             if (__jsonProps.Contains("language_detection_options.expected_languages")) __score1++;
             if (__jsonProps.Contains("language_detection_options.fallback_language")) __score1++;
             if (__jsonProps.Contains("language_detection_options.localization")) __score1++;
+            if (__jsonProps.Contains("language_detection_options.on_no_speech_detected")) __score1++;
             if (__jsonProps.Contains("multichannel")) __score1++;
             if (__jsonProps.Contains("prompt")) __score1++;
             if (__jsonProps.Contains("punctuate")) __score1++;

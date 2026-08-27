@@ -209,6 +209,12 @@ namespace AssemblyAI
         public global::AssemblyAI.TranscriptLanguageDetectionOptions? LanguageDetectionOptions { get; set; }
 
         /// <summary>
+        /// Additional information about the transcript, including any warnings raised while processing the request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public global::AssemblyAI.TranscriptMetadata? Metadata { get; set; }
+
+        /// <summary>
         /// Whether [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) was enabled in the transcription request, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("multichannel")]
@@ -623,6 +629,9 @@ namespace AssemblyAI
         /// <param name="languageDetectionOptions">
         /// Specify options for [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection).
         /// </param>
+        /// <param name="metadata">
+        /// Additional information about the transcript, including any warnings raised while processing the request.
+        /// </param>
         /// <param name="multichannel">
         /// Whether [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) was enabled in the transcription request, either true or false
         /// </param>
@@ -763,6 +772,7 @@ namespace AssemblyAI
             float? languageConfidenceThreshold,
             bool? languageDetection,
             global::AssemblyAI.TranscriptLanguageDetectionOptions? languageDetectionOptions,
+            global::AssemblyAI.TranscriptMetadata? metadata,
             bool? multichannel,
             string? prompt,
             bool? punctuate,
@@ -823,6 +833,7 @@ namespace AssemblyAI
             this.LanguageConfidenceThreshold = languageConfidenceThreshold;
             this.LanguageDetection = languageDetection;
             this.LanguageDetectionOptions = languageDetectionOptions;
+            this.Metadata = metadata;
             this.Multichannel = multichannel;
             this.Prompt = prompt;
             this.Punctuate = punctuate;
