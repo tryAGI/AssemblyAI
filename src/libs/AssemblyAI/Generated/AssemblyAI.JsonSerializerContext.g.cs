@@ -25,6 +25,10 @@ namespace AssemblyAI
 
             typeof(global::AssemblyAI.JsonConverters.TranscriptOptionalParamsDomainNullableJsonConverter),
 
+            typeof(global::AssemblyAI.JsonConverters.TranscriptOptionalParamsLanguageDetectionOptionsOnNoSpeechDetectedJsonConverter),
+
+            typeof(global::AssemblyAI.JsonConverters.TranscriptOptionalParamsLanguageDetectionOptionsOnNoSpeechDetectedNullableJsonConverter),
+
             typeof(global::AssemblyAI.JsonConverters.TranscriptOptionalParamsRedactPiiAudioOptionsOverrideAudioRedactionMethodJsonConverter),
 
             typeof(global::AssemblyAI.JsonConverters.TranscriptOptionalParamsRedactPiiAudioOptionsOverrideAudioRedactionMethodNullableJsonConverter),
@@ -68,6 +72,10 @@ namespace AssemblyAI
             typeof(global::AssemblyAI.JsonConverters.TranscriptReadyStatusJsonConverter),
 
             typeof(global::AssemblyAI.JsonConverters.TranscriptReadyStatusNullableJsonConverter),
+
+            typeof(global::AssemblyAI.JsonConverters.TranscriptLanguageDetectionOptionsOnNoSpeechDetectedJsonConverter),
+
+            typeof(global::AssemblyAI.JsonConverters.TranscriptLanguageDetectionOptionsOnNoSpeechDetectedNullableJsonConverter),
 
             typeof(global::AssemblyAI.JsonConverters.TranscriptRedactPiiAudioOptionsOverrideAudioRedactionMethodJsonConverter),
 
@@ -171,6 +179,7 @@ namespace AssemblyAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(float))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptOptionalParamsLanguageDetectionOptions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptOptionalParamsLanguageDetectionOptionsOnNoSpeechDetected), TypeInfoPropertyName = "TranscriptOptionalParamsLanguageDetectionOptionsOnNoSpeechDetected2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptionsOverrideAudioRedactionMethod), TypeInfoPropertyName = "TranscriptOptionalParamsRedactPiiAudioOptionsOverrideAudioRedactionMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.RedactPiiAudioQuality), TypeInfoPropertyName = "RedactPiiAudioQuality2")]
@@ -213,6 +222,10 @@ namespace AssemblyAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.OneOf<global::AssemblyAI.TopicDetectionModelResult, object>), TypeInfoPropertyName = "OneOfTopicDetectionModelResultObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TopicDetectionModelResult))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptLanguageDetectionOptions))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptLanguageDetectionOptionsOnNoSpeechDetected), TypeInfoPropertyName = "TranscriptLanguageDetectionOptionsOnNoSpeechDetected2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptMetadata))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptMetadataWarning>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptMetadataWarning))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptRedactPiiAudioOptions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.TranscriptRedactPiiAudioOptionsOverrideAudioRedactionMethod), TypeInfoPropertyName = "TranscriptRedactPiiAudioOptionsOverrideAudioRedactionMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.OneOf<global::AssemblyAI.RedactPiiAudioQuality?, object>), TypeInfoPropertyName = "OneOfRedactPiiAudioQualityObject2")]
@@ -291,6 +304,7 @@ namespace AssemblyAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.TranscriptWord>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.Chapter>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.Entity>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.TranscriptMetadataWarning>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.SentimentAnalysisResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.TranscriptUtterance>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.TopicDetectionResult>))]
