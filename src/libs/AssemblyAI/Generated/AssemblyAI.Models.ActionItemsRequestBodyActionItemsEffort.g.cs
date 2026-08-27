@@ -4,16 +4,16 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ActionItemsRequestBodyActionItemsEffort
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Low,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Medium,
     }

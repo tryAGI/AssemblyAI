@@ -38,7 +38,7 @@ namespace AssemblyAI
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::AssemblyAI.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
@@ -48,7 +48,7 @@ namespace AssemblyAI
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FilesClient Files => new FilesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -57,7 +57,7 @@ namespace AssemblyAI
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TranscriptsClient Transcripts => new TranscriptsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {

@@ -9,7 +9,7 @@ namespace AssemblyAI
     public sealed partial class ActionItemsRequestBody
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("action_items")]
         [global::System.Text.Json.Serialization.JsonRequired]

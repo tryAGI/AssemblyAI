@@ -157,7 +157,7 @@ namespace AssemblyAI
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
 
                             var __httpRequestContent = new global::System.Net.Http.ByteArrayContent(request);
@@ -501,7 +501,7 @@ namespace AssemblyAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Upload failed (for example, when the request body is empty). The response body is plain text, not JSON. 
+                            // Upload failed (for example, when the request body is empty). The response body is plain text, not JSON.
                             if ((int)__response.StatusCode == 422)
                             {
                                 string? __content_422 = null;
@@ -612,7 +612,7 @@ namespace AssemblyAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // 
+                            //
                             if ((int)__response.StatusCode == 503)
                             {
                                 string? __content_503 = null;
@@ -644,7 +644,7 @@ namespace AssemblyAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // 
+                            //
                             if ((int)__response.StatusCode == 504)
                             {
                                 string? __content_504 = null;

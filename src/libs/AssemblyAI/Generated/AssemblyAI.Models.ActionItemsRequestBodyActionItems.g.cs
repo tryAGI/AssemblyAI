@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ActionItemsRequestBodyActionItems
     {
@@ -15,7 +15,7 @@ namespace AssemblyAI
         public object? IncludeDecisions { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("effort")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.ActionItemsRequestBodyActionItemsEffortJsonConverter))]

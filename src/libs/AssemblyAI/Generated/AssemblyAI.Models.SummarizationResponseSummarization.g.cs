@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SummarizationResponseSummarization
     {
@@ -16,7 +16,7 @@ namespace AssemblyAI
         public required global::System.Collections.Generic.IList<object> Summary { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -4,12 +4,12 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SummarizationResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summarization")]
         public global::AssemblyAI.SummarizationResponseSummarization? Summarization { get; set; }
