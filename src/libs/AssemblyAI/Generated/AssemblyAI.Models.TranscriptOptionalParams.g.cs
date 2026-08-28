@@ -114,8 +114,7 @@ namespace AssemblyAI
         /// If you don't specify a language, it's detected automatically. Cannot be used together with `language_detection`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_code")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>))]
-        public global::AssemblyAI.OneOf<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>? LanguageCode { get; set; }
+        public global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>? LanguageCode { get; set; }
 
         /// <summary>
         /// The language codes of your audio file. Used for [Code switching](/speech-to-text/pre-recorded-audio/code-switching)<br/>
@@ -207,8 +206,7 @@ namespace AssemblyAI
         /// Default Value: hash
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_sub")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.SubstitutionPolicy?, object>))]
-        public global::AssemblyAI.OneOf<global::AssemblyAI.SubstitutionPolicy?, object>? RedactPiiSub { get; set; }
+        public global::AssemblyAI.SubstitutionPolicy? RedactPiiSub { get; set; }
 
         /// <summary>
         /// When set to `true`, returns the original unredacted transcript alongside the redacted one in the same response. Requires `redact_pii` to be `true`, otherwise a 400 error is returned.<br/>
@@ -257,7 +255,7 @@ namespace AssemblyAI
         /// Default Value: [universal-3-5-pro, universal-2]
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_models")]
-        public global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel2>? SpeechModels { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel>? SpeechModels { get; set; }
 
         /// <summary>
         /// Reject audio files that contain less than this fraction of speech.<br/>
@@ -304,8 +302,7 @@ namespace AssemblyAI
         /// Default Value: all
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("remove_audio_tags")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>))]
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>? RemoveAudioTags { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags2? RemoveAudioTags { get; set; }
 
         /// <summary>
         /// Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
@@ -347,8 +344,8 @@ namespace AssemblyAI
         /// This parameter has been replaced with the `speech_models` parameter, learn more about the `speech_models` parameter [here](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.SpeechModel2?, object>))]
-        public global::AssemblyAI.OneOf<global::AssemblyAI.SpeechModel2?, object>? SpeechModel { get; set; }
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::AssemblyAI.SpeechModel? SpeechModel { get; set; }
 
         /// <summary>
         /// This parameter does not currently have any functionality attached to it.
@@ -544,7 +541,7 @@ namespace AssemblyAI
             bool? formatText,
             bool? iabCategories,
             global::System.Collections.Generic.IList<string>? keytermsPrompt,
-            global::AssemblyAI.OneOf<global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?, object>? languageCode,
+            global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>? languageCode,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptLanguageCode>? languageCodes,
             float? languageConfidenceThreshold,
             bool? languageDetection,
@@ -557,17 +554,17 @@ namespace AssemblyAI
             global::AssemblyAI.TranscriptOptionalParamsRedactPiiAudioOptions? redactPiiAudioOptions,
             global::AssemblyAI.RedactPiiAudioQuality? redactPiiAudioQuality,
             global::System.Collections.Generic.IList<global::AssemblyAI.PiiPolicy>? redactPiiPolicies,
-            global::AssemblyAI.OneOf<global::AssemblyAI.SubstitutionPolicy?, object>? redactPiiSub,
+            global::AssemblyAI.SubstitutionPolicy? redactPiiSub,
             bool? redactPiiReturnUnredacted,
             global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>? redactStaticEntities,
             bool? sentimentAnalysis,
             bool? speakerLabels,
             global::AssemblyAI.TranscriptOptionalParamsSpeakerOptions? speakerOptions,
             int? speakersExpected,
-            global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel2>? speechModels,
+            global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel>? speechModels,
             float? speechThreshold,
             global::AssemblyAI.TranscriptOptionalParamsSpeechUnderstanding? speechUnderstanding,
-            global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags?, object>? removeAudioTags,
+            global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags2? removeAudioTags,
             double? temperature,
             string? webhookAuthHeaderName,
             string? webhookAuthHeaderValue,

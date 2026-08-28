@@ -4,10 +4,10 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Universal-3.5 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations. By default, all inline annotations are removed.<br/>
-    /// Note: This parameter is only supported for the Universal-3.5 Pro model.
+    /// The replacement logic for detected PII, can be `entity_name` or `hash`. See [PII redaction](https://www.assemblyai.com/docs/pii-redaction) for more details.<br/>
+    /// Default Value: hash
     /// </summary>
-    public sealed partial class TranscriptRemoveAudioTags
+    public sealed partial class TranscriptOptionalParamsRedactPiiSub
     {
 
         /// <summary>
