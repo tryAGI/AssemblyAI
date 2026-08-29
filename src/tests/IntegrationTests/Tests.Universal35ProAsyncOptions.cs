@@ -11,7 +11,7 @@ public partial class Tests
             "https://assembly.ai/code-switching-3",
             new TranscriptOptionalParams
             {
-                SpeechModels = [SpeechModel2.Universal35Pro],
+                SpeechModels = [SpeechModel.Universal35Pro],
                 LanguageDetection = true,
                 SpeakerLabels = true,
                 Prompt = "This is a League of Legends pro interview.",

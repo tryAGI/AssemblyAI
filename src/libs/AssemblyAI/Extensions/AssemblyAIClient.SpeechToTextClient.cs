@@ -40,17 +40,15 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
         {
             transcriptParams ??= new TranscriptOptionalParams();
             var languageCode = TranscriptLanguageCodeExtensions.ToEnum(speechLanguage);
-            transcriptParams.LanguageCode = global::AssemblyAI.OneOf<
-                global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>?,
-                object>.FromValue1(languageCode is { }
+            transcriptParams.LanguageCode = languageCode is { }
                     ? global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>.FromValue1(languageCode)
-                    : global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>.FromValue2(speechLanguage));
+                    : global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>.FromValue2(speechLanguage);
         }
 
         if (transcriptParams is not null &&
             (transcriptParams.SpeechModels is null || transcriptParams.SpeechModels.Count == 0) &&
             options?.ModelId is { Length: > 0 } modelId &&
-            SpeechModel2Extensions.ToEnum(modelId) is { } speechModel)
+            SpeechModelExtensions.ToEnum(modelId) is { } speechModel)
         {
             transcriptParams.SpeechModels = [speechModel];
         }
@@ -71,7 +69,7 @@ public sealed partial class AssemblyAIClient : ISpeechToTextClient
         transcriptParams.SpeechModels ??= [];
         if (transcriptParams.SpeechModels.Count == 0 &&
             options?.ModelId is { Length: > 0 } uploadedModelId &&
-            SpeechModel2Extensions.ToEnum(uploadedModelId) is { } uploadedSpeechModel)
+            SpeechModelExtensions.ToEnum(uploadedModelId) is { } uploadedSpeechModel)
         {
             transcriptParams.SpeechModels = [uploadedSpeechModel];
         }
