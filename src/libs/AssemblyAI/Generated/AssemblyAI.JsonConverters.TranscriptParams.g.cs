@@ -17,160 +17,34 @@ namespace AssemblyAI.JsonConverters
 
             using var __jsonDocument = global::System.Text.Json.JsonDocument.ParseValue(ref reader);
             var __rawJson = __jsonDocument.RootElement.GetRawText();
-            var __jsonProps = new global::System.Collections.Generic.HashSet<string>();
-            if (__jsonDocument.RootElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-            {
-                foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
-                {
-                    __jsonProps.Add(__jsonProp.Name);
-                    if (__jsonProp.Value.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-                    {
-                        foreach (var __nestedJsonProp in __jsonProp.Value.EnumerateObject())
-                        {
-                            __jsonProps.Add(__jsonProp.Name + "." + __nestedJsonProp.Name);
-                        }
-                    }
-
-                }
-            }
-
-            var __score0 = 0;
-            if (__jsonProps.Contains("audio_url")) __score0++;
-            var __score1 = 0;
-            if (__jsonProps.Contains("audio_end_at")) __score1++;
-            if (__jsonProps.Contains("audio_start_from")) __score1++;
-            if (__jsonProps.Contains("auto_chapters")) __score1++;
-            if (__jsonProps.Contains("auto_highlights")) __score1++;
-            if (__jsonProps.Contains("content_safety")) __score1++;
-            if (__jsonProps.Contains("content_safety_confidence")) __score1++;
-            if (__jsonProps.Contains("custom_spelling")) __score1++;
-            if (__jsonProps.Contains("custom_topics")) __score1++;
-            if (__jsonProps.Contains("disfluencies")) __score1++;
-            if (__jsonProps.Contains("domain")) __score1++;
-            if (__jsonProps.Contains("entity_detection")) __score1++;
-            if (__jsonProps.Contains("filter_profanity")) __score1++;
-            if (__jsonProps.Contains("format_text")) __score1++;
-            if (__jsonProps.Contains("iab_categories")) __score1++;
-            if (__jsonProps.Contains("keyterms_prompt")) __score1++;
-            if (__jsonProps.Contains("language_code")) __score1++;
-            if (__jsonProps.Contains("language_codes")) __score1++;
-            if (__jsonProps.Contains("language_confidence_threshold")) __score1++;
-            if (__jsonProps.Contains("language_detection")) __score1++;
-            if (__jsonProps.Contains("language_detection_options")) __score1++;
-            if (__jsonProps.Contains("language_detection_options.code_switching")) __score1++;
-            if (__jsonProps.Contains("language_detection_options.code_switching_confidence_threshold")) __score1++;
-            if (__jsonProps.Contains("language_detection_options.expected_languages")) __score1++;
-            if (__jsonProps.Contains("language_detection_options.fallback_language")) __score1++;
-            if (__jsonProps.Contains("language_detection_options.localization")) __score1++;
-            if (__jsonProps.Contains("language_detection_options.on_no_speech_detected")) __score1++;
-            if (__jsonProps.Contains("multichannel")) __score1++;
-            if (__jsonProps.Contains("prompt")) __score1++;
-            if (__jsonProps.Contains("punctuate")) __score1++;
-            if (__jsonProps.Contains("redact_pii")) __score1++;
-            if (__jsonProps.Contains("redact_pii_audio")) __score1++;
-            if (__jsonProps.Contains("redact_pii_audio_options")) __score1++;
-            if (__jsonProps.Contains("redact_pii_audio_options.override_audio_redaction_method")) __score1++;
-            if (__jsonProps.Contains("redact_pii_audio_options.return_redacted_no_speech_audio")) __score1++;
-            if (__jsonProps.Contains("redact_pii_audio_quality")) __score1++;
-            if (__jsonProps.Contains("redact_pii_policies")) __score1++;
-            if (__jsonProps.Contains("redact_pii_return_unredacted")) __score1++;
-            if (__jsonProps.Contains("redact_pii_sub")) __score1++;
-            if (__jsonProps.Contains("redact_static_entities")) __score1++;
-            if (__jsonProps.Contains("remove_audio_tags")) __score1++;
-            if (__jsonProps.Contains("sentiment_analysis")) __score1++;
-            if (__jsonProps.Contains("speaker_labels")) __score1++;
-            if (__jsonProps.Contains("speaker_options")) __score1++;
-            if (__jsonProps.Contains("speaker_options.max_speakers_expected")) __score1++;
-            if (__jsonProps.Contains("speaker_options.min_speakers_expected")) __score1++;
-            if (__jsonProps.Contains("speakers_expected")) __score1++;
-            if (__jsonProps.Contains("speech_model")) __score1++;
-            if (__jsonProps.Contains("speech_models")) __score1++;
-            if (__jsonProps.Contains("speech_threshold")) __score1++;
-            if (__jsonProps.Contains("speech_understanding")) __score1++;
-            if (__jsonProps.Contains("speech_understanding.request")) __score1++;
-            if (__jsonProps.Contains("summarization")) __score1++;
-            if (__jsonProps.Contains("summary_model")) __score1++;
-            if (__jsonProps.Contains("summary_type")) __score1++;
-            if (__jsonProps.Contains("temperature")) __score1++;
-            if (__jsonProps.Contains("topics")) __score1++;
-            if (__jsonProps.Contains("webhook_auth_header_name")) __score1++;
-            if (__jsonProps.Contains("webhook_auth_header_value")) __score1++;
-            if (__jsonProps.Contains("webhook_url")) __score1++;
-            var __bestScore = 0;
-            var __bestIndex = -1;
-            if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
-            if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
 
             global::AssemblyAI.TranscriptParamsVariant1? transcriptParamsVariant1 = default;
+            try
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.TranscriptParamsVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.TranscriptParamsVariant1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.TranscriptParamsVariant1).Name}");
+                transcriptParamsVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+            }
+            catch (global::System.Text.Json.JsonException)
+            {
+            }
+            catch (global::System.InvalidOperationException)
+            {
+            }
+
             global::AssemblyAI.TranscriptOptionalParams? optional = default;
-            if (__bestIndex >= 0)
+            try
             {
-                if (__bestIndex == 0)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.TranscriptParamsVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.TranscriptParamsVariant1> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.TranscriptParamsVariant1).Name}");
-                        transcriptParamsVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 1)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.TranscriptOptionalParams), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.TranscriptOptionalParams> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.TranscriptOptionalParams).Name}");
-                        optional = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.TranscriptOptionalParams), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.TranscriptOptionalParams> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.TranscriptOptionalParams).Name}");
+                optional = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
             }
-
-            if (transcriptParamsVariant1 == null && optional == null)
+            catch (global::System.Text.Json.JsonException)
             {
-                try
-                {
-
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.TranscriptParamsVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.TranscriptParamsVariant1> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.TranscriptParamsVariant1).Name}");
-                    transcriptParamsVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
             }
-
-            if (transcriptParamsVariant1 == null && optional == null)
+            catch (global::System.InvalidOperationException)
             {
-                try
-                {
-
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.TranscriptOptionalParams), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.TranscriptOptionalParams> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.TranscriptOptionalParams).Name}");
-                    optional = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
             }
-
             var __value = new global::AssemblyAI.TranscriptParams(
                 transcriptParamsVariant1,
 
@@ -189,18 +63,46 @@ namespace AssemblyAI.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
+
+            writer.WriteStartObject();
+            var __writtenPropertyNames = new global::System.Collections.Generic.HashSet<string>(global::System.StringComparer.Ordinal);
             if (value.IsTranscriptParamsVariant1)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.TranscriptParamsVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.TranscriptParamsVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.TranscriptParamsVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TranscriptParamsVariant1!, typeInfo);
+                var __element0 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.TranscriptParamsVariant1!, typeInfo);
+                if (__element0.ValueKind != global::System.Text.Json.JsonValueKind.Object)
+                {
+                    throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");
+                }
+
+                foreach (var __property in __element0.EnumerateObject())
+                {
+                    if (__writtenPropertyNames.Add(__property.Name))
+                    {
+                        __property.WriteTo(writer);
+                    }
+                }
             }
-            else if (value.IsOptional)
+            if (value.IsOptional)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.TranscriptOptionalParams), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.TranscriptOptionalParams?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.TranscriptOptionalParams).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Optional!, typeInfo);
+                var __element1 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.Optional!, typeInfo);
+                if (__element1.ValueKind != global::System.Text.Json.JsonValueKind.Object)
+                {
+                    throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");
+                }
+
+                foreach (var __property in __element1.EnumerateObject())
+                {
+                    if (__writtenPropertyNames.Add(__property.Name))
+                    {
+                        __property.WriteTo(writer);
+                    }
+                }
             }
+            writer.WriteEndObject();
         }
     }
 }
