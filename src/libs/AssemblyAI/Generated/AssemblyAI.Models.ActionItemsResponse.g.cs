@@ -4,12 +4,12 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ActionItemsResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("action_items")]
         public global::AssemblyAI.ActionItemsResponseActionItems? ActionItems { get; set; }

@@ -20,7 +20,7 @@ namespace AssemblyAI.Realtime.JsonConverters
                     {
                         return global::AssemblyAI.Realtime.ServerEventDiscriminatorTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown discriminator value '{stringValue}' for global::AssemblyAI.Realtime.ServerEventDiscriminatorType.");
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

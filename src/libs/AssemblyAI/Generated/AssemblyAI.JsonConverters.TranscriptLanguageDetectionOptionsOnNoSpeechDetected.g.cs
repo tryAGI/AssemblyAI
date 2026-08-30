@@ -3,10 +3,10 @@
 namespace AssemblyAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class SpeechModel2NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.SpeechModel2?>
+    public sealed class TranscriptLanguageDetectionOptionsOnNoSpeechDetectedJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.TranscriptLanguageDetectionOptionsOnNoSpeechDetected>
     {
         /// <inheritdoc />
-        public override global::AssemblyAI.SpeechModel2? Read(
+        public override global::AssemblyAI.TranscriptLanguageDetectionOptionsOnNoSpeechDetected Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,19 +18,19 @@ namespace AssemblyAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::AssemblyAI.SpeechModel2Extensions.ToEnum(stringValue);
+                        return global::AssemblyAI.TranscriptLanguageDetectionOptionsOnNoSpeechDetectedExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::AssemblyAI.SpeechModel2)numValue;
+                    return (global::AssemblyAI.TranscriptLanguageDetectionOptionsOnNoSpeechDetected)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::AssemblyAI.SpeechModel2?);
+                    return default(global::AssemblyAI.TranscriptLanguageDetectionOptionsOnNoSpeechDetected);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,19 +42,12 @@ namespace AssemblyAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::AssemblyAI.SpeechModel2? value,
+            global::AssemblyAI.TranscriptLanguageDetectionOptionsOnNoSpeechDetected value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::AssemblyAI.SpeechModel2Extensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::AssemblyAI.TranscriptLanguageDetectionOptionsOnNoSpeechDetectedExtensions.ToValueString(value));
         }
     }
 }

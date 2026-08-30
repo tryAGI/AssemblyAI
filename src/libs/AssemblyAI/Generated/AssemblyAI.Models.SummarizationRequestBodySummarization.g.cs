@@ -4,7 +4,7 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SummarizationRequestBodySummarization
     {
@@ -17,7 +17,7 @@ namespace AssemblyAI
         public required global::AssemblyAI.SummarizationRequestBodySummarizationSummaryType SummaryType { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("effort")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.SummarizationRequestBodySummarizationEffortJsonConverter))]

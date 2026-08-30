@@ -154,7 +154,7 @@ namespace AssemblyAI
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::AssemblyAI.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
@@ -531,7 +531,7 @@ namespace AssemblyAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // 
+                            //
                             if ((int)__response.StatusCode == 503)
                             {
                                 string? __content_503 = null;
@@ -563,7 +563,7 @@ namespace AssemblyAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // 
+                            //
                             if ((int)__response.StatusCode == 504)
                             {
                                 string? __content_504 = null;

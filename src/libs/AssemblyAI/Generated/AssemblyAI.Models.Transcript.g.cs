@@ -62,8 +62,7 @@ namespace AssemblyAI
         /// See [Key Phrases](https://www.assemblyai.com/docs/speech-understanding/key-phrases) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auto_highlights_result")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.AutoHighlightsResult2, object>))]
-        public global::AssemblyAI.OneOf<global::AssemblyAI.AutoHighlightsResult2, object>? AutoHighlightsResult { get; set; }
+        public global::AssemblyAI.AutoHighlightsResult? AutoHighlightsResult { get; set; }
 
         /// <summary>
         /// An array of temporally sequential chapters for the audio file. See [Auto Chapters](https://www.assemblyai.com/docs/speech-understanding/auto-chapters) for more information.
@@ -88,8 +87,7 @@ namespace AssemblyAI
         /// See [Content moderation](https://www.assemblyai.com/docs/content-moderation) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content_safety_labels")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.ContentSafetyLabelsResult, object>))]
-        public global::AssemblyAI.OneOf<global::AssemblyAI.ContentSafetyLabelsResult, object>? ContentSafetyLabels { get; set; }
+        public global::AssemblyAI.ContentSafetyLabelsResult? ContentSafetyLabels { get; set; }
 
         /// <summary>
         /// Customize how words are spelled and formatted using to and from values. Each `to` value must be a single word, and each `from` phrase can contain at most 5 words. See [Custom Spelling](https://www.assemblyai.com/docs/pre-recorded-audio/correct-spelling-of-terms) for more details.
@@ -151,8 +149,7 @@ namespace AssemblyAI
         /// See [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/topic-detection) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("iab_categories_result")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TopicDetectionModelResult, object>))]
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TopicDetectionModelResult, object>? IabCategoriesResult { get; set; }
+        public global::AssemblyAI.TopicDetectionModelResult? IabCategoriesResult { get; set; }
 
         /// <summary>
         /// The unique identifier of your transcript
@@ -209,6 +206,12 @@ namespace AssemblyAI
         public global::AssemblyAI.TranscriptLanguageDetectionOptions? LanguageDetectionOptions { get; set; }
 
         /// <summary>
+        /// Additional information about the transcript, including any warnings raised while processing the request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public global::AssemblyAI.TranscriptMetadata? Metadata { get; set; }
+
+        /// <summary>
         /// Whether [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) was enabled in the transcription request, either true or false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("multichannel")]
@@ -253,8 +256,7 @@ namespace AssemblyAI
         /// See [PII redaction](https://www.assemblyai.com/docs/pii-redaction#request-for-redacted-audio) for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redact_pii_audio_quality")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.RedactPiiAudioQuality?, object>))]
-        public global::AssemblyAI.OneOf<global::AssemblyAI.RedactPiiAudioQuality?, object>? RedactPiiAudioQuality { get; set; }
+        public global::AssemblyAI.RedactPiiAudioQuality? RedactPiiAudioQuality { get; set; }
 
         /// <summary>
         /// The list of PII Redaction policies that were enabled, if PII Redaction is enabled.<br/>
@@ -305,14 +307,14 @@ namespace AssemblyAI
         /// The speech model that was actually used for the transcription. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_model_used")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.SpeechModel2JsonConverter))]
-        public global::AssemblyAI.SpeechModel2? SpeechModelUsed { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.SpeechModelJsonConverter))]
+        public global::AssemblyAI.SpeechModel? SpeechModelUsed { get; set; }
 
         /// <summary>
         /// List of speech models that were used (in priority order) to transcribe the audio. If not specified in the request, this defaults to `["universal-3-5-pro", "universal-2"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_models")]
-        public global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel2>? SpeechModels { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel>? SpeechModels { get; set; }
 
         /// <summary>
         /// Defaults to null. Reject audio files that contain less than this fraction of speech.<br/>
@@ -370,8 +372,7 @@ namespace AssemblyAI
         /// Note: This parameter is only supported for the Universal-3.5 Pro model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("remove_audio_tags")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.TranscriptRemoveAudioTags?, object>))]
-        public global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptRemoveAudioTags?, object>? RemoveAudioTags { get; set; }
+        public global::AssemblyAI.TranscriptRemoveAudioTags2? RemoveAudioTags { get; set; }
 
         /// <summary>
         /// The temperature that was used for the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
@@ -473,9 +474,8 @@ namespace AssemblyAI
         /// This parameter has been replaced with the `speech_models` parameter, learn more about the `speech_models` parameter [here](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::AssemblyAI.JsonConverters.OneOfJsonConverter<global::AssemblyAI.SpeechModel2?, object>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::AssemblyAI.OneOf<global::AssemblyAI.SpeechModel2?, object> SpeechModel { get; set; }
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::AssemblyAI.SpeechModel? SpeechModel { get; set; }
 
         /// <summary>
         /// This parameter does not currently have any functionality attached to it.
@@ -533,9 +533,6 @@ namespace AssemblyAI
         /// </param>
         /// <param name="languageModel">
         /// This parameter does not currently have any functionality attached to it.
-        /// </param>
-        /// <param name="speechModel">
-        /// This parameter has been replaced with the `speech_models` parameter, learn more about the `speech_models` parameter [here](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model).
         /// </param>
         /// <param name="audioChannels">
         /// The number of audio channels in the audio file. This is only present when [multichannel](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) is enabled.
@@ -622,6 +619,9 @@ namespace AssemblyAI
         /// </param>
         /// <param name="languageDetectionOptions">
         /// Specify options for [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection).
+        /// </param>
+        /// <param name="metadata">
+        /// Additional information about the transcript, including any warnings raised while processing the request.
         /// </param>
         /// <param name="multichannel">
         /// Whether [Multichannel transcription](https://www.assemblyai.com/docs/pre-recorded-audio/transcribe-multiple-audio-channels) was enabled in the transcription request, either true or false
@@ -736,16 +736,15 @@ namespace AssemblyAI
             bool webhookAuth,
             string acousticModel,
             string languageModel,
-            global::AssemblyAI.OneOf<global::AssemblyAI.SpeechModel2?, object> speechModel,
             int? audioChannels,
             int? audioDuration,
             int? audioEndAt,
             int? audioStartFrom,
-            global::AssemblyAI.OneOf<global::AssemblyAI.AutoHighlightsResult2, object>? autoHighlightsResult,
+            global::AssemblyAI.AutoHighlightsResult? autoHighlightsResult,
             global::System.Collections.Generic.IList<global::AssemblyAI.Chapter>? chapters,
             double? confidence,
             bool? contentSafety,
-            global::AssemblyAI.OneOf<global::AssemblyAI.ContentSafetyLabelsResult, object>? contentSafetyLabels,
+            global::AssemblyAI.ContentSafetyLabelsResult? contentSafetyLabels,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptCustomSpelling>? customSpelling,
             bool? disfluencies,
             string? domain,
@@ -755,7 +754,7 @@ namespace AssemblyAI
             bool? filterProfanity,
             bool? formatText,
             bool? iabCategories,
-            global::AssemblyAI.OneOf<global::AssemblyAI.TopicDetectionModelResult, object>? iabCategoriesResult,
+            global::AssemblyAI.TopicDetectionModelResult? iabCategoriesResult,
             global::System.Collections.Generic.IList<string>? keytermsPrompt,
             global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>? languageCode,
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptLanguageCode>? languageCodes,
@@ -763,12 +762,13 @@ namespace AssemblyAI
             float? languageConfidenceThreshold,
             bool? languageDetection,
             global::AssemblyAI.TranscriptLanguageDetectionOptions? languageDetectionOptions,
+            global::AssemblyAI.TranscriptMetadata? metadata,
             bool? multichannel,
             string? prompt,
             bool? punctuate,
             bool? redactPiiAudio,
             global::AssemblyAI.TranscriptRedactPiiAudioOptions? redactPiiAudioOptions,
-            global::AssemblyAI.OneOf<global::AssemblyAI.RedactPiiAudioQuality?, object>? redactPiiAudioQuality,
+            global::AssemblyAI.RedactPiiAudioQuality? redactPiiAudioQuality,
             global::System.Collections.Generic.IList<global::AssemblyAI.PiiPolicy>? redactPiiPolicies,
             global::AssemblyAI.SubstitutionPolicy? redactPiiSub,
             bool? redactPiiReturnUnredacted,
@@ -776,11 +776,11 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<global::AssemblyAI.SentimentAnalysisResult>? sentimentAnalysisResults,
             bool? speakerLabels,
             int? speakersExpected,
-            global::AssemblyAI.SpeechModel2? speechModelUsed,
-            global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel2>? speechModels,
+            global::AssemblyAI.SpeechModel? speechModelUsed,
+            global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel>? speechModels,
             float? speechThreshold,
             global::AssemblyAI.TranscriptSpeechUnderstanding? speechUnderstanding,
-            global::AssemblyAI.OneOf<global::AssemblyAI.TranscriptRemoveAudioTags?, object>? removeAudioTags,
+            global::AssemblyAI.TranscriptRemoveAudioTags2? removeAudioTags,
             double? temperature,
             string? text,
             string? unredactedText,
@@ -823,6 +823,7 @@ namespace AssemblyAI
             this.LanguageConfidenceThreshold = languageConfidenceThreshold;
             this.LanguageDetection = languageDetection;
             this.LanguageDetectionOptions = languageDetectionOptions;
+            this.Metadata = metadata;
             this.Multichannel = multichannel;
             this.Prompt = prompt;
             this.Punctuate = punctuate;
@@ -858,7 +859,6 @@ namespace AssemblyAI
             this.UnredactedWords = unredactedWords;
             this.AcousticModel = acousticModel ?? throw new global::System.ArgumentNullException(nameof(acousticModel));
             this.LanguageModel = languageModel ?? throw new global::System.ArgumentNullException(nameof(languageModel));
-            this.SpeechModel = speechModel;
             this.TranslatedTexts = translatedTexts;
         }
 

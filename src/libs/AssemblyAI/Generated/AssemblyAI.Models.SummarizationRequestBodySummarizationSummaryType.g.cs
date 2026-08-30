@@ -9,11 +9,11 @@ namespace AssemblyAI
     public enum SummarizationRequestBodySummarizationSummaryType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bullets,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Paragraph,
     }
