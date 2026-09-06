@@ -372,7 +372,7 @@ namespace AssemblyAI
         /// Note: This parameter is only supported for the Universal-3.5 Pro model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("remove_audio_tags")]
-        public global::AssemblyAI.TranscriptRemoveAudioTags2? RemoveAudioTags { get; set; }
+        public global::AssemblyAI.TranscriptRemoveAudioTags? RemoveAudioTags { get; set; }
 
         /// <summary>
         /// The temperature that was used for the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
@@ -780,7 +780,7 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel>? speechModels,
             float? speechThreshold,
             global::AssemblyAI.TranscriptSpeechUnderstanding? speechUnderstanding,
-            global::AssemblyAI.TranscriptRemoveAudioTags2? removeAudioTags,
+            global::AssemblyAI.TranscriptRemoveAudioTags? removeAudioTags,
             double? temperature,
             string? text,
             string? unredactedText,

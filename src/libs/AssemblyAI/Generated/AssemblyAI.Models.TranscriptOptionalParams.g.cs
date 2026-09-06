@@ -302,7 +302,7 @@ namespace AssemblyAI
         /// Default Value: all
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("remove_audio_tags")]
-        public global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags2? RemoveAudioTags { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags? RemoveAudioTags { get; set; }
 
         /// <summary>
         /// Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
@@ -564,7 +564,7 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel>? speechModels,
             float? speechThreshold,
             global::AssemblyAI.TranscriptOptionalParamsSpeechUnderstanding? speechUnderstanding,
-            global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags2? removeAudioTags,
+            global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags? removeAudioTags,
             double? temperature,
             string? webhookAuthHeaderName,
             string? webhookAuthHeaderValue,
