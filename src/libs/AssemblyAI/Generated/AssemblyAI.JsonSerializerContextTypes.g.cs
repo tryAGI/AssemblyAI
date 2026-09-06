@@ -221,7 +221,7 @@ namespace AssemblyAI
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags2? Type47 { get; set; }
+        public global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags? Type47 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -345,7 +345,7 @@ namespace AssemblyAI
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.TranscriptRemoveAudioTags2? Type78 { get; set; }
+        public global::AssemblyAI.TranscriptRemoveAudioTags? Type78 { get; set; }
         /// <summary>
         ///
         /// </summary>

@@ -4,18 +4,48 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Universal-3.5 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations. By default, all inline annotations are removed.<br/>
-    /// Note: This parameter is only supported for the Universal-3.5 Pro model.<br/>
-    /// Default Value: all
+    ///
     /// </summary>
-    public sealed partial class TranscriptOptionalParamsRemoveAudioTags
+    public enum TranscriptOptionalParamsRemoveAudioTags
     {
-
         /// <summary>
-        /// Additional properties that are not explicitly defined in the schema
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonExtensionData]
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+        All,
+        /// <summary>
+        ///
+        /// </summary>
+        Speaker,
+    }
 
+    /// <summary>
+    /// Enum extensions to do fast conversions without the reflection.
+    /// </summary>
+    public static class TranscriptOptionalParamsRemoveAudioTagsExtensions
+    {
+        /// <summary>
+        /// Converts an enum to a string.
+        /// </summary>
+        public static string ToValueString(this TranscriptOptionalParamsRemoveAudioTags value)
+        {
+            return value switch
+            {
+                TranscriptOptionalParamsRemoveAudioTags.All => "all",
+                TranscriptOptionalParamsRemoveAudioTags.Speaker => "speaker",
+                _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
+            };
+        }
+        /// <summary>
+        /// Converts an string to a enum.
+        /// </summary>
+        public static TranscriptOptionalParamsRemoveAudioTags? ToEnum(string value)
+        {
+            return value switch
+            {
+                "all" => TranscriptOptionalParamsRemoveAudioTags.All,
+                "speaker" => TranscriptOptionalParamsRemoveAudioTags.Speaker,
+                _ => null,
+            };
+        }
     }
 }

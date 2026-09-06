@@ -3,10 +3,10 @@
 namespace AssemblyAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class TranscriptOptionalParamsRemoveAudioTags2NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags2?>
+    public sealed class TranscriptRemoveAudioTagsJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::AssemblyAI.TranscriptRemoveAudioTags>
     {
         /// <inheritdoc />
-        public override global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags2? Read(
+        public override global::AssemblyAI.TranscriptRemoveAudioTags Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace AssemblyAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags2Extensions.ToEnum(stringValue);
+                        return global::AssemblyAI.TranscriptRemoveAudioTagsExtensions.ToEnum(stringValue) ?? default;
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace AssemblyAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags2)numValue;
+                    return (global::AssemblyAI.TranscriptRemoveAudioTags)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags2?);
+                    return default(global::AssemblyAI.TranscriptRemoveAudioTags);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,19 +42,12 @@ namespace AssemblyAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags2? value,
+            global::AssemblyAI.TranscriptRemoveAudioTags value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::AssemblyAI.TranscriptOptionalParamsRemoveAudioTags2Extensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::AssemblyAI.TranscriptRemoveAudioTagsExtensions.ToValueString(value));
         }
     }
 }
