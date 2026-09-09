@@ -58,6 +58,12 @@ namespace AssemblyAI
         public required string Speaker { get; set; }
 
         /// <summary>
+        /// The confidence score for the speaker label of this utterance, between 0 and 1. Only present when `speaker_options.include_speaker_confidence` is `true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speaker_confidence")]
+        public double? SpeakerConfidence { get; set; }
+
+        /// <summary>
         /// Translations keyed by language code (e.g., `{"es": "Texto traducido", "de": "Übersetzter Text"}`). Only present when `match_original_utterance` is enabled with translation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("translated_texts")]
@@ -93,6 +99,9 @@ namespace AssemblyAI
         /// <param name="channel">
         /// The channel of this utterance. The left and right channels are channels 1 and 2. Additional channels increment the channel number sequentially.
         /// </param>
+        /// <param name="speakerConfidence">
+        /// The confidence score for the speaker label of this utterance, between 0 and 1. Only present when `speaker_options.include_speaker_confidence` is `true`.
+        /// </param>
         /// <param name="translatedTexts">
         /// Translations keyed by language code (e.g., `{"es": "Texto traducido", "de": "Übersetzter Text"}`). Only present when `match_original_utterance` is enabled with translation.
         /// </param>
@@ -107,6 +116,7 @@ namespace AssemblyAI
             global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptWord> words,
             string speaker,
             string? channel,
+            double? speakerConfidence,
             global::System.Collections.Generic.Dictionary<string, string>? translatedTexts)
         {
             this.Confidence = confidence;
@@ -116,6 +126,7 @@ namespace AssemblyAI
             this.Words = words ?? throw new global::System.ArgumentNullException(nameof(words));
             this.Channel = channel;
             this.Speaker = speaker ?? throw new global::System.ArgumentNullException(nameof(speaker));
+            this.SpeakerConfidence = speakerConfidence;
             this.TranslatedTexts = translatedTexts;
         }
 

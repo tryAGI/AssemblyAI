@@ -50,6 +50,12 @@ namespace AssemblyAI
         public string? Speaker { get; set; }
 
         /// <summary>
+        /// The confidence score for the speaker label of this word, between 0 and 1. Only present when `speaker_options.include_speaker_confidence` is `true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speaker_confidence")]
+        public double? SpeakerConfidence { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -76,6 +82,9 @@ namespace AssemblyAI
         /// <param name="speaker">
         /// The speaker of the word if [Speaker Diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers) is enabled, else null
         /// </param>
+        /// <param name="speakerConfidence">
+        /// The confidence score for the speaker label of this word, between 0 and 1. Only present when `speaker_options.include_speaker_confidence` is `true`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -85,7 +94,8 @@ namespace AssemblyAI
             int end,
             string text,
             string? channel,
-            string? speaker)
+            string? speaker,
+            double? speakerConfidence)
         {
             this.Confidence = confidence;
             this.Start = start;
@@ -93,6 +103,7 @@ namespace AssemblyAI
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Channel = channel;
             this.Speaker = speaker;
+            this.SpeakerConfidence = speakerConfidence;
         }
 
         /// <summary>
