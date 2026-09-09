@@ -22,6 +22,13 @@ namespace AssemblyAI
         public int? MaxSpeakersExpected { get; set; }
 
         /// <summary>
+        /// When `true`, includes a `speaker_confidence` field per word and per utterance in the response. See [Speaker Diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#configuration) for more details.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("include_speaker_confidence")]
+        public bool? IncludeSpeakerConfidence { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,15 +44,21 @@ namespace AssemblyAI
         /// &lt;Warning&gt;Setting this parameter too high may hurt model accuracy&lt;/Warning&gt;<br/>
         /// A hard upper limit on the number of speaker labels. If more people speak than this value, the additional speakers are merged into existing labels. Setting it higher than the true number of speakers can cause the model to over-split and return more speakers than are actually present. The default depends on audio duration: no limit for 0-2 minutes, 10 for 2-10 minutes, and 30 for 10+ minutes. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.
         /// </param>
+        /// <param name="includeSpeakerConfidence">
+        /// When `true`, includes a `speaker_confidence` field per word and per utterance in the response. See [Speaker Diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#configuration) for more details.<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TranscriptOptionalParamsSpeakerOptions(
             int? minSpeakersExpected,
-            int? maxSpeakersExpected)
+            int? maxSpeakersExpected,
+            bool? includeSpeakerConfidence)
         {
             this.MinSpeakersExpected = minSpeakersExpected;
             this.MaxSpeakersExpected = maxSpeakersExpected;
+            this.IncludeSpeakerConfidence = includeSpeakerConfidence;
         }
 
         /// <summary>

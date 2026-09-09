@@ -1900,6 +1900,11 @@ components:
                 <Warning>Setting this parameter too high may hurt model accuracy</Warning>
                 A hard upper limit on the number of speaker labels. If more people speak than this value, the additional speakers are merged into existing labels. Setting it higher than the true number of speakers can cause the model to over-split and return more speakers than are actually present. The default depends on audio duration: no limit for 0-2 minutes, 10 for 2-10 minutes, and 30 for 10+ minutes. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.
               type: integer
+            include_speaker_confidence:
+              x-label: Include speaker confidence
+              description: When `true`, includes a `speaker_confidence` field per word and per utterance in the response. See [Speaker Diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#configuration) for more details.
+              type: boolean
+              default: false
 
         speakers_expected:
           x-label: Speakers expected
@@ -2262,6 +2267,13 @@ components:
           x-label: Speaker
           description: The speaker of this utterance, where each speaker is assigned a sequential capital letter - e.g. "A" for Speaker A, "B" for Speaker B, etc.
           type: string
+        speaker_confidence:
+          x-label: Speaker confidence
+          description: The confidence score for the speaker label of this utterance, between 0 and 1. Only present when `speaker_options.include_speaker_confidence` is `true`.
+          type: [number, "null"]
+          format: double
+          minimum: 0
+          maximum: 1
         translated_texts:
           x-label: Translated texts
           description: 'Translations keyed by language code (e.g., `{"es": "Texto traducido", "de": "Übersetzter Text"}`). Only present when `match_original_utterance` is enabled with translation.'
@@ -5388,6 +5400,13 @@ components:
           x-label: Speaker
           description: The speaker of the word if [Speaker Diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers) is enabled, else null
           type: [string, "null"]
+        speaker_confidence:
+          x-label: Speaker confidence
+          description: The confidence score for the speaker label of this word, between 0 and 1. Only present when `speaker_options.include_speaker_confidence` is `true`.
+          type: [number, "null"]
+          format: double
+          minimum: 0
+          maximum: 1
       example:
         {
           text: "Smoke",
