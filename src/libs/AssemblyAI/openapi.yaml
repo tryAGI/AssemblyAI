@@ -147,7 +147,6 @@ paths:
       summary: Transcribe audio
       description: |
         <Note>To use our EU server for transcription, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.</Note>
-        <Tip>Building a load test or submitting a large batch? [See our guide →](/pre-recorded-audio/guides/bulk-transcription-and-load-tests-at-scale)</Tip>
         Create a transcript from a media file that is accessible via a URL.
       operationId: createTranscript
       x-fern-sdk-group-name: transcripts
@@ -6310,3 +6309,4 @@ components:
       type: apiKey
       in: header
       name: Authorization
+      description: Add your AssemblyAI API key as the Authorization header value. Required on every request.
