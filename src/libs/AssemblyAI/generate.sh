@@ -31,7 +31,6 @@ if [[ "${TRYAGI_PINNED_SPEC:-0}" == "1" ]]; then
   use_pinned_spec=true
 fi
 install_autosdk_cli
-rm -rf Generated
 if [[ "$use_pinned_spec" == false ]]; then
   tmp_openapi="$(mktemp)"
   if fetch_spec --fail --silent --show-error -L -o "$tmp_openapi" https://www.assemblyai.com/docs/openapi.yaml; then
@@ -44,6 +43,8 @@ elif [[ ! -f openapi.yaml ]]; then
   echo "error: --pinned-spec requested but openapi.yaml does not exist." >&2
   exit 1
 fi
+python3 fix-openapi.py openapi.yaml
+rm -rf Generated
 autosdk generate openapi.yaml \
   --namespace AssemblyAI \
   --clientClassName AssemblyAIClient \

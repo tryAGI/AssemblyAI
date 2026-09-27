@@ -4363,10 +4363,6 @@ components:
         See [Topic Detection](https://www.assemblyai.com/docs/speech-understanding/topic-detection) for more information.
       x-fern-sdk-group-name: transcripts
       type: object
-      required:
-        - status
-        - results
-        - summary
       properties:
         status:
           x-label: Status
@@ -4473,11 +4469,6 @@ components:
         See [Content moderation](https://www.assemblyai.com/docs/content-moderation) for more information.
       x-fern-sdk-group-name: transcripts
       type: object
-      required:
-        - status
-        - results
-        - summary
-        - severity_score_summary
       properties:
         status:
           x-label: Status
