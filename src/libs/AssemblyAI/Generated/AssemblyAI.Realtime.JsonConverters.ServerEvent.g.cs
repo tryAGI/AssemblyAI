@@ -95,37 +95,37 @@ namespace AssemblyAI.Realtime.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.SessionBeginsPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.SessionBeginsPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.SessionBeginsPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Begin!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBegin(), typeInfo);
             }
             else if (value.IsTurn)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.TurnPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.TurnPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.TurnPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Turn!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurn(), typeInfo);
             }
             else if (value.IsSpeechStarted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.SpeechStartedPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.SpeechStartedPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.SpeechStartedPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SpeechStarted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSpeechStarted(), typeInfo);
             }
             else if (value.IsSpeakerRevision)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.SpeakerRevisionPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.SpeakerRevisionPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.SpeakerRevisionPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SpeakerRevision!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSpeakerRevision(), typeInfo);
             }
             else if (value.IsTermination)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.TerminationPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.TerminationPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.TerminationPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Termination!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTermination(), typeInfo);
             }
             else if (value.IsError)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.Realtime.ErrorPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.Realtime.ErrorPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.Realtime.ErrorPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Error!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickError(), typeInfo);
             }
         }
     }

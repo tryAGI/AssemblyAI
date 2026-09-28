@@ -169,7 +169,7 @@ namespace AssemblyAI
                 PrepareGetSentencesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    transcriptId: transcriptId!);
+                    transcriptId: transcriptId);
 
                 return __httpRequest;
             }
@@ -191,7 +191,7 @@ namespace AssemblyAI
                                 pathTemplate: "$\"/v2/transcript/{transcriptId}/sentences\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -225,7 +225,7 @@ namespace AssemblyAI
                                 pathTemplate: "$\"/v2/transcript/{transcriptId}/sentences\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -266,7 +266,7 @@ namespace AssemblyAI
                                 pathTemplate: "$\"/v2/transcript/{transcriptId}/sentences\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -314,7 +314,7 @@ namespace AssemblyAI
                                 pathTemplate: "$\"/v2/transcript/{transcriptId}/sentences\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -336,7 +336,7 @@ namespace AssemblyAI
                                 pathTemplate: "$\"/v2/transcript/{transcriptId}/sentences\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

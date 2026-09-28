@@ -43,8 +43,8 @@ namespace AssemblyAI
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.TranscriptParamsVariant1 PickTranscriptParamsVariant1() => IsTranscriptParamsVariant1
-            ? TranscriptParamsVariant1!
+        public global::AssemblyAI.TranscriptParamsVariant1 PickTranscriptParamsVariant1() => TranscriptParamsVariant1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TranscriptParamsVariant1' but the value was {ToString()}.");
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace AssemblyAI
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.TranscriptOptionalParams PickOptional() => IsOptional
-            ? Optional!
+        public global::AssemblyAI.TranscriptOptionalParams PickOptional() => Optional is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Optional' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -179,13 +179,13 @@ namespace AssemblyAI
                 Validate();
             }
 
-            if (IsTranscriptParamsVariant1 && transcriptParamsVariant1 != null)
+            if (TranscriptParamsVariant1 is { } __value0 && transcriptParamsVariant1 != null)
             {
-                return transcriptParamsVariant1(TranscriptParamsVariant1!);
+                return transcriptParamsVariant1(__value0);
             }
-            else if (IsOptional && optional != null)
+            else if (Optional is { } __value1 && optional != null)
             {
-                return optional(Optional!);
+                return optional(__value1);
             }
 
             return default(TResult);
@@ -205,13 +205,13 @@ namespace AssemblyAI
                 Validate();
             }
 
-            if (IsTranscriptParamsVariant1)
+            if (TranscriptParamsVariant1 is { } __value0)
             {
-                transcriptParamsVariant1?.Invoke(TranscriptParamsVariant1!);
+                transcriptParamsVariant1?.Invoke(__value0);
             }
-            else if (IsOptional)
+            else if (Optional is { } __value1)
             {
-                optional?.Invoke(Optional!);
+                optional?.Invoke(__value1);
             }
         }
 
@@ -228,13 +228,13 @@ namespace AssemblyAI
                 Validate();
             }
 
-            if (IsTranscriptParamsVariant1)
+            if (TranscriptParamsVariant1 is { } __value0)
             {
-                transcriptParamsVariant1?.Invoke(TranscriptParamsVariant1!);
+                transcriptParamsVariant1?.Invoke(__value0);
             }
-            else if (IsOptional)
+            else if (Optional is { } __value1)
             {
-                optional?.Invoke(Optional!);
+                optional?.Invoke(__value1);
             }
         }
 

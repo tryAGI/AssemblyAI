@@ -70,7 +70,7 @@ namespace AssemblyAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.TranscriptParamsVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.TranscriptParamsVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.TranscriptParamsVariant1).Name}");
-                var __element0 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.TranscriptParamsVariant1!, typeInfo);
+                var __element0 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.PickTranscriptParamsVariant1(), typeInfo);
                 if (__element0.ValueKind != global::System.Text.Json.JsonValueKind.Object)
                 {
                     throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");
@@ -88,7 +88,7 @@ namespace AssemblyAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::AssemblyAI.TranscriptOptionalParams), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::AssemblyAI.TranscriptOptionalParams?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::AssemblyAI.TranscriptOptionalParams).Name}");
-                var __element1 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.Optional!, typeInfo);
+                var __element1 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.PickOptional(), typeInfo);
                 if (__element1.ValueKind != global::System.Text.Json.JsonValueKind.Object)
                 {
                     throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");

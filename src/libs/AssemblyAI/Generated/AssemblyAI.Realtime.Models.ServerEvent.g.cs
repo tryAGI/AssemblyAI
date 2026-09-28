@@ -47,8 +47,8 @@ namespace AssemblyAI.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.SessionBeginsPayload PickBegin() => IsBegin
-            ? Begin!
+        public global::AssemblyAI.Realtime.SessionBeginsPayload PickBegin() => Begin is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Begin' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace AssemblyAI.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.TurnPayload PickTurn() => IsTurn
-            ? Turn!
+        public global::AssemblyAI.Realtime.TurnPayload PickTurn() => Turn is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Turn' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace AssemblyAI.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.SpeechStartedPayload PickSpeechStarted() => IsSpeechStarted
-            ? SpeechStarted!
+        public global::AssemblyAI.Realtime.SpeechStartedPayload PickSpeechStarted() => SpeechStarted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SpeechStarted' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace AssemblyAI.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.SpeakerRevisionPayload PickSpeakerRevision() => IsSpeakerRevision
-            ? SpeakerRevision!
+        public global::AssemblyAI.Realtime.SpeakerRevisionPayload PickSpeakerRevision() => SpeakerRevision is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SpeakerRevision' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace AssemblyAI.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.TerminationPayload PickTermination() => IsTermination
-            ? Termination!
+        public global::AssemblyAI.Realtime.TerminationPayload PickTermination() => Termination is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Termination' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace AssemblyAI.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.ErrorPayload PickError() => IsError
-            ? Error!
+        public global::AssemblyAI.Realtime.ErrorPayload PickError() => Error is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -445,29 +445,29 @@ namespace AssemblyAI.Realtime
                 Validate();
             }
 
-            if (IsBegin && begin != null)
+            if (Begin is { } __value0 && begin != null)
             {
-                return begin(Begin!);
+                return begin(__value0);
             }
-            else if (IsTurn && turn != null)
+            else if (Turn is { } __value1 && turn != null)
             {
-                return turn(Turn!);
+                return turn(__value1);
             }
-            else if (IsSpeechStarted && speechStarted != null)
+            else if (SpeechStarted is { } __value2 && speechStarted != null)
             {
-                return speechStarted(SpeechStarted!);
+                return speechStarted(__value2);
             }
-            else if (IsSpeakerRevision && speakerRevision != null)
+            else if (SpeakerRevision is { } __value3 && speakerRevision != null)
             {
-                return speakerRevision(SpeakerRevision!);
+                return speakerRevision(__value3);
             }
-            else if (IsTermination && termination != null)
+            else if (Termination is { } __value4 && termination != null)
             {
-                return termination(Termination!);
+                return termination(__value4);
             }
-            else if (IsError && error != null)
+            else if (Error is { } __value5 && error != null)
             {
-                return error(Error!);
+                return error(__value5);
             }
 
             return default(TResult);
@@ -495,29 +495,29 @@ namespace AssemblyAI.Realtime
                 Validate();
             }
 
-            if (IsBegin)
+            if (Begin is { } __value0)
             {
-                begin?.Invoke(Begin!);
+                begin?.Invoke(__value0);
             }
-            else if (IsTurn)
+            else if (Turn is { } __value1)
             {
-                turn?.Invoke(Turn!);
+                turn?.Invoke(__value1);
             }
-            else if (IsSpeechStarted)
+            else if (SpeechStarted is { } __value2)
             {
-                speechStarted?.Invoke(SpeechStarted!);
+                speechStarted?.Invoke(__value2);
             }
-            else if (IsSpeakerRevision)
+            else if (SpeakerRevision is { } __value3)
             {
-                speakerRevision?.Invoke(SpeakerRevision!);
+                speakerRevision?.Invoke(__value3);
             }
-            else if (IsTermination)
+            else if (Termination is { } __value4)
             {
-                termination?.Invoke(Termination!);
+                termination?.Invoke(__value4);
             }
-            else if (IsError)
+            else if (Error is { } __value5)
             {
-                error?.Invoke(Error!);
+                error?.Invoke(__value5);
             }
         }
 
@@ -538,29 +538,29 @@ namespace AssemblyAI.Realtime
                 Validate();
             }
 
-            if (IsBegin)
+            if (Begin is { } __value0)
             {
-                begin?.Invoke(Begin!);
+                begin?.Invoke(__value0);
             }
-            else if (IsTurn)
+            else if (Turn is { } __value1)
             {
-                turn?.Invoke(Turn!);
+                turn?.Invoke(__value1);
             }
-            else if (IsSpeechStarted)
+            else if (SpeechStarted is { } __value2)
             {
-                speechStarted?.Invoke(SpeechStarted!);
+                speechStarted?.Invoke(__value2);
             }
-            else if (IsSpeakerRevision)
+            else if (SpeakerRevision is { } __value3)
             {
-                speakerRevision?.Invoke(SpeakerRevision!);
+                speakerRevision?.Invoke(__value3);
             }
-            else if (IsTermination)
+            else if (Termination is { } __value4)
             {
-                termination?.Invoke(Termination!);
+                termination?.Invoke(__value4);
             }
-            else if (IsError)
+            else if (Error is { } __value5)
             {
-                error?.Invoke(Error!);
+                error?.Invoke(__value5);
             }
         }
 

@@ -43,8 +43,8 @@ namespace AssemblyAI
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.RedactedAudioResponse PickResponse() => IsResponse
-            ? Response!
+        public global::AssemblyAI.RedactedAudioResponse PickResponse() => Response is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Response' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -103,9 +103,9 @@ namespace AssemblyAI
                 Validate();
             }
 
-            if (IsResponse && response != null)
+            if (Response is { } __value0 && response != null)
             {
-                return response(Response!);
+                return response(__value0);
             }
 
             return default(TResult);
@@ -123,9 +123,9 @@ namespace AssemblyAI
                 Validate();
             }
 
-            if (IsResponse)
+            if (Response is { } __value0)
             {
-                response?.Invoke(Response!);
+                response?.Invoke(__value0);
             }
         }
 
@@ -141,9 +141,9 @@ namespace AssemblyAI
                 Validate();
             }
 
-            if (IsResponse)
+            if (Response is { } __value0)
             {
-                response?.Invoke(Response!);
+                response?.Invoke(__value0);
             }
         }
 
