@@ -62,7 +62,7 @@ namespace AssemblyAI.Realtime
             typeof(global::AssemblyAI.Realtime.JsonConverters.ServerEventJsonConverter),
         })]
     #pragma warning restore CS3016
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.JsonSerializerContextTypes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.RealtimeSourceGenerationContextTypes))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.UpdateConfigurationPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.UpdateConfigurationPayloadType), TypeInfoPropertyName = "UpdateConfigurationPayloadType2")]
