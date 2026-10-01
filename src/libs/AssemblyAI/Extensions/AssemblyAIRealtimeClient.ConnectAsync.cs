@@ -16,12 +16,16 @@ public sealed record StreamingConnectOptions
     public int SampleRate { get; init; } = 16000;
 
     /// <summary>
-    /// Speech model to use for the streaming session. Defaults to <c>u3-rt-pro</c>,
-    /// AssemblyAI's current Universal-3.5 Pro Realtime model.
+    /// Speech model to use for the streaming session. Defaults to <c>universal-3-6-pro</c>.
     /// </summary>
-    public StreamingSpeechModel SpeechModel { get; init; } = StreamingSpeechModel.Universal35ProRealtime;
+    public StreamingSpeechModel SpeechModel { get; init; } = StreamingSpeechModel.Universal36ProRealtime;
 
-    /// <summary>Audio encoding. v3 supports <c>pcm_s16le</c> (default) and <c>pcm_mulaw</c>.</summary>
+    /// <summary>
+    /// Audio encoding: <c>pcm_s16le</c> (default), <c>pcm_mulaw</c>, <c>opus</c>,
+    /// <c>ogg_opus</c>, or ADTS-framed <c>aac</c>. Raw Opus requires one packet per
+    /// WebSocket message; Ogg Opus and AAC may be sent in arbitrary stream chunks.
+    /// <see cref="SampleRate"/> is ignored for Opus and AAC.
+    /// </summary>
     public string Encoding { get; init; } = "pcm_s16le";
 
     /// <summary>Whether the server should produce formatted (punctuated, capitalized) turn output.</summary>
@@ -39,7 +43,14 @@ public sealed record StreamingConnectOptions
     /// <summary>Latency and accuracy preset, for example <c>min_latency</c>, <c>balanced</c>, or <c>max_accuracy</c>.</summary>
     public StreamingMode? Mode { get; init; }
 
-    /// <summary>Steer transcription toward a specific language code while still allowing token-level transcription.</summary>
+    /// <summary>
+    /// Steer transcription toward one or more languages while retaining code-switching.
+    /// Leave unset for automatic transcription across all supported languages.
+    /// Universal-3.6 Pro supports 32 languages; Universal-3.5 Pro supports 19.
+    /// </summary>
+    public IReadOnlyList<StreamingLanguageCode>? LanguageCodes { get; init; }
+
+    /// <summary>Compatibility shorthand for a single language in <see cref="LanguageCodes"/>.</summary>
     public StreamingLanguageCode? LanguageCode { get; init; }
 
     /// <summary>Whether to include detected language metadata in turn messages.</summary>
@@ -109,7 +120,30 @@ public sealed record StreamingConnectOptions
         Append(query, "prompt", Prompt);
         Append(query, "agent_context", AgentContext);
         Append(query, "mode", Mode?.ToString());
-        Append(query, "language_code", LanguageCode?.ToString());
+        if (LanguageCodes is not null && LanguageCode is not null)
+        {
+            throw new ArgumentException("Specify either LanguageCodes or LanguageCode, not both.");
+        }
+
+        if (LanguageCodes is { Count: > 0 })
+        {
+            var codes = new List<string>(LanguageCodes.Count);
+            foreach (var code in LanguageCodes)
+            {
+                if (!string.IsNullOrWhiteSpace(code.Value))
+                {
+                    codes.Add(code.Value);
+                }
+            }
+            if (codes.Count > 0)
+            {
+                Append(query, "language_codes", SerializeStringArray(codes));
+            }
+        }
+        else if (LanguageCode is { } code && !string.IsNullOrWhiteSpace(code.Value))
+        {
+            Append(query, "language_codes", SerializeStringArray([code.Value]));
+        }
         Append(query, "language_detection", LanguageDetection);
         Append(query, "voice_focus", VoiceFocus?.ToString());
         Append(query, "voice_focus_threshold", VoiceFocusThreshold);

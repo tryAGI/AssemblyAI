@@ -62,4 +62,30 @@ public partial class Tests
         revision.Words[0].Text.Should().Be("Hello");
         revision.Words[0].Speaker.Should().Be("B");
     }
+
+    [TestMethod]
+    public void ServerEvent_DeserializesUniversal36TurnMetadata()
+    {
+        var serverEvent = JsonSerializer.Deserialize(
+            """
+            {
+              "type": "Turn",
+              "turn_order": 0,
+              "turn_is_formatted": true,
+              "end_of_turn": true,
+              "transcript": "Нет.",
+              "utterance": "Нет.",
+              "language_code": "ru",
+              "language_confidence": 0.98,
+              "end_of_turn_confidence": 0.96,
+              "words": []
+            }
+            """,
+            RealtimeSourceGenerationContext.Default.ServerEvent2);
+
+        serverEvent.IsTurn.Should().BeTrue();
+        serverEvent.Turn!.Transcript.Should().Be("Нет.");
+        serverEvent.Turn.LanguageCode.Should().Be("ru");
+        serverEvent.Turn.EndOfTurnConfidence.Should().BeApproximately(0.96, 0.0001);
+    }
 }

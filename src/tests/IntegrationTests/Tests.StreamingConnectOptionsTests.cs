@@ -13,7 +13,7 @@ public partial class Tests
         uri.Host.Should().Be("streaming.assemblyai.com");
         uri.AbsolutePath.Should().Be("/v3/ws");
         uri.Query.Should().Contain("sample_rate=16000");
-        uri.Query.Should().Contain("speech_model=u3-rt-pro");
+        uri.Query.Should().Contain("speech_model=universal-3-6-pro");
         uri.Query.Should().Contain("encoding=pcm_s16le");
         uri.Query.Should().Contain("format_turns=false");
         uri.Query.Should().NotContain("token=");
@@ -127,6 +127,7 @@ public partial class Tests
     {
         var uri = new StreamingConnectOptions
         {
+            SpeechModel = StreamingSpeechModel.Universal35ProRealtime,
             AgentContext = "What is your email address?",
             LanguageCode = StreamingLanguageCode.English,
             VoiceFocus = StreamingVoiceFocus.NearField,
@@ -140,7 +141,8 @@ public partial class Tests
         }.BuildUri();
 
         uri.Query.Should().Contain("agent_context=What%20is%20your%20email%20address%3F");
-        uri.Query.Should().Contain("language_code=en");
+        uri.Query.Should().Contain("speech_model=universal-3-5-pro");
+        uri.Query.Should().Contain("language_codes=%5B%22en%22%5D");
         uri.Query.Should().Contain("voice_focus=near-field");
         uri.Query.Should().Contain("voice_focus_threshold=0.75");
         uri.Query.Should().Contain("speaker_labels=true");
@@ -164,7 +166,36 @@ public partial class Tests
 
         uri.Query.Should().Contain("speech_model=custom-realtime-model");
         uri.Query.Should().Contain("mode=custom-mode");
-        uri.Query.Should().Contain("language_code=xx");
+        uri.Query.Should().Contain("language_codes=%5B%22xx%22%5D");
         uri.Query.Should().Contain("voice_focus=custom-focus");
+    }
+
+    [TestMethod]
+    public void StreamingConnectOptions_RendersUniversal36LanguageSetAndAac()
+    {
+        var uri = new StreamingConnectOptions
+        {
+            SpeechModel = StreamingSpeechModel.Universal36ProRealtime,
+            LanguageCodes = [StreamingLanguageCode.English, StreamingLanguageCode.Russian, StreamingLanguageCode.Cantonese],
+            Encoding = "aac",
+        }.BuildUri();
+
+        uri.Query.Should().Contain("speech_model=universal-3-6-pro");
+        uri.Query.Should().Contain("language_codes=" + Uri.EscapeDataString("[\"en\",\"ru\",\"yue\"]"));
+        uri.Query.Should().Contain("encoding=aac");
+        uri.Query.Should().NotContain("language_code=");
+    }
+
+    [TestMethod]
+    public void StreamingConnectOptions_RejectsConflictingLanguageSteering()
+    {
+        var options = new StreamingConnectOptions
+        {
+            LanguageCode = StreamingLanguageCode.English,
+            LanguageCodes = [StreamingLanguageCode.Spanish],
+        };
+
+        Action buildUri = () => options.BuildUri();
+        buildUri.Should().Throw<ArgumentException>();
     }
 }

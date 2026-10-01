@@ -7,8 +7,11 @@ namespace AssemblyAI.Realtime;
 /// </summary>
 public readonly record struct StreamingSpeechModel(string Value)
 {
+    /// <summary>Universal-3.6 Pro Realtime model.</summary>
+    public static StreamingSpeechModel Universal36ProRealtime { get; } = new("universal-3-6-pro");
+
     /// <summary>Universal-3.5 Pro Realtime model.</summary>
-    public static StreamingSpeechModel Universal35ProRealtime { get; } = new("u3-rt-pro");
+    public static StreamingSpeechModel Universal35ProRealtime { get; } = new("universal-3-5-pro");
 
     /// <summary>Universal Streaming English model.</summary>
     public static StreamingSpeechModel UniversalStreamingEnglish { get; } = new("universal-streaming-english");
@@ -81,10 +84,13 @@ public readonly record struct StreamingVoiceFocus(string Value)
 }
 
 /// <summary>
-/// Language-code steering value for Universal-3 Pro realtime streaming.
+/// Language-code steering value for Universal-3.5 and Universal-3.6 Pro realtime streaming.
 /// </summary>
 public readonly record struct StreamingLanguageCode(string Value)
 {
+    /// <summary>Afrikaans.</summary>
+    public static StreamingLanguageCode Afrikaans { get; } = new("af");
+
     /// <summary>English.</summary>
     public static StreamingLanguageCode English { get; } = new("en");
 
@@ -130,14 +136,50 @@ public readonly record struct StreamingLanguageCode(string Value)
     /// <summary>Arabic.</summary>
     public static StreamingLanguageCode Arabic { get; } = new("ar");
 
+    /// <summary>Cantonese.</summary>
+    public static StreamingLanguageCode Cantonese { get; } = new("yue");
+
+    /// <summary>Catalan.</summary>
+    public static StreamingLanguageCode Catalan { get; } = new("ca");
+
+    /// <summary>Estonian.</summary>
+    public static StreamingLanguageCode Estonian { get; } = new("et");
+
+    /// <summary>Galician.</summary>
+    public static StreamingLanguageCode Galician { get; } = new("gl");
+
     /// <summary>Hebrew.</summary>
     public static StreamingLanguageCode Hebrew { get; } = new("he");
 
     /// <summary>Japanese.</summary>
     public static StreamingLanguageCode Japanese { get; } = new("ja");
 
+    /// <summary>Korean.</summary>
+    public static StreamingLanguageCode Korean { get; } = new("ko");
+
+    /// <summary>Marathi.</summary>
+    public static StreamingLanguageCode Marathi { get; } = new("mr");
+
+    /// <summary>Norwegian Nynorsk.</summary>
+    public static StreamingLanguageCode NorwegianNynorsk { get; } = new("nn");
+
+    /// <summary>Persian.</summary>
+    public static StreamingLanguageCode Persian { get; } = new("fa");
+
+    /// <summary>Romanian.</summary>
+    public static StreamingLanguageCode Romanian { get; } = new("ro");
+
+    /// <summary>Russian.</summary>
+    public static StreamingLanguageCode Russian { get; } = new("ru");
+
     /// <summary>Urdu.</summary>
     public static StreamingLanguageCode Urdu { get; } = new("ur");
+
+    /// <summary>Xhosa.</summary>
+    public static StreamingLanguageCode Xhosa { get; } = new("xh");
+
+    /// <summary>Zulu.</summary>
+    public static StreamingLanguageCode Zulu { get; } = new("zu");
 
     /// <summary>Mandarin Chinese.</summary>
     public static StreamingLanguageCode Chinese { get; } = new("zh");
