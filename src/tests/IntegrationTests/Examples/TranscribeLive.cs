@@ -28,9 +28,7 @@ public partial class Tests
         await client.ConnectAsync(apiKey, new StreamingConnectOptions
         {
             SpeechModel = StreamingSpeechModel.Universal36ProRealtime,
-            FormatTurns = true,
             AgentContext = "Thanks for calling Contoso support. What is your email address?",
-            VoiceFocus = StreamingVoiceFocus.NearField,
             SpeakerLabels = true,
             MaxSpeakers = 2,
         });
@@ -48,6 +46,7 @@ public partial class Tests
                 receivedSessionBegins = true;
                 Console.WriteLine($"Session started: {serverEvent.Begin?.Id}");
                 Console.WriteLine($"Expires at: {serverEvent.Begin?.ExpiresAt}");
+                serverEvent.Begin?.Configuration?.Model.Should().Be("universal-3-6-pro");
 
                 //// After the session starts, send audio data.
                 //// In a real application, you would stream microphone PCM16 audio:
@@ -59,6 +58,7 @@ public partial class Tests
                     AgentContext = "Got it. Could you spell the account ID?",
                     Mode = UpdateConfigurationPayloadMode.Balanced,
                     MaxTurnSilence = 2000,
+                    LanguageCodes = [StreamingLanguageCode.English, StreamingLanguageCode.Russian],
                 });
 
                 //// For this example, manually force an endpoint to get results.

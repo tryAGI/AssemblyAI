@@ -79,6 +79,7 @@ namespace AssemblyAI.Realtime
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SessionBeginsPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SessionBeginsPayloadType), TypeInfoPropertyName = "SessionBeginsPayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SessionConfiguration))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SpeechStartedPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SpeechStartedPayloadType), TypeInfoPropertyName = "SpeechStartedPayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.Word))]

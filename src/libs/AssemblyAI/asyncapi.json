@@ -186,7 +186,7 @@
           },
           "end_of_turn_confidence_threshold": {
             "type": "number",
-            "description": "Confidence threshold (0-1) for detecting end of turn.",
+            "description": "Confidence threshold (0-1) for detecting end of turn on Universal Streaming models. Does not apply to Universal-3.5 or Universal-3.6 Pro; use mode and silence thresholds instead.",
             "nullable": true
           },
           "min_turn_silence": {
@@ -228,6 +228,14 @@
           "keyterms_prompt": {
             "type": "array",
             "description": "Words and phrases to improve recognition accuracy.",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "language_codes": {
+            "type": "array",
+            "description": "Languages to steer Universal-3 Pro transcription toward, taking effect from the next turn. Send an empty array to restore automatic code-switching; omit to preserve the current languages.",
             "items": {
               "type": "string"
             },
@@ -281,6 +289,9 @@
           "expires_at": {
             "type": "integer",
             "description": "Unix timestamp indicating when the session will expire."
+          },
+          "configuration": {
+            "$ref": "#/components/schemas/SessionConfiguration"
           }
         }
       },
@@ -480,6 +491,46 @@
             "type": "string",
             "description": "Message type identifier.",
             "enum": ["KeepAlive"]
+          }
+        }
+      },
+      "SessionConfiguration": {
+        "type": "object",
+        "description": "Configuration actually applied by the server. Check model against the requested speech model because unrecognized query parameters may be ignored.",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "Speech model selected by the server, for example universal-3-6-pro."
+          },
+          "mode": {
+            "type": "string",
+            "description": "Applied latency and accuracy preset."
+          },
+          "api_version": {
+            "type": "string",
+            "description": "Applied API version."
+          },
+          "speaker_labels": {
+            "type": "boolean",
+            "description": "Whether speaker diarization is enabled."
+          },
+          "redact_pii": {
+            "type": "boolean",
+            "description": "Whether PII redaction is enabled."
+          },
+          "filter_profanity": {
+            "type": "boolean",
+            "description": "Whether profanity filtering is enabled."
+          },
+          "domain": {
+            "type": "string",
+            "description": "Applied domain specialization, if any.",
+            "nullable": true
+          },
+          "voice_focus": {
+            "type": "string",
+            "description": "Applied Voice Focus mode; null when disabled.",
+            "nullable": true
           }
         }
       }

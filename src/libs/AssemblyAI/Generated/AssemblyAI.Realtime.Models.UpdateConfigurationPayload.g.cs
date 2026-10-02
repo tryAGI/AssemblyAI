@@ -16,7 +16,7 @@ namespace AssemblyAI.Realtime
         public global::AssemblyAI.Realtime.UpdateConfigurationPayloadType Type { get; set; }
 
         /// <summary>
-        /// Confidence threshold (0-1) for detecting end of turn.
+        /// Confidence threshold (0-1) for detecting end of turn on Universal Streaming models. Does not apply to Universal-3.5 or Universal-3.6 Pro; use mode and silence thresholds instead.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end_of_turn_confidence_threshold")]
         public double? EndOfTurnConfidenceThreshold { get; set; }
@@ -71,6 +71,12 @@ namespace AssemblyAI.Realtime
         public global::System.Collections.Generic.IList<string>? KeytermsPrompt { get; set; }
 
         /// <summary>
+        /// Languages to steer Universal-3 Pro transcription toward, taking effect from the next turn. Send an empty array to restore automatic code-switching; omit to preserve the current languages.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language_codes")]
+        public global::System.Collections.Generic.IList<string>? LanguageCodes { get; set; }
+
+        /// <summary>
         /// Whether to emit additional partial transcripts during long turns.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("continuous_partials")]
@@ -89,7 +95,7 @@ namespace AssemblyAI.Realtime
         /// Message type identifier.
         /// </param>
         /// <param name="endOfTurnConfidenceThreshold">
-        /// Confidence threshold (0-1) for detecting end of turn.
+        /// Confidence threshold (0-1) for detecting end of turn on Universal Streaming models. Does not apply to Universal-3.5 or Universal-3.6 Pro; use mode and silence thresholds instead.
         /// </param>
         /// <param name="minTurnSilence">
         /// Minimum silence duration in ms when confident about end of turn.
@@ -115,6 +121,9 @@ namespace AssemblyAI.Realtime
         /// <param name="keytermsPrompt">
         /// Words and phrases to improve recognition accuracy.
         /// </param>
+        /// <param name="languageCodes">
+        /// Languages to steer Universal-3 Pro transcription toward, taking effect from the next turn. Send an empty array to restore automatic code-switching; omit to preserve the current languages.
+        /// </param>
         /// <param name="continuousPartials">
         /// Whether to emit additional partial transcripts during long turns.
         /// </param>
@@ -132,6 +141,7 @@ namespace AssemblyAI.Realtime
             string? prompt,
             string? agentContext,
             global::System.Collections.Generic.IList<string>? keytermsPrompt,
+            global::System.Collections.Generic.IList<string>? languageCodes,
             bool? continuousPartials)
         {
             this.Type = type;
@@ -144,6 +154,7 @@ namespace AssemblyAI.Realtime
             this.Prompt = prompt;
             this.AgentContext = agentContext;
             this.KeytermsPrompt = keytermsPrompt;
+            this.LanguageCodes = languageCodes;
             this.ContinuousPartials = continuousPartials;
         }
 

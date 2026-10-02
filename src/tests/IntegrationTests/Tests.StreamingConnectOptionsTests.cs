@@ -18,6 +18,10 @@ public partial class Tests
         uri.Query.Should().Contain("format_turns=false");
         uri.Query.Should().NotContain("token=");
         uri.Query.Should().NotContain("api_key=");
+        uri.Query.Should().NotContain("language_codes=");
+        uri.Query.Should().NotContain("voice_focus=");
+        uri.Query.Should().NotContain("min_turn_silence=");
+        uri.Query.Should().NotContain("max_turn_silence=");
     }
 
     [TestMethod]
@@ -197,5 +201,27 @@ public partial class Tests
 
         Action buildUri = () => options.BuildUri();
         buildUri.Should().Throw<ArgumentException>();
+    }
+
+    [TestMethod]
+    public void StreamingConnectOptions_RendersUniversal36EndpointingAndVoiceFocus()
+    {
+        var uri = new StreamingConnectOptions
+        {
+            Mode = StreamingMode.MaxAccuracy,
+            MinTurnSilence = 512,
+            MaxTurnSilence = 2560,
+            VoiceFocus = StreamingVoiceFocus.FarField,
+            VoiceFocusThreshold = 0.7,
+            LanguageDetection = true,
+        }.BuildUri();
+
+        uri.Query.Should().Contain("speech_model=universal-3-6-pro");
+        uri.Query.Should().Contain("mode=max_accuracy");
+        uri.Query.Should().Contain("min_turn_silence=512");
+        uri.Query.Should().Contain("max_turn_silence=2560");
+        uri.Query.Should().Contain("voice_focus=far-field");
+        uri.Query.Should().Contain("voice_focus_threshold=0.7");
+        uri.Query.Should().Contain("language_detection=true");
     }
 }

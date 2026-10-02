@@ -31,6 +31,12 @@ namespace AssemblyAI.Realtime
         public required global::System.DateTimeOffset ExpiresAt { get; set; }
 
         /// <summary>
+        /// Configuration actually applied by the server. Check model against the requested speech model because unrecognized query parameters may be ignored.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("configuration")]
+        public global::AssemblyAI.Realtime.SessionConfiguration? Configuration { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -48,17 +54,22 @@ namespace AssemblyAI.Realtime
         /// <param name="type">
         /// Message type identifier.
         /// </param>
+        /// <param name="configuration">
+        /// Configuration actually applied by the server. Check model against the requested speech model because unrecognized query parameters may be ignored.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SessionBeginsPayload(
             string id,
             global::System.DateTimeOffset expiresAt,
-            global::AssemblyAI.Realtime.SessionBeginsPayloadType type)
+            global::AssemblyAI.Realtime.SessionBeginsPayloadType type,
+            global::AssemblyAI.Realtime.SessionConfiguration? configuration)
         {
             this.Type = type;
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.ExpiresAt = expiresAt;
+            this.Configuration = configuration;
         }
 
         /// <summary>

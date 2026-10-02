@@ -93,79 +93,83 @@ namespace AssemblyAI.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.SpeechStartedPayload? Type15 { get; set; }
+        public global::AssemblyAI.Realtime.SessionConfiguration? Type15 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.SpeechStartedPayloadType? Type16 { get; set; }
+        public global::AssemblyAI.Realtime.SpeechStartedPayload? Type16 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.Word? Type17 { get; set; }
+        public global::AssemblyAI.Realtime.SpeechStartedPayloadType? Type17 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.TurnPayload? Type18 { get; set; }
+        public global::AssemblyAI.Realtime.Word? Type18 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.TurnPayloadType? Type19 { get; set; }
+        public global::AssemblyAI.Realtime.TurnPayload? Type19 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.Word>? Type20 { get; set; }
+        public global::AssemblyAI.Realtime.TurnPayloadType? Type20 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.SpeakerRevisionPayload? Type21 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.Word>? Type21 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.SpeakerRevisionPayloadType? Type22 { get; set; }
+        public global::AssemblyAI.Realtime.SpeakerRevisionPayload? Type22 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.SpeakerRevision>? Type23 { get; set; }
+        public global::AssemblyAI.Realtime.SpeakerRevisionPayloadType? Type23 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.SpeakerRevision? Type24 { get; set; }
+        public global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.SpeakerRevision>? Type24 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.TerminationPayload? Type25 { get; set; }
+        public global::AssemblyAI.Realtime.SpeakerRevision? Type25 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.TerminationPayloadType? Type26 { get; set; }
+        public global::AssemblyAI.Realtime.TerminationPayload? Type26 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.ErrorPayload? Type27 { get; set; }
+        public global::AssemblyAI.Realtime.TerminationPayloadType? Type27 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.ErrorPayloadType? Type28 { get; set; }
+        public global::AssemblyAI.Realtime.ErrorPayload? Type28 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.KeepAlivePayload? Type29 { get; set; }
+        public global::AssemblyAI.Realtime.ErrorPayloadType? Type29 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.KeepAlivePayloadType? Type30 { get; set; }
+        public global::AssemblyAI.Realtime.KeepAlivePayload? Type30 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.ServerEvent? Type31 { get; set; }
+        public global::AssemblyAI.Realtime.KeepAlivePayloadType? Type31 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.ServerEventDiscriminator? Type32 { get; set; }
+        public global::AssemblyAI.Realtime.ServerEvent? Type32 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::AssemblyAI.Realtime.ServerEventDiscriminatorType? Type33 { get; set; }
+        public global::AssemblyAI.Realtime.ServerEventDiscriminator? Type33 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::AssemblyAI.Realtime.ServerEventDiscriminatorType? Type34 { get; set; }
 
         /// <summary>
         ///

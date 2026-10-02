@@ -28,7 +28,7 @@ public sealed record StreamingConnectOptions
     /// </summary>
     public string Encoding { get; init; } = "pcm_s16le";
 
-    /// <summary>Whether the server should produce formatted (punctuated, capitalized) turn output.</summary>
+    /// <summary>Whether Universal Streaming should produce formatted turn output. Universal-3.5 and Universal-3.6 Pro always format final turns and ignore this option.</summary>
     public bool FormatTurns { get; init; }
 
     /// <summary>Optional contextual prompt describing the audio domain, scenario, or conversation details.</summary>
@@ -56,7 +56,7 @@ public sealed record StreamingConnectOptions
     /// <summary>Whether to include detected language metadata in turn messages.</summary>
     public bool? LanguageDetection { get; init; }
 
-    /// <summary>Voice Focus mode. Use <c>near-field</c> for close microphones or <c>far-field</c> for distant microphones.</summary>
+    /// <summary>Optional Voice Focus mode, disabled by default. Enable to suppress competing speakers: <c>near-field</c> for close microphones or <c>far-field</c> for distant microphones.</summary>
     public StreamingVoiceFocus? VoiceFocus { get; init; }
 
     /// <summary>Voice Focus suppression strength from 0.0 to 1.0. Requires <see cref="VoiceFocus"/>.</summary>
