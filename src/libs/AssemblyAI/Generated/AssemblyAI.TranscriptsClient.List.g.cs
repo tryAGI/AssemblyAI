@@ -55,8 +55,7 @@ namespace AssemblyAI
         /// List transcripts<br/>
         /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Retrieve a list of transcripts you created.<br/>
-        /// Transcripts are sorted from newest to oldest and can be retrieved for the last 90 days of usage. The previous URL always points to a page with older transcripts.<br/>
-        /// If you need to retrieve transcripts from more than 90 days ago please reach out to our Support team at support@assemblyai.com.<br/>
+        /// Transcripts are sorted from newest to oldest and can be retrieved for the last 30 days of usage. The previous URL always points to a page with older transcripts.<br/>
         /// **Pagination**<br/>
         /// This endpoint returns paginated results. The response includes a `page_details` object with the following properties:<br/>
         /// - `page_details.limit` - Maximum number of transcripts per page.<br/>
@@ -118,8 +117,7 @@ namespace AssemblyAI
         /// List transcripts<br/>
         /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
         /// Retrieve a list of transcripts you created.<br/>
-        /// Transcripts are sorted from newest to oldest and can be retrieved for the last 90 days of usage. The previous URL always points to a page with older transcripts.<br/>
-        /// If you need to retrieve transcripts from more than 90 days ago please reach out to our Support team at support@assemblyai.com.<br/>
+        /// Transcripts are sorted from newest to oldest and can be retrieved for the last 30 days of usage. The previous URL always points to a page with older transcripts.<br/>
         /// **Pagination**<br/>
         /// This endpoint returns paginated results. The response includes a `page_details` object with the following properties:<br/>
         /// - `page_details.limit` - Maximum number of transcripts per page.<br/>
