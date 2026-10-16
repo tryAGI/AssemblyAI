@@ -90,6 +90,8 @@ namespace AssemblyAI.Realtime
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SpeakerRevisionPayloadType), TypeInfoPropertyName = "SpeakerRevisionPayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.SpeakerRevision>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SpeakerRevision))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.SpeakerRevisionWord>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.SpeakerRevisionWord))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.TerminationPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.TerminationPayloadType), TypeInfoPropertyName = "TerminationPayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::AssemblyAI.Realtime.ErrorPayload))]
@@ -102,6 +104,7 @@ namespace AssemblyAI.Realtime
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.Realtime.Word>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.Realtime.SpeakerRevision>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::AssemblyAI.Realtime.SpeakerRevisionWord>))]
     public sealed partial class RealtimeSourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }

@@ -128,7 +128,7 @@
       "channel": {
         "$ref": "#/channels/streaming"
       },
-      "summary": "Receive revised speaker labels after session termination.",
+      "summary": "Receive revised speaker labels during a session and before termination.",
       "messages": [
         {
           "$ref": "#/channels/streaming/messages/speakerRevision"
@@ -340,9 +340,13 @@
             "type": "boolean",
             "description": "Whether the word is finalized."
           },
+          "speaker_confidence": {
+            "type": "number",
+            "description": "Optional experimental relative speaker-match score (0-1), not a calibrated probability. Omitted when unavailable; revisions carry no confidence."
+          },
           "speaker": {
             "type": "string",
-            "description": "Speaker label for this final word (when speaker_labels is enabled)."
+            "description": "Speaker label for this final word when diarization is enabled. May be PENDING for unattributed audio or omitted; non-final words omit it."
           }
         }
       },
@@ -386,7 +390,11 @@
           },
           "speaker_label": {
             "type": "string",
-            "description": "Speaker label (when speaker_labels is enabled)."
+            "description": "Dominant speaker label when diarization is enabled. May be PENDING for short turns; individual words can have different speakers."
+          },
+          "speaker_confidence": {
+            "type": "number",
+            "description": "Optional experimental relative speaker-match score (0-1), not a calibrated probability. Zero means unavailable. Discard after a speaker revision."
           },
           "end_of_turn_confidence": {
             "type": "number",
@@ -403,7 +411,7 @@
       },
       "SpeakerRevisionPayload": {
         "type": "object",
-        "description": "Server event containing corrected speaker labels after termination.",
+        "description": "Server event containing corrected speaker labels during a session or before termination. Each message contains only changed turns; apply revisions in arrival order.",
         "required": ["type", "revisions"],
         "properties": {
           "type": {
@@ -423,7 +431,7 @@
       "SpeakerRevision": {
         "type": "object",
         "description": "Corrected speaker labels for a single turn.",
-        "required": ["turn_order", "speaker_label", "words"],
+        "required": ["turn_order", "words"],
         "properties": {
           "turn_order": {
             "type": "integer",
@@ -431,14 +439,43 @@
           },
           "speaker_label": {
             "type": "string",
-            "description": "Corrected speaker label for the turn."
+            "nullable": true,
+            "description": "Corrected dominant speaker label for the turn, or null when unavailable."
           },
           "words": {
             "type": "array",
             "description": "Revised word-level speaker attribution.",
             "items": {
-              "$ref": "#/components/schemas/Word"
+              "$ref": "#/components/schemas/SpeakerRevisionWord"
             }
+          }
+        }
+      },
+      "SpeakerRevisionWord": {
+        "type": "object",
+        "description": "A word with corrected speaker attribution. Revisions preserve text and timestamps and contain no confidence or word_is_final fields.",
+        "required": [
+          "text",
+          "start",
+          "end",
+          "speaker"
+        ],
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "The unchanged transcribed word."
+          },
+          "start": {
+            "type": "integer",
+            "description": "Unchanged start time in milliseconds."
+          },
+          "end": {
+            "type": "integer",
+            "description": "Unchanged end time in milliseconds."
+          },
+          "speaker": {
+            "type": "string",
+            "description": "Corrected speaker assignment for this word."
           }
         }
       },

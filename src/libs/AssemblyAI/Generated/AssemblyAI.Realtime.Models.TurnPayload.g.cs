@@ -62,10 +62,16 @@ namespace AssemblyAI.Realtime
         public double? LanguageConfidence { get; set; }
 
         /// <summary>
-        /// Speaker label (when speaker_labels is enabled).
+        /// Dominant speaker label when diarization is enabled. May be PENDING for short turns; individual words can have different speakers.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker_label")]
         public string? SpeakerLabel { get; set; }
+
+        /// <summary>
+        /// Optional experimental relative speaker-match score (0-1), not a calibrated probability. Zero means unavailable. Discard after a speaker revision.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speaker_confidence")]
+        public double? SpeakerConfidence { get; set; }
 
         /// <summary>
         /// Confidence this is end of turn (0-1).
@@ -121,7 +127,10 @@ namespace AssemblyAI.Realtime
         /// Language detection confidence (0-1).
         /// </param>
         /// <param name="speakerLabel">
-        /// Speaker label (when speaker_labels is enabled).
+        /// Dominant speaker label when diarization is enabled. May be PENDING for short turns; individual words can have different speakers.
+        /// </param>
+        /// <param name="speakerConfidence">
+        /// Optional experimental relative speaker-match score (0-1), not a calibrated probability. Zero means unavailable. Discard after a speaker revision.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -137,7 +146,8 @@ namespace AssemblyAI.Realtime
             string? utterance,
             string? languageCode,
             double? languageConfidence,
-            string? speakerLabel)
+            string? speakerLabel,
+            double? speakerConfidence)
         {
             this.Type = type;
             this.TurnOrder = turnOrder;
@@ -148,6 +158,7 @@ namespace AssemblyAI.Realtime
             this.LanguageCode = languageCode;
             this.LanguageConfidence = languageConfidence;
             this.SpeakerLabel = speakerLabel;
+            this.SpeakerConfidence = speakerConfidence;
             this.EndOfTurnConfidence = endOfTurnConfidence;
             this.Words = words ?? throw new global::System.ArgumentNullException(nameof(words));
         }

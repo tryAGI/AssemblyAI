@@ -65,8 +65,16 @@ public sealed record StreamingConnectOptions
     /// <summary>Whether to enable streaming speaker diarization.</summary>
     public bool? SpeakerLabels { get; init; }
 
-    /// <summary>Maximum expected speakers for streaming diarization. Valid range is 1-10.</summary>
+    /// <summary>Hard cap on speaker labels for streaming diarization (1-10). Additional speakers merge into the closest existing label.</summary>
     public int? MaxSpeakers { get; init; }
+
+    /// <summary>
+    /// Audio interval in milliseconds between mid-session speaker revisions. Requires
+    /// <see cref="SpeakerLabels"/>. Unset or 0 requests only the final revision before
+    /// termination; 300000 (five minutes) is recommended for mid-session corrections.
+    /// The server adjusts small positive values to its minimum of 120000.
+    /// </summary>
+    public int? SpeakerLabelsRevisionIntervalMs { get; init; }
 
     /// <summary>Maximum number of prior conversation entries carried forward as context. Set 0 to disable automatic carryover.</summary>
     public int? PreviousContextNTurns { get; init; }
@@ -149,6 +157,7 @@ public sealed record StreamingConnectOptions
         Append(query, "voice_focus_threshold", VoiceFocusThreshold);
         Append(query, "speaker_labels", SpeakerLabels);
         Append(query, "max_speakers", MaxSpeakers);
+        Append(query, "speaker_labels_revision_interval_ms", SpeakerLabelsRevisionIntervalMs);
         Append(query, "previous_context_n_turns", PreviousContextNTurns);
         Append(query, "min_turn_silence", MinTurnSilence);
         Append(query, "max_turn_silence", MaxTurnSilence);

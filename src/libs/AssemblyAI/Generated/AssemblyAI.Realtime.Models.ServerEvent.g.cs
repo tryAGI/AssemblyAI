@@ -126,7 +126,7 @@ namespace AssemblyAI.Realtime
             : throw new global::System.InvalidOperationException($"Expected union variant 'SpeechStarted' but the value was {ToString()}.");
 
         /// <summary>
-        /// Server event containing corrected speaker labels after termination.
+        /// Server event containing corrected speaker labels during a session or before termination. Each message contains only changed turns; apply revisions in arrival order.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::AssemblyAI.Realtime.SpeakerRevisionPayload? SpeakerRevision { get; init; }

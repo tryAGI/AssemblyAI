@@ -34,3 +34,27 @@ public sealed partial class UpdateConfigurationPayload
     {
     }
 }
+
+public sealed partial class Word
+{
+    /// <summary>Creates a word without optional speaker confidence metadata.</summary>
+    [SetsRequiredMembers]
+    public Word(string text, int start, int end, double confidence, bool wordIsFinal, string? speaker)
+        : this(text, start, end, confidence, wordIsFinal, speakerConfidence: null, speaker)
+    {
+    }
+}
+
+public sealed partial class TurnPayload
+{
+    /// <summary>Creates a turn without optional speaker confidence metadata.</summary>
+    [SetsRequiredMembers]
+    public TurnPayload(
+        int turnOrder, bool turnIsFormatted, bool endOfTurn, string transcript,
+        double endOfTurnConfidence, IList<Word> words, TurnPayloadType type,
+        string? utterance, string? languageCode, double? languageConfidence, string? speakerLabel)
+        : this(turnOrder, turnIsFormatted, endOfTurn, transcript, endOfTurnConfidence,
+            words, type, utterance, languageCode, languageConfidence, speakerLabel, speakerConfidence: null)
+    {
+    }
+}

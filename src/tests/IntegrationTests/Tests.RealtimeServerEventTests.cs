@@ -121,8 +121,6 @@ public partial class Tests
                       "text": "Hello",
                       "start": 1200,
                       "end": 1450,
-                      "confidence": 0.98,
-                      "word_is_final": true,
                       "speaker": "B"
                     }
                   ]
@@ -175,4 +173,69 @@ public partial class Tests
         serverEvent.Turn.Words.Should().ContainSingle();
         serverEvent.Turn.Words[0].WordIsFinal.Should().Be(isFinal);
     }
+    [TestMethod]
+    public void ServerEvent_PreservesWordLevelSpeakerChangesAndOptionalConfidence()
+    {
+        var serverEvent = JsonSerializer.Deserialize(
+            """
+            {
+              "type": "Turn", "turn_order": 2, "turn_is_formatted": true,
+              "end_of_turn": true, "transcript": "Yes. Right. Uh huh next",
+              "end_of_turn_confidence": 0.9, "speaker_label": "A", "speaker_confidence": 0.8,
+              "words": [
+                {"text":"Yes.","start":0,"end":200,"confidence":0.99,"word_is_final":true,"speaker":"A","speaker_confidence":0.95},
+                {"text":"Right.","start":250,"end":500,"confidence":0.98,"word_is_final":true,"speaker":"B","speaker_confidence":0.7},
+                {"text":"Uh","start":510,"end":600,"confidence":0.8,"word_is_final":true,"speaker":"PENDING"},
+                {"text":"huh","start":610,"end":700,"confidence":0.8,"word_is_final":true},
+                {"text":"next","start":710,"end":800,"confidence":0.8,"word_is_final":false}
+              ]
+            }
+            """, RealtimeSourceGenerationContext.Default.ServerEvent2);
+
+        var turn = serverEvent.Turn!;
+        turn.SpeakerLabel.Should().Be("A");
+        turn.SpeakerConfidence.Should().Be(0.8);
+        turn.Words.Select(word => word.Speaker).Should().Equal("A", "B", "PENDING", null, null);
+        turn.Words.Select(word => word.SpeakerConfidence).Should().Equal(0.95, 0.7, null, null, null);
+        turn.Words[4].WordIsFinal.Should().BeFalse();
+
+        var roundTrip = TurnPayload.FromJson(turn.ToJson())!;
+        roundTrip.Words[1].Speaker.Should().Be("B");
+        roundTrip.Words[1].SpeakerConfidence.Should().Be(0.7);
+    }
+
+    [TestMethod]
+    public void ServerEvent_AcceptsNullableSpeakerRevisionAndEmptyDelta()
+    {
+        var serverEvent = JsonSerializer.Deserialize(
+            """
+            {"type":"SpeakerRevision","revisions":[
+              {"turn_order":1,"speaker_label":null,"words":[
+                {"text":"Hello","start":0,"end":200,"speaker":"PENDING"}
+              ]}
+            ]}
+            """, RealtimeSourceGenerationContext.Default.ServerEvent2);
+
+        var revision = serverEvent.SpeakerRevision!.Revisions[0];
+        revision.SpeakerLabel.Should().BeNull();
+        revision.Words[0].Speaker.Should().Be("PENDING");
+        SpeakerRevisionPayload.FromJson(serverEvent.SpeakerRevision.ToJson())!
+            .Revisions[0].SpeakerLabel.Should().BeNull();
+
+        var empty = JsonSerializer.Deserialize(
+            """{"type":"SpeakerRevision","revisions":[]}""",
+            RealtimeSourceGenerationContext.Default.ServerEvent2);
+        empty.SpeakerRevision!.Revisions.Should().BeEmpty();
+    }
+
+    [TestMethod]
+    public void DiarizationMetadata_PreservesExistingConstructors()
+    {
+        var word = new Word("Hello", 0, 200, 0.99, true, "A");
+        word.SpeakerConfidence.Should().BeNull();
+        var turn = new TurnPayload(0, true, true, "Hello", 0.9, [word],
+            TurnPayloadType.Turn, null, null, null, "A");
+        turn.SpeakerConfidence.Should().BeNull();
+    }
+
 }

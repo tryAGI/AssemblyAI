@@ -16,18 +16,17 @@ namespace AssemblyAI.Realtime
         public required int TurnOrder { get; set; }
 
         /// <summary>
-        /// Corrected speaker label for the turn.
+        /// Corrected dominant speaker label for the turn, or null when unavailable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker_label")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string SpeakerLabel { get; set; }
+        public string? SpeakerLabel { get; set; }
 
         /// <summary>
         /// Revised word-level speaker attribution.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("words")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.Word> Words { get; set; }
+        public required global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.SpeakerRevisionWord> Words { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -41,22 +40,22 @@ namespace AssemblyAI.Realtime
         /// <param name="turnOrder">
         /// Order of the revised turn in the conversation.
         /// </param>
-        /// <param name="speakerLabel">
-        /// Corrected speaker label for the turn.
-        /// </param>
         /// <param name="words">
         /// Revised word-level speaker attribution.
+        /// </param>
+        /// <param name="speakerLabel">
+        /// Corrected dominant speaker label for the turn, or null when unavailable.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SpeakerRevision(
             int turnOrder,
-            string speakerLabel,
-            global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.Word> words)
+            global::System.Collections.Generic.IList<global::AssemblyAI.Realtime.SpeakerRevisionWord> words,
+            string? speakerLabel)
         {
             this.TurnOrder = turnOrder;
-            this.SpeakerLabel = speakerLabel ?? throw new global::System.ArgumentNullException(nameof(speakerLabel));
+            this.SpeakerLabel = speakerLabel;
             this.Words = words ?? throw new global::System.ArgumentNullException(nameof(words));
         }
 

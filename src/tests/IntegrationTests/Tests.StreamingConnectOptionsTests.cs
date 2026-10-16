@@ -16,6 +16,7 @@ public partial class Tests
         uri.Query.Should().Contain("speech_model=universal-3-6-pro");
         uri.Query.Should().Contain("encoding=pcm_s16le");
         uri.Query.Should().Contain("format_turns=false");
+        uri.Query.Should().NotContain("speaker_labels_revision_interval_ms=");
         uri.Query.Should().NotContain("token=");
         uri.Query.Should().NotContain("api_key=");
         uri.Query.Should().NotContain("language_codes=");
@@ -224,4 +225,23 @@ public partial class Tests
         uri.Query.Should().Contain("voice_focus_threshold=0.7");
         uri.Query.Should().Contain("language_detection=true");
     }
+    [TestMethod]
+    [DataRow(0)]
+    [DataRow(120000)]
+    [DataRow(300000)]
+    [DataRow(600000)]
+    public void StreamingConnectOptions_RendersSpeakerRevisionInterval(int interval)
+    {
+        var uri = new StreamingConnectOptions
+        {
+            SpeakerLabels = true,
+            MaxSpeakers = 3,
+            SpeakerLabelsRevisionIntervalMs = interval,
+        }.BuildUri();
+
+        uri.Query.Should().Contain("speaker_labels=true");
+        uri.Query.Should().Contain("max_speakers=3");
+        uri.Query.Should().Contain($"speaker_labels_revision_interval_ms={interval}");
+    }
+
 }

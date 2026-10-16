@@ -51,6 +51,70 @@ transcript.EnsureStatusCompleted();
 Console.WriteLine(transcript);
 ```
 
+### Streaming diarization
+
+Enable the [streaming diarization upgrade](https://www.assemblyai.com/blog/streaming-diarization-major-upgrade)
+with `SpeakerLabels = true`. The improved model runs on the server and works with
+Universal Pro and Universal Streaming models. See the [diarization documentation](https://www.assemblyai.com/docs/streaming/label-speakers-and-separate-channels).
+
+```csharp
+using AssemblyAI.Realtime;
+
+using var client = new AssemblyAIRealtimeClient();
+await client.ConnectAsync(apiKey, new StreamingConnectOptions
+{
+    SpeakerLabels = true,
+    MaxSpeakers = 3, // Hard cap, not an expected count.
+    SpeakerLabelsRevisionIntervalMs = 300_000, // Optional mid-session corrections.
+});
+
+var turns = new Dictionary<int, TurnPayload>();
+// Stream audio concurrently. When finished, send SendSessionTerminationAsync(new SessionTerminationPayload())
+// and keep receiving until Termination so the final speaker corrections are processed.
+await foreach (var message in client.ReceiveUpdatesAsync(cancellationToken))
+{
+    if (message.IsTurn && message.Turn is { } turn)
+    {
+        turns[turn.TurnOrder] = turn;
+        foreach (var word in turn.Words)
+        {
+            var speaker = word.Speaker ?? turn.SpeakerLabel;
+            Console.WriteLine($"[{speaker}] {word.Text}");
+        }
+    }
+    else if (message.IsSpeakerRevision && message.SpeakerRevision is { } delta)
+    {
+        foreach (var revision in delta.Revisions)
+        {
+            if (!turns.TryGetValue(revision.TurnOrder, out var original)) continue;
+            original.SpeakerLabel = revision.SpeakerLabel;
+            original.SpeakerConfidence = null;
+            for (var i = 0; i < original.Words.Count && i < revision.Words.Count; i++)
+            {
+                original.Words[i].Speaker = revision.Words[i].Speaker;
+                original.Words[i].SpeakerConfidence = null;
+            }
+        }
+    }
+    else if (message.IsTermination)
+    {
+        break;
+    }
+}
+```
+
+`TurnPayload.SpeakerLabel` is the dominant speaker; `Word.Speaker` captures changes
+within a turn. Labels can be `PENDING`; missing word labels can fall back to the
+turn label. Optional `SpeakerConfidence` scores are experimental relative scores,
+not probabilities. Revisions contain no confidence scores, so discard old scores
+after applying them. Each revision is a delta; apply messages in arrival order.
+Unset or zero revision interval requests only the final revision. A dropped connection
+may prevent final corrections from arriving.
+
+Revision words use `SpeakerRevisionWord` (text, timestamps, speaker) instead of `Word`:
+they omit transcription confidence and `word_is_final`. Code explicitly constructing
+`SpeakerRevision.Words` must use this corrected type.
+
 ### Microsoft.Extensions.AI
 
 The SDK implements [`ISpeechToTextClient`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai.ispeechtotextclient):

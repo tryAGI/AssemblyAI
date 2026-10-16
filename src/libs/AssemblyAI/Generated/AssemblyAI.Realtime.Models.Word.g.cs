@@ -44,7 +44,13 @@ namespace AssemblyAI.Realtime
         public required bool WordIsFinal { get; set; }
 
         /// <summary>
-        /// Speaker label for this final word (when speaker_labels is enabled).
+        /// Optional experimental relative speaker-match score (0-1), not a calibrated probability. Omitted when unavailable; revisions carry no confidence.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speaker_confidence")]
+        public double? SpeakerConfidence { get; set; }
+
+        /// <summary>
+        /// Speaker label for this final word when diarization is enabled. May be PENDING for unattributed audio or omitted; non-final words omit it.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker")]
         public string? Speaker { get; set; }
@@ -73,8 +79,11 @@ namespace AssemblyAI.Realtime
         /// <param name="wordIsFinal">
         /// Whether the word is finalized.
         /// </param>
+        /// <param name="speakerConfidence">
+        /// Optional experimental relative speaker-match score (0-1), not a calibrated probability. Omitted when unavailable; revisions carry no confidence.
+        /// </param>
         /// <param name="speaker">
-        /// Speaker label for this final word (when speaker_labels is enabled).
+        /// Speaker label for this final word when diarization is enabled. May be PENDING for unattributed audio or omitted; non-final words omit it.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -85,6 +94,7 @@ namespace AssemblyAI.Realtime
             int end,
             double confidence,
             bool wordIsFinal,
+            double? speakerConfidence,
             string? speaker)
         {
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
@@ -92,6 +102,7 @@ namespace AssemblyAI.Realtime
             this.End = end;
             this.Confidence = confidence;
             this.WordIsFinal = wordIsFinal;
+            this.SpeakerConfidence = speakerConfidence;
             this.Speaker = speaker;
         }
 
