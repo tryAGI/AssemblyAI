@@ -44,7 +44,8 @@ namespace AssemblyAI
         /// <summary>
         /// Get transcript<br/>
         /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
-        /// Get the transcript resource. The transcript is ready when the "status" is "completed".
+        /// Get the transcript resource. The transcript is ready when the "status" is "completed".<br/>
+        /// Requests to this endpoint are limited to 60 per minute for each API key and transcript combination. If you exceed this limit, the API returns a `429` response with a `Retry-After` header that indicates how many seconds to wait before retrying. To avoid polling, use [webhooks](/pre-recorded-audio/webhooks).
         /// </summary>
         /// <param name="transcriptId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -75,7 +76,8 @@ namespace AssemblyAI
         /// <summary>
         /// Get transcript<br/>
         /// &lt;Note&gt;To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.&lt;/Note&gt;<br/>
-        /// Get the transcript resource. The transcript is ready when the "status" is "completed".
+        /// Get the transcript resource. The transcript is ready when the "status" is "completed".<br/>
+        /// Requests to this endpoint are limited to 60 per minute for each API key and transcript combination. If you exceed this limit, the API returns a `429` response with a `Retry-After` header that indicates how many seconds to wait before retrying. To avoid polling, use [webhooks](/pre-recorded-audio/webhooks).
         /// </summary>
         /// <param name="transcriptId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
