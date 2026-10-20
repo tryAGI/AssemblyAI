@@ -544,6 +544,8 @@ paths:
       description: |
         <Note>To retrieve your transcriptions on our EU server, replace `api.assemblyai.com` with `api.eu.assemblyai.com`.</Note>
         Get the transcript resource. The transcript is ready when the "status" is "completed".
+
+        Requests to this endpoint are limited to 60 per minute for each API key and transcript combination. If you exceed this limit, the API returns a `429` response with a `Retry-After` header that indicates how many seconds to wait before retrying. To avoid polling, use [webhooks](/pre-recorded-audio/webhooks).
       parameters:
         - name: transcript_id
           x-label: Transcript ID
