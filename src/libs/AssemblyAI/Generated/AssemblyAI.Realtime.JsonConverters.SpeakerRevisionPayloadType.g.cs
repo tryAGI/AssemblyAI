@@ -18,7 +18,7 @@ namespace AssemblyAI.Realtime.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::AssemblyAI.Realtime.SpeakerRevisionPayloadTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown discriminator value '{stringValue}' for global::AssemblyAI.Realtime.SpeakerRevisionPayloadType.");
+                        return global::AssemblyAI.Realtime.SpeakerRevisionPayloadTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::AssemblyAI.Realtime.SpeakerRevisionPayloadType.");
                     }
 
                     break;
