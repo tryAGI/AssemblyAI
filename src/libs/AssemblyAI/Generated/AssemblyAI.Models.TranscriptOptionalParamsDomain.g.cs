@@ -4,20 +4,24 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// Enable domain-specific transcription models to improve accuracy for specialized terminology. Set to `"medical-v1"` to enable [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) for improved accuracy of medical terms such as medications, procedures, conditions, and dosages.<br/>
-    /// Supported languages: English (`en`), Spanish (`es`), German (`de`), French (`fr`). If `medical-v1` is used with an unsupported language, the parameter is ignored and a warning is returned.<br/>
+    /// Enable domain-specific transcription models to improve accuracy for specialized terminology. Set to `"medical-v1"` to enable [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) for improved accuracy of medication names, both generic and brand-name. Set to `"veterinary-v1"` to enable [Veterinary Mode](https://www.assemblyai.com/docs/pre-recorded-audio/veterinary-mode) (beta) for improved accuracy of veterinary terminology.<br/>
+    /// Medical Mode supported languages: English (`en`), Spanish (`es`), German (`de`), French (`fr`). If `medical-v1` is used with an unsupported language, the parameter is ignored and a warning is returned.<br/>
     /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
     public enum TranscriptOptionalParamsDomain
     {
         /// <summary>
-        /// //www.assemblyai.com/docs/pre-recorded-audio/medical-mode) for improved accuracy of medical terms such as medications, procedures, conditions, and dosages.
+        /// //www.assemblyai.com/docs/pre-recorded-audio/medical-mode) for improved accuracy of medication names, both generic and brand-name. Set to `"veterinary-v1"` to enable [Veterinary Mode](https://www.assemblyai.com/docs/pre-recorded-audio/veterinary-mode) (beta) for improved accuracy of veterinary terminology.
         /// </summary>
         MedicalV1,
         /// <summary>
         ///
         /// </summary>
         OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
+        /// <summary>
+        /// //www.assemblyai.com/docs/pre-recorded-audio/medical-mode) for improved accuracy of medication names, both generic and brand-name. Set to `"veterinary-v1"` to enable [Veterinary Mode](https://www.assemblyai.com/docs/pre-recorded-audio/veterinary-mode) (beta) for improved accuracy of veterinary terminology.
+        /// </summary>
+        VeterinaryV1,
     }
 
     /// <summary>
@@ -34,6 +38,7 @@ namespace AssemblyAI
             {
                 TranscriptOptionalParamsDomain.MedicalV1 => "medical-v1",
                 TranscriptOptionalParamsDomain.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464 => "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464",
+                TranscriptOptionalParamsDomain.VeterinaryV1 => "veterinary-v1",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -46,6 +51,7 @@ namespace AssemblyAI
             {
                 "medical-v1" => TranscriptOptionalParamsDomain.MedicalV1,
                 "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464" => TranscriptOptionalParamsDomain.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
+                "veterinary-v1" => TranscriptOptionalParamsDomain.VeterinaryV1,
                 _ => null,
             };
         }
