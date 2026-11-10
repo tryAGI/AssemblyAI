@@ -102,7 +102,7 @@ namespace AssemblyAI
         public bool? Disfluencies { get; set; }
 
         /// <summary>
-        /// The domain-specific model applied to the transcript. When set to `"medical-v1"`, [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) was used to improve accuracy for medical terminology.
+        /// The domain-specific model applied to the transcript. When set to `"medical-v1"`, [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) was used to improve accuracy for medication names. When set to `"veterinary-v1"`, [Veterinary Mode](https://www.assemblyai.com/docs/pre-recorded-audio/veterinary-mode) was used to improve accuracy for veterinary terminology.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("domain")]
         public string? Domain { get; set; }
@@ -570,7 +570,7 @@ namespace AssemblyAI
         /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.5 Pro and Universal-2.
         /// </param>
         /// <param name="domain">
-        /// The domain-specific model applied to the transcript. When set to `"medical-v1"`, [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) was used to improve accuracy for medical terminology.
+        /// The domain-specific model applied to the transcript. When set to `"medical-v1"`, [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) was used to improve accuracy for medication names. When set to `"veterinary-v1"`, [Veterinary Mode](https://www.assemblyai.com/docs/pre-recorded-audio/veterinary-mode) was used to improve accuracy for veterinary terminology.
         /// </param>
         /// <param name="entities">
         /// An array of results for the Entity Detection model, if it is enabled.<br/>

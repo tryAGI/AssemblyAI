@@ -1640,14 +1640,15 @@ components:
         domain:
           x-label: Domain
           description: |
-            Enable domain-specific transcription models to improve accuracy for specialized terminology. Set to `"medical-v1"` to enable [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) for improved accuracy of medical terms such as medications, procedures, conditions, and dosages.
+            Enable domain-specific transcription models to improve accuracy for specialized terminology. Set to `"medical-v1"` to enable [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) for improved accuracy of medication names, both generic and brand-name. Set to `"veterinary-v1"` to enable [Veterinary Mode](https://www.assemblyai.com/docs/pre-recorded-audio/veterinary-mode) (beta) for improved accuracy of veterinary terminology.
 
-            Supported languages: English (`en`), Spanish (`es`), German (`de`), French (`fr`). If `medical-v1` is used with an unsupported language, the parameter is ignored and a warning is returned.
+            Medical Mode supported languages: English (`en`), Spanish (`es`), German (`de`), French (`fr`). If `medical-v1` is used with an unsupported language, the parameter is ignored and a warning is returned.
           type:
             - string
             - "null"
           enum:
             - medical-v1
+            - veterinary-v1
             - null
           default: null
 
@@ -3234,7 +3235,7 @@ components:
         domain:
           x-label: Domain
           description: |
-            The domain-specific model applied to the transcript. When set to `"medical-v1"`, [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) was used to improve accuracy for medical terminology.
+            The domain-specific model applied to the transcript. When set to `"medical-v1"`, [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) was used to improve accuracy for medication names. When set to `"veterinary-v1"`, [Veterinary Mode](https://www.assemblyai.com/docs/pre-recorded-audio/veterinary-mode) was used to improve accuracy for veterinary terminology.
           type: [string, "null"]
 
         entities:
