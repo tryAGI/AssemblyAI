@@ -60,8 +60,7 @@ namespace AssemblyAI
         public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptCustomSpelling>? CustomSpelling { get; set; }
 
         /// <summary>
-        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.5 Pro and Universal-2.<br/>
-        /// Default Value: false
+        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.6 Pro Preview, Universal-3.5 Pro and Universal-2. Defaults to true when the first `speech_models` entry is `universal-3-6-pro-preview`, and to false otherwise.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disfluencies")]
         public bool? Disfluencies { get; set; }
@@ -385,8 +384,7 @@ namespace AssemblyAI
         /// Customize how words are spelled and formatted using to and from values. Each `to` value must be a single word, and each `from` phrase can contain at most 5 words. See [Custom Spelling](https://www.assemblyai.com/docs/pre-recorded-audio/correct-spelling-of-terms) for more details.
         /// </param>
         /// <param name="disfluencies">
-        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.5 Pro and Universal-2.<br/>
-        /// Default Value: false
+        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.6 Pro Preview, Universal-3.5 Pro and Universal-2. Defaults to true when the first `speech_models` entry is `universal-3-6-pro-preview`, and to false otherwise.
         /// </param>
         /// <param name="domain">
         /// Enable domain-specific transcription models to improve accuracy for specialized terminology. Set to `"medical-v1"` to enable [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) for improved accuracy of medication names, both generic and brand-name. Set to `"veterinary-v1"` to enable [Veterinary Mode](https://www.assemblyai.com/docs/pre-recorded-audio/veterinary-mode) (beta) for improved accuracy of veterinary terminology.<br/>

@@ -1633,9 +1633,8 @@ components:
 
         disfluencies:
           x-label: Disfluencies
-          description: Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.5 Pro and Universal-2.
+          description: Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.6 Pro Preview, Universal-3.5 Pro and Universal-2. Defaults to true when the first `speech_models` entry is `universal-3-6-pro-preview`, and to false otherwise.
           type: boolean
-          default: false
 
         domain:
           x-label: Domain
@@ -3229,7 +3228,7 @@ components:
 
         disfluencies:
           x-label: Disfluencies
-          description: Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.5 Pro and Universal-2.
+          description: Whether [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", are transcribed; either true or false. This is the value that was applied to the transcript, which is the value from the request or, when the request did not set it, the default for the first `speech_models` entry (true for `universal-3-6-pro-preview`, false otherwise).
           type: [boolean, "null"]
 
         domain:
