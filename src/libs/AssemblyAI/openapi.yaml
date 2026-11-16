@@ -23,7 +23,7 @@ tags:
   - name: streaming
     description: Streaming Speech-to-Text
     externalDocs:
-      url: https://www.assemblyai.com/docs/streaming/universal-streaming
+      url: https://www.assemblyai.com/docs/streaming/getting-started/transcribe-streaming-audio
 
 security:
   - ApiKey: []
