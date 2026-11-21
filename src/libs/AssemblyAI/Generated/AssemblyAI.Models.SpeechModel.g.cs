@@ -4,18 +4,18 @@
 namespace AssemblyAI
 {
     /// <summary>
-    /// The speech model to use for the transcription. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models.
+    /// Speech model
     /// </summary>
     public enum SpeechModel
     {
         /// <summary>
         ///
         /// </summary>
-        Universal2,
+        AssemblyaiStt37,
         /// <summary>
         ///
         /// </summary>
-        Universal35Pro,
+        Universal2,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace AssemblyAI
         {
             return value switch
             {
+                SpeechModel.AssemblyaiStt37 => "assemblyai-stt-3-7",
                 SpeechModel.Universal2 => "universal-2",
-                SpeechModel.Universal35Pro => "universal-3-5-pro",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace AssemblyAI
         {
             return value switch
             {
+                "assemblyai-stt-3-7" => SpeechModel.AssemblyaiStt37,
                 "universal-2" => SpeechModel.Universal2,
-                "universal-3-5-pro" => SpeechModel.Universal35Pro,
                 _ => null,
             };
         }

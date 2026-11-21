@@ -289,13 +289,12 @@ paths:
                 speech_threshold: null
                 speech_model: null
                 speech_models:
-                  - universal-3-pro
-                  - universal-2
-                speech_model_used: null
+                  - assemblyai-stt-3-7
+                speech_model_used: assemblyai-stt-3-7
                 temperature: null
                 remove_audio_tags: all
                 chapters: null
-                disfluencies: false
+                disfluencies: true
                 entity_detection: true
                 sentiment_analysis: true
                 sentiment_analysis_results: null
@@ -1633,7 +1632,7 @@ components:
 
         disfluencies:
           x-label: Disfluencies
-          description: Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.6 Pro Preview, Universal-3.5 Pro and Universal-2. Defaults to true when the first `speech_models` entry is `universal-3-6-pro-preview`, and to false otherwise.
+          description: Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on AssemblyAI-STT-3.7 and Universal-2. Defaults to true when `speech_models` includes `assemblyai-stt-3-7` in any position, or is omitted and the request uses `assemblyai-stt-3-7` by default, and to false otherwise.
           type: boolean
 
         domain:
@@ -1665,7 +1664,7 @@ components:
 
         format_text:
           x-label: Format text
-          description: Enable [Text Formatting](https://www.assemblyai.com/docs/pre-recorded-audio), can be true or false
+          description: Enable [Text Formatting](https://www.assemblyai.com/docs/pre-recorded-audio/formatting), can be true or false
           type: boolean
           default: true
 
@@ -1678,7 +1677,7 @@ components:
         keyterms_prompt:
           x-label: Keyterms prompt
           description: |
-            Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3.5 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-5-pro/prompting#keyterms-prompting) for more details.
+            Improve accuracy with up to 200 (for Universal-2) or 1000 (for AssemblyAI-STT-3.7) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/prompting#keyterms-prompting) for more details.
           type: array
           items:
             x-label: Keyterm
@@ -1688,7 +1687,7 @@ components:
           x-label: Language code
           description: |
             The language of your audio file. Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
-            If you don't specify a language, it's detected automatically. Cannot be used together with `language_detection`.
+            If you don't specify a language, it's detected automatically. Can be used with `language_detection` set to `false`, but not with `language_detection` set to `true`.
           oneOf:
             - anyOf:
                 - $ref: "#/components/schemas/TranscriptLanguageCode"
@@ -1699,8 +1698,7 @@ components:
 
         language_codes:
           description: |
-            The language codes of your audio file. Used for [Code switching](/speech-to-text/pre-recorded-audio/code-switching)
-            One of the values specified must be `en`.
+            The language codes of your audio file. Used for [Code switching](https://www.assemblyai.com/docs/pre-recorded-audio/code-switching). On AssemblyAI-STT-3.7, accepts any number of supported languages, and English isn't required. On Universal-2, accepts at most two languages, and one of them must be `en`. Can't be used together with `language_code` or `language_detection`.
           type: [array, "null"]
           items:
             x-label: Language code
@@ -1721,7 +1719,7 @@ components:
         language_detection:
           x-label: Language detection
           description: |
-            [Automatic language detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) identifies the spoken language and routes the request to the best model. It's applied automatically when you don't specify a `language_code`. Set to `false` only together with a `language_code`; disabling it without specifying a language returns an error.
+            [Automatic language detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) identifies the spoken language. See [Model selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model#transcribe-all-99-languages-by-combining-speech-models) for how requests are routed to a speech model. It's applied automatically when you don't specify a `language_code`. Set to `false` only together with a `language_code`; disabling it without specifying a language returns an error.
           type: boolean
 
         language_detection_options:
@@ -1740,19 +1738,19 @@ components:
             fallback_language:
               x-label: Fallback language
               description: |
-                If the detected language of the audio file is not in the list of expected languages, the `fallback_language` is used. Specify `["auto"]` to let our model choose the fallback language from `expected_languages` with the highest confidence score. See [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) for more details.
+                If the detected language of the audio file is not in the list of expected languages, the `fallback_language` is used. Specify `"auto"` to let our model choose the fallback language from `expected_languages` with the highest confidence score. See [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) for more details.
               type: string
               default: "auto"
             code_switching:
               x-label: Code switching
               description: |
-                Whether [code switching](/speech-to-text/pre-recorded-audio/code-switching) should be detected.
+                Whether [code switching](https://www.assemblyai.com/docs/pre-recorded-audio/code-switching) should be detected. Only supported on Universal-2. AssemblyAI-STT-3.7 code-switches natively, so this option doesn't apply to it.
               type: boolean
               default: false
             code_switching_confidence_threshold:
               x-label: Code switching confidence threshold
               description: |
-                The confidence threshold for [code switching](/speech-to-text/pre-recorded-audio/code-switching) detection. If the code switching confidence is below this threshold, the transcript will be processed in the language with the highest `language_detection_confidence` score.
+                The confidence threshold for [code switching](https://www.assemblyai.com/docs/pre-recorded-audio/code-switching) detection. If the code switching confidence is below this threshold, the transcript will be processed in the language with the highest `language_detection_confidence` score.
               type: number
               minimum: 0
               maximum: 1
@@ -1790,12 +1788,12 @@ components:
           description: |
             Provide natural language prompting of up to 1,500 words of contextual information to the model. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for best practices.
 
-            Note: This parameter is only supported for the Universal-3.5 Pro model.
+            Note: This parameter is only supported for the AssemblyAI-STT-3.7 model.
           type: string
 
         punctuate:
           x-label: Punctuate
-          description: Enable [Automatic Punctuation](https://www.assemblyai.com/docs/pre-recorded-audio), can be true or false
+          description: Enable [Automatic Punctuation](https://www.assemblyai.com/docs/pre-recorded-audio/formatting), can be true or false
           type: boolean
           default: true
 
@@ -1898,7 +1896,7 @@ components:
               x-label: Maximum speakers expected
               description: |
                 <Warning>Setting this parameter too high may hurt model accuracy</Warning>
-                A hard upper limit on the number of speaker labels. If more people speak than this value, the additional speakers are merged into existing labels. Setting it higher than the true number of speakers can cause the model to over-split and return more speakers than are actually present. The default depends on audio duration: no limit for 0-2 minutes, 10 for 2-10 minutes, and 30 for 10+ minutes. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.
+                A hard upper limit on the number of speaker labels. If more people speak than this value, the additional speakers are merged into existing labels. Setting it higher than the true number of speakers can cause the model to over-split and return more speakers than are actually present.
               type: integer
             include_speaker_confidence:
               x-label: Include speaker confidence
@@ -1915,14 +1913,13 @@ components:
         speech_models:
           x-label: Speech models
           description: |
-            Optional. Supported values: `universal-3-5-pro`, `universal-2`. If omitted, defaults to `["universal-3-5-pro", "universal-2"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
+            Optional. List one or more speech models. For new accounts created on or after November 17, 2026, if omitted, defaults to `["assemblyai-stt-3-7"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
           type: array
           items:
             x-label: Speech model
             $ref: "#/components/schemas/SpeechModel"
           default:
-            - universal-3-5-pro
-            - universal-2
+            - assemblyai-stt-3-7
 
         speech_threshold:
           x-label: Speech threshold
@@ -1977,9 +1974,9 @@ components:
         remove_audio_tags:
           x-label: Remove audio tags
           description: |
-            Universal-3.5 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations. By default, all inline annotations are removed.
+            AssemblyAI-STT-3.7 generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations. By default, all inline annotations are removed.
 
-            Note: This parameter is only supported for the Universal-3.5 Pro model.
+            Note: This parameter is only supported for the AssemblyAI-STT-3.7 model.
           oneOf:
             - type: string
               enum:
@@ -1993,7 +1990,7 @@ components:
           description: |
             Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.
 
-            Note: This parameter only takes effect on the Universal-3.5 Pro model.
+            Note: This parameter only takes effect on the AssemblyAI-STT-3.7 model.
           type: number
           minimum: 0.0
           maximum: 1.0
@@ -2029,9 +2026,7 @@ components:
           x-label: Speech model
           description: |
             This parameter has been replaced with the `speech_models` parameter, learn more about the `speech_models` parameter [here](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model).
-          oneOf:
-            - $ref: "#/components/schemas/SpeechModel"
-            - type: "null"
+          type: [string, "null"]
           deprecated: True
 
         topics:
@@ -2763,9 +2758,8 @@ components:
     SpeechModel:
       x-label: Speech model
       type: string
-      description: The speech model to use for the transcription. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models.
       enum:
-        - universal-3-5-pro
+        - assemblyai-stt-3-7
         - universal-2
       x-fern-sdk-group-name: transcripts
 
@@ -2803,6 +2797,7 @@ components:
         - my
         - ca
         - zh
+        - yue
         - hr
         - cs
         - da
@@ -2842,7 +2837,7 @@ components:
         - mr
         - mn
         - ne
-        - no
+        - "no"
         - nn
         - oc
         - pa
@@ -2878,6 +2873,8 @@ components:
         - cy
         - yi
         - yo
+        - xh
+        - zu
       x-aai-enum:
         en:
           label: English (global)
@@ -3011,7 +3008,7 @@ components:
           label: Mongolian
         ne:
           label: Nepali
-        no:
+        "no":
           label: Norwegian
         nn:
           label: Norwegian Nynorsk
@@ -3083,6 +3080,12 @@ components:
           label: Yiddish
         yo:
           label: Yoruba
+        yue:
+          label: Cantonese
+        xh:
+          label: Xhosa
+        zu:
+          label: Zulu
 
     TranscriptStatus:
       x-label: Status
@@ -3228,7 +3231,7 @@ components:
 
         disfluencies:
           x-label: Disfluencies
-          description: Whether [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", are transcribed; either true or false. This is the value that was applied to the transcript, which is the value from the request or, when the request did not set it, the default for the first `speech_models` entry (true for `universal-3-6-pro-preview`, false otherwise).
+          description: Whether [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", are transcribed; either true or false. This is the value that was applied to the transcript, which is the value from the request or, when the request did not set it, the request's default (true when `speech_models` includes `assemblyai-stt-3-7`, false otherwise).
           type: [boolean, "null"]
 
         domain:
@@ -3290,7 +3293,7 @@ components:
         keyterms_prompt:
           x-label: Keyterms prompt
           description: |
-            Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3.5 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-5-pro/prompting#keyterms-prompting) for more details.
+            Improve accuracy with up to 200 (for Universal-2) or 1000 (for AssemblyAI-STT-3.7) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/prompting#keyterms-prompting) for more details.
           type: array
           items:
             x-label: Keyterm
@@ -3309,8 +3312,7 @@ components:
 
         language_codes:
           description: |
-            The language codes of your audio file. Used for [Code switching](/speech-to-text/pre-recorded-audio/code-switching)
-            One of the values specified must be `en`.
+            The language codes of your audio file. Used for [Code switching](https://www.assemblyai.com/docs/pre-recorded-audio/code-switching). On AssemblyAI-STT-3.7, accepts any number of supported languages, and English isn't required. On Universal-2, accepts at most two languages, and one of them must be `en`. Can't be used together with `language_code` or `language_detection`.
           type: [array, "null"]
           items:
             x-label: Language code
@@ -3337,7 +3339,7 @@ components:
 
         language_detection:
           x-label: Language detection
-          description: Whether [Automatic language detection](/pre-recorded-audio/automatic-language-detection) is enabled, either true or false
+          description: Whether [Automatic language detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) is enabled, either true or false
           type: [boolean, "null"]
 
         language_detection_options:
@@ -3356,19 +3358,19 @@ components:
             fallback_language:
               x-label: Fallback language
               description: |
-                If the detected language of the audio file is not in the list of expected languages, the `fallback_language` is used. Specify `["auto"]` to let our model choose the fallback language from `expected_languages` with the highest confidence score. See [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) for more details.
+                If the detected language of the audio file is not in the list of expected languages, the `fallback_language` is used. Specify `"auto"` to let our model choose the fallback language from `expected_languages` with the highest confidence score. See [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) for more details.
               type: string
               default: "auto"
             code_switching:
               x-label: Code switching
               description: |
-                Whether [code switching](/speech-to-text/pre-recorded-audio/code-switching) should be detected.
+                Whether [code switching](https://www.assemblyai.com/docs/pre-recorded-audio/code-switching) should be detected. Only supported on Universal-2. AssemblyAI-STT-3.7 code-switches natively, so this option doesn't apply to it.
               type: boolean
               default: false
             code_switching_confidence_threshold:
               x-label: Code switching confidence threshold
               description: |
-                The confidence threshold for [code switching](/speech-to-text/pre-recorded-audio/code-switching) detection. If the code switching confidence is below this threshold, the transcript will be processed in the language with the highest `language_detection_confidence` score.
+                The confidence threshold for [code switching](https://www.assemblyai.com/docs/pre-recorded-audio/code-switching) detection. If the code switching confidence is below this threshold, the transcript will be processed in the language with the highest `language_detection_confidence` score.
               type: number
               minimum: 0
               maximum: 1
@@ -3424,7 +3426,7 @@ components:
           description: |
             Provide natural language prompting of up to 1,500 words of contextual information to the model. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for best practices.
 
-            Note: This parameter is only supported for the Universal-3.5 Pro model.
+            Note: This parameter is only supported for the AssemblyAI-STT-3.7 model.
           type: string
 
         punctuate:
@@ -3528,7 +3530,7 @@ components:
         speech_models:
           x-label: Speech models
           description: |
-            List of speech models that were used (in priority order) to transcribe the audio. If not specified in the request, this defaults to `["universal-3-5-pro", "universal-2"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
+            List of speech models from the request that were considered to transcribe the audio. For new accounts created on or after November 17, 2026, if not specified in the request, this defaults to `["assemblyai-stt-3-7"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.
           type: [array, "null"]
           items:
             x-label: Speech model
@@ -3602,9 +3604,9 @@ components:
         remove_audio_tags:
           x-label: Remove audio tags
           description: |
-            Universal-3.5 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations. By default, all inline annotations are removed.
+            AssemblyAI-STT-3.7 generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations. By default, all inline annotations are removed.
 
-            Note: This parameter is only supported for the Universal-3.5 Pro model.
+            Note: This parameter is only supported for the AssemblyAI-STT-3.7 model.
           oneOf:
             - type: string
               enum:
@@ -3617,7 +3619,7 @@ components:
           description: |
             The temperature that was used for the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.
 
-            Note: This parameter only takes effect on the Universal-3.5 Pro model.
+            Note: This parameter only takes effect on the AssemblyAI-STT-3.7 model.
           type: [number, "null"]
           minimum: 0.0
           maximum: 1.0
@@ -3719,9 +3721,7 @@ components:
           x-label: Speech model
           description: |
             This parameter has been replaced with the `speech_models` parameter, learn more about the `speech_models` parameter [here](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model).
-          oneOf:
-            - $ref: "#/components/schemas/SpeechModel"
-            - type: "null"
+          type: [string, "null"]
           deprecated: True
 
         speed_boost:
@@ -3766,6 +3766,7 @@ components:
         {
           id: "9ea68fd3-f953-42c1-9742-976c447fb463",
           speech_model: null,
+          speech_model_used: "assemblyai-stt-3-7",
           language_model: "assemblyai_default",
           acoustic_model: "assemblyai_default",
           language_code: "en_us",
@@ -4272,7 +4273,7 @@ components:
           speech_threshold: 0.5,
           remove_audio_tags: null,
           domain: null,
-          disfluencies: false,
+          disfluencies: true,
           sentiment_analysis: true,
           sentiment_analysis_results: null,
           entity_detection: true,
