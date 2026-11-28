@@ -407,6 +407,10 @@ namespace AssemblyAI
         /// <summary>
         ///
         /// </summary>
+        Xh,
+        /// <summary>
+        ///
+        /// </summary>
         Yi,
         /// <summary>
         /// //www.assemblyai.com/docs/pre-recorded-audio/supported-languages).
@@ -415,7 +419,15 @@ namespace AssemblyAI
         /// <summary>
         ///
         /// </summary>
+        Yue,
+        /// <summary>
+        ///
+        /// </summary>
         Zh,
+        /// <summary>
+        ///
+        /// </summary>
+        Zu,
     }
 
     /// <summary>
@@ -529,9 +541,12 @@ namespace AssemblyAI
                 TranscriptLanguageCode.Ur => "ur",
                 TranscriptLanguageCode.Uz => "uz",
                 TranscriptLanguageCode.Vi => "vi",
+                TranscriptLanguageCode.Xh => "xh",
                 TranscriptLanguageCode.Yi => "yi",
                 TranscriptLanguageCode.Yo => "yo",
+                TranscriptLanguageCode.Yue => "yue",
                 TranscriptLanguageCode.Zh => "zh",
+                TranscriptLanguageCode.Zu => "zu",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -641,9 +656,12 @@ namespace AssemblyAI
                 "ur" => TranscriptLanguageCode.Ur,
                 "uz" => TranscriptLanguageCode.Uz,
                 "vi" => TranscriptLanguageCode.Vi,
+                "xh" => TranscriptLanguageCode.Xh,
                 "yi" => TranscriptLanguageCode.Yi,
                 "yo" => TranscriptLanguageCode.Yo,
+                "yue" => TranscriptLanguageCode.Yue,
                 "zh" => TranscriptLanguageCode.Zh,
+                "zu" => TranscriptLanguageCode.Zu,
                 _ => null,
             };
         }
