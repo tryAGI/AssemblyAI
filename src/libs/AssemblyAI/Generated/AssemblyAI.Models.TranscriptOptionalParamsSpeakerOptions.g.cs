@@ -16,7 +16,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// &lt;Warning&gt;Setting this parameter too high may hurt model accuracy&lt;/Warning&gt;<br/>
-        /// A hard upper limit on the number of speaker labels. If more people speak than this value, the additional speakers are merged into existing labels. Setting it higher than the true number of speakers can cause the model to over-split and return more speakers than are actually present. The default depends on audio duration: no limit for 0-2 minutes, 10 for 2-10 minutes, and 30 for 10+ minutes. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.
+        /// A hard upper limit on the number of speaker labels. If more people speak than this value, the additional speakers are merged into existing labels. Setting it higher than the true number of speakers can cause the model to over-split and return more speakers than are actually present.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_speakers_expected")]
         public int? MaxSpeakersExpected { get; set; }
@@ -42,7 +42,7 @@ namespace AssemblyAI
         /// </param>
         /// <param name="maxSpeakersExpected">
         /// &lt;Warning&gt;Setting this parameter too high may hurt model accuracy&lt;/Warning&gt;<br/>
-        /// A hard upper limit on the number of speaker labels. If more people speak than this value, the additional speakers are merged into existing labels. Setting it higher than the true number of speakers can cause the model to over-split and return more speakers than are actually present. The default depends on audio duration: no limit for 0-2 minutes, 10 for 2-10 minutes, and 30 for 10+ minutes. See [Set a range of possible speakers](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#set-a-range-of-possible-speakers) for more details.
+        /// A hard upper limit on the number of speaker labels. If more people speak than this value, the additional speakers are merged into existing labels. Setting it higher than the true number of speakers can cause the model to over-split and return more speakers than are actually present.
         /// </param>
         /// <param name="includeSpeakerConfidence">
         /// When `true`, includes a `speaker_confidence` field per word and per utterance in the response. See [Speaker Diarization](https://www.assemblyai.com/docs/pre-recorded-audio/label-speakers#configuration) for more details.<br/>

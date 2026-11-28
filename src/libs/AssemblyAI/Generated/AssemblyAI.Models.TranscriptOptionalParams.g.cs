@@ -60,7 +60,7 @@ namespace AssemblyAI
         public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptCustomSpelling>? CustomSpelling { get; set; }
 
         /// <summary>
-        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.6 Pro Preview, Universal-3.5 Pro and Universal-2. Defaults to true when the first `speech_models` entry is `universal-3-6-pro-preview`, and to false otherwise.
+        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on AssemblyAI-STT-3.7 and Universal-2. Defaults to true when `speech_models` includes `assemblyai-stt-3-7` in any position, or is omitted and the request uses `assemblyai-stt-3-7` by default, and to false otherwise.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disfluencies")]
         public bool? Disfluencies { get; set; }
@@ -89,7 +89,7 @@ namespace AssemblyAI
         public bool? FilterProfanity { get; set; }
 
         /// <summary>
-        /// Enable [Text Formatting](https://www.assemblyai.com/docs/pre-recorded-audio), can be true or false<br/>
+        /// Enable [Text Formatting](https://www.assemblyai.com/docs/pre-recorded-audio/formatting), can be true or false<br/>
         /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("format_text")]
@@ -103,21 +103,20 @@ namespace AssemblyAI
         public bool? IabCategories { get; set; }
 
         /// <summary>
-        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3.5 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-5-pro/prompting#keyterms-prompting) for more details.
+        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for AssemblyAI-STT-3.7) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/prompting#keyterms-prompting) for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("keyterms_prompt")]
         public global::System.Collections.Generic.IList<string>? KeytermsPrompt { get; set; }
 
         /// <summary>
         /// The language of your audio file. Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).<br/>
-        /// If you don't specify a language, it's detected automatically. Cannot be used together with `language_detection`.
+        /// If you don't specify a language, it's detected automatically. Can be used with `language_detection` set to `false`, but not with `language_detection` set to `true`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_code")]
         public global::AssemblyAI.AnyOf<global::AssemblyAI.TranscriptLanguageCode?, string>? LanguageCode { get; set; }
 
         /// <summary>
-        /// The language codes of your audio file. Used for [Code switching](/speech-to-text/pre-recorded-audio/code-switching)<br/>
-        /// One of the values specified must be `en`.
+        /// The language codes of your audio file. Used for [Code switching](https://www.assemblyai.com/docs/pre-recorded-audio/code-switching). On AssemblyAI-STT-3.7, accepts any number of supported languages, and English isn't required. On Universal-2, accepts at most two languages, and one of them must be `en`. Can't be used together with `language_code` or `language_detection`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_codes")]
         public global::System.Collections.Generic.IList<global::AssemblyAI.TranscriptLanguageCode>? LanguageCodes { get; set; }
@@ -132,7 +131,7 @@ namespace AssemblyAI
         public float? LanguageConfidenceThreshold { get; set; }
 
         /// <summary>
-        /// [Automatic language detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) identifies the spoken language and routes the request to the best model. It's applied automatically when you don't specify a `language_code`. Set to `false` only together with a `language_code`; disabling it without specifying a language returns an error.
+        /// [Automatic language detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) identifies the spoken language. See [Model selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model#transcribe-all-99-languages-by-combining-speech-models) for how requests are routed to a speech model. It's applied automatically when you don't specify a `language_code`. Set to `false` only together with a `language_code`; disabling it without specifying a language returns an error.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language_detection")]
         public bool? LanguageDetection { get; set; }
@@ -152,13 +151,13 @@ namespace AssemblyAI
 
         /// <summary>
         /// Provide natural language prompting of up to 1,500 words of contextual information to the model. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for best practices.<br/>
-        /// Note: This parameter is only supported for the Universal-3.5 Pro model.
+        /// Note: This parameter is only supported for the AssemblyAI-STT-3.7 model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         public string? Prompt { get; set; }
 
         /// <summary>
-        /// Enable [Automatic Punctuation](https://www.assemblyai.com/docs/pre-recorded-audio), can be true or false<br/>
+        /// Enable [Automatic Punctuation](https://www.assemblyai.com/docs/pre-recorded-audio/formatting), can be true or false<br/>
         /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("punctuate")]
@@ -250,8 +249,8 @@ namespace AssemblyAI
         public int? SpeakersExpected { get; set; }
 
         /// <summary>
-        /// Optional. Supported values: `universal-3-5-pro`, `universal-2`. If omitted, defaults to `["universal-3-5-pro", "universal-2"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.<br/>
-        /// Default Value: [universal-3-5-pro, universal-2]
+        /// Optional. List one or more speech models. For new accounts created on or after November 17, 2026, if omitted, defaults to `["assemblyai-stt-3-7"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.<br/>
+        /// Default Value: [assemblyai-stt-3-7]
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_models")]
         public global::System.Collections.Generic.IList<global::AssemblyAI.SpeechModel>? SpeechModels { get; set; }
@@ -296,8 +295,8 @@ namespace AssemblyAI
         public global::AssemblyAI.SummaryType? SummaryType { get; set; }
 
         /// <summary>
-        /// Universal-3.5 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations. By default, all inline annotations are removed.<br/>
-        /// Note: This parameter is only supported for the Universal-3.5 Pro model.<br/>
+        /// AssemblyAI-STT-3.7 generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations. By default, all inline annotations are removed.<br/>
+        /// Note: This parameter is only supported for the AssemblyAI-STT-3.7 model.<br/>
         /// Default Value: all
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("remove_audio_tags")]
@@ -305,7 +304,7 @@ namespace AssemblyAI
 
         /// <summary>
         /// Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
-        /// Note: This parameter only takes effect on the Universal-3.5 Pro model.<br/>
+        /// Note: This parameter only takes effect on the AssemblyAI-STT-3.7 model.<br/>
         /// Default Value: 0.0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
@@ -344,7 +343,7 @@ namespace AssemblyAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speech_model")]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public global::AssemblyAI.SpeechModel? SpeechModel { get; set; }
+        public string? SpeechModel { get; set; }
 
         /// <summary>
         /// This parameter does not currently have any functionality attached to it.
@@ -384,7 +383,7 @@ namespace AssemblyAI
         /// Customize how words are spelled and formatted using to and from values. Each `to` value must be a single word, and each `from` phrase can contain at most 5 words. See [Custom Spelling](https://www.assemblyai.com/docs/pre-recorded-audio/correct-spelling-of-terms) for more details.
         /// </param>
         /// <param name="disfluencies">
-        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on Universal-3.6 Pro Preview, Universal-3.5 Pro and Universal-2. Defaults to true when the first `speech_models` entry is `universal-3-6-pro-preview`, and to false otherwise.
+        /// Transcribe [Filler Words](https://www.assemblyai.com/docs/pre-recorded-audio/include-filler-words), like "umm", in your media file; can be true or false. Supported on AssemblyAI-STT-3.7 and Universal-2. Defaults to true when `speech_models` includes `assemblyai-stt-3-7` in any position, or is omitted and the request uses `assemblyai-stt-3-7` by default, and to false otherwise.
         /// </param>
         /// <param name="domain">
         /// Enable domain-specific transcription models to improve accuracy for specialized terminology. Set to `"medical-v1"` to enable [Medical Mode](https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode) for improved accuracy of medication names, both generic and brand-name. Set to `"veterinary-v1"` to enable [Veterinary Mode](https://www.assemblyai.com/docs/pre-recorded-audio/veterinary-mode) (beta) for improved accuracy of veterinary terminology.<br/>
@@ -400,7 +399,7 @@ namespace AssemblyAI
         /// Default Value: false
         /// </param>
         /// <param name="formatText">
-        /// Enable [Text Formatting](https://www.assemblyai.com/docs/pre-recorded-audio), can be true or false<br/>
+        /// Enable [Text Formatting](https://www.assemblyai.com/docs/pre-recorded-audio/formatting), can be true or false<br/>
         /// Default Value: true
         /// </param>
         /// <param name="iabCategories">
@@ -408,15 +407,14 @@ namespace AssemblyAI
         /// Default Value: false
         /// </param>
         /// <param name="keytermsPrompt">
-        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for Universal-3.5 Pro) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-5-pro/prompting#keyterms-prompting) for more details.
+        /// Improve accuracy with up to 200 (for Universal-2) or 1000 (for AssemblyAI-STT-3.7) domain-specific words or phrases (maximum 6 words per phrase). See [Keyterms Prompting](https://www.assemblyai.com/docs/pre-recorded-audio/prompting#keyterms-prompting) for more details.
         /// </param>
         /// <param name="languageCode">
         /// The language of your audio file. Possible values are found in [Supported Languages](https://www.assemblyai.com/docs/pre-recorded-audio/supported-languages).<br/>
-        /// If you don't specify a language, it's detected automatically. Cannot be used together with `language_detection`.
+        /// If you don't specify a language, it's detected automatically. Can be used with `language_detection` set to `false`, but not with `language_detection` set to `true`.
         /// </param>
         /// <param name="languageCodes">
-        /// The language codes of your audio file. Used for [Code switching](/speech-to-text/pre-recorded-audio/code-switching)<br/>
-        /// One of the values specified must be `en`.
+        /// The language codes of your audio file. Used for [Code switching](https://www.assemblyai.com/docs/pre-recorded-audio/code-switching). On AssemblyAI-STT-3.7, accepts any number of supported languages, and English isn't required. On Universal-2, accepts at most two languages, and one of them must be `en`. Can't be used together with `language_code` or `language_detection`.
         /// </param>
         /// <param name="languageConfidenceThreshold">
         /// The confidence threshold for the automatically detected language.<br/>
@@ -425,7 +423,7 @@ namespace AssemblyAI
         /// Default Value: 0
         /// </param>
         /// <param name="languageDetection">
-        /// [Automatic language detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) identifies the spoken language and routes the request to the best model. It's applied automatically when you don't specify a `language_code`. Set to `false` only together with a `language_code`; disabling it without specifying a language returns an error.
+        /// [Automatic language detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection) identifies the spoken language. See [Model selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model#transcribe-all-99-languages-by-combining-speech-models) for how requests are routed to a speech model. It's applied automatically when you don't specify a `language_code`. Set to `false` only together with a `language_code`; disabling it without specifying a language returns an error.
         /// </param>
         /// <param name="languageDetectionOptions">
         /// Specify options for [Automatic Language Detection](https://www.assemblyai.com/docs/pre-recorded-audio/language-detection).
@@ -436,10 +434,10 @@ namespace AssemblyAI
         /// </param>
         /// <param name="prompt">
         /// Provide natural language prompting of up to 1,500 words of contextual information to the model. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for best practices.<br/>
-        /// Note: This parameter is only supported for the Universal-3.5 Pro model.
+        /// Note: This parameter is only supported for the AssemblyAI-STT-3.7 model.
         /// </param>
         /// <param name="punctuate">
-        /// Enable [Automatic Punctuation](https://www.assemblyai.com/docs/pre-recorded-audio), can be true or false<br/>
+        /// Enable [Automatic Punctuation](https://www.assemblyai.com/docs/pre-recorded-audio/formatting), can be true or false<br/>
         /// Default Value: true
         /// </param>
         /// <param name="redactPii">
@@ -490,8 +488,8 @@ namespace AssemblyAI
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="speechModels">
-        /// Optional. Supported values: `universal-3-5-pro`, `universal-2`. If omitted, defaults to `["universal-3-5-pro", "universal-2"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.<br/>
-        /// Default Value: [universal-3-5-pro, universal-2]
+        /// Optional. List one or more speech models. For new accounts created on or after November 17, 2026, if omitted, defaults to `["assemblyai-stt-3-7"]`. See [Model Selection](https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model) for available models and routing behavior.<br/>
+        /// Default Value: [assemblyai-stt-3-7]
         /// </param>
         /// <param name="speechThreshold">
         /// Reject audio files that contain less than this fraction of speech.<br/>
@@ -502,13 +500,13 @@ namespace AssemblyAI
         /// Enable speech understanding tasks like [Translation](https://www.assemblyai.com/docs/speech-understanding/translation), [Speaker Identification](https://www.assemblyai.com/docs/speech-understanding/speaker-identification), and [Custom Formatting](https://www.assemblyai.com/docs/speech-understanding/custom-formatting). See the task-specific docs for available options and configuration.
         /// </param>
         /// <param name="removeAudioTags">
-        /// Universal-3.5 Pro generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations. By default, all inline annotations are removed.<br/>
-        /// Note: This parameter is only supported for the Universal-3.5 Pro model.<br/>
+        /// AssemblyAI-STT-3.7 generates rich transcripts that can include inline annotations such as audio event markers and speaker cues. Set to `"all"` to remove all inline annotations, or `"speaker"` to remove only speaker cues while keeping other annotations. By default, all inline annotations are removed.<br/>
+        /// Note: This parameter is only supported for the AssemblyAI-STT-3.7 model.<br/>
         /// Default Value: all
         /// </param>
         /// <param name="temperature">
         /// Control the amount of randomness injected into the model's response. See the [Prompting Guide](https://www.assemblyai.com/docs/pre-recorded-audio/prompting) for more details.<br/>
-        /// Note: This parameter only takes effect on the Universal-3.5 Pro model.<br/>
+        /// Note: This parameter only takes effect on the AssemblyAI-STT-3.7 model.<br/>
         /// Default Value: 0.0
         /// </param>
         /// <param name="webhookAuthHeaderName">
